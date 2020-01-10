@@ -2,6 +2,7 @@ package m2104.ile_interdite.util;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import m2104.ile_interdite.modele.*;
 
 /**
  *
@@ -9,23 +10,25 @@ import java.util.ArrayList;
  */
 public class Message implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    private final Utils.Commandes commande;
-    private final Integer idAventurier;
-    private final Integer idCarte;
-    private final Utils.Tresor tresor;
-    private final Integer idTuile;
-    private final Integer nbJoueurs;
-    private ArrayList<Tuile> tuiles;
+    public static long serialVersionUID = 1L;
+    public Utils.Commandes commande;
+    public Integer idAventurier;
+    public Integer idCarte;
+    public Utils.Tresor tresor;
+    public Integer idTuile;
+    public Integer nbJoueurs;
+    public ArrayList<Tuile> tuiles;
+    public int[] coords = new int[2];
+    public TypePion pion;
 
-    public Message(Utils.Commandes commande, ArrayList<Tuile> tuiles) {
-        this.commande = commande;
+    public Message() {
+        this.commande = null;
         idAventurier = null;
         idCarte = null;
         tresor = null;
         idTuile = null;
         nbJoueurs = null;
-        this.tuiles = tuiles;
+        tuiles = new ArrayList();
     }
     
     private Message(Utils.Commandes commande, Integer idAventurier, Integer idCarte, Utils.Tresor tresor, Integer idTuile, Integer nbJoueurs) {

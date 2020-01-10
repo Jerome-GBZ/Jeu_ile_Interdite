@@ -11,13 +11,14 @@ public abstract class Aventurier {
     private IleInterdite ii;
     private String nomJoueur;
     private Tuile tuile;
-    private Cjoueur[] cartesJoueur;
+    private CJoueur[] cartesJoueur;
+    private TypePion pion;
     
     public Aventurier(IleInterdite i,String nom, Tuile t) {
         ii = i;
         nomJoueur = nom;
         tuile = t;
-        cartesJoueur = new Cjoueur[6];
+        cartesJoueur = new CJoueur[6];
     }
     
     public void setNom(String nom) {
@@ -35,16 +36,31 @@ public abstract class Aventurier {
         return res;
     }
     
-    public Tuile getTuile() {
-        return tuile;
-    }
     
     public void seDeplacer(){
         ArrayList<Tuile> tDispos = new ArrayList<>();
         tDispos = ii.getGrille.tuilesDisposDeplacer(getTuile(), this);
         
-        ii.tuilesDispos(this, tDispos);
+        ii.tuilesDispos(Utils.Commandes.CHOISIR_TUILE,this, tDispos);
         
     }
     
+    
+    public void PoserPionInit() {
+        ii.PlacerPionInit(pion);
+    }
+    
+    
+    //getters et setters
+    public Tuile getTuile() {
+        return tuile;
+    }
+    
+    public void setTuile(Tuile t) {
+        tuile = t;
+    }
+    
+    public TypePion getPion() {
+        return pion;
+    }
 }
