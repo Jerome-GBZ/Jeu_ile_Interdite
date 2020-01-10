@@ -68,6 +68,25 @@ public class Grille {
         }
         return tuilesAutour;
     }
+    
+    public ArrayList<Tuile> tuilesDispoDeplacer (Tuile t, Aventurier a){
+        ArrayList<Tuile> tuilesDispo = tuileAutour(t);
+         
+                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        return tuilesDispo;
+    }
 
     /**
      * @return the tuiles
