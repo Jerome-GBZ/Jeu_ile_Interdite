@@ -5,15 +5,18 @@ import m2104.ile_interdite.util.Message;
 import patterns.observateur.Observable;
 import patterns.observateur.Observateur;
 import java.util.ArrayList;
-import m2104.ile_interdite.util.Utils;
+import m2104.ile_interdite.util.*;
 
 /**
  *
  * @author Raphaël Bleuse <raphael.bleuse@iut2.univ-grenoble-alpes.fr>
  */
 public class IleInterdite extends Observable<Message> {
+    private Grille g;
+    
     public IleInterdite(Observateur<Message> observateur) {
         this.addObservateur(observateur);
+        g = null; //à initialiser
     }
 
     public String[] inscrireJoueurs(int nbJoueurs) {
@@ -24,7 +27,20 @@ public class IleInterdite extends Observable<Message> {
     }
     
     public void tuilesDispos(Utils.Commandes commande, Aventurier a, ArrayList<Tuile> tuiles) {
-        Message m = new Message(commande, tuiles);
+        Message m = new Message();
+        m.commande = commande;
+        m.tuiles = tuiles;
+        notifierObservateurs(m);
+    }
+    
+    public void PlacerPionInit(TypePion p) {
+        int[] coords = new int[2];
+        coords = g.PlacerPionInit(p);
+        
+        Message m = new Message();
+        m.commande = Utils.Commandes.BOUGER;
+        m.pion = p;
+        m.coords = coords;
         notifierObservateurs(m);
     }
 }
