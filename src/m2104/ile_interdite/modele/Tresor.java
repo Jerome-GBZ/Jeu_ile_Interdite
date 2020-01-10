@@ -11,4 +11,21 @@ package m2104.ile_interdite.modele;
  */
 public class Tresor {
     
+    private String nomTresor;
+
+    /**
+     * @return the nomTresor
+     */
+    public String getNomTresor() {
+        return nomTresor;
+    }
+
+    /**
+     * @param nomTresor the nomTresor to set
+     */
+    public void setNomTresor(String nomTresor) {
+        this.nomTresor = nomTresor;
+    }
+    
+    
 }
