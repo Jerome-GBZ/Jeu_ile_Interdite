@@ -43,8 +43,8 @@ public class Grille {
     }
     
     
-    public Tuile[] tuileAutour(Tuile t){
-        Tuile[] tuilesAutour = new Tuile[4];
+    public ArrayList<Tuile> tuileAutour(Tuile t){
+        ArrayList<Tuile> tuilesAutour = new ArrayList<>();
         int i = 0;
         int j = 0;
         while(tuiles[i][j] != t && i<tuiles.length){
@@ -55,16 +55,16 @@ public class Grille {
             i++;
         }
         if(i != 0){
-            tuilesAutour[0] = tuiles[i-1][j];
+            tuilesAutour.add(tuiles[i-1][j]);
         }
         if(i != 5){
-            tuilesAutour[1] = tuiles[i+1][j];
+            tuilesAutour.add(tuiles[i+1][j]);
         }
         if(j != 0){
-            tuilesAutour[2] = tuiles[i][j-1];
+            tuilesAutour.add(tuiles[i][j-1]);
         }
         if(j != 5){
-            tuilesAutour[3] = tuiles[i][j+1];
+            tuilesAutour.add(tuiles[i][j+1]);
         }
         return tuilesAutour;
     }
