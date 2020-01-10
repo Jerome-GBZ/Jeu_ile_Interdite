@@ -12,5 +12,19 @@ package m2104.ile_interdite.modele;
 public class CInondation {
     
     private Tuile tuile;
+
+    /**
+     * @return the tuile
+     */
+    public Tuile getTuile() {
+        return tuile;
+    }
+
+    /**
+     * @param tuile the tuile to set
+     */
+    public void setTuile(Tuile tuile) {
+        this.tuile = tuile;
+    }
     
 }
