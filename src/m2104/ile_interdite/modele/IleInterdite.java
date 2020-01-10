@@ -33,14 +33,21 @@ public class IleInterdite extends Observable<Message> {
         notifierObservateurs(m);
     }
     
-    public void PlacerPionInit(TypePion p) {
+    public void placerPionInit(TypePion p) {
         int[] coords = new int[2];
-        coords = g.PlacerPionInit(p);
+        coords = g.placerPionInit(p);
         
         Message m = new Message();
         m.commande = Utils.Commandes.BOUGER;
         m.pion = p;
         m.coords = coords;
         notifierObservateurs(m);
+    }
+    
+    
+    
+    //getters et setters
+    public Grille getGrille() {
+        return g;
     }
 }

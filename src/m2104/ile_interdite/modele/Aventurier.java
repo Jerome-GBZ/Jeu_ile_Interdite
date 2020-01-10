@@ -13,6 +13,7 @@ public abstract class Aventurier {
     private Tuile tuile;
     private CJoueur[] cartesJoueur;
     private TypePion pion;
+    private Role role;
     
     public Aventurier(IleInterdite i,String nom, Tuile t) {
         ii = i;
@@ -37,17 +38,25 @@ public abstract class Aventurier {
     }
     
     
-    public void seDeplacer(){
+    public void seDeplacer() {
         ArrayList<Tuile> tDispos = new ArrayList<>();
-        tDispos = ii.getGrille.tuilesDisposDeplacer(getTuile(), this);
+        tDispos = ii.getGrille().tuilesDisposDeplacer(getTuile(), this);
         
         ii.tuilesDispos(Utils.Commandes.CHOISIR_TUILE,this, tDispos);
         
     }
     
     
-    public void PoserPionInit() {
-        ii.PlacerPionInit(pion);
+    public void assecher() {
+        ArrayList<Tuile> tDispos = new ArrayList<>();
+        tDispos = ii.getGrille().tuilesDisposAssecher(getTuile(), this);
+        
+        ii.tuilesDispos(Utils.Commandes.CHOISIR_TUILE,this, tDispos); 
+    }
+    
+    
+    public void poserPionInit() {
+        ii.placerPionInit(pion);
     }
     
     
@@ -62,5 +71,9 @@ public abstract class Aventurier {
     
     public TypePion getPion() {
         return pion;
+    }
+    
+    public CJoueur[] getCartes() {
+        return cartesJoueur;
     }
 }
