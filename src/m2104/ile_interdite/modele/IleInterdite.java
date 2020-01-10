@@ -4,6 +4,8 @@ import java.util.Arrays;
 import m2104.ile_interdite.util.Message;
 import patterns.observateur.Observable;
 import patterns.observateur.Observateur;
+import java.util.ArrayList;
+import m2104.ile_interdite.util.Utils;
 
 /**
  *
@@ -19,5 +21,10 @@ public class IleInterdite extends Observable<Message> {
         String[] nomAventuriers = new String[nbJoueurs];
         Arrays.fill(nomAventuriers, "Aventurier");
         return nomAventuriers;
+    }
+    
+    public void tuilesDispos(Utils.Commandes commande, Aventurier a, ArrayList<Tuile> tuiles) {
+        Message m = new Message(commande, tuiles);
+        notifierObservateurs(m);
     }
 }

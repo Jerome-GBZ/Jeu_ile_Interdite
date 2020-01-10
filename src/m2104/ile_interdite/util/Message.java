@@ -1,6 +1,7 @@
 package m2104.ile_interdite.util;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,7 +16,18 @@ public class Message implements Serializable {
     private final Utils.Tresor tresor;
     private final Integer idTuile;
     private final Integer nbJoueurs;
+    private ArrayList<Tuile> tuiles;
 
+    public Message(Utils.Commandes commande, ArrayList<Tuile> tuiles) {
+        this.commande = commande;
+        idAventurier = null;
+        idCarte = null;
+        tresor = null;
+        idTuile = null;
+        nbJoueurs = null;
+        this.tuiles = tuiles;
+    }
+    
     private Message(Utils.Commandes commande, Integer idAventurier, Integer idCarte, Utils.Tresor tresor, Integer idTuile, Integer nbJoueurs) {
         this.commande = commande;
         this.idAventurier = idAventurier;
@@ -23,6 +35,7 @@ public class Message implements Serializable {
         this.tresor = tresor;
         this.idTuile = idTuile;
         this.nbJoueurs = nbJoueurs;
+        tuiles = new ArrayList();
     }
 
     /**
