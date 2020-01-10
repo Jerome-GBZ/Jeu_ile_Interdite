@@ -54,16 +54,16 @@ public class Grille {
             }
             i++;
         }
-        if(i != 0){
+        if(i != 0 && tuiles[i-1][j] != null){
             tuilesAutour.add(tuiles[i-1][j]);
         }
-        if(i != 5){
+        if(i != 5 && tuiles[i+1][j] != null){
             tuilesAutour.add(tuiles[i+1][j]);
         }
-        if(j != 0){
+        if(j != 0 && tuiles[i][j-1] != null){
             tuilesAutour.add(tuiles[i][j-1]);
         }
-        if(j != 5){
+        if(j != 5 && tuiles[i][j+1] != null){
             tuilesAutour.add(tuiles[i][j+1]);
         }
         return tuilesAutour;
