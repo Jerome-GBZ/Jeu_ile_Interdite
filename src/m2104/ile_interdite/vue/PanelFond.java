@@ -20,23 +20,27 @@ public class PanelFond extends JPanel {
     private Image image;
 
     public PanelFond(TypeRole r) {
-        if(r == TypeRole.Explorateur){
-                image = Toolkit.getDefaultToolkit().getImage("Images/personnages/explorateur.png");
-            }else if(r == TypeRole.Ingenieur){
-                image = Toolkit.getDefaultToolkit().getImage("Images/personnages/ingenieur.png");
-            }else if(r == TypeRole.Messager){
-                image = Toolkit.getDefaultToolkit().getImage("Images/personnages/messager.png");
-            }else if(r == TypeRole.Navigateur){
-                image = Toolkit.getDefaultToolkit().getImage("Images/personnages/navigateur.png");
-            }else if(r == TypeRole.Pilote){
-                image = Toolkit.getDefaultToolkit().getImage("Images/personnages/pilote.png");
-            }else if(r == TypeRole.Plongeur){
-                image = Toolkit.getDefaultToolkit().getImage("Images/personnages/plongeur.png");
-            }
+        if (r == TypeRole.Explorateur) {
+            image = Toolkit.getDefaultToolkit().getImage("Images/personnages/explorateur.png");
+        } else if (r == TypeRole.Ingenieur) {
+            image = Toolkit.getDefaultToolkit().getImage("Images/personnages/ingenieur.png");
+        } else if (r == TypeRole.Messager) {
+            image = Toolkit.getDefaultToolkit().getImage("Images/personnages/messager.png");
+        } else if (r == TypeRole.Navigateur) {
+            image = Toolkit.getDefaultToolkit().getImage("Images/personnages/navigateur.png");
+        } else if (r == TypeRole.Pilote) {
+            image = Toolkit.getDefaultToolkit().getImage("Images/personnages/pilote.png");
+        } else if (r == TypeRole.Plongeur) {
+            image = Toolkit.getDefaultToolkit().getImage("Images/personnages/plongeur.png");
+        }
     }
-    
+
     public PanelFond(String urlImage) {
         image = Toolkit.getDefaultToolkit().getImage(urlImage);
+    }
+
+    public PanelFond(String urlImage, int w, int h) {
+        image = Toolkit.getDefaultToolkit().getImage(urlImage).getScaledInstance(w, h, w);
     }
 
     public void paintComponent(Graphics g) {
