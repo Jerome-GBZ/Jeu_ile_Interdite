@@ -303,4 +303,7 @@ public class VueAventurier {
     public Integer getIdAventurier() {
         return this.idAventurier ;
     }
+    
+    
+    
 }
