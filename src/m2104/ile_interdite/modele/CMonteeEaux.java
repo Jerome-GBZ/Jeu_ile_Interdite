@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package m2104.ile_interdite.modele;
-
+import m2104.ile_interdite.util.*;
 /**
  *
  * @author capelth
@@ -15,7 +15,7 @@ public class CMonteeEaux extends CJoueur {
             + "3. Défaussez cette carte avec les cartes Trésor." ;
     
     public CMonteeEaux( Aventurier a ){
-        super(a);
+        super(a,TypeCarte.CMONTEEEAUX);
         }
 
     /**

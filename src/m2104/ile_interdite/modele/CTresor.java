@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package m2104.ile_interdite.modele;
-
+import m2104.ile_interdite.util.*;
 /**
  *
  * @author capelth
@@ -17,9 +17,10 @@ public class CTresor extends CJoueur{
     
     
     public CTresor(String nt, Aventurier aventurier){
-        super(aventurier);
+        super(aventurier,TypeCarte.CTRESOR);
         this.nomTresor = nt;
         tresor = null;
+        
     }
 
     /**
