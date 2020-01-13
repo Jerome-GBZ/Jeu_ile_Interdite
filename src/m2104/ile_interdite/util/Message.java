@@ -24,6 +24,7 @@ public class Message implements Serializable {
     public String[] nomJoueurs;
     public int nivEau;
     public int nombreJoueurs;
+    public TypeAction type;
 
     public Message() {
         this.commande = null;
@@ -33,6 +34,7 @@ public class Message implements Serializable {
         idTuile = null;
         nbJoueurs = null;
         tuiles = new ArrayList();
+        
     }
     
     private Message(Utils.Commandes commande, Integer idAventurier, Integer idCarte, Utils.Tresor tresor, Integer idTuile, Integer nbJoueurs) {
@@ -43,6 +45,10 @@ public class Message implements Serializable {
         this.idTuile = idTuile;
         this.nbJoueurs = nbJoueurs;
         tuiles = new ArrayList();
+    }
+    
+    public Message(TypeAction typeAction) {
+        this.type = type;
     }
 
     /**
@@ -141,23 +147,6 @@ public class Message implements Serializable {
         return new Message(Utils.Commandes.VOIR_DEFAUSSE, null, null, null, null, null);
     }
 
-
-    public Message(int nbJoueurs) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public Message(JTextField[] saisieNomJoueurs) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public Message(String nivEau) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public Message(TypeAction typeAction) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     /**
      * @return the commande
      */
@@ -236,13 +225,6 @@ public class Message implements Serializable {
             txt += " tresor=" + tresor.toString();
         }
         return txt;
-    }
-
-    private void setNiveauEau(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private void inscrireJoueurs(JTextField[] saisieNomJoueurs) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    }    
+    
 }

@@ -51,7 +51,7 @@ public class VueInscriptionJoueurs extends Observable<Object> {
     int nbJoueurs = 2; // 2 joueurs par default
 
     private javax.swing.JLabel niveauEau;
-    private JComboBox<Integer> choixNivEau;
+    private JComboBox<String> choixNivEau;
     String nivEau = "Novice";
 
     private final JButton btnJouer = new JButton("Jouer");
@@ -81,6 +81,7 @@ public class VueInscriptionJoueurs extends Observable<Object> {
         titre.setText("Bienvenue sur l'île interdite !");
         topPanel.add(titre, BorderLayout.CENTER);
          */
+        
         // Inscription joueur
         JPanel CentrePanel = new JPanel(new GridLayout(9, 2));
         mainPanel.add(CentrePanel, BorderLayout.CENTER);
@@ -127,11 +128,16 @@ public class VueInscriptionJoueurs extends Observable<Object> {
         niveauEau.setText("Choisir niveau d'eau :");
         CentrePanel.add(niveauEau);
 
-        String[] tableauNivEau = {"Novice", "Normal", "Elite", "Légendaire"};
-        choixNivEau = new JComboBox(tableauNivEau);
+        String[] tableauNivEau = new String[]{"Novice", "Normal", "Elite", "Légendaire"};
+        choixNivEau = new JComboBox<>(tableauNivEau);
         CentrePanel.add(choixNivEau);
 
-        nivEau = (String) choixNivEau.getSelectedItem();
+        choixNivEau.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                nivEau = (String) choixNivEau.getSelectedItem();
+            }
+        });
 
         CentrePanel.add(new JPanel()); // Une case vide
         CentrePanel.add(new JPanel());
@@ -146,7 +152,8 @@ public class VueInscriptionJoueurs extends Observable<Object> {
             public void mouseClicked(MouseEvent arg0) {
                 // Message à envoyer
                 // Demarer partie - nb de joueur - nom des joueurs - niveau Eau
-                int niv = 1;
+
+                int niv = 0;
                 if (nivEau == "Novice") {
                     niv = 1;
                 } else if (nivEau == "Normal") {
@@ -159,18 +166,30 @@ public class VueInscriptionJoueurs extends Observable<Object> {
                     System.out.println("Problème niveau Eau part default, le niveau sera novice");
                     niv = 1;
                 }
-
-                for (int i = 0; i < saisieNomJoueurs.length; i++) {
-                    nomJoueurs[i] = saisieNomJoueurs[i].getSelectedText();
+                
+                for (int i = 0; i < nbJoueurs; i++) {
+                    nomJoueurs[i] = saisieNomJoueurs[i].getText();
                 }
 
-                Message m = new Message(TypeAction.Demarrer);
+                Message m = new Message(TypeAction.DEMARRER);
                 m.nbJoueurs = nbJoueurs;
                 m.nomJoueurs = nomJoueurs;
                 m.nivEau = niv;
                 notifierObservateurs(m);
 
                 fermer();
+                 
+                
+
+                // test des variables envoyées
+                System.out.println("Il y a " + nbJoueurs + " joueurs");
+                for (int i = 0; i < nbJoueurs; i++) { // verifie le tableau de Jtextfield
+                    System.out.println("    - " + saisieNomJoueurs[i].getText());
+                }
+                System.out.println("Niveau Eau est de " + nivEau + " soit niv n°" + niv + "\n"); 
+                for (int i = 0; i < nbJoueurs; i++) { // verifie le tableau de String
+                    System.out.println("    "+ i + "- " + (nomJoueurs[i] = saisieNomJoueurs[i].getText()));
+                }
             }
 
             @Override

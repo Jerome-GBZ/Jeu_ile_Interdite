@@ -10,7 +10,7 @@ package m2104.ile_interdite.util;
  * @author capelth
  */
 public enum TypeAction {
-    Demarrer,
+    DEMARRER,
     BOUGER,
     ASSECHER,
     DONNER,
