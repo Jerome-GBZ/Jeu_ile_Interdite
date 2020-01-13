@@ -73,7 +73,7 @@ public class  VueInscriptionJoueurs {
         
         
         // Image
-        String imgURL = "/users/info/etu-s2/gambiezj/Documents/Projet_Java/Graphe/logojeu.png";
+        String imgURL = "Images/logojeu.png";
         JLabel logoLabel = new JLabel(new ImageIcon(imgURL));
         topPanel.add(logoLabel, BorderLayout.NORTH);
         
