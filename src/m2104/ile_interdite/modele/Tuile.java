@@ -19,6 +19,9 @@ public class Tuile {
     private Tresor tresor;
     private ArrayList<Aventurier> aventuriers = new ArrayList<>();
     
+    public Tuile() {
+    }
+    
     public Tuile(String nomTuile, Tresor t, ArrayList<Aventurier> listav){
         setEtat(TypeEtat.SEC);
         setNomTuile(nomTuile);
@@ -31,6 +34,11 @@ public class Tuile {
         setNomTuile(nomTuile);
         setTresor(null);
         setAventuriers(null);
+    }
+    
+    public Tuile(String nomTuile, Tresor tr) {
+        setNomTuile(nomTuile);
+        setTresor(tr);
     }
 
         
@@ -116,6 +124,9 @@ public class Tuile {
         this.aventuriers = aventuriers;
     }
     
+    public void addAventurier(Aventurier a) {
+        aventuriers.add(a);
+    }
     
     
 }

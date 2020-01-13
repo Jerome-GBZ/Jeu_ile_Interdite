@@ -12,10 +12,10 @@ package m2104.ile_interdite.util;
 public enum TypePion {
     
     BLEU,
-    GRIS,
+    BLANC,
     JAUNE,
     ROUGE,
     VERT,
-    VIOLET;
+    NOIR;
     
 }
