@@ -12,7 +12,15 @@ package m2104.ile_interdite.modele;
 public class Tresor {
     
     private String nomTresor;
+    private CTresor[] cartesT = new CTresor[5];
+    
+    public Tresor(String nom, CTresor[] cartes) {
+        nomTresor = nom;
+        cartesT = cartes;
+    }
 
+    
+    //getters et setters
     /**
      * @return the nomTresor
      */
@@ -25,6 +33,11 @@ public class Tresor {
      */
     public void setNomTresor(String nomTresor) {
         this.nomTresor = nomTresor;
+    }
+    
+    
+    public CTresor[] getCartes() {
+        return cartesT;
     }
     
     

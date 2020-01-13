@@ -13,7 +13,7 @@ public abstract class Aventurier {
     private Tuile tuile;
     private CJoueur[] cartesJoueur;
     private TypePion pion;
-    private Role role;
+    private TypeRole role;
     
     public Aventurier(IleInterdite i,String nom, Tuile t) {
         ii = i;
@@ -38,12 +38,47 @@ public abstract class Aventurier {
     }
     
     
+    public boolean removeCarteJoueur(CJoueur cJoueur) {
+        boolean res = false;
+        for (int i=0; i<cartesJoueur.length; i++) {
+            if (cartesJoueur[i] == cJoueur) {
+                cartesJoueur[i] = null;
+                res = true;
+            }
+        }
+        return res;
+    }
+    
+    
+    public boolean removeCarteT(Tresor tr) {
+        boolean res = false;
+        int cmpt = 0;
+        for (int i=0; i<cartesJoueur.length; i++) {
+            for (int j=0; i<tr.getCartes().length; j++) {
+                if (cartesJoueur[i].equals(tr.getCartes()[j])) {
+                    cmpt = cmpt+1;
+                }
+            }
+        }
+        if (cmpt>=4) {
+            for (int i=0; i<cartesJoueur.length; i++) {
+                for (int j=0; i<tr.getCartes().length; j++) {
+                    if (cartesJoueur[i].equals(tr.getCartes()[j])) {
+                        cartesJoueur[i] = null;
+                    }
+                }
+            }
+            res = true;
+        }
+        return res;
+    }
+    
+    
     public void seDeplacer() {
         ArrayList<Tuile> tDispos = new ArrayList<>();
         tDispos = ii.getGrille().tuilesDisposDeplacer(getTuile(), this);
         
         ii.tuilesDispos(Utils.Commandes.CHOISIR_TUILE,this, tDispos);
-        
     }
     
     
