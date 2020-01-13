@@ -24,6 +24,7 @@ public class IleInterdite extends Observable<Message> {
     private ArrayList<CInondation> cartesInondationPioche = new ArrayList<>();
     private ArrayList<CInondation> cartesInondationDefausse = new ArrayList<>();
     private ArrayList<Aventurier> aventuriers = new ArrayList<>();
+    private int nbJoueurs;
 
     public IleInterdite(Observateur<Message> observateur, int niv, String[] noms) {
         this.addObservateur(observateur);
@@ -441,6 +442,10 @@ public class IleInterdite extends Observable<Message> {
     }
 
     public int getNombreJoueurs() {
-        return aventuriers.size();
+        return nbJoueurs;
+    }
+    
+    public void setNombreJoueurs(int nb) {
+        nbJoueurs = nb;
     }
 }
