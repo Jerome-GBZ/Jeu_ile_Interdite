@@ -27,8 +27,13 @@ public class Controleur implements Observateur<Message> {
 
         switch (msg.getCommande()) {
             case DEMARRER:
-                ileInterdite = new ileInterdite();
-            
+                ileInterdite = new IleInterdite(this, msg.nivEau, msg.nomJoueurs);
+                ileInterdite.setNiveauEau(msg.nivEau);
+                ileInterdite.inscrireJoueurs(msg.nomJoueurs);
+                ileInterdite.intitialiserNiveauEau(msg.nivEau, msg.nomJoueurs);
+               
+                break;
+                    
             case VALIDER_JOUEURS:
                 assert msg.hasNbJoueurs();
                 String[] nomAventuriers =
