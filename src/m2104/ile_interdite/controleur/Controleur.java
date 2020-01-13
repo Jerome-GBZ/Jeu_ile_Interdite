@@ -30,7 +30,7 @@ public class Controleur implements Observateur<Message> {
             case VALIDER_JOUEURS:
                 assert msg.hasNbJoueurs();
                 String[] nomAventuriers =
-                        this.ileInterdite.inscrireJoueurs(msg.getNbJoueurs());
+                        this.ileInterdite.inscrireJoueurs(msg.nomJoueurs);
                 this.ihm.creerVuesAventuriers(nomAventuriers);
                 break;
             default:
@@ -38,5 +38,7 @@ public class Controleur implements Observateur<Message> {
                     System.err.println("Action interdite : " + msg.getCommande().toString());
                 }
         }
+        
+        
     }
 }
