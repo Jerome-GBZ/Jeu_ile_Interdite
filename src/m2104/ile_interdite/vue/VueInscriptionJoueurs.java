@@ -31,14 +31,17 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import patterns.observateur.Observateur;
+import patterns.observateur.Observable;
 import javax.swing.BorderFactory;
 import javax.swing.SwingConstants;
+import m2104.ile_interdite.util.TypeAction;
 
 /**
  *
  * @author Eric
  */
-public class  VueInscriptionJoueurs {
+public class  VueInscriptionJoueurs extends Observable<Object>{
     private final JFrame fenetre ;
     private javax.swing.JLabel titre;
     
@@ -46,9 +49,11 @@ public class  VueInscriptionJoueurs {
     private JLabel [] labelNomJoueurs = new JLabel[4];
     private JTextField [] saisieNomJoueurs = new JTextField[4];
     private String[] nomJoueurs;
+    int nbJoueurs = 2; // 2 joueurs par default
     
     private javax.swing.JLabel niveauEau;
     private JComboBox<Integer> choixNivEau;
+    String nivEau = "Novice";
 
     private final JButton btnJouer = new JButton("Jouer");
     
@@ -114,11 +119,11 @@ public class  VueInscriptionJoueurs {
         choixNbJoueurs.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
-                int nb = (Integer) choixNbJoueurs.getSelectedItem();
+                nbJoueurs = (Integer) choixNbJoueurs.getSelectedItem();
 
                 for(int i = 0; i < saisieNomJoueurs.length; i++) {
-                    labelNomJoueurs[i].setEnabled(i < nb);
-                    saisieNomJoueurs[i].setEnabled(i < nb);
+                    labelNomJoueurs[i].setEnabled(i < nbJoueurs);
+                    saisieNomJoueurs[i].setEnabled(i < nbJoueurs);
                 }
             }
         });
@@ -132,6 +137,8 @@ public class  VueInscriptionJoueurs {
         String[] nivEau = {"Novice", "Normal", "Elite", "Légendaire"};
         choixNivEau = new JComboBox(nivEau);
         CentrePanel.add(choixNivEau);
+        
+        nivEau = (String[]) choixNivEau.getSelectedItem();
         
         CentrePanel.add(new JPanel()); // Une case vide
         CentrePanel.add(new JPanel());
@@ -147,6 +154,17 @@ public class  VueInscriptionJoueurs {
             public void mouseClicked(MouseEvent arg0) {
                 // Message à envoyer
                 // Demarer partie - nb de joueur - nom des joueurs - niveau Eau
+                Message m = new Message(TypeAction.Demarrer);
+                notifierObservateurs(m);
+                
+                Message m2 = new Message(nbJoueurs);
+                notifierObservateurs(m2);
+                
+                Message m3 = new Message(saisieNomJoueurs);
+                notifierObservateurs(m3);
+                
+                Message m4 = new Message(nivEau);
+                notifierObservateurs(m4);
                 
                 fermer();
             }
