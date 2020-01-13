@@ -54,7 +54,7 @@ public class  VueInscriptionJoueurs extends Observable<Object>{
     private javax.swing.JLabel niveauEau;
     private JComboBox<Integer> choixNivEau;
     String nivEau = "Novice";
-
+    
     private final JButton btnJouer = new JButton("Jouer");
     
     public VueInscriptionJoueurs() {
@@ -103,6 +103,7 @@ public class  VueInscriptionJoueurs extends Observable<Object>{
         for(int i = 0; i < saisieNomJoueurs.length; i++) {
             saisieNomJoueurs[i] = new JTextField();
             labelNomJoueurs[i] = new JLabel("Nom du joueur No " + (i + 1) + " :");
+            nomJoueurs[i] = saisieNomJoueurs[i].getSelectedText();
             CentrePanel.add(labelNomJoueurs[i]);
             CentrePanel.add(saisieNomJoueurs[i]);
             labelNomJoueurs[i].setEnabled(i < 2);
@@ -134,11 +135,11 @@ public class  VueInscriptionJoueurs extends Observable<Object>{
         niveauEau.setText("Choisir niveau d'eau :");
         CentrePanel.add(niveauEau);
 
-        String[] nivEau = {"Novice", "Normal", "Elite", "Légendaire"};
-        choixNivEau = new JComboBox(nivEau);
+        String[] tableauNivEau = {"Novice", "Normal", "Elite", "Légendaire"};
+        choixNivEau = new JComboBox(tableauNivEau);
         CentrePanel.add(choixNivEau);
         
-        nivEau = (String[]) choixNivEau.getSelectedItem();
+        nivEau = (String) choixNivEau.getSelectedItem();
         
         CentrePanel.add(new JPanel()); // Une case vide
         CentrePanel.add(new JPanel());
@@ -154,18 +155,27 @@ public class  VueInscriptionJoueurs extends Observable<Object>{
             public void mouseClicked(MouseEvent arg0) {
                 // Message à envoyer
                 // Demarer partie - nb de joueur - nom des joueurs - niveau Eau
-                Message m = new Message(TypeAction.Demarrer);
+                int niv = 1;
+                if(nivEau == "Novice"){
+                    niv = 1;
+                } else if(nivEau == "Normal"){
+                    niv = 2;
+                } else if(nivEau == "Elite"){
+                    niv = 3;
+                } else if(nivEau == "Légendaire"){
+                    niv = 4;
+                } else{
+                    System.out.println("Problème niveau Eau part default, le niveau sera novice");
+                    niv = 1;
+                }
+                
+                
+                Message m = new Message(TypeAction.Demarrer);       
+                m.nbJoueurs = nbJoueurs;
+                m.nomJoueurs = nomJoueurs;
+                m.nivEau = niv;
                 notifierObservateurs(m);
-                
-                Message m2 = new Message(nbJoueurs);
-                notifierObservateurs(m2);
-                
-                Message m3 = new Message(saisieNomJoueurs);
-                notifierObservateurs(m3);
-                
-                Message m4 = new Message(nivEau);
-                notifierObservateurs(m4);
-                
+
                 fermer();
             }
 

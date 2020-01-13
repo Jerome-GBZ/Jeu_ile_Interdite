@@ -2,6 +2,7 @@ package m2104.ile_interdite.util;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import javax.swing.JTextField;
 import m2104.ile_interdite.modele.*;
 
 /**
@@ -20,6 +21,8 @@ public class Message implements Serializable {
     public ArrayList<Tuile> tuiles;
     public int[] coords = new int[2];
     public TypePion pion;
+    public String[] nomJoueurs;
+    public int nivEau;
 
     public Message() {
         this.commande = null;
@@ -137,6 +140,23 @@ public class Message implements Serializable {
         return new Message(Utils.Commandes.VOIR_DEFAUSSE, null, null, null, null, null);
     }
 
+
+    public Message(int nbJoueurs) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Message(JTextField[] saisieNomJoueurs) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Message(String nivEau) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Message(TypeAction typeAction) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     /**
      * @return the commande
      */
@@ -215,5 +235,13 @@ public class Message implements Serializable {
             txt += " tresor=" + tresor.toString();
         }
         return txt;
+    }
+
+    private void setNiveauEau(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void inscrireJoueurs(JTextField[] saisieNomJoueurs) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
