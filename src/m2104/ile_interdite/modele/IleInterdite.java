@@ -30,121 +30,41 @@ public class IleInterdite extends Observable<Message> {
         tuiles = new ArrayList<>();
         
         //création des cartes trésor
-        CTresor[] c1 = new CTresor[5];
-        CTresor c11 = new CTresor("La Pierre Sacrée", null); c1[0] = c11; cartesJoueurPioche.add(c11);
-        CTresor c12 = new CTresor("La Pierre Sacrée", null); c1[1] = c12; cartesJoueurPioche.add(c12);
-        CTresor c13 = new CTresor("La Pierre Sacrée", null); c1[2] = c13; cartesJoueurPioche.add(c13);
-        CTresor c14 = new CTresor("La Pierre Sacrée", null); c1[3] = c14; cartesJoueurPioche.add(c14);
-        CTresor c15 = new CTresor("La Pierre Sacrée", null); c1[4] = c15; cartesJoueurPioche.add(c15);
-                
-        CTresor[] c2 = new CTresor[5];
-        CTresor c21 = new CTresor("La Statue du Zéphyr", null); c2[0] = c21; cartesJoueurPioche.add(c21);
-        CTresor c22 = new CTresor("La Statue du Zéphyr", null); c2[1] = c22; cartesJoueurPioche.add(c22);
-        CTresor c23 = new CTresor("La Statue du Zéphyr", null); c2[2] = c23; cartesJoueurPioche.add(c23);
-        CTresor c24 = new CTresor("La Statue du Zéphyr", null); c2[3] = c24; cartesJoueurPioche.add(c24);
-        CTresor c25 = new CTresor("La Statue du Zéphyr", null); c2[4] = c25; cartesJoueurPioche.add(c25);
+        CTresor[] c1 = creationCartesTresorPierre();
+        CTresor[] c2 = creationCartesTresorStatue();
+        CTresor[] c3 = creationCartesTresorCristal();
+        CTresor[] c4 = creationCartesTresorCalice();
         
-        CTresor[] c3 = new CTresor[5];
-        CTresor c31 = new CTresor("Le Cristal Ardent", null); c3[0] = c31; cartesJoueurPioche.add(c31);
-        CTresor c32 = new CTresor("Le Cristal Ardent", null); c3[1] = c32; cartesJoueurPioche.add(c32);
-        CTresor c33 = new CTresor("Le Cristal Ardent", null); c3[2] = c33; cartesJoueurPioche.add(c33);
-        CTresor c34 = new CTresor("Le Cristal Ardent", null); c3[3] = c34; cartesJoueurPioche.add(c34);
-        CTresor c35 = new CTresor("Le Cristal Ardent", null); c3[4] = c35; cartesJoueurPioche.add(c35);
-        
-        CTresor[] c4 = new CTresor[5];
-        CTresor c41 = new CTresor("Le Calice De l'Onde", null); c4[0] = c41; cartesJoueurPioche.add(c41);
-        CTresor c42 = new CTresor("Le Calice De l'Onde", null); c4[1] = c42; cartesJoueurPioche.add(c42); 
-        CTresor c43 = new CTresor("Le Calice De l'Onde", null); c4[2] = c43; cartesJoueurPioche.add(c43);
-        CTresor c44 = new CTresor("Le Calice De l'Onde", null); c4[3] = c44; cartesJoueurPioche.add(c44);
-        CTresor c45 = new CTresor("Le Calice De l'Onde", null); c4[4] = c45; cartesJoueurPioche.add(c45);
+        //création trésors
+        creationTresors(c1, c2, c3, c4);
         
         //création carte montée des eaux
-        CMonteeEaux c51 = new CMonteeEaux(null); cartesJoueurPioche.add(c51);
-        CMonteeEaux c52 = new CMonteeEaux(null); cartesJoueurPioche.add(c52);
-        CMonteeEaux c53 = new CMonteeEaux(null); cartesJoueurPioche.add(c53);
+        creationsCartesMontee();
         
         //création carte hélicoptère
-        CHelicoptere c61 = new CHelicoptere(null); cartesJoueurPioche.add(c61);
-        CHelicoptere c62 = new CHelicoptere(null); cartesJoueurPioche.add(c62);
-        CHelicoptere c63 = new CHelicoptere(null); cartesJoueurPioche.add(c63);
+        creationCartesHelico();
         
         //création carte sable
-        CSable c71 = new CSable(null); cartesJoueurPioche.add(c71);
-        CSable c72 = new CSable(null); cartesJoueurPioche.add(c72);
+        creationCartesSable();
         
-         //création trésors
-        Tresor tr1 = new Tresor("La Pierre Sacrée", c1);
-        tresors[0] = tr1;
-        Tresor tr2 = new Tresor("La Statue du Zéphyr", c2);
-        tresors[1] = tr2;
-        Tresor tr3 = new Tresor("Le Cristal Ardent", c3);
-        tresors[2] = tr3;
-        Tresor tr4 = new Tresor("Le Calice De l'Onde", c4);
-        tresors[3] = tr4;
-        
-        //création tuiles avec ou sans trésor
-        Tuile t1 = new Tuile("La Caverne Du Brasier", tr3);
-        Tuile t2 = new Tuile("Heliport");
-        Tuile t3 = new Tuile("La Caverne Des Ombres", tr3);
-        Tuile t4 = new Tuile("La Forêt Pourpre");
-        Tuile t5 = new Tuile("La Porte d'Argent");
-        Tuile t6 = new Tuile("La Porte De Bronze");
-        Tuile t7 = new Tuile("La Porte De Cuivre");
-        Tuile t8 = new Tuile("La Porte De Fer");
-        Tuile t9 = new Tuile("La Porte d'Or");
-        Tuile t10 = new Tuile("La Tour De Guet");
-        Tuile t11 = new Tuile("Le Jardin Des Hurlements", tr2);
-        Tuile t12 = new Tuile("Le Jardin Des Murmures", tr2);
-        Tuile t13 = new Tuile("Le Lagon Perdu");
-        Tuile t14 = new Tuile("Le Marais Brumeux");
-        Tuile t15 = new Tuile("Le Palais De Corail", tr4);
-        Tuile t16 = new Tuile("Le Palais Des Marées", tr4);
-        Tuile t17 = new Tuile("Le Pont Des Abimes");
-        Tuile t18 = new Tuile("Le Rocher Fantôme");
-        Tuile t19 = new Tuile("Les Dunes De l'Illusion");
-        Tuile t20 = new Tuile("Les Falaises De l'Oubli");
-        Tuile t21 = new Tuile("Le Temple De La Lune", tr1);
-        Tuile t22 = new Tuile("Le Temple Du Soleil", tr1);
-        Tuile t23 = new Tuile("Le Val Du Crépuscule");
-        Tuile t24 = new Tuile("Observatoire");
-        
-        //ajout des tuiles à l'array list et création cartes inondation
-        tuiles.add(t1); CInondation ci1 = new CInondation(t1); cartesInondationPioche.add(ci1);
-        tuiles.add(t2); CInondation ci2 = new CInondation(t2); cartesInondationPioche.add(ci2);
-        tuiles.add(t3); CInondation ci3 = new CInondation(t3); cartesInondationPioche.add(ci3);
-        tuiles.add(t4); CInondation ci4 = new CInondation(t4); cartesInondationPioche.add(ci4);
-        tuiles.add(t5); CInondation ci5 = new CInondation(t5); cartesInondationPioche.add(ci5);
-        tuiles.add(t6); CInondation ci6 = new CInondation(t6); cartesInondationPioche.add(ci6);
-        tuiles.add(t7); CInondation ci7 = new CInondation(t7); cartesInondationPioche.add(ci7);
-        tuiles.add(t8); CInondation ci8 = new CInondation(t8); cartesInondationPioche.add(ci8);
-        tuiles.add(t9); CInondation ci9 = new CInondation(t9); cartesInondationPioche.add(ci9);
-        tuiles.add(t10); CInondation ci10 = new CInondation(t10); cartesInondationPioche.add(ci10);
-        tuiles.add(t11); CInondation ci11 = new CInondation(t11); cartesInondationPioche.add(ci11);
-        tuiles.add(t12); CInondation ci12 = new CInondation(t12); cartesInondationPioche.add(ci12);
-        tuiles.add(t13); CInondation ci13 = new CInondation(t13); cartesInondationPioche.add(ci13);
-        tuiles.add(t14); CInondation ci14 = new CInondation(t14); cartesInondationPioche.add(ci14);
-        tuiles.add(t15); CInondation ci15 = new CInondation(t15); cartesInondationPioche.add(ci15);
-        tuiles.add(t16); CInondation ci16 = new CInondation(t16); cartesInondationPioche.add(ci16);
-        tuiles.add(t17); CInondation ci17 = new CInondation(t17); cartesInondationPioche.add(ci17);
-        tuiles.add(t18); CInondation ci18 = new CInondation(t18); cartesInondationPioche.add(ci18);
-        tuiles.add(t19); CInondation ci19 = new CInondation(t19); cartesInondationPioche.add(ci19);
-        tuiles.add(t20); CInondation ci20 = new CInondation(t20); cartesInondationPioche.add(ci20);
-        tuiles.add(t21); CInondation ci21 = new CInondation(t21); cartesInondationPioche.add(ci21);
-        tuiles.add(t22); CInondation ci22 = new CInondation(t22); cartesInondationPioche.add(ci22);
-        tuiles.add(t23); CInondation ci23 = new CInondation(t23); cartesInondationPioche.add(ci23);
-        tuiles.add(t24); CInondation ci24 = new CInondation(t24); cartesInondationPioche.add(ci24);
+        //création tuiles
+        creationTuiles();
         
         //mélange des tuiles
-        Collections.shuffle(tuiles);
+        melange(tuiles);
+        
+        //création des cartes inondation
+        creationCartesInondation();
+        
+        //Mélange pioches
+        melange(cartesJoueurPioche);
+        melange(cartesInondationPioche);
         
         //création de la grille
         g = new Grille(tuiles);
         
-        //Mélange pioche
-        Collections.shuffle(cartesJoueurPioche);
-        Collections.shuffle(cartesInondationPioche);
-        
-        
+        //Inscription des joueurs
+        inscrireJoueurs(noms);
     }
 
     public String[] inscrireJoueurs(String[] noms) {
@@ -228,6 +148,7 @@ public class IleInterdite extends Observable<Message> {
             }
            
         }
+        return noms;
     }
     
     public void tuilesDispos(Utils.Commandes commande, Aventurier a, ArrayList<Tuile> tuiles) {
@@ -237,17 +158,215 @@ public class IleInterdite extends Observable<Message> {
         notifierObservateurs(m);
     }
     
-    public void placerPionInit(TypePion p) {
+    public void placerPionInit(Aventurier a) {
         int[] coords = new int[2];
-        coords = g.placerPionInit(p);
+        coords = g.getCoordonnee(a.getTuile());
         
         Message m = new Message();
         m.commande = Utils.Commandes.BOUGER;
-        m.pion = p;
+        m.pion = a.getPion();
         m.coords = coords;
         notifierObservateurs(m);
     }
     
+    
+    public void recupererTresor(Aventurier a) {
+        removeTresor(a.getTuile().getTresor());
+        a.removeCarteT(a.getTuile().getTresor());
+    }
+    
+    
+    public void removeTresor(Tresor t) {
+        for (int i=0; i<tresors.length; i++) {
+            if (tresors[i] == t) {
+                tresors[i] = null;
+            }
+        }
+    }
+    
+    
+    public CTresor[] creationCartesTresorPierre() {
+        CTresor[] c = new CTresor[5];
+        CTresor c1 = new CTresor("La Pierre Sacrée", null); c[0] = c1; cartesJoueurPioche.add(c1);
+        CTresor c2 = new CTresor("La Pierre Sacrée", null); c[1] = c2; cartesJoueurPioche.add(c2);
+        CTresor c3 = new CTresor("La Pierre Sacrée", null); c[2] = c3; cartesJoueurPioche.add(c3);
+        CTresor c4 = new CTresor("La Pierre Sacrée", null); c[3] = c4; cartesJoueurPioche.add(c4);
+        CTresor c5 = new CTresor("La Pierre Sacrée", null); c[4] = c5; cartesJoueurPioche.add(c5);
+        return c;
+    }
+    
+    
+    public CTresor[] creationCartesTresorStatue() {
+        CTresor[] c = new CTresor[5];
+        CTresor c1 = new CTresor("La Statue du Zéphyr", null); c[0] = c1; cartesJoueurPioche.add(c1);
+        CTresor c2 = new CTresor("La Statue du Zéphyr", null); c[1] = c2; cartesJoueurPioche.add(c2);
+        CTresor c3 = new CTresor("La Statue du Zéphyr", null); c[2] = c3; cartesJoueurPioche.add(c3);
+        CTresor c4 = new CTresor("La Statue du Zéphyr", null); c[3] = c4; cartesJoueurPioche.add(c4);
+        CTresor c5 = new CTresor("La Statue du Zéphyr", null); c[4] = c5; cartesJoueurPioche.add(c5);
+        return c;
+    }
+    
+    
+    public CTresor[] creationCartesTresorCalice() {
+        CTresor[] c = new CTresor[5];
+        CTresor c1 = new CTresor("Le Calice De l'Onde", null); c[0] = c1; cartesJoueurPioche.add(c1);
+        CTresor c2 = new CTresor("Le Calice De l'Onde", null); c[1] = c2; cartesJoueurPioche.add(c2); 
+        CTresor c3 = new CTresor("Le Calice De l'Onde", null); c[2] = c3; cartesJoueurPioche.add(c3);
+        CTresor c4 = new CTresor("Le Calice De l'Onde", null); c[3] = c4; cartesJoueurPioche.add(c4);
+        CTresor c5 = new CTresor("Le Calice De l'Onde", null); c[4] = c5; cartesJoueurPioche.add(c5);
+        return c;
+    }
+    
+    
+    public CTresor[] creationCartesTresorCristal() {
+        CTresor[] c = new CTresor[5];
+        CTresor c1 = new CTresor("Le Cristal Ardent", null); c[0] = c1; cartesJoueurPioche.add(c1);
+        CTresor c2 = new CTresor("Le Cristal Ardent", null); c[1] = c2; cartesJoueurPioche.add(c2);
+        CTresor c3 = new CTresor("Le Cristal Ardent", null); c[2] = c3; cartesJoueurPioche.add(c3);
+        CTresor c4 = new CTresor("Le Cristal Ardent", null); c[3] = c4; cartesJoueurPioche.add(c4);
+        CTresor c5 = new CTresor("Le Cristal Ardent", null); c[4] = c5; cartesJoueurPioche.add(c5);
+        return c;
+    }
+    
+    
+    public void creationTresors(CTresor[] c1, CTresor[] c2, CTresor[] c3, CTresor[] c4) {
+        Tresor tr1 = new Tresor("La Pierre Sacrée", c1);
+        tresors[0] = tr1;
+        Tresor tr2 = new Tresor("La Statue du Zéphyr", c2);
+        tresors[1] = tr2;
+        Tresor tr3 = new Tresor("Le Cristal Ardent", c3);
+        tresors[2] = tr3;
+        Tresor tr4 = new Tresor("Le Calice De l'Onde", c4);
+        tresors[3] = tr4;
+    }
+    
+    
+    public void creationTuiles() {
+        //création tuiles avec ou sans trésor
+        Tuile t1 = new Tuile("La Caverne Du Brasier", tresors[2]);
+        Tuile t2 = new Tuile("Heliport");
+        Tuile t3 = new Tuile("La Caverne Des Ombres", tresors[2]);
+        Tuile t4 = new Tuile("La Forêt Pourpre");
+        Tuile t5 = new Tuile("La Porte d'Argent");
+        Tuile t6 = new Tuile("La Porte De Bronze");
+        Tuile t7 = new Tuile("La Porte De Cuivre");
+        Tuile t8 = new Tuile("La Porte De Fer");
+        Tuile t9 = new Tuile("La Porte d'Or");
+        Tuile t10 = new Tuile("La Tour De Guet");
+        Tuile t11 = new Tuile("Le Jardin Des Hurlements", tresors[1]);
+        Tuile t12 = new Tuile("Le Jardin Des Murmures", tresors[1]);
+        Tuile t13 = new Tuile("Le Lagon Perdu");
+        Tuile t14 = new Tuile("Le Marais Brumeux");
+        Tuile t15 = new Tuile("Le Palais De Corail", tresors[3]);
+        Tuile t16 = new Tuile("Le Palais Des Marées", tresors[3]);
+        Tuile t17 = new Tuile("Le Pont Des Abimes");
+        Tuile t18 = new Tuile("Le Rocher Fantôme");
+        Tuile t19 = new Tuile("Les Dunes De l'Illusion");
+        Tuile t20 = new Tuile("Les Falaises De l'Oubli");
+        Tuile t21 = new Tuile("Le Temple De La Lune", tresors[0]);
+        Tuile t22 = new Tuile("Le Temple Du Soleil", tresors[0]);
+        Tuile t23 = new Tuile("Le Val Du Crépuscule");
+        Tuile t24 = new Tuile("Observatoire");
+        
+        //ajout des tuiles à l'array list et création cartes inondation
+        tuiles.add(t1); 
+        tuiles.add(t2); 
+        tuiles.add(t3); 
+        tuiles.add(t4); 
+        tuiles.add(t5); 
+        tuiles.add(t6); 
+        tuiles.add(t7); 
+        tuiles.add(t8); 
+        tuiles.add(t9); 
+        tuiles.add(t10); 
+        tuiles.add(t11); 
+        tuiles.add(t12); 
+        tuiles.add(t13); 
+        tuiles.add(t14); 
+        tuiles.add(t15); 
+        tuiles.add(t16); 
+        tuiles.add(t17); 
+        tuiles.add(t18); 
+        tuiles.add(t19); 
+        tuiles.add(t20); 
+        tuiles.add(t21); 
+        tuiles.add(t22); 
+        tuiles.add(t23); 
+        tuiles.add(t24); 
+    }
+    
+    public void creationCartesInondation(){
+        CInondation ci1 = new CInondation(tuiles.get(0)); cartesInondationPioche.add(ci1);
+        CInondation ci2 = new CInondation(tuiles.get(1)); cartesInondationPioche.add(ci2);
+        CInondation ci3 = new CInondation(tuiles.get(2)); cartesInondationPioche.add(ci3);
+        CInondation ci4 = new CInondation(tuiles.get(3)); cartesInondationPioche.add(ci4);
+        CInondation ci5 = new CInondation(tuiles.get(4)); cartesInondationPioche.add(ci5);
+        CInondation ci6 = new CInondation(tuiles.get(5)); cartesInondationPioche.add(ci6);
+        CInondation ci7 = new CInondation(tuiles.get(6)); cartesInondationPioche.add(ci7);
+        CInondation ci8 = new CInondation(tuiles.get(7)); cartesInondationPioche.add(ci8);
+        CInondation ci9 = new CInondation(tuiles.get(8)); cartesInondationPioche.add(ci9);
+        CInondation ci10 = new CInondation(tuiles.get(9)); cartesInondationPioche.add(ci10);
+        CInondation ci11 = new CInondation(tuiles.get(10)); cartesInondationPioche.add(ci11);
+        CInondation ci12 = new CInondation(tuiles.get(11)); cartesInondationPioche.add(ci12);
+        CInondation ci13 = new CInondation(tuiles.get(12)); cartesInondationPioche.add(ci13);
+        CInondation ci14 = new CInondation(tuiles.get(13)); cartesInondationPioche.add(ci14);
+        CInondation ci15 = new CInondation(tuiles.get(14)); cartesInondationPioche.add(ci15);
+        CInondation ci16 = new CInondation(tuiles.get(15)); cartesInondationPioche.add(ci16);
+        CInondation ci17 = new CInondation(tuiles.get(16)); cartesInondationPioche.add(ci17);
+        CInondation ci18 = new CInondation(tuiles.get(17)); cartesInondationPioche.add(ci18);
+        CInondation ci19 = new CInondation(tuiles.get(18)); cartesInondationPioche.add(ci19);
+        CInondation ci20 = new CInondation(tuiles.get(19)); cartesInondationPioche.add(ci20);
+        CInondation ci21 = new CInondation(tuiles.get(20)); cartesInondationPioche.add(ci21);
+        CInondation ci22 = new CInondation(tuiles.get(21)); cartesInondationPioche.add(ci22);
+        CInondation ci23 = new CInondation(tuiles.get(22)); cartesInondationPioche.add(ci23);
+        CInondation ci24 = new CInondation(tuiles.get(23)); cartesInondationPioche.add(ci24);
+    }
+    
+    
+    public void creationsCartesMontee() {
+        CMonteeEaux c1 = new CMonteeEaux(null); cartesJoueurPioche.add(c1);
+        CMonteeEaux c2 = new CMonteeEaux(null); cartesJoueurPioche.add(c2);
+        CMonteeEaux c3 = new CMonteeEaux(null); cartesJoueurPioche.add(c3);
+    }
+    
+    
+    public void creationCartesHelico() {
+        CHelicoptere c1 = new CHelicoptere(null); cartesJoueurPioche.add(c1);
+        CHelicoptere c2 = new CHelicoptere(null); cartesJoueurPioche.add(c2);
+        CHelicoptere c3 = new CHelicoptere(null); cartesJoueurPioche.add(c3);
+    }
+    
+    
+    public void creationCartesSable() {
+        CSable c1 = new CSable(null); cartesJoueurPioche.add(c1);
+        CSable c2 = new CSable(null); cartesJoueurPioche.add(c2);
+    }
+    
+    
+    public void melange(ArrayList a) {
+        Collections.shuffle(a);
+    }
+    
+    
+    public void viderDefausseCartesJoueur() {
+        for (CJoueur c : cartesJoueurDefausse) {
+            cartesJoueurPioche.add(c);
+        }
+        cartesJoueurDefausse.clear();
+    }
+    
+    
+    public void distribuerCartesJoueur(){
+        int j=28;
+        for (Aventurier a : aventuriers) {
+            for (int i = 0; i < 4 ; i++) {
+                if (cartesJoueurPioche.get(j))
+                a.getCartes()[i] = cartesJoueurPioche.get(j);
+                cartesJoueurPioche.remove(cartesJoueurPioche.get(j));
+                j = j-1;
+            }
+        }
+    }
     
     
     //getters et setters
@@ -257,5 +376,9 @@ public class IleInterdite extends Observable<Message> {
     
     public void setNiveauEau(int niv) {
         niveauEau = niv;
+    }
+    
+    public int getNombreJoueurs() {
+        return aventuriers.size();
     }
 }
