@@ -6,6 +6,7 @@
 package m2104.ile_interdite.vue;
 
 import java.awt.BorderLayout;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,15 +28,10 @@ import m2104.ile_interdite.controleur.Controleur;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.BorderFactory;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 /**
@@ -150,6 +146,8 @@ public class  VueInscriptionJoueurs {
             @Override
             public void mouseClicked(MouseEvent arg0) {
                 // Message à envoyer
+                // Demarer partie - nb de joueur - nom des joueurs - niveau Eau
+                
                 fermer();
             }
 
