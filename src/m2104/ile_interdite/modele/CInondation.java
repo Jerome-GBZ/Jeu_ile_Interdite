@@ -12,6 +12,10 @@ package m2104.ile_interdite.modele;
 public class CInondation {
     
     private Tuile tuile;
+    
+    public CInondation(Tuile t){
+        tuile = t;
+    }
 
     /**
      * @return the tuile

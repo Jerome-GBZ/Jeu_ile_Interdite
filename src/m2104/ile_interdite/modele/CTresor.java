@@ -16,10 +16,10 @@ public class CTresor extends CJoueur{
   
     
     
-    public CTresor(String nt, Aventurier aventurier, Tresor tr){
+    public CTresor(String nt, Aventurier aventurier){
         super(aventurier);
         this.nomTresor = nt;
-        tresor = tr;
+        tresor = null;
     }
 
     /**
@@ -34,6 +34,10 @@ public class CTresor extends CJoueur{
      */
     public void setNomTresor(String nomTresor) {
         this.nomTresor = nomTresor;
+    }
+    
+    public void setTresor(Tresor tr) {
+        tresor = tr;
     }
     
 }

@@ -7,7 +7,7 @@ import m2104.ile_interdite.util.*;
  *
  * @author IUT2-Dept Info
  */
-public abstract class Aventurier {
+public class Aventurier {
     private IleInterdite ii;
     private String nomJoueur;
     private Tuile tuile;
@@ -16,11 +16,12 @@ public abstract class Aventurier {
     private TypeRole role;
     private boolean pouvoirUtilise = false;
     
-    public Aventurier(IleInterdite i,String nom, Tuile t, TypeRole r) {
+    public Aventurier(IleInterdite i,String nom, Tuile t, TypePion p, TypeRole r) {
         ii = i;
         nomJoueur = nom;
         tuile = t;
         cartesJoueur = new CJoueur[6];
+        pion = p;
         role = r;
     }
     
