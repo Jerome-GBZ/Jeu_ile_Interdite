@@ -12,11 +12,10 @@ import patterns.observateur.Observateur;
  */
 public class Controleur implements Observateur<Message> {
 
-    private final IleInterdite ileInterdite;
+    private IleInterdite ileInterdite;
     private final IHM ihm;
 
     public Controleur() {
-        this.ileInterdite = new IleInterdite(this);
         this.ihm = new IHM(this);
     }
 
@@ -27,6 +26,9 @@ public class Controleur implements Observateur<Message> {
         }
 
         switch (msg.getCommande()) {
+            case DEMARRER:
+                ileInterdite = new ileInterdite();
+            
             case VALIDER_JOUEURS:
                 assert msg.hasNbJoueurs();
                 String[] nomAventuriers =
@@ -38,6 +40,8 @@ public class Controleur implements Observateur<Message> {
                     System.err.println("Action interdite : " + msg.getCommande().toString());
                 }
         }
+        
+        
         
         
     }
