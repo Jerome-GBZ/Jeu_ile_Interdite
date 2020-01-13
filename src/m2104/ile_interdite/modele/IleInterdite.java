@@ -228,6 +228,7 @@ public class IleInterdite extends Observable<Message> {
             }
            
         }
+        return null;
     }
     
     public void tuilesDispos(Utils.Commandes commande, Aventurier a, ArrayList<Tuile> tuiles) {
@@ -239,7 +240,7 @@ public class IleInterdite extends Observable<Message> {
     
     public void placerPionInit(TypePion p) {
         int[] coords = new int[2];
-        coords = g.placerPionInit(p);
+    //    coords = g.placerPionInit(p);
         
         Message m = new Message();
         m.commande = Utils.Commandes.BOUGER;
