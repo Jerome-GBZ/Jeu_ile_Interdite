@@ -63,7 +63,7 @@ public class VueCarteAventurier {
    
     }
     
-   /* public static void main(String[] args) {
-        new VueCarteAventurier("Romain", TypeRole.Explorateur);
-    }*/
+    public static void main(String[] args) {
+        new VueCarteAventurier("Romain", TypeRole.Ingenieur);
+    }
 }
