@@ -21,46 +21,49 @@ public class VueCarteAventurier {
     
     private JFrame window;
     private String nomJoueur;
-    private BufferedImage image;
-    private Graphics g;
     
     public VueCarteAventurier(String nomJ, TypeRole r){
         
-       // window = new JFrame();
-       // window.setSize(150, 210);
+        window = new JFrame();
+        window.setContentPane(new PanelFond(r));
         
+        JPanel panelprincip = new JPanel(new BorderLayout());
+        panelprincip.setOpaque(false);
+        window.add(panelprincip);
         
-        //paintComponent(g,r);
-        ImageOverLabel demo = new ImageOverLabel();
-        demo.pack();
-        demo.setSize(150, 210);
-        //demo.setUndecorated(true);
-        demo.setVisible(true);
-        //window.add(new JLabel("test"));
-        
-        //window.setUndecorated(true);
-        //window.setVisible(true);
-        
-    }
-    
-    protected void paintComponent(Graphics g, TypeRole r){
-            if(r == TypeRole.Explorateur){
-                ImageIcon image_back = new ImageIcon(getClass().getResource("Images/personnages/explorateur.png"));
-                g.drawImage(image_back.getImage(), 0, 0, window.getWidth(), window.getHeight(),window);
-            }else if(r == TypeRole.Ingenieur){
-                window.add(new JLabel(new ImageIcon("Images/personnages/ingenieur.png")));
-            }else if(r == TypeRole.Messager){
-                window.add(new JLabel(new ImageIcon("Images/personnages/messager.png")));
-            }else if(r == TypeRole.Navigateur){
-                window.add(new JLabel(new ImageIcon("Images/personnages/navigateur.png")));
-            }else if(r == TypeRole.Pilote){
-                window.add(new JLabel(new ImageIcon("Images/personnages/pilote.png")));
-            }else if(r == TypeRole.Plongeur){
-                window.add(new JLabel(new ImageIcon("Images/personnages/plongeur.png")));
+        JPanel footer = new JPanel(new GridLayout(13,3));
+        footer.setOpaque(false);
+        for(int i=0; i<39; i++){
+            if(i==37){
+                JLabel nom = new JLabel(nomJ);
+                nom.setForeground(Color.WHITE);
+                nom.setSize(100, 100);
+
+                footer.add(nom);
+            }else{
+                JLabel temp = new JLabel(" ");
+                footer.add(temp);
             }
         }
+        
+        panelprincip.add(footer);
+        
+        
+
+        
+        
+
+        
+        
+        window.setSize(150, 210);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        window.setLocation(dim.width/2-window.getSize().width/2, dim.height/2-window.getSize().height/2);
+        window.setUndecorated(true);
+        window.setVisible(true);
+   
+    }
     
     public static void main(String[] args) {
-        new VueCarteAventurier("test", TypeRole.Explorateur);
+        new VueCarteAventurier("Romain", TypeRole.Ingenieur);
     }
 }

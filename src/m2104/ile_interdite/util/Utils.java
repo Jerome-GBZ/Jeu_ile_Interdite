@@ -14,7 +14,7 @@ import m2104.ile_interdite.modele.Aventurier;
 public class Utils {
 
     public static enum Commandes {
-        Demarrer("Demarrer une partie"),
+        DEMARRER("Demarrer une partie"),
         VALIDER_JOUEURS("Valider l'inscription des joueurs"),
         BOUGER("Déplacer son pion"),
         ASSECHER("Assécher une tuile"),

@@ -360,7 +360,6 @@ public class IleInterdite extends Observable<Message> {
         int j=28;
         for (Aventurier a : aventuriers) {
             for (int i = 0; i < 4 ; i++) {
-                if (cartesJoueurPioche.get(j))
                 a.getCartes()[i] = cartesJoueurPioche.get(j);
                 cartesJoueurPioche.remove(cartesJoueurPioche.get(j));
                 j = j-1;
