@@ -31,14 +31,17 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import patterns.observateur.Observateur;
+import patterns.observateur.Observable;
 import javax.swing.BorderFactory;
 import javax.swing.SwingConstants;
+import m2104.ile_interdite.util.TypeAction;
 
 /**
  *
  * @author Eric
  */
-public class  VueInscriptionJoueurs {
+public class  VueInscriptionJoueurs extends Observable<Object>{
     private final JFrame fenetre ;
     private javax.swing.JLabel titre;
     
@@ -46,10 +49,12 @@ public class  VueInscriptionJoueurs {
     private JLabel [] labelNomJoueurs = new JLabel[4];
     private JTextField [] saisieNomJoueurs = new JTextField[4];
     private String[] nomJoueurs;
+    int nbJoueurs = 2; // 2 joueurs par default
     
     private javax.swing.JLabel niveauEau;
     private JComboBox<Integer> choixNivEau;
-
+    String nivEau = "Novice";
+    
     private final JButton btnJouer = new JButton("Jouer");
     
     public VueInscriptionJoueurs() {
@@ -98,6 +103,7 @@ public class  VueInscriptionJoueurs {
         for(int i = 0; i < saisieNomJoueurs.length; i++) {
             saisieNomJoueurs[i] = new JTextField();
             labelNomJoueurs[i] = new JLabel("Nom du joueur No " + (i + 1) + " :");
+            nomJoueurs[i] = saisieNomJoueurs[i].getSelectedText();
             CentrePanel.add(labelNomJoueurs[i]);
             CentrePanel.add(saisieNomJoueurs[i]);
             labelNomJoueurs[i].setEnabled(i < 2);
@@ -114,11 +120,11 @@ public class  VueInscriptionJoueurs {
         choixNbJoueurs.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
-                int nb = (Integer) choixNbJoueurs.getSelectedItem();
+                nbJoueurs = (Integer) choixNbJoueurs.getSelectedItem();
 
                 for(int i = 0; i < saisieNomJoueurs.length; i++) {
-                    labelNomJoueurs[i].setEnabled(i < nb);
-                    saisieNomJoueurs[i].setEnabled(i < nb);
+                    labelNomJoueurs[i].setEnabled(i < nbJoueurs);
+                    saisieNomJoueurs[i].setEnabled(i < nbJoueurs);
                 }
             }
         });
@@ -129,9 +135,11 @@ public class  VueInscriptionJoueurs {
         niveauEau.setText("Choisir niveau d'eau :");
         CentrePanel.add(niveauEau);
 
-        String[] nivEau = {"Novice", "Normal", "Elite", "Légendaire"};
-        choixNivEau = new JComboBox(nivEau);
+        String[] tableauNivEau = {"Novice", "Normal", "Elite", "Légendaire"};
+        choixNivEau = new JComboBox(tableauNivEau);
         CentrePanel.add(choixNivEau);
+        
+        nivEau = (String) choixNivEau.getSelectedItem();
         
         CentrePanel.add(new JPanel()); // Une case vide
         CentrePanel.add(new JPanel());
@@ -147,7 +155,27 @@ public class  VueInscriptionJoueurs {
             public void mouseClicked(MouseEvent arg0) {
                 // Message à envoyer
                 // Demarer partie - nb de joueur - nom des joueurs - niveau Eau
+                int niv = 1;
+                if(nivEau == "Novice"){
+                    niv = 1;
+                } else if(nivEau == "Normal"){
+                    niv = 2;
+                } else if(nivEau == "Elite"){
+                    niv = 3;
+                } else if(nivEau == "Légendaire"){
+                    niv = 4;
+                } else{
+                    System.out.println("Problème niveau Eau part default, le niveau sera novice");
+                    niv = 1;
+                }
                 
+                
+                Message m = new Message(TypeAction.Demarrer);       
+                m.nbJoueurs = nbJoueurs;
+                m.nomJoueurs = nomJoueurs;
+                m.nivEau = niv;
+                notifierObservateurs(m);
+
                 fermer();
             }
 

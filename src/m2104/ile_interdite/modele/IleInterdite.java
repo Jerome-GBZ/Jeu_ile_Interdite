@@ -22,9 +22,9 @@ public class IleInterdite extends Observable<Message> {
     private ArrayList<CJoueur> cartesJoueurDefausse = new ArrayList<CJoueur>();
     private ArrayList<CInondation> cartesInondationPioche = new ArrayList<>();
     private ArrayList<CInondation> cartesInondationDefausse = new ArrayList<>();
-    private ArrayList<Aventurier> aventuriers;
+    private ArrayList<Aventurier> aventuriers = new ArrayList<>();
     
-    public IleInterdite(Observateur<Message> observateur, int niv) {
+    public IleInterdite(Observateur<Message> observateur, int niv, String[] noms) {
         this.addObservateur(observateur);
         niveauEau = niv;
         tuiles = new ArrayList<>();
@@ -144,11 +144,11 @@ public class IleInterdite extends Observable<Message> {
         Collections.shuffle(cartesJoueurPioche);
         Collections.shuffle(cartesInondationPioche);
         
-        aventuriers = new ArrayList<>();
+        
     }
 
-    public void inscrireJoueurs(String[] noms) {
-        // TODO: à remplacer par une réelle assignation des types d'aventuriers
+    public String[] inscrireJoueurs(String[] noms) {
+        // TODO: à remplacer par une réelle assignation des types d'aventuriers (methode appelé associeAventurier de base)
         ArrayList<TypeRole> roles = new ArrayList<>();
         for(TypeRole r : TypeRole.values()){
             roles.add(r);
