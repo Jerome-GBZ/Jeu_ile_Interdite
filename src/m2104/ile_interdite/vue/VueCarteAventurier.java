@@ -22,17 +22,43 @@ public class VueCarteAventurier {
     private JFrame window;
     private String nomJoueur;
     private BufferedImage image;
+    private Graphics g;
     
     public VueCarteAventurier(String nomJ, TypeRole r){
         
-        window = new JFrame();
-        window.setSize(150, 210);
+       // window = new JFrame();
+       // window.setSize(150, 210);
         
-        window.add(new JLabel(new ImageIcon("Images/personnages/explorateur.png")));
         
-        window.setVisible(true);
+        //paintComponent(g,r);
+        ImageOverLabel demo = new ImageOverLabel();
+        demo.pack();
+        demo.setSize(150, 210);
+        //demo.setUndecorated(true);
+        demo.setVisible(true);
+        //window.add(new JLabel("test"));
+        
+        //window.setUndecorated(true);
+        //window.setVisible(true);
         
     }
+    
+    protected void paintComponent(Graphics g, TypeRole r){
+            if(r == TypeRole.Explorateur){
+                ImageIcon image_back = new ImageIcon(getClass().getResource("Images/personnages/explorateur.png"));
+                g.drawImage(image_back.getImage(), 0, 0, window.getWidth(), window.getHeight(),window);
+            }else if(r == TypeRole.Ingenieur){
+                window.add(new JLabel(new ImageIcon("Images/personnages/ingenieur.png")));
+            }else if(r == TypeRole.Messager){
+                window.add(new JLabel(new ImageIcon("Images/personnages/messager.png")));
+            }else if(r == TypeRole.Navigateur){
+                window.add(new JLabel(new ImageIcon("Images/personnages/navigateur.png")));
+            }else if(r == TypeRole.Pilote){
+                window.add(new JLabel(new ImageIcon("Images/personnages/pilote.png")));
+            }else if(r == TypeRole.Plongeur){
+                window.add(new JLabel(new ImageIcon("Images/personnages/plongeur.png")));
+            }
+        }
     
     public static void main(String[] args) {
         new VueCarteAventurier("test", TypeRole.Explorateur);

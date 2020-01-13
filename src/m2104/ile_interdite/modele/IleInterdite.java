@@ -147,8 +147,8 @@ public class IleInterdite extends Observable<Message> {
         
     }
 
-    public void inscrireJoueurs(String[] noms) {
-        // TODO: à remplacer par une réelle assignation des types d'aventuriers
+    public String[] inscrireJoueurs(String[] noms) {
+        // TODO: à remplacer par une réelle assignation des types d'aventuriers (methode appelé associeAventurier de base)
         ArrayList<TypeRole> roles = new ArrayList<>();
         for(TypeRole r : TypeRole.values()){
             roles.add(r);
