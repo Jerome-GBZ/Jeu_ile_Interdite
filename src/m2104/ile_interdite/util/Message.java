@@ -23,6 +23,7 @@ public class Message implements Serializable {
     public TypePion pion;
     public String[] nomJoueurs;
     public int nivEau;
+    public int nombreJoueurs;
 
     public Message() {
         this.commande = null;
