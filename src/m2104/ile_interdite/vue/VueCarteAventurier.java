@@ -26,27 +26,21 @@ public class VueCarteAventurier {
     
     public VueCarteAventurier(String nomJ, TypeRole r){
         
-       // window = new JFrame();
-       // window.setSize(150, 210);
+        window = new JFrame();
+        window.setSize(150, 210);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        window.setLocation(dim.width/2-window.getSize().width/2, dim.height/2-window.getSize().height/2);
         
-        
-        //paintComponent(g,r);
-        ImageOverLabel demo = new ImageOverLabel();
-        demo.pack();
-        demo.setSize(150, 210);
-        //demo.setUndecorated(true);
-        demo.setVisible(true);
         //window.add(new JLabel("test"));
-        
-        //window.setUndecorated(true);
-        //window.setVisible(true);
+        paintComponent(g,r);
+        window.setUndecorated(true);
+        window.setVisible(true);
         
     }
     
     protected void paintComponent(Graphics g, TypeRole r){
             if(r == TypeRole.Explorateur){
-                ImageIcon image_back = new ImageIcon(getClass().getResource("Images/personnages/explorateur.png"));
-                g.drawImage(image_back.getImage(), 0, 0, window.getWidth(), window.getHeight(),window);
+                window.add(new JLabel(new ImageIcon("Images/personnages/explorateur.png")));
             }else if(r == TypeRole.Ingenieur){
                 window.add(new JLabel(new ImageIcon("Images/personnages/ingenieur.png")));
             }else if(r == TypeRole.Messager){
