@@ -34,6 +34,10 @@ public class PanelFond extends JPanel {
                 image = Toolkit.getDefaultToolkit().getImage("Images/personnages/plongeur.png");
             }
     }
+    
+    public PanelFond(String urlImage) {
+        image = Toolkit.getDefaultToolkit().getImage(urlImage);
+    }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);

@@ -30,8 +30,6 @@ public class Controleur implements Observateur<Message> {
                 ileInterdite = new IleInterdite(this, msg.nivEau, msg.nomJoueurs);
                 ileInterdite.setNiveauEau(msg.nivEau);
                 ileInterdite.inscrireJoueurs(msg.nomJoueurs);
-                ileInterdite.intitialiserNiveauEau(msg.nivEau, msg.nomJoueurs);
-               
                 break;
                     
             case VALIDER_JOUEURS:
@@ -45,9 +43,5 @@ public class Controleur implements Observateur<Message> {
                     System.err.println("Action interdite : " + msg.getCommande().toString());
                 }
         }
-        
-        
-        
-        
     }
 }
