@@ -13,6 +13,7 @@ import m2104.ile_interdite.util.*;
  */
 public class IleInterdite extends Observable<Message> {
     private Grille g;
+    private int niveauEau;
     
     public IleInterdite(Observateur<Message> observateur) {
         this.addObservateur(observateur);
