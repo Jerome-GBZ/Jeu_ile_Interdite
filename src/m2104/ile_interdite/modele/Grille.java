@@ -115,16 +115,7 @@ public class Grille {
                 tuilesDispo.remove(tu);
             }
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+               
         return tuilesDispo;
     }
     
@@ -142,6 +133,46 @@ public class Grille {
         c[0] = i;
         c[1] = j;
         return c;
+    }
+    
+    public ArrayList<Tuile> tuilesDisposAssecher(Tuile t, Aventurier a){
+        ArrayList<Tuile> tuilesDispo = tuileAutour(t);
+        int[] c = new int[2];
+        c = this.getCoordonnee(t);
+        int i = c[0];
+        int j = c[1];
+        if (a.getRole() == TypeRole.Explorateur){
+        if (i != 0 ) {
+            if (j != 0 && tuiles[i-1][j-1] != null) {
+                tuilesDispo.add(tuiles[i-1][j-1]);
+            }
+            if (j != 5 && tuiles[i-1][j+1] != null) {
+                tuilesDispo.add(tuiles[i-1][j+1]);
+            }
+        }
+        if (i != 5 ){
+          if (j != 0 && tuiles[i+1][j-1] != null) {
+                tuilesDispo.add(tuiles[i+1][j-1]);
+            }
+            if (j != 5 && tuiles[i+1][j+1] != null) {
+                tuilesDispo.add(tuiles[i+1][j+1]);
+            }  
+        }
+        }
+        for (Tuile tu : tuilesDispo) {
+            if (tu.getEtat() != TypeEtat.INNONDE){
+                tuilesDispo.remove(tu);
+            }
+        }
+        return tuilesDispo;
+    }
+    
+    public void assecher(Tuile t){
+        t.assecher();
+    }
+    
+    public void innonde(CInondation ci){
+        ci.getTuile().inondé(ci);
     }
             
     /**
