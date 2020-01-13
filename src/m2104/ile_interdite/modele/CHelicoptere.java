@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package m2104.ile_interdite.modele;
-
+import m2104.ile_interdite.util.*;
 /**
  *
  * @author capelth
@@ -15,7 +15,7 @@ public class CHelicoptere extends CJoueur {
     private String utilisation;
     
     public CHelicoptere(Aventurier a ){
-        super(a);
+        super(a,TypeCarte.CHELICOPTERE);
         this.description = "Déplacez un pion ou un groupe de pions d'une tuile vers n'importe quelle autre tuile.\n"
                 + "ou\n"
                 + "Faites décoller votre équipe depuis l'héliport pour la victoire !";

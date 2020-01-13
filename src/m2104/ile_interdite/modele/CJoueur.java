@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package m2104.ile_interdite.modele;
+import m2104.ile_interdite.util.*;
 
 /**
  *
@@ -12,9 +13,14 @@ package m2104.ile_interdite.modele;
 public class CJoueur {
     
     private Aventurier a;
+    private TypeCarte typeCarte;
     
     public CJoueur(Aventurier av){
         setA(av);
+    }
+    public CJoueur(Aventurier av,TypeCarte t){
+        setA(av);
+        typeCarte = t;
     }
     
     /**
@@ -29,6 +35,10 @@ public class CJoueur {
      */
     public void setA(Aventurier a) {
         this.a = a;
+    }
+    
+    public TypeCarte getTypeCarte(){
+        return typeCarte;
     }
     
 }
