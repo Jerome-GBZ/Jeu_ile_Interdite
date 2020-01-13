@@ -91,7 +91,7 @@ public class Aventurier {
     
     
     public void poserPionInit() {
-        ii.placerPionInit(pion);
+        ii.placerPionInit(this);
     }
     
     
