@@ -5,6 +5,7 @@
  */
 package m2104.ile_interdite.modele;
 import java.util.ArrayList;
+import m2104.ile_interdite.util.*;
 /**
  *
  * @author capelth
@@ -45,15 +46,11 @@ public class Grille {
     
     public ArrayList<Tuile> tuileAutour(Tuile t){
         ArrayList<Tuile> tuilesAutour = new ArrayList<>();
-        int i = 0;
-        int j = 0;
-        while(tuiles[i][j] != t && i<tuiles.length){
-            j = 0;
-            while(tuiles[i][j] != t && j<tuiles[i].length){
-                j++;
-            }
-            i++;
-        }
+        int[] c = new int[2];
+        c = this.getCoordonnee(t);
+        int i = c[0];
+        int j = c[1];
+        
         if(i != 0 && tuiles[i-1][j] != null){
             tuilesAutour.add(tuiles[i-1][j]);
         }
@@ -71,10 +68,53 @@ public class Grille {
     
     public ArrayList<Tuile> tuilesDispoDeplacer (Tuile t, Aventurier a){
         ArrayList<Tuile> tuilesDispo = tuileAutour(t);
-         
-                
+        int[] c = new int[2];
+        c = this.getCoordonnee(t);
+        int i = c[0];
+        int j = c[1];
+        if (a.getRole() == TypeRole.Explorateur){
+        if (i != 0 ) {
+            if (j != 0 && tuiles[i-1][j-1] != null) {
+                tuilesDispo.add(tuiles[i-1][j-1]);
+            }
+            if (j != 5 && tuiles[i-1][j+1] != null) {
+                tuilesDispo.add(tuiles[i-1][j+1]);
+            }
+        }
+        if (i != 5 ){
+          if (j != 0 && tuiles[i+1][j-1] != null) {
+                tuilesDispo.add(tuiles[i+1][j-1]);
+            }
+            if (j != 5 && tuiles[i+1][j+1] != null) {
+                tuilesDispo.add(tuiles[i+1][j+1]);
+            }  
+        }
+        }
+        if (a.getRole() == TypeRole.Pilote && a.getPouvoirUtilise() == false){
+            tuilesDispo.clear();
+            for (int x = 0; x < tuiles.length;x++){
+                for (int y = 0; y < tuiles.length;y++){
+                    if (tuiles[x][y] != null){
+                        tuilesDispo.add(tuiles[x][y]);
+                    }
+                }
+            }
+        }
+        if (a.getRole() == TypeRole.Plongeur) {
+            for (Tuile tu : tuilesDispo) {
+                if (tu.getEtat() != TypeEtat.SEC) {
+                    for (Tuile tui : this.tuileAutour(tu)){
+                        tuilesDispo.add(tui);
+                    }
+                }
+            }
         
-        
+        }
+        for (Tuile tu : tuilesDispo) {
+            if (tu.getEtat() == TypeEtat.COULE){
+                tuilesDispo.remove(tu);
+            }
+        }
         
         
         
@@ -87,7 +127,23 @@ public class Grille {
         
         return tuilesDispo;
     }
-
+    
+    public int[] getCoordonnee(Tuile t){
+        int[] c = new int[2];
+        int i = 0;
+        int j = 0;
+        while(tuiles[i][j] != t && i<tuiles.length){
+            j = 0;
+            while(tuiles[i][j] != t && j<tuiles[i].length){
+                j++;
+            }
+            i++;
+        }
+        c[0] = i;
+        c[1] = j;
+        return c;
+    }
+            
     /**
      * @return the tuiles
      */
