@@ -14,6 +14,7 @@ public abstract class Aventurier {
     private CJoueur[] cartesJoueur;
     private TypePion pion;
     private TypeRole role;
+    private boolean pouvoirUtilise = false;
     
     public Aventurier(IleInterdite i,String nom, Tuile t) {
         ii = i;
@@ -76,7 +77,7 @@ public abstract class Aventurier {
     
     public void seDeplacer() {
         ArrayList<Tuile> tDispos = new ArrayList<>();
-        tDispos = ii.getGrille().tuilesDisposDeplacer(getTuile(), this);
+        tDispos = ii.getGrille().tuilesDispoDeplacer(getTuile(), this);
         
         ii.tuilesDispos(Utils.Commandes.CHOISIR_TUILE,this, tDispos);
     }
@@ -110,5 +111,13 @@ public abstract class Aventurier {
     
     public CJoueur[] getCartes() {
         return cartesJoueur;
+    }
+    
+    public TypeRole getRole() {
+        return role;
+    }
+    
+    public boolean getPouvoirUtilise(){
+        return pouvoirUtilise;
     }
 }
