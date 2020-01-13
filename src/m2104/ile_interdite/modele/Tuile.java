@@ -35,7 +35,11 @@ public class Tuile {
 
         
     public void inondé(CInondation c){
-        c.getTuile().setEtat(TypeEtat.INNONDE);
+        if(c.getTuile().getEtat() == TypeEtat.SEC){
+            c.getTuile().setEtat(TypeEtat.INNONDE);
+        }else if(c.getTuile().getEtat() == TypeEtat.INNONDE){
+            c.getTuile().setEtat(TypeEtat.COULE);
+        }
     }
     
     public void assecher(){
