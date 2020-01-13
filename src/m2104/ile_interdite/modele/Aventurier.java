@@ -16,16 +16,14 @@ public abstract class Aventurier {
     private TypeRole role;
     private boolean pouvoirUtilise = false;
     
-    public Aventurier(IleInterdite i,String nom, Tuile t) {
+    public Aventurier(IleInterdite i,String nom, Tuile t, TypeRole r) {
         ii = i;
         nomJoueur = nom;
         tuile = t;
         cartesJoueur = new CJoueur[6];
+        role = r;
     }
     
-    public void setNom(String nom) {
-        nomJoueur = nom;
-    }
     
     public boolean addCarteJoueur(CJoueur cJoueur) {
         boolean res = false;
@@ -97,6 +95,11 @@ public abstract class Aventurier {
     
     
     //getters et setters
+    
+    public void setNom(String nom) {
+        nomJoueur = nom;
+    }
+    
     public Tuile getTuile() {
         return tuile;
     }
