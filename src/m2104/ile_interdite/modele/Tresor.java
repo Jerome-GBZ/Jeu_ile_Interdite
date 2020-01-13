@@ -12,7 +12,7 @@ package m2104.ile_interdite.modele;
 public class Tresor {
     
     private String nomTresor;
-    private CTresor[] cartesT = new CTresor[4];
+    private CTresor[] cartesT = new CTresor[5];
     
     public Tresor(String nom, CTresor[] cartes) {
         nomTresor = nom;

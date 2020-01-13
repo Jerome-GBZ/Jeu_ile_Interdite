@@ -12,12 +12,14 @@ package m2104.ile_interdite.modele;
 public class CTresor extends CJoueur{
     
     private String nomTresor;
+    private Tresor tresor;
   
     
     
-    public CTresor(String nt, Aventurier aventurier){
+    public CTresor(String nt, Aventurier aventurier, Tresor tr){
         super(aventurier);
         this.nomTresor = nt;
+        tresor = tr;
     }
 
     /**

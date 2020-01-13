@@ -50,6 +50,30 @@ public abstract class Aventurier {
     }
     
     
+    public boolean removeCarteT(Tresor tr) {
+        boolean res = false;
+        int cmpt = 0;
+        for (int i=0; i<cartesJoueur.length; i++) {
+            for (int j=0; i<tr.getCartes().length; j++) {
+                if (cartesJoueur[i].equals(tr.getCartes()[j])) {
+                    cmpt = cmpt+1;
+                }
+            }
+        }
+        if (cmpt>=4) {
+            for (int i=0; i<cartesJoueur.length; i++) {
+                for (int j=0; i<tr.getCartes().length; j++) {
+                    if (cartesJoueur[i].equals(tr.getCartes()[j])) {
+                        cartesJoueur[i] = null;
+                    }
+                }
+            }
+            res = true;
+        }
+        return res;
+    }
+    
+    
     public void seDeplacer() {
         ArrayList<Tuile> tDispos = new ArrayList<>();
         tDispos = ii.getGrille().tuilesDisposDeplacer(getTuile(), this);
