@@ -30,7 +30,7 @@ public class Controleur implements Observateur<Message> {
                 ileInterdite = new IleInterdite(this, msg.nivEau, msg.nomJoueurs);
                 ileInterdite.setNiveauEau(msg.nivEau);
                 ileInterdite.inscrireJoueurs(msg.nomJoueurs);
-                ileInterdite.getNombreJoueurs(msg.nbJoueurs);
+                ileInterdite.setNombreJoueurs(msg.nbJoueurs);
                 break;
                     
             case VALIDER_JOUEURS:
