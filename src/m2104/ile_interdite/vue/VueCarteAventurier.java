@@ -17,7 +17,7 @@ import m2104.ile_interdite.util.TypeRole;
  *
  * @author capelth
  */
-public class VueCarteAventurier {
+public class VueCarteAventurier extends JLabel {
     
     private JFrame window;
     private String nomJoueur;
@@ -63,7 +63,7 @@ public class VueCarteAventurier {
    
     }
     
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         new VueCarteAventurier("Romain", TypeRole.Ingenieur);
-    }
+    }*/
 }

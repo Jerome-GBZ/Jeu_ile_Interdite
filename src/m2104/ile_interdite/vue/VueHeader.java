@@ -11,7 +11,9 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import m2104.ile_interdite.util.TypeRole;
 
 /**
  *
@@ -19,20 +21,35 @@ import javax.swing.JPanel;
  */
 public class VueHeader {
     private JFrame window;
-    
+    private VueCarteAventurier j1;
+    private VueCarteAventurier j2;
+    private VueCarteAventurier j3;
+    private VueCarteAventurier j4;
     
     public VueHeader(){
         
         window = new JFrame();
         JPanel panelprinc = new JPanel(new GridLayout(1,3));
-        panelprinc.setBackground(new Color(175, 96, 79));
+        panelprinc.setOpaque(false);
+        panelprinc.setSize(800, 240);
+        
+        window.setContentPane(new PanelFond("Images/VueHeader.png"));
+        
+        j1 = new VueCarteAventurier("Romain", TypeRole.Ingenieur);
+        j2 = new VueCarteAventurier("Rémy", TypeRole.Messager);
+        
+        for(int i=0; i<3; i++){
+            if(i==0){
+                panelprinc.add(j1);
+            }else if(i==2){
+                panelprinc.add(j2);
+            }else{
+                JLabel temp = new JLabel(" ");
+                panelprinc.add(temp);
+            }
+        }
+        
         window.add(panelprinc);
-        
-        
-        
-        
-        
-        
         
         
         
@@ -48,5 +65,6 @@ public class VueHeader {
     public static void main(String[] args) {
         new VueHeader();
     }
+    
     
 }
