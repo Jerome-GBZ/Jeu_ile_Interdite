@@ -167,7 +167,7 @@ public class VueInscriptionJoueurs {
                 } else if (nivEau == "Légendaire") {
                     niv = 4;
                 } else {
-                    System.out.println("Problème niveau Eau part default, le niveau sera novice");
+                    System.out.println("Problème niveau Eau par defaut, le niveau sera novice");
                     niv = 1;
                 }
                 

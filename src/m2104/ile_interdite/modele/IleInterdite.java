@@ -459,7 +459,7 @@ public class IleInterdite extends Observable<Message> {
     
     public void piocherCarteJoueur(Aventurier a) {
         for (int i =0 ; i< 2 ; i++) {
-            if (cartesJoueurPioche.size() > 0) {
+            if (cartesJoueurPioche.size() <= 0) {
                 viderDefausseCartesJoueur();
             }
             if (cartesJoueurPioche.get(cartesJoueurPioche.size()-1).getTypeCarte() != TypeCarte.CMONTEEEAUX) {
