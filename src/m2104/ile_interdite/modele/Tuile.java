@@ -47,6 +47,9 @@ public class Tuile {
             this.setEtat(TypeEtat.INNONDE);
         }else if(this.getEtat() == TypeEtat.INNONDE){
             this.setEtat(TypeEtat.COULE);
+            for (Aventurier a : aventuriers) {
+                a.seDeplacer();
+            }
         }
     }
     
