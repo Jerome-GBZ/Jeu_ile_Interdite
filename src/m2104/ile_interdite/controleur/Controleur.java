@@ -29,8 +29,8 @@ public class Controleur implements Observateur<Message> {
         switch (msg.type) {
             case DEMARRER:
                 ileInterdite = new IleInterdite(this, msg.nivEau, msg.nomJoueurs);
-                ihm.creePlateau(ileInterdite.getGrille());
-                ihm.creeHeader();
+                //ihm.creePlateau(ileInterdite.getGrille());
+                ihm.creeHeader(ileInterdite.getAventuriers());
                 break;
                 
             case BOUGER:
