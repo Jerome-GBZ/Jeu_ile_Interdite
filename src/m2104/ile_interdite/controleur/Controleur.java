@@ -21,16 +21,20 @@ public class Controleur implements Observateur<Message> {
 
     @Override
     public void traiterMessage(Message msg) {
+        System.out.println("test1");
         if (Parameters.LOGS) {
             System.out.println("Controleur.traiterMessage" + msg);
         }
 
         switch (msg.getCommande()) {
             case DEMARRER:
+                System.out.println("test2");
                 ileInterdite = new IleInterdite(this, msg.nivEau, msg.nomJoueurs);
                 ileInterdite.setNiveauEau(msg.nivEau);
                 ileInterdite.inscrireJoueurs(msg.nomJoueurs);
                 ileInterdite.setNombreJoueurs(msg.nbJoueurs);
+                
+                ihm.creePlateau(ileInterdite.getGrille());
                 break;
                     
             case VALIDER_JOUEURS:
@@ -44,5 +48,10 @@ public class Controleur implements Observateur<Message> {
                     System.err.println("Action interdite : " + msg.getCommande().toString());
                 }
         }
+    }
+    
+    //getters et setters
+    public IHM getIhm() {
+        return ihm;
     }
 }
