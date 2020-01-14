@@ -20,6 +20,7 @@ public enum TypeAction {
     CHOISIR_CARTE,
     CHOISIR_TUILE,
     INITIALISER,
-    DEFAUSSER
-    
+    DEFAUSSER,
+    VALIDER_JOUEURS,
+    DEPLACER
 }

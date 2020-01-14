@@ -21,7 +21,7 @@ public class IHM extends Observable<Message> {
         this.addObservateur(observateur);
         this.vueAventuriers = new HashMap<>();
         this.vueInscription = new VueInscriptionJoueurs(this);
-        //this.afficheVueInscription();
+        this.afficheVueInscription();
     }
 
     public void creerVuesAventuriers(String[] nomAventuriers) {

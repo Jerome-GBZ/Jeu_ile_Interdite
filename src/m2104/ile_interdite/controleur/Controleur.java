@@ -26,7 +26,7 @@ public class Controleur implements Observateur<Message> {
             System.out.println("Controleur.traiterMessage" + msg);
         }
 
-        switch (msg.getCommande()) {
+        switch (msg.type) {
             case DEMARRER:
                 System.out.println("test2");
                 ileInterdite = new IleInterdite(this, msg.nivEau, msg.nomJoueurs);
