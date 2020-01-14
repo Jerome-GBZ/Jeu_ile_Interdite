@@ -21,19 +21,16 @@ public class Controleur implements Observateur<Message> {
 
     @Override
     public void traiterMessage(Message msg) {
-        System.out.println("test1");
+        System.out.println("test 1 ");
         if (Parameters.LOGS) {
             System.out.println("Controleur.traiterMessage" + msg);
         }
-
+    try{
         switch (msg.type) {
             case DEMARRER:
-                System.out.println("test2");
-                ileInterdite = new IleInterdite(this, msg.nivEau, msg.nomJoueurs);
-                ileInterdite.setNiveauEau(msg.nivEau);
-                ileInterdite.inscrireJoueurs(msg.nomJoueurs);
-                ileInterdite.setNombreJoueurs(msg.nbJoueurs);
-                
+                System.out.println("test 2 ");
+                ileInterdite = new IleInterdite(this, msg.nivEau, msg.nomJoueurs);                
+                System.out.println("test 3");
                 ihm.creePlateau(ileInterdite.getGrille());
                 break;
                     
@@ -49,7 +46,12 @@ public class Controleur implements Observateur<Message> {
                 }
         }
     }
-    
+    catch(Exception e) {
+       System.out.println(e);
+    }    
+    finally {}
+
+    }
     //getters et setters
     public IHM getIhm() {
         return ihm;

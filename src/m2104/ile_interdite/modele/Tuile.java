@@ -33,7 +33,7 @@ public class Tuile {
         setEtat(TypeEtat.SEC);
         setNomTuile(nomTuile);
         setTresor(null);
-        setAventuriers(null);
+        aventuriers.clear();
     }
     
     public Tuile(String nomTuile, Tresor tr) {
