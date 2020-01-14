@@ -28,70 +28,64 @@ public class IleInterdite extends Observable<Message> {
     private int nbJoueurs;
 
     public IleInterdite(Observateur<Message> observateur, int niv, String[] noms) {
-System.out.println("ihm 1 ");
         this.addObservateur(observateur);
         etapeEau = niv;
         setNiveauEau(etapeEau);
         tuiles = new ArrayList<>();
-System.out.println("ihm 2 ");
+
         //création des cartes trésor
         CTresor[] c1 = creationCartesTresorPierre();
         CTresor[] c2 = creationCartesTresorStatue();
         CTresor[] c3 = creationCartesTresorCristal();
         CTresor[] c4 = creationCartesTresorCalice();
-System.out.println("ihm 3 ");
+        
         //création trésors
         creationTresors(c1, c2, c3, c4);
-System.out.println("ihm 4 ");
+
         //création carte montée des eaux
         creationsCartesMontee();
-System.out.println("ihm 5 ");
+
         //création carte hélicoptère
         creationCartesHelico();
-System.out.println("ihm 6 ");
+
         //création carte sable
         creationCartesSable();
-System.out.println("ihm 7 ");
+
         //création tuiles
         creationTuiles();
-System.out.println("ihm 8 ");
+
         //mélange des tuiles
         melange(tuiles);
-System.out.println("ihm 9 ");
+
         //création des cartes inondation
         creationCartesInondation();
-System.out.println("ihm 10 ");
+
         //Mélange pioches
         melange(cartesJoueurPioche);
         melange(cartesInondationPioche);
-System.out.println("ihm 11 ");
+
         //création de la grille
         g = new Grille(tuiles);
- System.out.println("ihm 12 ");       
+     
         //Inscription des joueurs
         inscrireJoueurs(noms);
-System.out.println("ihm 13 ");
+
     }
 
     public String[] inscrireJoueurs(String[] noms) {
         // TODO: à remplacer par une réelle assignation des types d'aventuriers (methode appelé associeAventurier de base)
-        System.out.println("inscrire");
+
         ArrayList<TypeRole> roles = new ArrayList<>();
         for (int j = 0; j < TypeRole.values().length; j++) {
-            System.out.println("Type Role [j] : " + TypeRole.values()[j]);
             roles.add(TypeRole.values()[j]);
         }
         Collections.shuffle(roles);
         
-        System.out.println("nb role : " + roles.size());
-        
-        System.out.println("nb joueurs : " + noms.length);
+
 
         for (int i = 0; i < noms.length; i++) {
-System.out.println("role get i : " + roles.get(i));
             switch (roles.get(i)) {
                 case Explorateur:
-                    System.out.println("exp1");
                     for (int j = 0; j < tuiles.size(); j++) {
                         if (tuiles.get(j).getNomTuile().equals("LaPorteDeCuivre")) {
                             Aventurier a = new Aventurier(this, noms[i], tuiles.get(j), TypePion.VERT, TypeRole.Explorateur);
@@ -100,12 +94,9 @@ System.out.println("role get i : " + roles.get(i));
                             break;
                         }
                     }
-                    System.out.println("exp2");
-
                     break;
 
                 case Navigateur:
-                    System.out.println("exp1");
                     for (int j = 0; j < tuiles.size(); j++) {
                         if (tuiles.get(j).getNomTuile().equals("LaPortedOr")) {
                             Aventurier a1 = new Aventurier(this, noms[i], tuiles.get(j), TypePion.JAUNE, TypeRole.Navigateur);
@@ -113,12 +104,9 @@ System.out.println("role get i : " + roles.get(i));
                             aventuriers.add(a1);
                         }
                     }
-                    System.out.println("exp2");
-
                     break;
 
                 case Plongeur:
-                    System.out.println("exp1");
                     for (int j = 0; j < tuiles.size(); j++) {
                         if (tuiles.get(j).getNomTuile().equals("LaPorteDeFer")) {
                             Aventurier a2 = new Aventurier(this, noms[i], tuiles.get(j), TypePion.NOIR, TypeRole.Plongeur);
@@ -126,12 +114,9 @@ System.out.println("role get i : " + roles.get(i));
                             aventuriers.add(a2);
                         }
                     }
-                    System.out.println("exp2");
-
                     break;
 
                 case Ingenieur:
-                    System.out.println("exp1");
                     for (int j = 0; j < tuiles.size(); j++) {
                         if (tuiles.get(j).getNomTuile().equals("LaPorteDeBronze")) {
                             Aventurier a3 = new Aventurier(this, noms[i], tuiles.get(j), TypePion.ROUGE, TypeRole.Ingenieur);
@@ -139,12 +124,9 @@ System.out.println("role get i : " + roles.get(i));
                             aventuriers.add(a3);
                         }
                     }
-                    System.out.println("exp2");
-
                     break;
 
                 case Messager:
-                    System.out.println("exp1");
                     for (int j = 0; j < tuiles.size(); j++) {
                         if (tuiles.get(j).getNomTuile().equals("LaPortedArgent")) {
                             Aventurier a4 = new Aventurier(this, noms[i], tuiles.get(j), TypePion.BLANC, TypeRole.Messager);
@@ -152,12 +134,9 @@ System.out.println("role get i : " + roles.get(i));
                             aventuriers.add(a4);
                         }
                     }
-                    System.out.println("exp2");
-
                     break;
 
                 case Pilote:
-                    System.out.println("exp1");
                     for (int j = 0; j < tuiles.size(); j++) {
                         if (tuiles.get(j).getNomTuile().equals("Heliport")) {
                             Aventurier a5 = new Aventurier(this, noms[i], tuiles.get(j), TypePion.BLEU, TypeRole.Pilote);
@@ -165,8 +144,6 @@ System.out.println("role get i : " + roles.get(i));
                             aventuriers.add(a5);
                         }
                     }
-                    System.out.println("exp2");
-
                     break;
 
             }
@@ -299,17 +276,17 @@ System.out.println("role get i : " + roles.get(i));
 
     public void creationTuiles() {
         //création tuiles avec ou sans trésor
-        Tuile t1 = new Tuile("LaCaverneDuBrasier", tresors[2]);
-        Tuile t2 = new Tuile("Heliport");
-        Tuile t3 = new Tuile("LaCaverneDesOmbres", tresors[2]);
-        Tuile t4 = new Tuile("LaForetPourpre");
-        Tuile t5 = new Tuile("LaPortedArgent");
-        Tuile t6 = new Tuile("LaPorteDeBronze");
-        Tuile t7 = new Tuile("LaPorteDeCuivre");
-        Tuile t8 = new Tuile("LaPorteDeFer");
-        Tuile t9 = new Tuile("LaPortedOr");
-        Tuile t10 = new Tuile("LaTourDeGuet");
-        Tuile t11 = new Tuile("LeJardinDesHurlements", tresors[1]);
+        Tuile t1 = new Tuile("LaCarverneDuBrasier", tresors[2]); //
+        Tuile t2 = new Tuile("Heliport"); //
+        Tuile t3 = new Tuile("LaCarverneDesOmbres", tresors[2]); //
+        Tuile t4 = new Tuile("LaForetPourpre"); // 
+        Tuile t5 = new Tuile("LaPortedArgent"); //
+        Tuile t6 = new Tuile("LaPorteDeBronze"); // 
+        Tuile t7 = new Tuile("LaPorteDeCuivre"); //
+        Tuile t8 = new Tuile("LaPorteDeFer"); //
+        Tuile t9 = new Tuile("LaPortedOr"); //
+        Tuile t10 = new Tuile("LaTourDuGuet"); // 
+        Tuile t11 = new Tuile("LeJardinDesHurlements", tresors[1]); //
         Tuile t12 = new Tuile("LeJardinDesMurmures", tresors[1]);
         Tuile t13 = new Tuile("LeLagonPerdu");
         Tuile t14 = new Tuile("LeMaraisBrumeux");
@@ -317,8 +294,8 @@ System.out.println("role get i : " + roles.get(i));
         Tuile t16 = new Tuile("LePalaisDesMarees", tresors[3]);
         Tuile t17 = new Tuile("LePontDesAbimes");
         Tuile t18 = new Tuile("LeRocherFantome");
-        Tuile t19 = new Tuile("LesDunesDelIllusion");
-        Tuile t20 = new Tuile("LesFalaisesDelOubli");
+        Tuile t19 = new Tuile("LesDunesDeLIllusion");
+        Tuile t20 = new Tuile("LesFalaisesDeLOubli");
         Tuile t21 = new Tuile("LeTempleDeLaLune", tresors[0]);
         Tuile t22 = new Tuile("LeTempleDuSoleil", tresors[0]);
         Tuile t23 = new Tuile("LeValDuCrepuscule");

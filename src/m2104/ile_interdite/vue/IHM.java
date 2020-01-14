@@ -55,11 +55,9 @@ public class IHM extends Observable<Message> {
     }
     
     public void creePlateau(Grille g){
-        System.out.println("test 4 ");
         this.vuePlateauJeu = new VuePlateauJeu(g);
-        System.out.println("test 5 ");
         vuePlateauJeu.afficher();
-        System.out.println("test 6 ");
+
     }
     
 }

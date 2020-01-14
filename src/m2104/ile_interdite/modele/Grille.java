@@ -13,6 +13,7 @@ import m2104.ile_interdite.util.*;
 public class Grille {
     
     private Tuile[][] tuiles;
+    private ArrayList<String> nomsTuiles = new ArrayList<>();
     
     public Grille(ArrayList<Tuile> tuiles){
         this.tuiles = new Tuile[6][6];
@@ -41,6 +42,7 @@ public class Grille {
         this.tuiles[5][2] = tuiles.get(22);
         this.tuiles[5][3] = tuiles.get(23);
         
+        getNomTuiles();
     }
     
     
@@ -189,14 +191,23 @@ public class Grille {
         this.tuiles = tuiles;
     }
     
-    public ArrayList<String> getNomTuiles() {
+    public void getNomTuiles() {
         ArrayList<String> nomTuiles = new ArrayList<>();
         for (int i = 0 ; i < 6 ; i++){
             for (int j = 0; j<6;j++){
+                if (tuiles[i][j] == null){
+                    nomTuiles.add(" ");
+                }
+                else{
                 nomTuiles.add(tuiles[i][j].getNomTuile());
+                }
             }
         }
-        return nomTuiles;
+        this.nomsTuiles = nomTuiles;
+    }
+    
+    public ArrayList<String> getListnomsTuiles(){
+        return nomsTuiles;
     }
     
 }
