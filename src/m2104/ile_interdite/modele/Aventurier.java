@@ -77,7 +77,7 @@ public class Aventurier {
         ArrayList<Tuile> tDispos = new ArrayList<>();
         tDispos = ii.getGrille().tuilesDispoDeplacer(getTuile(), this);
         
-        ii.tuilesDispos(Utils.Commandes.CHOISIR_TUILE,this, tDispos);
+        ii.tuilesDispos(TypeAction.CHOISIR_TUILE,this, tDispos);
     }
     
     
@@ -85,7 +85,7 @@ public class Aventurier {
         ArrayList<Tuile> tDispos = new ArrayList<>();
         tDispos = ii.getGrille().tuilesDisposAssecher(getTuile(), this);
         
-        ii.tuilesDispos(Utils.Commandes.CHOISIR_TUILE,this, tDispos); 
+        ii.tuilesDispos(TypeAction.CHOISIR_TUILE,this, tDispos); 
     }
     
     

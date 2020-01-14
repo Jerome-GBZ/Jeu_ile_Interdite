@@ -153,9 +153,9 @@ public class IleInterdite extends Observable<Message> {
         return noms;
     }
 
-    public void tuilesDispos(Utils.Commandes commande, Aventurier a, ArrayList<Tuile> tuiles) {
+    public void tuilesDispos(TypeAction type, Aventurier a, ArrayList<Tuile> tuiles) {
         Message m = new Message();
-        m.commande = commande;
+        m.type = type;
         m.tuiles = tuiles;
         notifierObservateurs(m);
     }
@@ -165,7 +165,7 @@ public class IleInterdite extends Observable<Message> {
         coords = g.getCoordonnee(a.getTuile());
 
         Message m = new Message();
-        m.commande = Utils.Commandes.BOUGER;
+        m.type = TypeAction.BOUGER;
         m.pion = a.getPion();
         m.coords = coords;
         notifierObservateurs(m);
