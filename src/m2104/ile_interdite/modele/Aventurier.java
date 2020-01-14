@@ -124,4 +124,13 @@ public class Aventurier {
     public boolean getPouvoirUtilise(){
         return pouvoirUtilise;
     }
+    
+    public String getNom(){
+        return nomJoueur;
+    }
+    
+    public String setNom(){
+        return nomJoueur;
+    }
+    
 }

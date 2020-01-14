@@ -264,13 +264,13 @@ public class IleInterdite extends Observable<Message> {
     }
 
     public void creationTresors(CTresor[] c1, CTresor[] c2, CTresor[] c3, CTresor[] c4) {
-        Tresor tr1 = new Tresor("La Pierre Sacrée", c1);
+        Tresor tr1 = new Tresor("pierre", c1);
         tresors[0] = tr1;
-        Tresor tr2 = new Tresor("La Statue du Zéphyr", c2);
+        Tresor tr2 = new Tresor("zephyr", c2);
         tresors[1] = tr2;
-        Tresor tr3 = new Tresor("Le Cristal Ardent", c3);
+        Tresor tr3 = new Tresor("cristal", c3);
         tresors[2] = tr3;
-        Tresor tr4 = new Tresor("Le Calice De l'Onde", c4);
+        Tresor tr4 = new Tresor("calice", c4);
         tresors[3] = tr4;
     }
 
