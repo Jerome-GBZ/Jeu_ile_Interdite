@@ -22,29 +22,31 @@ public class VuePlateauJeu extends JPanel {
     private JFrame fenetre;
     
     public VuePlateauJeu(Grille g) {
+System.out.println("VuePlateau 1 ");
         fenetre = new JFrame();
         fenetre.setContentPane(new PanelFond(urlImgs, 800, 700));
         fenetre.setSize(800, 700);
         fenetre.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         // fenetre.setUndecorated(Parameters.UNDECORATED);
         // fenetre.setResizable(Parameters.RESIZABLE);
-
+System.out.println("VuePlateau 2 ");
         JPanel mainPanel = new JPanel(new BorderLayout());
         JPanel centrePanel = new JPanel(new GridLayout(6, 6));
         centrePanel.setPreferredSize(new Dimension(750, 650));
         centrePanel.setOpaque(false);
         mainPanel.setOpaque(false);
-        
+System.out.println("VuePlateau 3 ");
         for (int i = 1; i <= 36; i++) {
             if ((i < 3) || (i > 4 && i < 8) || (i == 12) || (i == 25) || (i > 29 && i < 33) || (i > 34)) {
                 JLabel label = new JLabel("", SwingConstants.CENTER);
                 centrePanel.add(label);
             } else {
-                
-                for (int j = 0; j < g.getNomTuiles().size(); j++) {
+                // donc envoyer 36 tuile avec les null
+                //for (int j = 0; j < g.getNomTuiles().size(); j++) {
                     // redimentionne la tuile
                     String nomTuile = g.getNomTuiles().get(i);
                     Image imgTuile;
+                    System.out.println("nom tuile : " + nomTuile);
                     imgTuile = Toolkit.getDefaultToolkit().getImage("Images/tuiles/" + nomTuile + ".png").getScaledInstance(120, 100, 120);
                     JButton btn = new JButton(new ImageIcon(imgTuile));
                     
@@ -54,10 +56,10 @@ public class VuePlateauJeu extends JPanel {
                     btn.setContentAreaFilled(false);
                 
                     centrePanel.add(btn);
-                }
+                //}
             }
         }
-        
+System.out.println("VuePlateau 4 ");
         mainPanel.add(centrePanel, BorderLayout.CENTER);
         fenetre.add(mainPanel);
     }

@@ -28,115 +28,136 @@ public class IleInterdite extends Observable<Message> {
     private int nbJoueurs;
 
     public IleInterdite(Observateur<Message> observateur, int niv, String[] noms) {
+System.out.println("ihm 1 ");
         this.addObservateur(observateur);
         etapeEau = niv;
         setNiveauEau(etapeEau);
         tuiles = new ArrayList<>();
-
+System.out.println("ihm 2 ");
         //création des cartes trésor
         CTresor[] c1 = creationCartesTresorPierre();
         CTresor[] c2 = creationCartesTresorStatue();
         CTresor[] c3 = creationCartesTresorCristal();
         CTresor[] c4 = creationCartesTresorCalice();
-
+System.out.println("ihm 3 ");
         //création trésors
         creationTresors(c1, c2, c3, c4);
-
+System.out.println("ihm 4 ");
         //création carte montée des eaux
         creationsCartesMontee();
-
+System.out.println("ihm 5 ");
         //création carte hélicoptère
         creationCartesHelico();
-
+System.out.println("ihm 6 ");
         //création carte sable
         creationCartesSable();
-
+System.out.println("ihm 7 ");
         //création tuiles
         creationTuiles();
-
+System.out.println("ihm 8 ");
         //mélange des tuiles
         melange(tuiles);
-
+System.out.println("ihm 9 ");
         //création des cartes inondation
         creationCartesInondation();
-
+System.out.println("ihm 10 ");
         //Mélange pioches
         melange(cartesJoueurPioche);
         melange(cartesInondationPioche);
-
+System.out.println("ihm 11 ");
         //création de la grille
         g = new Grille(tuiles);
-        
+ System.out.println("ihm 12 ");       
         //Inscription des joueurs
         inscrireJoueurs(noms);
+System.out.println("ihm 13 ");
     }
 
     public String[] inscrireJoueurs(String[] noms) {
         // TODO: à remplacer par une réelle assignation des types d'aventuriers (methode appelé associeAventurier de base)
+        System.out.println("inscrire");
         ArrayList<TypeRole> roles = new ArrayList<>();
-        for (TypeRole r : TypeRole.values()) {
-            roles.add(r);
+        for (int j = 0; j < TypeRole.values().length; j++) {
+            System.out.println("Type Role [j] : " + TypeRole.values()[j]);
+            roles.add(TypeRole.values()[j]);
         }
         Collections.shuffle(roles);
+        
+        System.out.println("nb role : " + roles.size());
+        
+        System.out.println("nb joueurs : " + noms.length);
 
         for (int i = 0; i < noms.length; i++) {
+System.out.println("role get i : " + roles.get(i));
             switch (roles.get(i)) {
                 case Explorateur:
+                    System.out.println("exp1");
                     for (int j = 0; j < tuiles.size(); j++) {
-                        if (tuiles.get(j).getNomTuile().equals("La Porte De Cuivre")) {
+                        if (tuiles.get(j).getNomTuile().equals("LaPorteDeCuivre")) {
                             Aventurier a = new Aventurier(this, noms[i], tuiles.get(j), TypePion.VERT, TypeRole.Explorateur);
                             tuiles.get(j).addAventurier(a);
                             aventuriers.add(a);
+                            break;
                         }
                     }
+                    System.out.println("exp2");
 
                     break;
 
                 case Navigateur:
+                    System.out.println("exp1");
                     for (int j = 0; j < tuiles.size(); j++) {
-                        if (tuiles.get(j).getNomTuile().equals("La Porte d'Or")) {
+                        if (tuiles.get(j).getNomTuile().equals("LaPortedOr")) {
                             Aventurier a1 = new Aventurier(this, noms[i], tuiles.get(j), TypePion.JAUNE, TypeRole.Navigateur);
                             tuiles.get(j).addAventurier(a1);
                             aventuriers.add(a1);
                         }
                     }
+                    System.out.println("exp2");
 
                     break;
 
                 case Plongeur:
+                    System.out.println("exp1");
                     for (int j = 0; j < tuiles.size(); j++) {
-                        if (tuiles.get(j).getNomTuile().equals("La Porte De Fer")) {
+                        if (tuiles.get(j).getNomTuile().equals("LaPorteDeFer")) {
                             Aventurier a2 = new Aventurier(this, noms[i], tuiles.get(j), TypePion.NOIR, TypeRole.Plongeur);
                             tuiles.get(j).addAventurier(a2);
                             aventuriers.add(a2);
                         }
                     }
+                    System.out.println("exp2");
 
                     break;
 
                 case Ingenieur:
+                    System.out.println("exp1");
                     for (int j = 0; j < tuiles.size(); j++) {
-                        if (tuiles.get(j).getNomTuile().equals("La Porte De Bronze")) {
+                        if (tuiles.get(j).getNomTuile().equals("LaPorteDeBronze")) {
                             Aventurier a3 = new Aventurier(this, noms[i], tuiles.get(j), TypePion.ROUGE, TypeRole.Ingenieur);
                             tuiles.get(j).addAventurier(a3);
                             aventuriers.add(a3);
                         }
                     }
+                    System.out.println("exp2");
 
                     break;
 
                 case Messager:
+                    System.out.println("exp1");
                     for (int j = 0; j < tuiles.size(); j++) {
-                        if (tuiles.get(j).getNomTuile().equals("La Porte d'Argent")) {
+                        if (tuiles.get(j).getNomTuile().equals("LaPortedArgent")) {
                             Aventurier a4 = new Aventurier(this, noms[i], tuiles.get(j), TypePion.BLANC, TypeRole.Messager);
                             tuiles.get(j).addAventurier(a4);
                             aventuriers.add(a4);
                         }
                     }
+                    System.out.println("exp2");
 
                     break;
 
                 case Pilote:
+                    System.out.println("exp1");
                     for (int j = 0; j < tuiles.size(); j++) {
                         if (tuiles.get(j).getNomTuile().equals("Heliport")) {
                             Aventurier a5 = new Aventurier(this, noms[i], tuiles.get(j), TypePion.BLEU, TypeRole.Pilote);
@@ -144,6 +165,7 @@ public class IleInterdite extends Observable<Message> {
                             aventuriers.add(a5);
                         }
                     }
+                    System.out.println("exp2");
 
                     break;
 

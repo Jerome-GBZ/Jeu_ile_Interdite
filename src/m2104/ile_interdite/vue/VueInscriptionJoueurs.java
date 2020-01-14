@@ -49,7 +49,7 @@ public class VueInscriptionJoueurs {
     private JComboBox<Integer> choixNbJoueurs;
     private JLabel[] labelNomJoueurs = new JLabel[4];
     private JTextField[] saisieNomJoueurs = new JTextField[4];
-    private String[] nomJoueurs = new String[4];
+    private String[] nomJoueurs;
     int nbJoueurs = 2; // 2 joueurs par default
 
     private javax.swing.JLabel niveauEau;
@@ -170,6 +170,7 @@ public class VueInscriptionJoueurs {
                     System.out.println("Problème niveau Eau par defaut, le niveau sera novice");
                     niv = 1;
                 }
+                nomJoueurs = new String[nbJoueurs];
                 
                 for (int i = 0; i < nbJoueurs; i++) {
                     nomJoueurs[i] = saisieNomJoueurs[i].getText();
