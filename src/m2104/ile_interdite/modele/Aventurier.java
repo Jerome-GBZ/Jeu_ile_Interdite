@@ -2,7 +2,6 @@ package m2104.ile_interdite.modele;
 
 import java.util.ArrayList;
 import m2104.ile_interdite.util.*;
-
 /**
  *
  * @author IUT2-Dept Info
@@ -93,6 +92,7 @@ public class Aventurier {
     public void poserPionInit() {
         ii.placerPionInit(this);
     }
+
     
     
     //getters et setters

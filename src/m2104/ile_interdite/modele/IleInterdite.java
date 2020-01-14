@@ -275,29 +275,29 @@ public class IleInterdite extends Observable<Message> {
 
     public void creationTuiles() {
         //création tuiles avec ou sans trésor
-        Tuile t1 = new Tuile("La Caverne Du Brasier", tresors[2]);
+        Tuile t1 = new Tuile("LaCaverneDuBrasier", tresors[2]);
         Tuile t2 = new Tuile("Heliport");
-        Tuile t3 = new Tuile("La Caverne Des Ombres", tresors[2]);
-        Tuile t4 = new Tuile("La Forêt Pourpre");
-        Tuile t5 = new Tuile("La Porte d'Argent");
-        Tuile t6 = new Tuile("La Porte De Bronze");
-        Tuile t7 = new Tuile("La Porte De Cuivre");
-        Tuile t8 = new Tuile("La Porte De Fer");
-        Tuile t9 = new Tuile("La Porte d'Or");
-        Tuile t10 = new Tuile("La Tour De Guet");
-        Tuile t11 = new Tuile("Le Jardin Des Hurlements", tresors[1]);
-        Tuile t12 = new Tuile("Le Jardin Des Murmures", tresors[1]);
-        Tuile t13 = new Tuile("Le Lagon Perdu");
-        Tuile t14 = new Tuile("Le Marais Brumeux");
-        Tuile t15 = new Tuile("Le Palais De Corail", tresors[3]);
-        Tuile t16 = new Tuile("Le Palais Des Marées", tresors[3]);
-        Tuile t17 = new Tuile("Le Pont Des Abimes");
-        Tuile t18 = new Tuile("Le Rocher Fantôme");
-        Tuile t19 = new Tuile("Les Dunes De l'Illusion");
-        Tuile t20 = new Tuile("Les Falaises De l'Oubli");
-        Tuile t21 = new Tuile("Le Temple De La Lune", tresors[0]);
-        Tuile t22 = new Tuile("Le Temple Du Soleil", tresors[0]);
-        Tuile t23 = new Tuile("Le Val Du Crépuscule");
+        Tuile t3 = new Tuile("LaCaverneDesOmbres", tresors[2]);
+        Tuile t4 = new Tuile("LaForetPourpre");
+        Tuile t5 = new Tuile("LaPortedArgent");
+        Tuile t6 = new Tuile("LaPorteDeBronze");
+        Tuile t7 = new Tuile("LaPorteDeCuivre");
+        Tuile t8 = new Tuile("LaPorteDeFer");
+        Tuile t9 = new Tuile("LaPortedOr");
+        Tuile t10 = new Tuile("LaTourDeGuet");
+        Tuile t11 = new Tuile("LeJardinDesHurlements", tresors[1]);
+        Tuile t12 = new Tuile("LeJardinDesMurmures", tresors[1]);
+        Tuile t13 = new Tuile("LeLagonPerdu");
+        Tuile t14 = new Tuile("LeMaraisBrumeux");
+        Tuile t15 = new Tuile("LePalaisDeCorail", tresors[3]);
+        Tuile t16 = new Tuile("LePalaisDesMarees", tresors[3]);
+        Tuile t17 = new Tuile("LePontDesAbimes");
+        Tuile t18 = new Tuile("LeRocherFantome");
+        Tuile t19 = new Tuile("LesDunesDelIllusion");
+        Tuile t20 = new Tuile("LesFalaisesDelOubli");
+        Tuile t21 = new Tuile("LeTempleDeLaLune", tresors[0]);
+        Tuile t22 = new Tuile("LeTempleDuSoleil", tresors[0]);
+        Tuile t23 = new Tuile("LeValDuCrepuscule");
         Tuile t24 = new Tuile("Observatoire");
 
         //ajout des tuiles à l'array list et création cartes inondation
@@ -420,17 +420,69 @@ public class IleInterdite extends Observable<Message> {
             int i = 0;
             while (i < 4) {
                 if (cartesJoueurPioche.get(j).getTypeCarte().equals(TypeCarte.CMONTEEEAUX)) {
-                    j = j - 1;
                     i = i - 1;
                 } else {
                     a.getCartes()[i] = cartesJoueurPioche.get(j);
-                    cartesJoueurPioche.remove(cartesJoueurPioche.get(j));
-                    j = j - 1;
+                    cartesJoueurPioche.remove(cartesJoueurPioche.get(j));   
                 }
+                j--;
                 i++;
             }
         }
     }
+    
+    public void piocherCarteInondation(){
+        
+        for (int i = 0; i< this.niveauEau;i++) {
+            if (cartesInondationPioche.size() > 0) {
+                cartesInondationPioche.get(cartesInondationPioche.size() -1).getTuile().inondé();
+                cartesInondationDefausse.add(cartesInondationPioche.get(cartesInondationPioche.size()-1));
+            }
+            else {
+                viderDefausseCartesInondation();
+                cartesInondationPioche.get(cartesInondationPioche.size() -1).getTuile().inondé();
+                cartesInondationDefausse.add(cartesInondationPioche.get(cartesInondationPioche.size()-1));
+            }
+        }
+        cartesInondationDefausse.clear();
+    }
+    
+    public void viderDefausseCartesInondation() {
+        Collections.shuffle(cartesInondationDefausse);
+        for (CInondation c : cartesInondationDefausse){
+            cartesInondationPioche.add(c);
+            cartesInondationDefausse.remove(c);
+        }
+    }    
+    
+    public void piocherCarteJoueur(Aventurier a) {
+        for (int i =0 ; i< 2 ; i++) {
+            if (cartesJoueurPioche.size() > 0) {
+                viderDefausseCartesJoueur();
+            }
+            if (cartesJoueurPioche.get(cartesJoueurPioche.size()-1).getTypeCarte() != TypeCarte.CMONTEEEAUX) {
+                a.addCarteJoueur(cartesJoueurPioche.get(cartesJoueurPioche.size()-1));
+                    if (a.getCartes()[5] != null ){
+                      Message  m = new Message() ;
+                       m.type = TypeAction.DEFAUSSER;
+                       m.aventurier = a;
+                       notifierObservateurs(m);
+                 }
+            }
+            else {
+                niveauEau = niveauEau +1;
+                viderDefausseCartesInondation();
+                piocherCarteInondation();
+            }
+            cartesJoueurDefausse.add(cartesJoueurPioche.get(cartesJoueurPioche.size()-1));
+            cartesJoueurPioche.remove(cartesJoueurPioche.size()-1);
+                    
+           
+        }
+    }
+    
+    
+    
 
     //getters et setters
     public Grille getGrille() {
