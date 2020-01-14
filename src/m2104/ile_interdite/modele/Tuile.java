@@ -18,6 +18,7 @@ public class Tuile {
     private CInondation cinondation;
     private Tresor tresor;
     private ArrayList<Aventurier> aventuriers = new ArrayList<>();
+    private int position;
     
     public Tuile() {
     }
@@ -131,5 +132,12 @@ public class Tuile {
         aventuriers.add(a);
     }
     
+    public int getPosition() {
+        return position;
+    }
+    
+    public void setPosition(int position) {
+        this.position = position;
+    }
     
 }

@@ -13,14 +13,19 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import m2104.ile_interdite.modele.*;
-import m2104.ile_interdite.util.Parameters;
-import m2104.ile_interdite.util.TypeRole;
+import m2104.ile_interdite.util.*;
 import java.util.ArrayList;
 
 public class VuePlateauJeu extends JPanel {
 
-    private String urlImgs = "/users/info/etu-s2/gambiezj/Documents/Projet_Java/Graphe/final_View.png";
+    private String urlImgs = "Images/final_Jeu.png";
     private JFrame fenetre;
+    
+    JPanel mainPanel;
+    JPanel centrePanel;
+    JPanel centrePanelPions;
+    private ArrayList<Aventurier> aventuriers;
+    
 
     public VuePlateauJeu(Grille g) {
 
@@ -31,11 +36,16 @@ public class VuePlateauJeu extends JPanel {
         // fenetre.setUndecorated(Parameters.UNDECORATED);
         // fenetre.setResizable(Parameters.RESIZABLE);
 
-        JPanel mainPanel = new JPanel(new BorderLayout());
-        JPanel centrePanel = new JPanel(new GridLayout(6, 6));
+        mainPanel = new JPanel(new BorderLayout());
+        mainPanel.setOpaque(false);
+        
+        centrePanel = new JPanel(new GridLayout(6, 6));
         centrePanel.setPreferredSize(new Dimension(750, 650));
         centrePanel.setOpaque(false);
-        mainPanel.setOpaque(false);
+        
+        centrePanelPions = new JPanel(new GridLayout(6, 6));
+        centrePanelPions.setPreferredSize(new Dimension(750, 650));
+        centrePanelPions.setOpaque(false);
 
         ArrayList<String> nomTuiles = new ArrayList<>();
         nomTuiles = g.getListnomsTuiles();
@@ -58,11 +68,45 @@ public class VuePlateauJeu extends JPanel {
 
             }
         }
-        mainPanel.add(centrePanel, BorderLayout.CENTER);
+        
+        aventuriers = g.getIleInterdite().getAventuriers();
+        
+        pion(aventuriers, g);
+        
+        mainPanel.add(centrePanelPions, BorderLayout.CENTER);
+        //mainPanel.add(centrePanel, BorderLayout.CENTER);
         fenetre.add(mainPanel);
     }
 
     public void afficher() {
         this.fenetre.setVisible(true);
+    }
+    
+    public void pion(ArrayList<Aventurier> aventuriers, Grille g) {
+        int x = 0;
+        int y = 0;
+        for (Aventurier a : aventuriers) {
+            TypePion pion = a.getPion();
+            Tuile tuile = a.getTuile();
+            
+            // Image
+            String imgURL = "Images/pions/" + a.getPion() + ".png";
+            JLabel pionLabel = new JLabel(new ImageIcon(imgURL));
+            
+            x = g.getCoordonnee(tuile)[0];
+            y = g.getCoordonnee(tuile)[1];
+            
+            for (int i=0; i<6; i++) {
+                for (int j=0; j<6; j++) {
+                    if (i==x && j==y) {
+                        centrePanelPions.add(pionLabel);
+                    }
+                    else {
+                        centrePanelPions.add(new JLabel());
+                    }
+                }
+            }
+            
+        }
     }
 }

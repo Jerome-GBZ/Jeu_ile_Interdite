@@ -65,7 +65,7 @@ public class IleInterdite extends Observable<Message> {
         melange(cartesInondationPioche);
 
         //création de la grille
-        g = new Grille(tuiles);
+        g = new Grille(this, tuiles);
      
         //Inscription des joueurs
         inscrireJoueurs(noms);
@@ -517,5 +517,13 @@ public class IleInterdite extends Observable<Message> {
     
     public void setNombreJoueurs(int nb) {
         nbJoueurs = nb;
+    }
+    
+    public ArrayList<Aventurier> getAventuriers() {
+        return aventuriers;
+    }
+    
+    public Tresor getTresor(int i ){
+        return tresors[i];
     }
 }
