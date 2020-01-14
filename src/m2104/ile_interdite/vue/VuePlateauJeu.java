@@ -43,9 +43,7 @@ public class VuePlateauJeu extends JPanel {
         centrePanel.setPreferredSize(new Dimension(750, 650));
         centrePanel.setOpaque(false);
         
-        centrePanelPions = new JPanel(new GridLayout(6, 6));
-        centrePanelPions.setPreferredSize(new Dimension(750, 650));
-        centrePanelPions.setOpaque(false);
+        
 
         ArrayList<String> nomTuiles = new ArrayList<>();
         nomTuiles = g.getListnomsTuiles();
@@ -63,6 +61,8 @@ public class VuePlateauJeu extends JPanel {
                 btn.setPreferredSize(new Dimension(85, 85));
                 btn.setOpaque(false);
                 btn.setContentAreaFilled(false);
+                
+                pion(aventuriers, g);
 
                 centrePanel.add(btn);
 
@@ -71,10 +71,10 @@ public class VuePlateauJeu extends JPanel {
         
         aventuriers = g.getIleInterdite().getAventuriers();
         
-        pion(aventuriers, g);
         
-        mainPanel.add(centrePanelPions, BorderLayout.CENTER);
-        //mainPanel.add(centrePanel, BorderLayout.CENTER);
+        
+        
+        mainPanel.add(centrePanel, BorderLayout.CENTER);
         fenetre.add(mainPanel);
     }
 
@@ -85,24 +85,29 @@ public class VuePlateauJeu extends JPanel {
     public void pion(ArrayList<Aventurier> aventuriers, Grille g) {
         int x = 0;
         int y = 0;
+                                                 
         for (Aventurier a : aventuriers) {
+                                                   
             TypePion pion = a.getPion();
             Tuile tuile = a.getTuile();
-            
-            // Image
+    
             String imgURL = "Images/pions/" + a.getPion() + ".png";
-            JLabel pionLabel = new JLabel(new ImageIcon(imgURL));
+
+            Image imgPion;
+            imgPion = Toolkit.getDefaultToolkit().getImage(imgURL).getScaledInstance(50, 80, 50);
+            JLabel pionLabel = new JLabel(new ImageIcon(imgPion));
+            pionLabel.setPreferredSize(new Dimension(50, 50));
+            pionLabel.setOpaque(false);
             
             x = g.getCoordonnee(tuile)[0];
+            System.out.println("x =  "+ x);
             y = g.getCoordonnee(tuile)[1];
+            System.out.println("y =  "+ y);
             
             for (int i=0; i<6; i++) {
                 for (int j=0; j<6; j++) {
                     if (i==x && j==y) {
-                        centrePanelPions.add(pionLabel);
-                    }
-                    else {
-                        centrePanelPions.add(new JLabel());
+                        centrePanel.add(pionLabel);
                     }
                 }
             }
@@ -110,3 +115,5 @@ public class VuePlateauJeu extends JPanel {
         }
     }
 }
+                
+                
