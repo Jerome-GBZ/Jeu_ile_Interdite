@@ -17,6 +17,7 @@ public class IleInterdite extends Observable<Message> {
 
     private Grille g;
     private int niveauEau;
+    private int etapeEau;
     private ArrayList<Tuile> tuiles;
     private Tresor[] tresors = new Tresor[4];
     private ArrayList<CJoueur> cartesJoueurPioche = new ArrayList<>();
@@ -28,7 +29,8 @@ public class IleInterdite extends Observable<Message> {
 
     public IleInterdite(Observateur<Message> observateur, int niv, String[] noms) {
         this.addObservateur(observateur);
-        niveauEau = niv;
+        etapeEau = niv;
+        setNiveauEau(etapeEau);
         tuiles = new ArrayList<>();
 
         //création des cartes trésor
@@ -470,7 +472,7 @@ public class IleInterdite extends Observable<Message> {
                  }
             }
             else {
-                niveauEau = niveauEau +1;
+                etapeEau = etapeEau +1;
                 viderDefausseCartesInondation();
                 piocherCarteInondation();
             }
