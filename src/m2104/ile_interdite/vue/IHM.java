@@ -2,6 +2,7 @@ package m2104.ile_interdite.vue;
 
 import java.awt.Color;
 import java.util.HashMap;
+import m2104.ile_interdite.modele.*;
 import m2104.ile_interdite.util.Message;
 import patterns.observateur.Observable;
 import patterns.observateur.Observateur;
@@ -14,11 +15,13 @@ public class IHM extends Observable<Message> {
 
     private final VueInscriptionJoueurs vueInscription;
     private final HashMap<Integer, VueAventurier> vueAventuriers;
+    private VuePlateauJeu vuePlateauJeu;
 
     public IHM(Observateur<Message> observateur) {
         this.addObservateur(observateur);
         this.vueAventuriers = new HashMap<>();
-        this.vueInscription = new VueInscriptionJoueurs();
+        this.vueInscription = new VueInscriptionJoueurs(this);
+        //this.afficheVueInscription();
     }
 
     public void creerVuesAventuriers(String[] nomAventuriers) {
@@ -42,4 +45,18 @@ public class IHM extends Observable<Message> {
             );
         }
     }
+    
+    public void afficheVueInscription(){
+        this.vueInscription.afficher();
+    }
+    
+    public void btnJouer(Message m){
+        notifierObservateurs(m);
+    }
+    
+    public void creePlateau(Grille g){
+        this.vuePlateauJeu = new VuePlateauJeu(g);
+        vuePlateauJeu.afficher();
+    }
+    
 }

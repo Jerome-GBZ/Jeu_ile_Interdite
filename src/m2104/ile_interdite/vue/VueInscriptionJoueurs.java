@@ -39,8 +39,10 @@ import m2104.ile_interdite.util.TypeAction;
  *
  * @author Eric
  */
-public class VueInscriptionJoueurs extends Observable<Object> {
+public class VueInscriptionJoueurs {
 
+    private IHM ihm;
+    
     private final JFrame fenetre;
     private javax.swing.JLabel titre;
 
@@ -56,7 +58,9 @@ public class VueInscriptionJoueurs extends Observable<Object> {
 
     private final JButton btnJouer = new JButton("Jouer");
 
-    public VueInscriptionJoueurs() {
+    public VueInscriptionJoueurs(IHM ihm) {
+        this.ihm = ihm;
+        
         // Creation Fenetre
         fenetre = new JFrame();
         fenetre.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
@@ -147,9 +151,9 @@ public class VueInscriptionJoueurs extends Observable<Object> {
         mainPanel.add(footerPanel, BorderLayout.SOUTH);
         btnJouer.setPreferredSize(new Dimension(75, 30));
 
-        btnJouer.addMouseListener(new MouseListener() {
+        btnJouer.addActionListener(new ActionListener() {
             @Override
-            public void mouseClicked(MouseEvent arg0) {
+            public void actionPerformed(ActionEvent arg0) {
                 // Message à envoyer
                 // Demarer partie - nb de joueur - nom des joueurs - niveau Eau
 
@@ -175,11 +179,9 @@ public class VueInscriptionJoueurs extends Observable<Object> {
                 m.nbJoueurs = nbJoueurs;
                 m.nomJoueurs = nomJoueurs;
                 m.nivEau = niv;
-                notifierObservateurs(m);
+                ihm.btnJouer(m);
 
                 fermer();
-                 
-                
 
                 // test des variables envoyées
                 System.out.println("Il y a " + nbJoueurs + " joueurs");
@@ -191,24 +193,8 @@ public class VueInscriptionJoueurs extends Observable<Object> {
                     System.out.println("    "+ i + "- " + (nomJoueurs[i] = saisieNomJoueurs[i].getText()));
                 }
             }
-
-            @Override
-            public void mousePressed(MouseEvent arg0) {
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent arg0) {
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent arg0) {
-            }
-
-            @Override
-            public void mouseExited(MouseEvent arg0) {
-            }
         });
-
+        
         footerPanel.add(btnJouer);
     }
 
@@ -224,9 +210,6 @@ public class VueInscriptionJoueurs extends Observable<Object> {
     public String[] getNomJoueurs() {
         return Arrays.copyOf(this.nomJoueurs, this.nomJoueurs.length);
     }
-
-    public static void main(String[] args) {
-        VueInscriptionJoueurs ihm = new VueInscriptionJoueurs();
-        ihm.afficher();
-    }
+    
+    
 }
