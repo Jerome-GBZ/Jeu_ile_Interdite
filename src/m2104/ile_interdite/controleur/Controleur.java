@@ -27,9 +27,12 @@ public class Controleur implements Observateur<Message> {
     try{
         switch (msg.type) {
             case DEMARRER:
-                ileInterdite = new IleInterdite(this, msg.nivEau, msg.nomJoueurs);                
+                ileInterdite = new IleInterdite(this, msg.nivEau, msg.nomJoueurs);
                 ihm.creePlateau(ileInterdite.getGrille());
                 break;
+                
+            case BOUGER:
+                
                     
             case VALIDER_JOUEURS:
                 assert msg.hasNbJoueurs();

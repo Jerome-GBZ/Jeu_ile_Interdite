@@ -14,33 +14,60 @@ public class Grille {
     
     private Tuile[][] tuiles;
     private ArrayList<String> nomsTuiles = new ArrayList<>();
+    private IleInterdite ileInterdite;
     
-    public Grille(ArrayList<Tuile> tuiles){
+    public Grille(IleInterdite i, ArrayList<Tuile> tuiles){
         this.tuiles = new Tuile[6][6];
         this.tuiles[0][2] = tuiles.get(0);
+        tuiles.get(0).setPosition(2);
         this.tuiles[0][3] = tuiles.get(1);
+        tuiles.get(1).setPosition(3);
         this.tuiles[1][1] = tuiles.get(2);
+        tuiles.get(2).setPosition(7);
         this.tuiles[1][2] = tuiles.get(3);
+        tuiles.get(3).setPosition(8);
         this.tuiles[1][3] = tuiles.get(4);
+        tuiles.get(4).setPosition(9);
         this.tuiles[1][4] = tuiles.get(5);
+        tuiles.get(5).setPosition(10);
         this.tuiles[2][0] = tuiles.get(6);
+        tuiles.get(6).setPosition(12);
         this.tuiles[2][1] = tuiles.get(7);
+        tuiles.get(7).setPosition(13);
         this.tuiles[2][2] = tuiles.get(8);
+        tuiles.get(8).setPosition(14);
         this.tuiles[2][3] = tuiles.get(9);
+        tuiles.get(9).setPosition(15);
         this.tuiles[2][4] = tuiles.get(10);
+        tuiles.get(10).setPosition(16);
         this.tuiles[2][5] = tuiles.get(11);
+        tuiles.get(11).setPosition(17);
         this.tuiles[3][0] = tuiles.get(12);
+        tuiles.get(12).setPosition(18);
         this.tuiles[3][1] = tuiles.get(13);
+        tuiles.get(13).setPosition(19);
         this.tuiles[3][2] = tuiles.get(14);
+        tuiles.get(14).setPosition(20);
         this.tuiles[3][3] = tuiles.get(15);
+        tuiles.get(15).setPosition(21);
         this.tuiles[3][4] = tuiles.get(16);
+        tuiles.get(16).setPosition(22);
         this.tuiles[3][5] = tuiles.get(17);
+        tuiles.get(17).setPosition(23);
         this.tuiles[4][1] = tuiles.get(18);
+        tuiles.get(18).setPosition(25);
         this.tuiles[4][2] = tuiles.get(19);
+        tuiles.get(19).setPosition(26);
         this.tuiles[4][3] = tuiles.get(20);
+        tuiles.get(20).setPosition(27);
         this.tuiles[4][4] = tuiles.get(21);
+        tuiles.get(21).setPosition(28);
         this.tuiles[5][2] = tuiles.get(22);
+        tuiles.get(22).setPosition(32);
         this.tuiles[5][3] = tuiles.get(23);
+        tuiles.get(23).setPosition(33);
+        
+        ileInterdite = i;
         
         getNomTuiles();
     }
@@ -210,4 +237,11 @@ public class Grille {
         return nomsTuiles;
     }
     
+    public IleInterdite getIleInterdite() {
+        return ileInterdite;
+    }
+    
+    public void positionTuile() {
+        
+    }
 }
