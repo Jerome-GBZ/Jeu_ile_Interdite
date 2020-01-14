@@ -69,7 +69,8 @@ public class IleInterdite extends Observable<Message> {
      
         //Inscription des joueurs
         inscrireJoueurs(noms);
-
+        
+        nbJoueurs = noms.length;
     }
 
     public String[] inscrireJoueurs(String[] noms) {
