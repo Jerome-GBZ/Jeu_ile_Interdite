@@ -18,6 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
 import m2104.ile_interdite.modele.Aventurier;
 import m2104.ile_interdite.modele.IleInterdite;
 import m2104.ile_interdite.util.TypePion;
@@ -54,7 +55,7 @@ public class VueHeader {
             JButton b2 = new JButton(new ImageIcon(imgPerso1));
             JButton b3 = new JButton(new ImageIcon(imgPerso2));
             JButton b4 = new JButton();
-
+            
             b1.setPreferredSize(d);
             b2.setPreferredSize(d);
             b3.setPreferredSize(d);
@@ -207,7 +208,7 @@ public class VueHeader {
             b2.setPreferredSize(d);
             b3.setPreferredSize(d);
             b4.setPreferredSize(d);
-
+            
             b1.setOpaque(false);
             b1.setContentAreaFilled(false);
             b1.setBorderPainted(false);
