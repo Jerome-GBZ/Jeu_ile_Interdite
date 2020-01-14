@@ -42,11 +42,11 @@ public class Tuile {
     }
 
         
-    public void inondé(CInondation c){
-        if(c.getTuile().getEtat() == TypeEtat.SEC){
-            c.getTuile().setEtat(TypeEtat.INNONDE);
-        }else if(c.getTuile().getEtat() == TypeEtat.INNONDE){
-            c.getTuile().setEtat(TypeEtat.COULE);
+    public void inondé(){
+        if(this.getEtat() == TypeEtat.SEC){
+            this.setEtat(TypeEtat.INNONDE);
+        }else if(this.getEtat() == TypeEtat.INNONDE){
+            this.setEtat(TypeEtat.COULE);
         }
     }
     

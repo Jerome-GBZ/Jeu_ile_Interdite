@@ -420,17 +420,61 @@ public class IleInterdite extends Observable<Message> {
             int i = 0;
             while (i < 4) {
                 if (cartesJoueurPioche.get(j).getTypeCarte().equals(TypeCarte.CMONTEEEAUX)) {
-                    j = j - 1;
                     i = i - 1;
                 } else {
                     a.getCartes()[i] = cartesJoueurPioche.get(j);
-                    cartesJoueurPioche.remove(cartesJoueurPioche.get(j));
-                    j = j - 1;
+                    cartesJoueurPioche.remove(cartesJoueurPioche.get(j));   
                 }
+                j--;
                 i++;
             }
         }
     }
+    
+    public void PiocherCarteInondation(){
+        
+        for (int i = 0; i< this.niveauEau;i++) {
+            if (cartesInondationPioche.size() > 0) {
+                cartesInondationPioche.get(cartesInondationPioche.size() -1).getTuile().inondé();
+                cartesInondationDefausse.add(cartesInondationPioche.get(cartesInondationPioche.size()-1));
+            }
+            else {
+                viderDefausseCartesInondation();
+                cartesInondationPioche.get(cartesInondationPioche.size() -1).getTuile().inondé();
+                cartesInondationDefausse.add(cartesInondationPioche.get(cartesInondationPioche.size()-1));
+            }
+        }
+        cartesInondationDefausse.clear();
+    }
+    
+    public void viderDefausseCartesInondation() {
+        Collections.shuffle(cartesInondationDefausse);
+        for (CInondation c : cartesInondationDefausse){
+            cartesInondationPioche.add(c);
+            cartesInondationDefausse.remove(c);
+        }
+    }    
+    
+    public void piocherCarteJoueur(Aventurier a) {
+        for (int i =0 ; i< 2 ; i++) {
+            if (cartesJoueurPioche.size() > 0) {
+                viderDefausseCartesJoueur();
+            }
+            a.addCarteJoueur(cartesJoueurPioche.get(cartesJoueurPioche.size()-1));
+                if (a.getCartes()[5] != null ){
+                    Message  m = new Message() ;
+                    m.type = TypeAction.DEFAUSSER;
+                    m.aventurier = a;
+                    notifierObservateurs(m);
+                }
+                
+              
+                cartesJoueurPioche.remove(cartesJoueurPioche.size()-1);
+            
+            
+        }
+    }
+    
 
     //getters et setters
     public Grille getGrille() {

@@ -19,6 +19,7 @@ public enum TypeAction {
     RECEVOIR,
     CHOISIR_CARTE,
     CHOISIR_TUILE,
-    INITIALISER;
+    INITIALISER,
+    DEFAUSSER
     
 }

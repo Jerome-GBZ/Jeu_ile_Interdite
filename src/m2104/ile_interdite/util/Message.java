@@ -25,6 +25,7 @@ public class Message implements Serializable {
     public int nivEau;
     public int nombreJoueurs;
     public TypeAction type;
+    public Aventurier aventurier;
 
     public Message() {
         this.commande = null;

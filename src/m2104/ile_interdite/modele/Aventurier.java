@@ -95,6 +95,8 @@ public class Aventurier {
     }
     
     
+    
+    
     //getters et setters
     
     public void setNom(String nom) {
