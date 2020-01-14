@@ -64,7 +64,7 @@ public class IleInterdite extends Observable<Message> {
 
         //création de la grille
         g = new Grille(tuiles);
-
+        
         //Inscription des joueurs
         inscrireJoueurs(noms);
     }

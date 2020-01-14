@@ -189,4 +189,16 @@ public class Grille {
         this.tuiles = tuiles;
     }
     
+    public ArrayList<String> getNomTuiles() {
+        ArrayList<String> nomTuiles = new ArrayList<>();
+        for (int i = 0 ; i < 6 ; i++){
+            for (int j = 0; j<6;j++){
+                if (tuiles[i][j] != null) {
+                    nomTuiles.add(tuiles[i][j].getNomTuile());
+                }
+            }
+        }
+        return nomTuiles;
+    }
+    
 }
