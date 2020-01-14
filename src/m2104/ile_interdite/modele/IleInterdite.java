@@ -523,7 +523,7 @@ public class IleInterdite extends Observable<Message> {
         return aventuriers;
     }
     
-    public Tresor[] getTresor(){
-        return tresors;
+    public Tresor getTresor(int i ){
+        return tresors[i];
     }
 }
