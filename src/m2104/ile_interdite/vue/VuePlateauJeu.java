@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class VuePlateauJeu extends JPanel {
 
-    private String urlImgs = "/users/info/etu-s2/gambiezj/Documents/Projet_Java/Graphe/final_View.png";
+    private String urlImgs = "Images/final_Jeu.png";
     private JFrame fenetre;
 
     public VuePlateauJeu(Grille g) {
