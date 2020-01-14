@@ -473,6 +473,7 @@ public class IleInterdite extends Observable<Message> {
             }
             else {
                 etapeEau = etapeEau +1;
+                setNiveauEau(etapeEau);
                 viderDefausseCartesInondation();
                 piocherCarteInondation();
             }
@@ -492,7 +493,23 @@ public class IleInterdite extends Observable<Message> {
     }
 
     public void setNiveauEau(int niv) {
-        niveauEau = niv;
+        etapeEau = niv;
+        if (etapeEau <= 2) {
+            niveauEau = 2;
+        }
+        else if (etapeEau > 2 && etapeEau <= 5) {
+            niveauEau = 3;
+        }
+        else if (etapeEau > 5 && etapeEau <=7) {
+            niveauEau = 4;
+        }
+        else if (etapeEau>7 && etapeEau <= 9) {
+            niveauEau = 5;
+        }
+        else {
+            niveauEau = 6;
+        }
+                
     }
 
     public int getNombreJoueurs() {
