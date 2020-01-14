@@ -64,4 +64,12 @@ public class IHM extends Observable<Message> {
     public void creeHeader(ArrayList<Aventurier> listA){
         new VueHeader(listA);
     }
+    
+    public void creeVueTresor(IleInterdite ile){
+        new VueTresor(ile);
+    }
+    
+    
+    
+    
 }

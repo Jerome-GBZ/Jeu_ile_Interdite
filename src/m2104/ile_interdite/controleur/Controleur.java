@@ -31,11 +31,10 @@ public class Controleur implements Observateur<Message> {
                 ileInterdite = new IleInterdite(this, msg.nivEau, msg.nomJoueurs);
                 //ihm.creePlateau(ileInterdite.getGrille());
                 ihm.creeHeader(ileInterdite.getAventuriers());
+                ihm.creeVueTresor(ileInterdite);
+                
                 break;
-                
-            case BOUGER:
-                
-                    
+                 
             case VALIDER_JOUEURS:
                 assert msg.hasNbJoueurs();
                 String[] nomAventuriers =
@@ -46,6 +45,9 @@ public class Controleur implements Observateur<Message> {
                 if (Parameters.LOGS) {
                     System.err.println("Action interdite : " + msg.getCommande().toString());
                 }
+                
+            case RECUPERER_TRESOR:
+    
         }
     }
     catch(Exception e) {

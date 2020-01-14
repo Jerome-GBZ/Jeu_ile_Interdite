@@ -80,10 +80,9 @@ public class VueTresor extends JPanel {
         mainPanel.add(panelCentre, BorderLayout.CENTER);
         window.add(mainPanel);
         
-        // lien avec le controleur 
-        Message m = new Message(TypeAction.RECUPERER_TRESOR);
-        ihm.afficherVueTresor(m); 
+    }
+    
+    public void afficherVueTresor(){
         
-
     }
 }
