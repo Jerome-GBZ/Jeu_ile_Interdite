@@ -48,7 +48,7 @@ public class VuePlateauJeu extends JPanel {
         centrePanel = new JPanel(new GridLayout(6, 6));
         centrePanel.setPreferredSize(new Dimension(750, 650));
         centrePanel.setOpaque(false);
-
+        
         mainPanel.add(centrePanel, BorderLayout.CENTER);
         fenetre.add(mainPanel);
     }
@@ -78,6 +78,7 @@ public class VuePlateauJeu extends JPanel {
                 btn.setPreferredSize(new Dimension(85, 85));
                 btn.setOpaque(false);
                 btn.setContentAreaFilled(false);
+                btn.setBorderPainted(false);
                 centrePanel.add(btn);
             }
         }
