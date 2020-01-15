@@ -212,7 +212,7 @@ public class Grille {
     }
 
     public void innonde(CInondation ci) {
-        ci.getTuile().inondé();
+        ci.getTuile().inonde();
     }
 
     /**
