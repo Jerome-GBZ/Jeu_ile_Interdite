@@ -281,7 +281,7 @@ public class VueHeader {
         
         window.setSize(800, 124);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        window.setLocation(dim.width/2-window.getSize().width/2, dim.height/2-window.getSize().height/2);
+        window.setLocation(0, 0);
         window.setUndecorated(true);
         window.setVisible(true);
     }

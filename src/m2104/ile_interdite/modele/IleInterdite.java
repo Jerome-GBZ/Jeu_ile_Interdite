@@ -78,7 +78,7 @@ public class IleInterdite extends Observable<Message> {
         nbJoueurs = noms.length;
         
         //distribution carte joueurs
-        // distribuerCartesJoueur();
+        distribuerCartesJoueur();
         
         //pioche des cartes inondations
         piocherCarteInondation();
@@ -449,7 +449,7 @@ public class IleInterdite extends Observable<Message> {
     }
 
     public void distribuerCartesJoueur() {
-        int j = 28;
+        int j = 27;
         for (Aventurier a : aventuriers) {
             int i = 0;
             while (i < 4) {

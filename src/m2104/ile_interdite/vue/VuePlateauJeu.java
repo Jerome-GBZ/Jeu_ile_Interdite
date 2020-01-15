@@ -100,6 +100,10 @@ public class VuePlateauJeu extends JPanel {
         centrePionsPanel.add(pionLabel);
         return centrePionsPanel;
     }
+    
+    public void afficheTuilesDispos(ArrayList<Tuile> tDispos) {
+        
+    }
 
     public void afficher() {
         this.fenetre.setVisible(true);

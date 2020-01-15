@@ -40,6 +40,10 @@ public class Controleur implements Observateur<Message> {
                 case DEPLACER:
                     ileInterdite.seDeplacer();
                     break;
+                    
+                case CHOISIR_TUILE:
+                    ihm.afficheTuilesDispos(msg.tuiles);
+                    break;
 
                 case ASSECHER:
                     ileInterdite.assecher();
