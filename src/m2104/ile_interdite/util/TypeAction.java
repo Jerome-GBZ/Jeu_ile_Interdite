@@ -11,6 +11,7 @@ package m2104.ile_interdite.util;
  */
 public enum TypeAction {
     DEMARRER,
+    JOUER,
     // Action
     DEPLACER,
     ASSECHER,
