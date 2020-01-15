@@ -12,7 +12,7 @@ import m2104.ile_interdite.util.*;
 import java.util.ArrayList;
 
 public class VueMainJoueur {
-    private String urlImgs = "Images/texture2.png";
+    private String urlImgs = "Images/VueMainJoueur.png";
     private JFrame fenetre;
 
     private JPanel mainPanel;
@@ -20,12 +20,13 @@ public class VueMainJoueur {
     
     public VueMainJoueur() {
         initialiserFenetreMain();
+        initialisationCarteMain();
     }
 
     public void initialiserFenetreMain() {
         fenetre = new JFrame();
-        fenetre.setContentPane(new PanelFond(urlImgs, 952, 150));
-        fenetre.setSize(952, 150);
+        fenetre.setContentPane(new PanelFond(urlImgs, 952, 130));
+        fenetre.setSize(952, 130);
         fenetre.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         fenetre.setUndecorated(Parameters.UNDECORATED);
         fenetre.setResizable(Parameters.RESIZABLE);
@@ -34,7 +35,7 @@ public class VueMainJoueur {
         mainPanel.setOpaque(false);
 
         centrePanel = new JPanel(new GridLayout(6, 6));
-        centrePanel.setPreferredSize(new Dimension(750, 650));
+        centrePanel.setPreferredSize(new Dimension(952, 130));
         centrePanel.setOpaque(false);
         
         mainPanel.add(centrePanel, BorderLayout.CENTER);
