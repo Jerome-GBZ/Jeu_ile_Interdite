@@ -160,7 +160,7 @@ public class IleInterdite extends Observable<Message> {
 
         }
         joueurCourant = aventuriers.get(0);
-        nbactions = 0;
+        setNbActions(0);
         this.nbJoueurs = noms.length;
         return noms;
         
@@ -568,7 +568,7 @@ public class IleInterdite extends Observable<Message> {
     }*/
     
     public void seDeplacer(){
-        if (nbactions < 3) {
+        if (nbactions < 2) {
             nbactions++;
         }
         else {
@@ -595,7 +595,7 @@ public class IleInterdite extends Observable<Message> {
     }
     
     public void assecher(){
-        if (nbactions < 3) {
+        if (nbactions < 2) {
             nbactions++;
         }
         else {
@@ -616,7 +616,7 @@ public class IleInterdite extends Observable<Message> {
     }
     
     public void donnerCarte(){
-        if (nbactions < 3) {
+        if (nbactions < 2) {
             nbactions++;
         }
         else {

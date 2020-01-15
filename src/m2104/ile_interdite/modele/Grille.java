@@ -130,9 +130,9 @@ public class Grille {
                     }
                 }
             }
-           // tuilesDispo.remove(a.getTuile());
+           tuilesDispo.remove(a.getTuile());
         }
-        if (a.getRole() == TypeRole.Plongeur) {
+       /* if (a.getRole() == TypeRole.Plongeur) {
             for (Tuile tu : tuilesDispo) {
                 if (tu.getEtat() != TypeEtat.SEC) {
                     for (Tuile tui : this.tuileAutour(tu)) {
@@ -141,7 +141,7 @@ public class Grille {
                 }
             }
 
-        }
+        }*/
         for (Tuile tu : tuilesDispo) {
             if (tu.getEtat() == TypeEtat.COULE) {
                 tuilesDispo.remove(tu);
