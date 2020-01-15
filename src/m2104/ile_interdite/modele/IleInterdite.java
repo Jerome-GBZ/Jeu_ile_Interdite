@@ -707,6 +707,10 @@ public class IleInterdite extends Observable<Message> {
     public void setNbActions(int n){
         nbactions = n;
     }
+    
+    public Aventurier getJoueurCourant(){
+        return joueurCourant;
+    }
 }
 
    
