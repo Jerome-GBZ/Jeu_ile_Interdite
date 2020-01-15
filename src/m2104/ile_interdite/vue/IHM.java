@@ -19,6 +19,7 @@ public class IHM extends Observable<Message> {
     private VuePlateauJeu vuePlateauJeu;
     private VueTresor vuetresor;
     private VueHeader vueHeader;
+    private VueBoutons vueBoutons;
 
     public IHM(Observateur<Message> observateur) {
         this.addObservateur(observateur);
@@ -73,6 +74,11 @@ public class IHM extends Observable<Message> {
     
     public void recupTresor(Aventurier a){
         vuetresor.recuptresor(a.getTuile().getTresor().getNomTresor());
+    }
+    
+    public void creeVueBoutons() {
+        vueBoutons = new VueBoutons(this);
+        vueBoutons.afficher();
     }
     
 }
