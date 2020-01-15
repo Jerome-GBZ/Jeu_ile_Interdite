@@ -65,6 +65,9 @@ public class Controleur implements Observateur<Message> {
 
                 case RECUPERER_TRESOR:
                     ihm.recupTresor(msg.aventurier);
+                    
+                case CHOISIR_CARTE:
+                    
 
                 default:
                     if (Parameters.LOGS) {
