@@ -109,6 +109,22 @@ public class Aventurier {
         t.assecher();
     }
     
+    public void donnerCarte(){
+        ArrayList<Aventurier> aventurierDispos = new ArrayList<>();
+        for (Aventurier a : ii.getAventuriers()){
+            if (a.getCartes()[4] == null) {
+                aventurierDispos.add(a);
+            }
+        }
+        aventurierDispos.remove(this);
+        ii.aventuriersDispos(TypeAction.CHOISIR_CJOUEUR, this, aventurierDispos);
+    }
+    
+    public void donnerCarte(Aventurier a , CJoueur c){
+        a.addCarteJoueur(c);
+        this.removeCarteJoueur(c);
+        c.setA(a);
+    }
     
     public void poserPionInit() {
         ii.placerPionInit(this);
