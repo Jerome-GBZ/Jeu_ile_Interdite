@@ -35,6 +35,7 @@ public class VueMainJoueur {
         window.setContentPane(new PanelFond(urlImgs, 952, 130));
         window.setSize(952, 130);
         window.setLocation(0,780);
+        window.setAlwaysOnTop(true);
         
         
    //  window.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
