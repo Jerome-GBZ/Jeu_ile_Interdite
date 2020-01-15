@@ -67,11 +67,11 @@ public class VueBoutons {
     }
     
     public void  initialiserBouton(){
-        this.btnAller = creerBouton(1, "Aller", Utils.Commandes.BOUGER) ;
+        this.btnAller = creerBouton(1, "Déplacer", Utils.Commandes.BOUGER) ;
         btnAller.setBorderPainted(false);
         centrePanel.add(btnAller);
 
-        this.btnAssecher = creerBouton(2, "Sécher", Utils.Commandes.ASSECHER) ;
+        this.btnAssecher = creerBouton(2, "Assécher", Utils.Commandes.ASSECHER) ;
         btnAssecher.setBorderPainted(false);
         centrePanel.add(btnAssecher);
 
@@ -79,7 +79,7 @@ public class VueBoutons {
         btnDonner.setBorderPainted(false);
         centrePanel.add(btnDonner);
         
-        this.btnPrendre = creerBouton(4, "Prendre", Utils.Commandes.RECUPERER_TRESOR) ;
+        this.btnPrendre = creerBouton(4, "Récupérer", Utils.Commandes.RECUPERER_TRESOR) ;
         btnPrendre.setBorderPainted(false);
         centrePanel.add(btnPrendre);
 
@@ -87,7 +87,7 @@ public class VueBoutons {
         btnDeplacer.setBorderPainted(false);
         centrePanel.add(btnDeplacer);
         
-        this.btnTerminer = creerBouton(6, "Finir", Utils.Commandes.TERMINER) ;
+        this.btnTerminer = creerBouton(6, "Terminer", Utils.Commandes.TERMINER) ;
         btnTerminer.setBorderPainted(false);
         centrePanel.add(btnTerminer);
     }

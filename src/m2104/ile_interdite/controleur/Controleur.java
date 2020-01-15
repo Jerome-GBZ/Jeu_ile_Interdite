@@ -25,40 +25,41 @@ public class Controleur implements Observateur<Message> {
         if (Parameters.LOGS) {
             System.out.println("Controleur.traiterMessage" + msg);
         }
-    try{
-        switch (msg.type) {
-            case DEMARRER:
-                ileInterdite = new IleInterdite(this, msg.nivEau, msg.nomJoueurs);
-                // ihm.creePlateau(ileInterdite.getGrille());
-                // ihm.creeHeader(ileInterdite.getAventuriers());
-               //  ihm.creeVueTresor(ileInterdite);
-                ihm.creeVueBoutons();
+        try {
+            switch (msg.type) {
+                case DEMARRER:
+                    ileInterdite = new IleInterdite(this, msg.nivEau, msg.nomJoueurs);
+                    ihm.creePlateau(ileInterdite.getGrille());
+                    ihm.creeHeader(ileInterdite.getAventuriers());
+                    ihm.creeVueTresor(ileInterdite);
+                    ihm.creeVueBoutons();
+
+                    break;
                 
-                break;
-                 
-            /*case VALIDER_JOUEURS:
-                assert msg.hasNbJoueurs();
-                String[] nomAventuriers =
-                        this.ileInterdite.inscrireJoueurs(msg.nomJoueurs);
-                this.ihm.creerVuesAventuriers(nomAventuriers);
-                break;*/
-                
-            case RECUPERER_TRESOR:
-                ihm.recupTresor(msg.aventurier);
-                
-            default:
-                if (Parameters.LOGS) {
-                    System.err.println("Action interdite : " + msg.getCommande().toString());
-                }
-    
+                case BOUGER:
+                    
+                    break;
+                    
+                case ASSECHER:
+                    
+                    break;
+                    
+                case RECUPERER_TRESOR:
+                    ihm.recupTresor(msg.aventurier);
+
+                default:
+                    if (Parameters.LOGS) {
+                        System.err.println("Action interdite : " + msg.getCommande().toString());
+                    }
+
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
         }
-    }
-    catch(Exception e) {
-       System.out.println(e);
-    }    
-    finally {}
 
     }
+
     //getters et setters
     public IHM getIhm() {
         return ihm;
