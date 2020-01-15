@@ -29,6 +29,8 @@ public class IleInterdite extends Observable<Message> {
     private int nbJoueurs;
     private boolean fini = false;
     private boolean gagne = false;
+    private Aventurier joueurCourant;
+    private int nbactions ;
 
     public IleInterdite(Observateur<Message> observateur, int niv, String[] noms) {
         this.addObservateur(observateur);
@@ -151,6 +153,8 @@ public class IleInterdite extends Observable<Message> {
             }
 
         }
+        joueurCourant = aventuriers.get(0);
+        nbactions = 0;
         this.nbJoueurs = noms.length;
         return noms;
         
@@ -528,13 +532,33 @@ public class IleInterdite extends Observable<Message> {
         }
     }
 
-    public void Jouer(int nb_action) {
-        
-        
+   /* public void Jouer() {
         
         Message m = new Message();
         
-        notifierObservateurs(m);
+        if (nbactions<3){ 
+        m.aventurier = joueurCourant;
+        }
+        else {
+            
+        }
+         notifierObservateurs(m);
+    }*/
+    
+    public void seDeplacer(){
+        
+    }
+    
+    public void assecher(){
+        
+    }
+    
+    public void donnerCarte(){
+        
+    }
+    
+    public void terminerTour(){
+    
     }
     
     //getters et setters
@@ -585,6 +609,14 @@ public class IleInterdite extends Observable<Message> {
     
     public ArrayList<Tresor> getTresorsRecup(){
         return tresorsRecup;
+    }
+    
+    public int getNbActions(){
+        return nbactions;
+    }
+    
+    public void setNbActions(int n){
+        nbactions = n;
     }
 }
 
