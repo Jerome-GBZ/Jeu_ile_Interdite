@@ -91,4 +91,8 @@ public class IHM extends Observable<Message> {
         vueMainJoueur.afficher();
     }
     
+    public void afficheTuilesDispos(ArrayList<Tuile> tDispos) {
+        
+    }
+    
 }
