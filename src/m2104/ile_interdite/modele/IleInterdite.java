@@ -483,7 +483,12 @@ public class IleInterdite extends Observable<Message> {
         }
     }
     
-    
+    public boolean PartieFinie() {
+        boolean etat = false;
+        if (tresors[0] == null && tresors[1] == null && tresors[2] == null && tresors[3] == null){
+            if ()
+        }
+    }
     
 
     //getters et setters
