@@ -78,7 +78,7 @@ public class IleInterdite extends Observable<Message> {
         nbJoueurs = noms.length;
         
         //distribution carte joueurs
-        distribuerCartesJoueur();
+        // distribuerCartesJoueur();
         
         //pioche des cartes inondations
         piocherCarteInondation();
