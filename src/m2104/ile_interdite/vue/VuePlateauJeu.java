@@ -33,6 +33,7 @@ public class VuePlateauJeu extends JPanel {
         fenetre = new JFrame();
         fenetre.setContentPane(new PanelFond(urlImgs, 800, 700));
         fenetre.setSize(800, 700);
+        fenetre.setLocation(0, 124);
         fenetre.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         fenetre.setUndecorated(Parameters.UNDECORATED);
         fenetre.setResizable(Parameters.RESIZABLE);
@@ -69,6 +70,8 @@ public class VuePlateauJeu extends JPanel {
                     JPanel centrePionP = dessinerPion(arrayTuiles.get(i).getAventuriers().get(0));
                     btn.add(centrePionP);
                 }
+                
+                
 
                 btn.setPreferredSize(new Dimension(85, 85));
                 btn.setOpaque(false);
@@ -77,6 +80,51 @@ public class VuePlateauJeu extends JPanel {
                 centrePanel.add(btn);
             }
         }
+    }
+    
+    public void actualiserPlateauJeu(ArrayList<Tuile> tDispos, Grille g) {
+        centrePanel.removeAll();
+        centrePanel.validate();
+        JButton btn = new JButton();
+        Image imgTuile;
+        String nomTuile;
+
+        for (int i = 0; i < 36; i++) {
+
+            if ((i < 2) || (i > 3 && i < 7) || (i == 11) || (i == 24) || (i > 28 && i < 32) || (i > 33)) {
+                JLabel label = new JLabel("", SwingConstants.CENTER);
+                centrePanel.add(label);
+            } else {
+                // redimentionne la tuile
+                nomTuile = arrayTuiles.get(i).getNomTuile();
+
+                imgTuile = Toolkit.getDefaultToolkit().getImage("Images/tuiles/" + nomTuile + ".png").getScaledInstance(120, 100, 120);
+                btn = new JButton(new ImageIcon(imgTuile));
+                
+                if (tDispos.contains(arrayTuiles.get(i))) {
+                    System.out.println("if");
+                } else {
+                    System.out.println("else");
+                    btn.setEnabled(false);
+                }
+
+                if (!arrayTuiles.get(i).getAventuriers().isEmpty()) {
+                    JPanel centrePionP = dessinerPion(arrayTuiles.get(i).getAventuriers().get(0));
+                    btn.add(centrePionP);
+                    System.out.println(arrayTuiles.get(i).getAventuriers().get(0).getPion());
+                }
+                
+                
+
+                btn.setPreferredSize(new Dimension(85, 85));
+                btn.setOpaque(false);
+                btn.setContentAreaFilled(false);
+                btn.setBorderPainted(false);
+                centrePanel.add(btn);
+            }
+        }
+        centrePanel.revalidate();
+        centrePanel.updateUI();
     }
     
     public JPanel dessinerPion(Aventurier a) {
