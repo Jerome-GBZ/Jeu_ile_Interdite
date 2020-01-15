@@ -11,16 +11,18 @@ package m2104.ile_interdite.util;
  */
 public enum TypeAction {
     DEMARRER,
-    BOUGER,
+    JOUER,
+    // Action
+    DEPLACER,
     ASSECHER,
     DONNER,
     RECUPERER_TRESOR,
+    BOUGER,
     TERMINER,
+    // pas encore traiter
     RECEVOIR,
     CHOISIR_CARTE,
     CHOISIR_TUILE,
     INITIALISER,
     DEFAUSSER,
-    VALIDER_JOUEURS,
-    DEPLACER
 }

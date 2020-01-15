@@ -53,15 +53,6 @@ public class Message implements Serializable {
 
     /**
      *
-     * @param nbJoueurs
-     * @return un nouveau {@link #Message} pour la commande {@link m2104.ile_interdite.util.Utils.Commandes#VALIDER_JOUEURS}
-     */
-    public static Message validerJoueurs(int nbJoueurs) {
-        return new Message(TypeAction.VALIDER_JOUEURS, null, null, null, null, nbJoueurs);
-    }
-
-    /**
-     *
      * @param idAventurier
      * @return un nouveau {@link #Message} pour la commande {@link m2104.ile_interdite.util.Utils.Commandes#BOUGER}
      */

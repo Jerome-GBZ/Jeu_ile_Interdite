@@ -33,17 +33,25 @@ public class Controleur implements Observateur<Message> {
                     ihm.creeHeader(ileInterdite.getAventuriers());
                     ihm.creeVueTresor(ileInterdite);
                     ihm.creeVueBoutons();
+                    ihm.creeVueNiveau(msg.nivEau);
+                    break;
 
+                case DEPLACER:
+                    ileInterdite.seDeplacer();
                     break;
-                
-                case BOUGER:
-                    
-                    break;
-                    
+
                 case ASSECHER:
-                    
+                    ileInterdite.assecher();
                     break;
-                    
+
+                case DONNER:
+                    ileInterdite.donnerCarte();
+                    break;
+
+                case TERMINER:
+                    ileInterdite.terminerTour();
+                    break;
+
                 case RECUPERER_TRESOR:
                     ihm.recupTresor(msg.aventurier);
 
