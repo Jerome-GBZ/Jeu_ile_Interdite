@@ -33,7 +33,7 @@ public class Controleur implements Observateur<Message> {
                     ihm.creeHeader(ileInterdite.getAventuriers());
                     ihm.creeVueTresor(ileInterdite);
                     ihm.creeVueBoutons();
-                    
+                    ihm.creeVueNiveau(msg.nivEau);
                     break;
                 
                 case BOUGER:
