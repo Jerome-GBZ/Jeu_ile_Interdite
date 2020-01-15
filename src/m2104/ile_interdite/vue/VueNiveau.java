@@ -36,7 +36,7 @@ public class VueNiveau {
         window.setResizable(Parameters.RESIZABLE);
         window.setSize(d);
         window.setContentPane(new PanelFond("Images/VueNiveau.png"));
-        window.setLocation(800,124);
+        window.setLocation(800,159);
         
         
         JPanel panelpincipal = new JPanel(new BorderLayout());
