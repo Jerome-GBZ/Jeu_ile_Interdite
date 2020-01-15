@@ -120,6 +120,12 @@ public class Aventurier {
         ii.aventuriersDispos(TypeAction.CHOISIR_CJOUEUR, this, aventurierDispos);
     }
     
+    public void donnerCarte(Aventurier a , CJoueur c){
+        a.addCarteJoueur(c);
+        this.removeCarteJoueur(c);
+        c.setA(a);
+    }
+    
     public void poserPionInit() {
         ii.placerPionInit(this);
     }
