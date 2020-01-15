@@ -100,10 +100,14 @@ public class VuePlateauJeu extends JPanel {
 
         for (int i = 0; i < 36; i++) {
 
-            if ((i < 2) || (i > 3 && i < 7) || (i == 11) || (i == 24) || (i > 28 && i < 32) || (i > 33)) {
+            if ((i < 2) || (i > 3 && i < 7) || (i == 11) || (i == 24) || (i == 29) || (i == 31) || (i > 33)) {
                 JLabel label = new JLabel("", SwingConstants.CENTER);
                 centrePanel.add(label);
-            } else {
+            } else if (i == 30) {
+                //dessinerPion(g.getIleInterdite().
+            }
+            
+            else {
                 // redimentionne la tuile
                 nomTuile = arrayTuiles.get(i).getNomTuile();
 
