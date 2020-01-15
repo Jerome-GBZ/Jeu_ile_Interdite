@@ -22,6 +22,7 @@ public enum TypeAction {
     // pas encore traiter
     RECEVOIR,
     CHOISIR_CARTE,
+    CHOISIR_CJOUEUR,
     CHOISIR_TUILE,
     INITIALISER,
     DEFAUSSER,
