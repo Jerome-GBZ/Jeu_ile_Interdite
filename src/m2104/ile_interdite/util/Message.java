@@ -17,6 +17,7 @@ public class Message implements Serializable {
     public Utils.Tresor tresor;
     public Integer idTuile;
     public Integer nbJoueurs;
+    public Tuile tuile;
     public ArrayList<Tuile> tuiles;
     public int[] coords = new int[2];
     public TypePion pion;

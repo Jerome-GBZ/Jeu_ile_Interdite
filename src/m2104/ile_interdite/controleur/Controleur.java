@@ -45,6 +45,11 @@ public class Controleur implements Observateur<Message> {
                 case CHOISIR_TUILE:
                     ihm.afficheTuilesDispos(msg.tuiles, ileInterdite.getGrille());
                     break;
+                    
+                case BOUGERPION:
+                    ileInterdite.seDeplacer(msg.tuile);
+                    ihm.actualiserPlateau(ileInterdite.getGrille());
+                    break;
 
                 case ASSECHER:
                     ileInterdite.assecher();

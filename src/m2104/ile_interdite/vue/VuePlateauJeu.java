@@ -6,6 +6,8 @@
 package m2104.ile_interdite.vue;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 import m2104.ile_interdite.modele.*;
 import m2104.ile_interdite.util.*;
@@ -21,19 +23,22 @@ public class VuePlateauJeu extends JPanel {
 
     private ArrayList<Aventurier> aventuriers;
     private ArrayList<Tuile> arrayTuiles = new ArrayList<>();
+    
+    private IHM ihm;
 
-    public VuePlateauJeu(Grille g) {
+    public VuePlateauJeu(Grille g, IHM ihm) {
         this.arrayTuiles = g.getArrayTuiles();
         this.aventuriers = g.getIleInterdite().getAventuriers();
         initialiserFenetreJeu();
         intitialiserPlateauJeu(g);
+        this.ihm = ihm;
     }
 
     public void initialiserFenetreJeu() {
         fenetre = new JFrame();
         fenetre.setContentPane(new PanelFond(urlImgs, 800, 700));
         fenetre.setSize(800, 700);
-        fenetre.setLocation(0, 124);
+        //fenetre.setLocation(0, 124);
         fenetre.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         fenetre.setUndecorated(Parameters.UNDECORATED);
         fenetre.setResizable(Parameters.RESIZABLE);
@@ -50,6 +55,8 @@ public class VuePlateauJeu extends JPanel {
     }
 
     public void intitialiserPlateauJeu(Grille g) {
+        centrePanel.removeAll();
+        centrePanel.validate();
         JButton btn = new JButton();
         Image imgTuile;
         String nomTuile;
@@ -80,6 +87,8 @@ public class VuePlateauJeu extends JPanel {
                 centrePanel.add(btn);
             }
         }
+        centrePanel.revalidate();
+        centrePanel.updateUI();
     }
     
     public void actualiserPlateauJeu(ArrayList<Tuile> tDispos, Grille g) {
@@ -102,9 +111,18 @@ public class VuePlateauJeu extends JPanel {
                 btn = new JButton(new ImageIcon(imgTuile));
                 
                 if (tDispos.contains(arrayTuiles.get(i))) {
-                    System.out.println("if");
+                    Tuile t = arrayTuiles.get(i);
+                    btn.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent arg0) {
+                            Message m = new Message();
+                            m.type = TypeAction.BOUGERPION;
+                            m.tuile = t;
+                            ihm.notifierObservateurs(m);
+                        }
+                    });
+                    
                 } else {
-                    System.out.println("else");
                     btn.setEnabled(false);
                 }
 
