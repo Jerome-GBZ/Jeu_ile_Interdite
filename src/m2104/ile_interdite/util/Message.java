@@ -25,6 +25,8 @@ public class Message implements Serializable {
     public int nombreJoueurs;
     public TypeAction type;
     public Aventurier aventurier;
+    public ArrayList<Aventurier> aventuriers;
+    public CJoueur[] cjoueurs;
     
 
     public Message() {

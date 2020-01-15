@@ -164,6 +164,16 @@ public class IleInterdite extends Observable<Message> {
         Message m = new Message();
         m.type = type;
         m.tuiles = tuiles;
+        m.aventurier = a;
+        notifierObservateurs(m);
+    }
+    
+    public void aventuriersDispos(TypeAction type, Aventurier a, ArrayList<Aventurier> aventuriers) {
+        Message m = new Message();
+        m.type = type;
+        m.aventuriers = aventuriers;
+        m.cjoueurs = a.getCartes();
+        m.aventurier = a;
         notifierObservateurs(m);
     }
 
@@ -561,12 +571,44 @@ public class IleInterdite extends Observable<Message> {
         joueurCourant.seDeplacer();
     }
     
+    public void seDeplacer(Tuile t){
+        joueurCourant.seDeplacer(t);
+    }
+    
     public void assecher(){
-        
+        if (nbactions < 3) {
+            nbactions++;
+        }
+        else {
+            if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size()-1){
+                joueurCourant = this.aventuriers.get(0);
+            }
+            else {
+                joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
+            }
+            setNbActions(0);
+        }
+        joueurCourant.assecher();
+    }
+    
+    public void assecher(Tuile t){
+        joueurCourant.assecher(t);
     }
     
     public void donnerCarte(){
-        
+        if (nbactions < 3) {
+            nbactions++;
+        }
+        else {
+            if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size()-1){
+                joueurCourant = this.aventuriers.get(0);
+            }
+            else {
+                joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
+            }
+            setNbActions(0);
+        }
+        joueurCourant.donnerCarte();
     }
     
     public void terminerTour(){
