@@ -30,19 +30,20 @@ public class Controleur implements Observateur<Message> {
                 case DEMARRER:
                     ileInterdite = new IleInterdite(this, msg.nivEau, msg.nomJoueurs);
                     ihm.creePlateau(ileInterdite.getGrille());
-                    ihm.creeHeader(ileInterdite.getAventuriers());
-                    ihm.creeVueTresor(ileInterdite);
+                    //ihm.creeHeader(ileInterdite.getAventuriers());
+                    //ihm.creeVueTresor(ileInterdite);
                     ihm.creeVueBoutons();
-                    ihm.creeVueNiveau(msg.nivEau);
-                    ihm.creeVueMainJoueur();
+                    //ihm.creeVueNiveau(msg.nivEau);
+                    //ihm.creeVueMainJoueur();
                     break;
 
-                case DEPLACER:
+                case BOUGER:
                     ileInterdite.seDeplacer();
+                    System.out.println("Bouge");
                     break;
                     
                 case CHOISIR_TUILE:
-                    ihm.afficheTuilesDispos(msg.tuiles);
+                    ihm.afficheTuilesDispos(msg.tuiles, ileInterdite.getGrille());
                     break;
 
                 case ASSECHER:
