@@ -16,6 +16,6 @@ public enum TypePion {
     JAUNE,
     ROUGE,
     VERT,
-    NOIR;
-    
+    NOIR,
+    Null;
 }
