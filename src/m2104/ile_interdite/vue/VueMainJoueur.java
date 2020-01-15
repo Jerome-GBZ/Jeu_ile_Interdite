@@ -11,42 +11,76 @@ import m2104.ile_interdite.modele.*;
 import m2104.ile_interdite.util.*;
 import java.util.ArrayList;
 
+/**
+ *
+ * @author dupuyrem 
+ */
+
 public class VueMainJoueur {
     private String urlImgs = "Images/VueMainJoueur.png";
-    private JFrame fenetre;
+    private JFrame window;
 
     private JPanel mainPanel;
-    private JPanel centrePanel;
+    private JPanel panelCentre;
     
     public VueMainJoueur() {
         initialiserFenetreMain();
-        initialisationCarteMain();
+        
     }
 
     public void initialiserFenetreMain() {
-        fenetre = new JFrame();
-        fenetre.setContentPane(new PanelFond(urlImgs, 952, 130));
-        fenetre.setSize(952, 130);
-        fenetre.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-        fenetre.setUndecorated(Parameters.UNDECORATED);
-        fenetre.setResizable(Parameters.RESIZABLE);
-
-        mainPanel = new JPanel(new BorderLayout());
-        mainPanel.setOpaque(false);
-
-        centrePanel = new JPanel(new GridLayout(6, 6));
-        centrePanel.setPreferredSize(new Dimension(952, 130));
-        centrePanel.setOpaque(false);
         
-        mainPanel.add(centrePanel, BorderLayout.CENTER);
-        fenetre.add(mainPanel);
+        // paramètres de la fenetre : 
+        window = new JFrame();
+        window.setContentPane(new PanelFond(urlImgs, 952, 130));
+        window.setSize(952, 130);
+        window.setLocation(0, 800);
+        
+        
+     window.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+     //   window.setUndecorated(Parameters.UNDECORATED);
+    //    window.setResizable(Parameters.RESIZABLE);
+
+        // Partie IHM : 
+        
+        // panel principal 
+        mainPanel = new JPanel(new GridLayout(1, 3));
+        mainPanel.setOpaque(false);
+        
+        // panel du centre : 
+        panelCentre = new JPanel(new GridLayout(1, 2));
+        panelCentre.setPreferredSize(new Dimension(952, 130));
+        panelCentre.setOpaque(false);
+        
+        mainPanel.add(panelCentre, BorderLayout.CENTER);
+        window.add(mainPanel);
+        
+        // boucle du GridLayout du centre :  
+        for(int i = 0; i < 2; i++ ){
+            
+            // récupération 
+            
+            
+            panelCentre.add(new JButton("bidule")); 
+            
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+        
     }
     
-    public void initialisationCarteMain(){
-    
-    }
-    
+   
     public void afficher() {
-        this.fenetre.setVisible(true);
+        this.window.setVisible(true);
     }
+    
+   
+    
+    
 }

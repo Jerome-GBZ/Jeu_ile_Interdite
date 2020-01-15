@@ -87,7 +87,7 @@ public class VueTresor extends JPanel {
     
     public void recuptresor(String nom){
         for(JButton j : listTresor){
-            if(j.getName() == nom){
+            if(j.getName().equals(nom)){
                 j.setEnabled(true);
             }
         }
