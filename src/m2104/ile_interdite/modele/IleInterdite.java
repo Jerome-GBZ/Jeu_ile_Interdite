@@ -546,7 +546,19 @@ public class IleInterdite extends Observable<Message> {
     }*/
     
     public void seDeplacer(){
-        
+        if (nbactions < 3) {
+            nbactions++;
+        }
+        else {
+            if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size()-1){
+                joueurCourant = this.aventuriers.get(0);
+            }
+            else {
+                joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
+            }
+            setNbActions(0);
+        }
+        joueurCourant.seDeplacer();
     }
     
     public void assecher(){
