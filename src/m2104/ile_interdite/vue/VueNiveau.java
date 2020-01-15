@@ -6,11 +6,15 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.Insets;
+import java.awt.LayoutManager;
+import java.awt.Toolkit;
 import java.util.HashMap;
 import java.util.Scanner;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,22 +25,38 @@ public class VueNiveau {
 
     private Integer niveau ;
     private final JFrame window ;
+    private JFrame windowprincipale;
     private final HashMap<Integer, JPanel> panelsGauches ;
-    private final Integer cellWidth = 50 ;
-    private final Integer cellHeight = (Parameters.HAUTEUR_AUTRES_VUES - 25 - (Parameters.UNDECORATED ? 0 : Parameters.DECORATION_HEIGHT)) / 10 ;
+    private final Integer cellWidth = 54 ; //50
+    private final Integer cellHeight = 275/10;//(Parameters.HAUTEUR_AUTRES_VUES - 25 - (Parameters.UNDECORATED ? 0 : Parameters.DECORATION_HEIGHT)) / 10 ;
     private final JPanel mainPanel;
 
     public VueNiveau(Integer niveauInitial) {
+        
+        Dimension d = new Dimension(151, 480);
+        window = new JFrame();
+        window.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+        window.setUndecorated(Parameters.UNDECORATED);
+        window.setResizable(Parameters.RESIZABLE);
+        window.setSize(d);
+        window.setContentPane(new PanelFond("Images/VueNiveau.png"));
+        
+        JPanel panelpincipal = new JPanel(new BorderLayout());
+        panelpincipal.setOpaque(false);
+        panelpincipal.setBackground(Color.red);
+        
+        
+        
         this.niveau = niveauInitial;
         panelsGauches = new HashMap<>();
 
-        window = new JFrame() ;
-        window.setSize(cellWidth*2+Parameters.SWING_BORDERS_HEIGHT, Parameters.HAUTEUR_AUTRES_VUES);
-        window.setLocation(30, Parameters.TOP_AUTRES_VUES);
-        window.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+        
+        //window.setSize(cellWidth*2+Parameters.SWING_BORDERS_HEIGHT, Parameters.HAUTEUR_AUTRES_VUES);
+        //window.setLocation(30, Parameters.TOP_AUTRES_VUES);
+        //window.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
 
-        window.setUndecorated(Parameters.UNDECORATED);
-        window.setResizable(Parameters.RESIZABLE);
+        //window.setUndecorated(Parameters.UNDECORATED);
+        //window.setResizable(Parameters.RESIZABLE);
 
         this.mainPanel = new JPanel() ;
         this.window.add(mainPanel);
@@ -119,8 +139,11 @@ public class VueNiveau {
             GridBagConstraints gbc = new GridBagConstraints();
             panelDroit.add(labelDroit, gbc);
         }
+        
+        
         panelsGauches.get(niveauInitial).setBackground(Color.YELLOW);
-        this.window.setVisible(true);
+        //this.window.setVisible(true);
+        window.setVisible(true);
     }
 
     public void setNiveau(Integer niveau) {
@@ -163,9 +186,9 @@ public class VueNiveau {
             case 2 :
                 return " normal" ;
             case 3 :
-                return " élite" ;
+                return " Ã©lite" ;
             case 4 :
-                return " légendaire" ;
+                return " lÃ©gendaire" ;
             case 10 :
                 return " mortel" ;
             default :
@@ -173,17 +196,17 @@ public class VueNiveau {
         }
     }
 
+   
     public static void main(String[] args) {
         VueNiveau vueNiveau = new VueNiveau(1);
 
         Scanner scanner = new Scanner(System.in);
+        
+        while(true){
+        System.out.println("Donne le niveau");
+        int i = scanner.nextInt();
+        vueNiveau.setNiveau(i);
 
-        System.out.println("Pour passer au niveau 5, appuyer sur entrée");
-        scanner.nextLine();
-        vueNiveau.setNiveau(5);
-
-        System.out.println("Pour passer au niveau 5, appuyer sur entrée");
-        scanner.nextLine();
-        vueNiveau.setNiveau(10);
+        }
     }
 }
