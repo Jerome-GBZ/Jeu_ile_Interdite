@@ -17,6 +17,8 @@ public class IHM extends Observable<Message> {
     private final VueInscriptionJoueurs vueInscription;
     private final HashMap<Integer, VueAventurier> vueAventuriers;
     private VuePlateauJeu vuePlateauJeu;
+    private VueTresor vuetresor;
+    private VueHeader vueHeader;
 
     public IHM(Observateur<Message> observateur) {
         this.addObservateur(observateur);
@@ -25,7 +27,7 @@ public class IHM extends Observable<Message> {
         this.afficheVueInscription();
     }
 
-    public void creerVuesAventuriers(String[] nomAventuriers) {
+    /*public void creerVuesAventuriers(String[] nomAventuriers) {
         // - le pouvoir est disponible dans le modèle
         String[] nomsJoueurs = this.vueInscription.getNomJoueurs();
         assert nomsJoueurs.length == nomAventuriers.length;
@@ -45,7 +47,7 @@ public class IHM extends Observable<Message> {
                     )
             );
         }
-    }
+    }*/
     
     public void afficheVueInscription(){
         this.vueInscription.afficher();
@@ -62,14 +64,15 @@ public class IHM extends Observable<Message> {
     }
     
     public void creeHeader(ArrayList<Aventurier> listA){
-        new VueHeader(listA);
+        vueHeader = new VueHeader(listA);
     }
     
     public void creeVueTresor(IleInterdite ile){
-        new VueTresor(ile);
+        vuetresor = new VueTresor(ile);
     }
     
-    
-    
+    public void recupTresor(Aventurier a){
+        vuetresor.recuptresor(a.getTuile().getTresor().getNomTresor());
+    }
     
 }
