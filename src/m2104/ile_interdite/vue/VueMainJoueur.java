@@ -75,7 +75,7 @@ public class VueMainJoueur {
                         carte = "SacsDeSable";
                         break;
                     case CTRESOR:
-                        
+
                         carte = carteJoueurs[i].getNomCarte();
                         break;
                     default:
@@ -88,8 +88,21 @@ public class VueMainJoueur {
                 cartePanel.setOpaque(false);
 
                 panelCentre.add(cartePanel);
+                // essayer denvoyer pour envoyer un message pour actualiser la vue 
+                // Message m = new Message();
+                // m.type = TypeAction.CHOISIR_CARTE;
+                // ihm.notifierObservateurs(m);
             }
         }
+    }
+
+    public void actualiserMain(Aventurier a) {
+        panelCentre.removeAll();
+        panelCentre.validate();
+        dessinerMain(a);
+        panelCentre.revalidate();
+        panelCentre.updateUI();
+
     }
 
     public void afficher() {

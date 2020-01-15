@@ -99,4 +99,7 @@ public class IHM extends Observable<Message> {
         vuePlateauJeu.intitialiserPlateauJeu(g);
     }
     
+    public void afficheCarteMain(Aventurier a){
+        vueMainJoueur.actualiserMain(a);
+    }
 }

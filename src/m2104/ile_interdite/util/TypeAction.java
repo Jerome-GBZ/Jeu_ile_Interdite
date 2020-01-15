@@ -21,12 +21,12 @@ public enum TypeAction {
     BOUGERPION,
     TERMINER,
     TERMINER_TOUR,
+    CHOISIR_TUILE,
     
     // pas encore traiter
     RECEVOIR,
     CHOISIR_CARTE,
     CHOISIR_CJOUEUR,
-    CHOISIR_TUILE,
     INITIALISER,
     DEFAUSSER,
 }

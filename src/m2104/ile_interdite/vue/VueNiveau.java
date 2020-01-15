@@ -194,7 +194,7 @@ public class VueNiveau {
         }
     }
 
-   
+   /*
     public static void main(String[] args) {
         VueNiveau vueNiveau = new VueNiveau(1);
 
@@ -207,4 +207,5 @@ public class VueNiveau {
 
         }
     }
+*/
 }

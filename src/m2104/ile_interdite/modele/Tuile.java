@@ -39,6 +39,7 @@ public class Tuile {
     }
 
     public Tuile(String nomTuile, Tresor tr) {
+        setEtat(TypeEtat.SEC);
         setNomTuile(nomTuile);
         setTresor(tr);
     }
