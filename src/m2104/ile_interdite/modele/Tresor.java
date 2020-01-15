@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package m2104.ile_interdite.modele;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,6 +14,7 @@ public class Tresor {
     
     private String nomTresor;
     private CTresor[] cartesT = new CTresor[5];
+    private ArrayList<Tuile> tuiles = new ArrayList<>();
     
     public Tresor(String nom, CTresor[] cartes) {
         nomTresor = nom;
@@ -40,5 +42,12 @@ public class Tresor {
         return cartesT;
     }
     
+    public ArrayList<Tuile> getTuiles(){
+        return tuiles;
+    }
+    
+    public void addTuiles(Tuile t){
+        tuiles.add(t);
+    }
     
 }
