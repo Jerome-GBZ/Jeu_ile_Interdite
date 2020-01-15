@@ -136,8 +136,7 @@ public class Tuile {
         return position;
     }
     
-    public void setPosition(int position) {
-        this.position = position;
+    public void setPosition(int pos) {
+        this.position = pos;
     }
-    
 }

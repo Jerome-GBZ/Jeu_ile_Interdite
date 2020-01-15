@@ -4,20 +4,23 @@
  * and open the template in the editor.
  */
 package m2104.ile_interdite.modele;
+
 import java.util.ArrayList;
 import m2104.ile_interdite.util.*;
+
 /**
  *
  * @author capelth
  */
 public class Grille {
-    
+
     private Tuile[][] tuiles;
-    private ArrayList<String> nomsTuiles = new ArrayList<>();
+    private ArrayList<Tuile> arrayTuiles = new ArrayList<>();
     private IleInterdite ileInterdite;
-    
-    public Grille(IleInterdite i, ArrayList<Tuile> tuiles){
+
+    public Grille(IleInterdite i, ArrayList<Tuile> tuiles) {
         this.tuiles = new Tuile[6][6];
+
         this.tuiles[0][2] = tuiles.get(0);
         tuiles.get(0).setPosition(2);
         this.tuiles[0][3] = tuiles.get(1);
@@ -66,64 +69,63 @@ public class Grille {
         tuiles.get(22).setPosition(32);
         this.tuiles[5][3] = tuiles.get(23);
         tuiles.get(23).setPosition(33);
-        
+
         ileInterdite = i;
-        
-        getNomTuiles();
+
+        initialiseArrayTuiles();
     }
-    
-    
-    public ArrayList<Tuile> tuileAutour(Tuile t){
+
+    public ArrayList<Tuile> tuileAutour(Tuile t) {
         ArrayList<Tuile> tuilesAutour = new ArrayList<>();
         int[] c = new int[2];
         c = this.getCoordonnee(t);
         int i = c[0];
         int j = c[1];
-        
-        if(i != 0 && tuiles[i-1][j] != null){
-            tuilesAutour.add(tuiles[i-1][j]);
+
+        if (i != 0 && tuiles[i - 1][j] != null) {
+            tuilesAutour.add(tuiles[i - 1][j]);
         }
-        if(i != 5 && tuiles[i+1][j] != null){
-            tuilesAutour.add(tuiles[i+1][j]);
+        if (i != 5 && tuiles[i + 1][j] != null) {
+            tuilesAutour.add(tuiles[i + 1][j]);
         }
-        if(j != 0 && tuiles[i][j-1] != null){
-            tuilesAutour.add(tuiles[i][j-1]);
+        if (j != 0 && tuiles[i][j - 1] != null) {
+            tuilesAutour.add(tuiles[i][j - 1]);
         }
-        if(j != 5 && tuiles[i][j+1] != null){
-            tuilesAutour.add(tuiles[i][j+1]);
+        if (j != 5 && tuiles[i][j + 1] != null) {
+            tuilesAutour.add(tuiles[i][j + 1]);
         }
         return tuilesAutour;
     }
-    
-    public ArrayList<Tuile> tuilesDispoDeplacer (Tuile t, Aventurier a){
+
+    public ArrayList<Tuile> tuilesDispoDeplacer(Tuile t, Aventurier a) {
         ArrayList<Tuile> tuilesDispo = tuileAutour(t);
         int[] c = new int[2];
         c = this.getCoordonnee(t);
         int i = c[0];
         int j = c[1];
-        if (a.getRole() == TypeRole.Explorateur){
-        if (i != 0 ) {
-            if (j != 0 && tuiles[i-1][j-1] != null) {
-                tuilesDispo.add(tuiles[i-1][j-1]);
+        if (a.getRole() == TypeRole.Explorateur) {
+            if (i != 0) {
+                if (j != 0 && tuiles[i - 1][j - 1] != null) {
+                    tuilesDispo.add(tuiles[i - 1][j - 1]);
+                }
+                if (j != 5 && tuiles[i - 1][j + 1] != null) {
+                    tuilesDispo.add(tuiles[i - 1][j + 1]);
+                }
             }
-            if (j != 5 && tuiles[i-1][j+1] != null) {
-                tuilesDispo.add(tuiles[i-1][j+1]);
+            if (i != 5) {
+                if (j != 0 && tuiles[i + 1][j - 1] != null) {
+                    tuilesDispo.add(tuiles[i + 1][j - 1]);
+                }
+                if (j != 5 && tuiles[i + 1][j + 1] != null) {
+                    tuilesDispo.add(tuiles[i + 1][j + 1]);
+                }
             }
         }
-        if (i != 5 ){
-          if (j != 0 && tuiles[i+1][j-1] != null) {
-                tuilesDispo.add(tuiles[i+1][j-1]);
-            }
-            if (j != 5 && tuiles[i+1][j+1] != null) {
-                tuilesDispo.add(tuiles[i+1][j+1]);
-            }  
-        }
-        }
-        if (a.getRole() == TypeRole.Pilote && a.getPouvoirUtilise() == false){
+        if (a.getRole() == TypeRole.Pilote && a.getPouvoirUtilise() == false) {
             tuilesDispo.clear();
-            for (int x = 0; x < tuiles.length;x++){
-                for (int y = 0; y < tuiles.length;y++){
-                    if (tuiles[x][y] != null){
+            for (int x = 0; x < tuiles.length; x++) {
+                for (int y = 0; y < tuiles.length; y++) {
+                    if (tuiles[x][y] != null) {
                         tuilesDispo.add(tuiles[x][y]);
                     }
                 }
@@ -132,78 +134,86 @@ public class Grille {
         if (a.getRole() == TypeRole.Plongeur) {
             for (Tuile tu : tuilesDispo) {
                 if (tu.getEtat() != TypeEtat.SEC) {
-                    for (Tuile tui : this.tuileAutour(tu)){
+                    for (Tuile tui : this.tuileAutour(tu)) {
                         tuilesDispo.add(tui);
                     }
                 }
             }
-        
+
         }
         for (Tuile tu : tuilesDispo) {
-            if (tu.getEtat() == TypeEtat.COULE){
+            if (tu.getEtat() == TypeEtat.COULE) {
                 tuilesDispo.remove(tu);
             }
         }
-               
+
         return tuilesDispo;
     }
-    
-    public int[] getCoordonnee(Tuile t){
+
+    public int[] getCoordonnee(Tuile t) {
         int[] c = new int[2];
         int i = 0;
         int j = 0;
-        while(tuiles[i][j] != t && i<tuiles.length){
-            j = 0;
-            while(tuiles[i][j] != t && j<tuiles[i].length){
-                j++;
+
+        while (i < 6) {
+
+            while (j < 6) {
+                if (tuiles[i][j] != null && tuiles[i][j].equals(t)) {
+                    c[0] = i;
+                    c[1] = j;
+                    break;
+                } else {
+                    j++;
+                }
             }
             i++;
+            j = 0;
         }
-        c[0] = i;
-        c[1] = j;
+       //  c[0] = i;
+       // c[1] = j;
         return c;
     }
-    
-    public ArrayList<Tuile> tuilesDisposAssecher(Tuile t, Aventurier a){
+
+    public ArrayList<Tuile> tuilesDisposAssecher(Tuile t, Aventurier a) {
         ArrayList<Tuile> tuilesDispo = tuileAutour(t);
         int[] c = new int[2];
         c = this.getCoordonnee(t);
         int i = c[0];
         int j = c[1];
-        if (a.getRole() == TypeRole.Explorateur){
-        if (i != 0 ) {
-            if (j != 0 && tuiles[i-1][j-1] != null) {
-                tuilesDispo.add(tuiles[i-1][j-1]);
+        if (a.getRole() == TypeRole.Explorateur) {
+            if (i != 0) {
+                if (j != 0 && tuiles[i - 1][j - 1] != null) {
+                    tuilesDispo.add(tuiles[i - 1][j - 1]);
+                }
+                if (j != 5 && tuiles[i - 1][j + 1] != null) {
+                    tuilesDispo.add(tuiles[i - 1][j + 1]);
+                }
             }
-            if (j != 5 && tuiles[i-1][j+1] != null) {
-                tuilesDispo.add(tuiles[i-1][j+1]);
+            if (i != 5) {
+                if (j != 0 && tuiles[i + 1][j - 1] != null) {
+                    tuilesDispo.add(tuiles[i + 1][j - 1]);
+                }
+                if (j != 5 && tuiles[i + 1][j + 1] != null) {
+                    tuilesDispo.add(tuiles[i + 1][j + 1]);
+                }
             }
-        }
-        if (i != 5 ){
-          if (j != 0 && tuiles[i+1][j-1] != null) {
-                tuilesDispo.add(tuiles[i+1][j-1]);
-            }
-            if (j != 5 && tuiles[i+1][j+1] != null) {
-                tuilesDispo.add(tuiles[i+1][j+1]);
-            }  
-        }
         }
         for (Tuile tu : tuilesDispo) {
-            if (tu.getEtat() != TypeEtat.INNONDE){
+            if (tu.getEtat() != TypeEtat.INNONDE) {
                 tuilesDispo.remove(tu);
             }
         }
         return tuilesDispo;
     }
-    
-    public void assecher(Tuile t){
+
+    public void assecher(Tuile t) {
         t.assecher();
     }
-    
-    public void innonde(CInondation ci){
+
+    public void innonde(CInondation ci) {
         ci.getTuile().inondé();
     }
-            
+
     /**
      * @return the tuiles
      */
@@ -217,31 +227,30 @@ public class Grille {
     public void setTuiles(Tuile[][] tuiles) {
         this.tuiles = tuiles;
     }
-    
-    public void getNomTuiles() {
-        ArrayList<String> nomTuiles = new ArrayList<>();
-        for (int i = 0 ; i < 6 ; i++){
-            for (int j = 0; j<6;j++){
-                if (tuiles[i][j] == null){
-                    nomTuiles.add(" ");
-                }
-                else{
-                nomTuiles.add(tuiles[i][j].getNomTuile());
+
+    public void initialiseArrayTuiles() {
+        ArrayList<Tuile> tuiles = new ArrayList<>();
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                if (this.tuiles[i][j] == null) {
+                    tuiles.add(new Tuile(""));
+                } else {
+                    tuiles.add(this.tuiles[i][j]);
                 }
             }
         }
-        this.nomsTuiles = nomTuiles;
+        this.arrayTuiles = tuiles;
     }
-    
-    public ArrayList<String> getListnomsTuiles(){
-        return nomsTuiles;
+
+    public ArrayList<Tuile> getArrayTuiles() {
+        return arrayTuiles;
     }
-    
+
     public IleInterdite getIleInterdite() {
         return ileInterdite;
     }
-    
+
     public void positionTuile() {
-        
+
     }
 }
