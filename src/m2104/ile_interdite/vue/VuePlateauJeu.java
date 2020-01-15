@@ -16,8 +16,8 @@ public class VuePlateauJeu extends JPanel {
     private String urlImgs = "Images/final_Jeu_n.png";
     private JFrame fenetre;
 
-    JPanel mainPanel;
-    JPanel centrePanel;
+    private JPanel mainPanel;
+    private JPanel centrePanel;
 
     private ArrayList<Aventurier> aventuriers;
     private ArrayList<Tuile> arrayTuiles = new ArrayList<>();
