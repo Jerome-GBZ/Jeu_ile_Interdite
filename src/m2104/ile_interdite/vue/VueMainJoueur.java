@@ -19,13 +19,13 @@ public class VueMainJoueur {
     private JPanel centrePanel;
     
     public VueMainJoueur() {
-
+        initialiserFenetreMain();
     }
 
-    public void initialiserFenetreJeu() {
+    public void initialiserFenetreMain() {
         fenetre = new JFrame();
-        fenetre.setContentPane(new PanelFond(urlImgs, 800, 700));
-        fenetre.setSize(800, 700);
+        fenetre.setContentPane(new PanelFond(urlImgs, 952, 150));
+        fenetre.setSize(952, 150);
         fenetre.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         fenetre.setUndecorated(Parameters.UNDECORATED);
         fenetre.setResizable(Parameters.RESIZABLE);
@@ -39,6 +39,10 @@ public class VueMainJoueur {
         
         mainPanel.add(centrePanel, BorderLayout.CENTER);
         fenetre.add(mainPanel);
+    }
+    
+    public void initialisationCarteMain(){
+    
     }
     
     public void afficher() {

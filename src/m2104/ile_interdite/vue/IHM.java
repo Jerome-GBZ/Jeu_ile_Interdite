@@ -20,6 +20,7 @@ public class IHM extends Observable<Message> {
     private VueHeader vueHeader;
     private VueBoutons vueBoutons;
     private VueNiveau vueNiveau;
+    private VueMainJoueur vueMainJoueur;
 
     public IHM(Observateur<Message> observateur) {
         this.addObservateur(observateur);
@@ -83,6 +84,11 @@ public class IHM extends Observable<Message> {
     
     public void creeVueNiveau(int i){
         vueNiveau = new VueNiveau(i);
+    }
+    
+    public void creeVueMainJoueur(){
+        vueMainJoueur = new VueMainJoueur();
+        vueMainJoueur.afficher();
     }
     
 }
