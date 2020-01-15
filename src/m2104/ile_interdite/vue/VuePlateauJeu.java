@@ -110,6 +110,7 @@ public class VuePlateauJeu extends JPanel {
             } else if (i == 30) {
                 JPanel pionCourant = dessinerPion(g.getIleInterdite().getJoueurCourant());
                 centrePanel.add(pionCourant);
+                
             }
             
             else {

@@ -60,17 +60,32 @@ public class VueMainJoueur {
     }
 
     public void dessinerMain(Aventurier a) {
+        String carte = "Pierre";
         JLabel cartePanel = new JLabel();
         Image cartesJImg;
         CJoueur[] carteJoueurs = a.getCartes();
 
         for (int i = 0; i < carteJoueurs.length; i++) {
             if (carteJoueurs[i] != null) {
-                String imgURL = "Images/cartes/" + carteJoueurs[i].toString() + ".png";
+                switch (carteJoueurs[i].getTypeCarte()) {
+                    case CHELICOPTERE:
+                        carte = "Helicoptere";
+                        break;
+                    case CSABLE:
+                        carte = "SacsDeSable";
+                        break;
+                    case CTRESOR:
+                        
+                        carte = carteJoueurs[i].getNomCarte();
+                        break;
+                    default:
+                        carte = "Pierre";
+                }
+                String imgURL = "Images/cartes/" + carte + ".png";
                 cartesJImg = Toolkit.getDefaultToolkit().getImage(imgURL).getScaledInstance(50, 80, 50);
                 cartePanel = new JLabel(new ImageIcon(cartesJImg));
                 cartePanel.setPreferredSize(new Dimension(50, 50));
-                cartePanel.setOpaque(true);
+                cartePanel.setOpaque(false);
 
                 panelCentre.add(cartePanel);
             }

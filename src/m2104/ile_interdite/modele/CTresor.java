@@ -16,9 +16,9 @@ public class CTresor extends CJoueur{
   
     
     
-    public CTresor(String nt, Aventurier aventurier){
-        super(aventurier,TypeCarte.CTRESOR);
-        this.nomTresor = nt;
+    public CTresor(Aventurier aventurier, String nomTresor){
+        super(aventurier,TypeCarte.CTRESOR, nomTresor);
+        // this.nomTresor = nt;
         tresor = null;
         
     }

@@ -13,9 +13,10 @@ public class CSable extends CJoueur {
     
     private String description;
     private String utilisation;
+    private String nomSable; 
     
-    public CSable(Aventurier a){
-        super(a,TypeCarte.CSABLE);
+    public CSable(Aventurier a, String nomSable){
+        super(a,TypeCarte.CSABLE, nomSable);
         this.description = "Asséchez n'importe quelle tuile de l'île.";
         this.utilisation = "*A jouer à tout moment *...";
     }

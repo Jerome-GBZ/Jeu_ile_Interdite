@@ -14,13 +14,16 @@ public class CJoueur {
     
     private Aventurier a;
     private TypeCarte typeCarte;
+    private String nomCarte;
     
-    public CJoueur(Aventurier av){
+    public CJoueur(Aventurier av, String nomCarte){
         setA(av);
+        this.nomCarte = nomCarte;
     }
-    public CJoueur(Aventurier av,TypeCarte t){
+    public CJoueur(Aventurier av,TypeCarte t, String nomCarte){
         setA(av);
         typeCarte = t;
+        this.nomCarte = nomCarte;
     }
     
     /**
@@ -39,6 +42,13 @@ public class CJoueur {
     
     public TypeCarte getTypeCarte(){
         return typeCarte;
+    }
+
+    /**
+     * @return the nomCarte
+     */
+    public String getNomCarte() {
+        return nomCarte;
     }
     
 }
