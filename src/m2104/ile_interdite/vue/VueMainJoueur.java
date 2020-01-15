@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 
 public class VueMainJoueur {
-    private String urlImgs = "Images/VueMainJoueur.png";
+    private String urlImgs = "Images/texture_footer.png";
     private JFrame window;
 
     private JPanel mainPanel;
@@ -30,35 +30,39 @@ public class VueMainJoueur {
 
     public void initialiserFenetreMain() {
         
-        // paramètres de la fenetre : 
+        /* paramètres de la fenetre : */
         window = new JFrame();
         window.setContentPane(new PanelFond(urlImgs, 952, 130));
         window.setSize(952, 130);
-        window.setLocation(0, 800);
+        window.setLocation(0,780);
+        window.setAlwaysOnTop(true);
         
         
-     window.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-     //   window.setUndecorated(Parameters.UNDECORATED);
-    //    window.setResizable(Parameters.RESIZABLE);
+   //  window.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+        window.setUndecorated(Parameters.UNDECORATED);
+        window.setResizable(Parameters.RESIZABLE);
 
-        // Partie IHM : 
+         /* Partie IHM : */
         
-        // panel principal 
-        mainPanel = new JPanel(new GridLayout(1, 3));
+         
+         /* panel principal : */
+        mainPanel = new JPanel(new BorderLayout());
         mainPanel.setOpaque(false);
         
         // panel du centre : 
-        panelCentre = new JPanel(new GridLayout(1, 2));
-        panelCentre.setPreferredSize(new Dimension(952, 130));
+        panelCentre = new JPanel(new GridLayout(1, 6));
+        panelCentre.setPreferredSize(new Dimension(952, 130)) ; 
         panelCentre.setOpaque(false);
         
         mainPanel.add(panelCentre, BorderLayout.CENTER);
         window.add(mainPanel);
         
-        // boucle du GridLayout du centre :  
-        for(int i = 0; i < 2; i++ ){
+         /* boucle du GridLayout du centre: */ 
+        for(int i = 0; i < 6; i++ ){
             
-            // récupération 
+             /* récupération des cartes du joueur courant : */
+            
+             
             
             
             panelCentre.add(new JButton("bidule")); 
