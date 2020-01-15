@@ -33,20 +33,23 @@ public class Controleur implements Observateur<Message> {
                 ihm.creeHeader(ileInterdite.getAventuriers());
                 ihm.creeVueTresor(ileInterdite);
                 
+                
                 break;
                  
-            case VALIDER_JOUEURS:
+            /*case VALIDER_JOUEURS:
                 assert msg.hasNbJoueurs();
                 String[] nomAventuriers =
                         this.ileInterdite.inscrireJoueurs(msg.nomJoueurs);
                 this.ihm.creerVuesAventuriers(nomAventuriers);
-                break;
+                break;*/
+                
+            case RECUPERER_TRESOR:
+                ihm.recupTresor(msg.aventurier);
+                
             default:
                 if (Parameters.LOGS) {
                     System.err.println("Action interdite : " + msg.getCommande().toString());
                 }
-                
-            case RECUPERER_TRESOR:
     
         }
     }
