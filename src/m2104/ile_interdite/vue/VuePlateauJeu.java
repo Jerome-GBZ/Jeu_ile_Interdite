@@ -108,8 +108,13 @@ public class VuePlateauJeu extends JPanel {
                 JLabel label = new JLabel("", SwingConstants.CENTER);
                 centrePanel.add(label);
             } else if (i == 30) {
-                JPanel pionCourant = dessinerPion(g.getIleInterdite().getJoueurCourant());
-                centrePanel.add(pionCourant);
+                /*if (g.getIleInterdite().getNbActions() == 2) {
+                    JPanel pionCourant = dessinerPion(aventuriers.get(aventuriers.indexOf(g.getIleInterdite().getJoueurCourant()) +1));
+                    centrePanel.add(pionCourant);
+                } else {*/
+                    JPanel pionCourant = dessinerPion(g.getIleInterdite().getJoueurCourant());
+                    centrePanel.add(pionCourant);
+                //}
                 
             }
             
@@ -141,8 +146,6 @@ public class VuePlateauJeu extends JPanel {
                     btn.add(centrePionP);
                     System.out.println(arrayTuiles.get(i).getAventuriers().get(0).getPion());
                 }
-                
-                
 
                 btn.setPreferredSize(new Dimension(85, 85));
                 btn.setOpaque(false);
