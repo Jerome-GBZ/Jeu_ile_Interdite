@@ -78,10 +78,10 @@ public class IleInterdite extends Observable<Message> {
         nbJoueurs = noms.length;
         
         //distribution carte joueurs
-        distribuerCartesJoueur();
+      //  distribuerCartesJoueur();
         
         //pioche des cartes inondations
-        piocherCarteInondation();
+      //  piocherCarteInondation();
     }
 
     public String[] inscrireJoueurs(String[] noms) {
@@ -160,7 +160,7 @@ public class IleInterdite extends Observable<Message> {
 
         }
         joueurCourant = aventuriers.get(0);
-        setNbActions(0);
+        setNbActions(-1);
         this.nbJoueurs = noms.length;
         return noms;
         
