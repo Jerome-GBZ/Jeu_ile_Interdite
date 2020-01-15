@@ -20,12 +20,14 @@ public class IleInterdite extends Observable<Message> {
     private int etapeEau;
     private ArrayList<Tuile> tuiles;
     private Tresor[] tresors = new Tresor[4];
+    private ArrayList<Tresor> tresorsRecup = new ArrayList<>();
     private ArrayList<CJoueur> cartesJoueurPioche = new ArrayList<>();
     private ArrayList<CJoueur> cartesJoueurDefausse = new ArrayList<CJoueur>();
     private ArrayList<CInondation> cartesInondationPioche = new ArrayList<>();
     private ArrayList<CInondation> cartesInondationDefausse = new ArrayList<>();
     private ArrayList<Aventurier> aventuriers = new ArrayList<>();
     private int nbJoueurs;
+    private boolean fini = false;
 
     public IleInterdite(Observateur<Message> observateur, int niv, String[] noms) {
         this.addObservateur(observateur);
@@ -38,7 +40,7 @@ public class IleInterdite extends Observable<Message> {
         CTresor[] c2 = creationCartesTresorStatue();
         CTresor[] c3 = creationCartesTresorCristal();
         CTresor[] c4 = creationCartesTresorCalice();
-        
+
         //création trésors
         creationTresors(c1, c2, c3, c4);
 
@@ -66,10 +68,10 @@ public class IleInterdite extends Observable<Message> {
 
         //création de la grille
         g = new Grille(this, tuiles);
-     
+
         //Inscription des joueurs
         inscrireJoueurs(noms);
-        
+
         nbJoueurs = noms.length;
     }
 
@@ -81,8 +83,6 @@ public class IleInterdite extends Observable<Message> {
             roles.add(TypeRole.values()[j]);
         }
         Collections.shuffle(roles);
-        
-
 
         for (int i = 0; i < noms.length; i++) {
             switch (roles.get(i)) {
@@ -172,6 +172,7 @@ public class IleInterdite extends Observable<Message> {
     }
 
     public void recupererTresor(Aventurier a) {
+        tresorsRecup.add(a.getTuile().getTresor());
         removeTresor(a.getTuile().getTresor());
         a.removeCarteT(a.getTuile().getTresor());
     }
@@ -278,8 +279,10 @@ public class IleInterdite extends Observable<Message> {
     public void creationTuiles() {
         //création tuiles avec ou sans trésor
         Tuile t1 = new Tuile("LaCarverneDuBrasier", tresors[2]); //
+        tresors[2].addTuiles(t1);
         Tuile t2 = new Tuile("Heliport"); //
         Tuile t3 = new Tuile("LaCarverneDesOmbres", tresors[2]); //
+        tresors[2].addTuiles(t3);
         Tuile t4 = new Tuile("LaForetPourpre"); // 
         Tuile t5 = new Tuile("LaPortedArgent"); //
         Tuile t6 = new Tuile("LaPorteDeBronze"); // 
@@ -288,17 +291,23 @@ public class IleInterdite extends Observable<Message> {
         Tuile t9 = new Tuile("LaPortedOr"); //
         Tuile t10 = new Tuile("LaTourDuGuet"); // 
         Tuile t11 = new Tuile("LeJardinDesHurlements", tresors[1]); //
+        tresors[1].addTuiles(t11);
         Tuile t12 = new Tuile("LeJardinDesMurmures", tresors[1]);
+        tresors[1].addTuiles(t12);
         Tuile t13 = new Tuile("LeLagonPerdu");
         Tuile t14 = new Tuile("LeMaraisBrumeux");
         Tuile t15 = new Tuile("LePalaisDeCorail", tresors[3]);
+        tresors[3].addTuiles(t15);
         Tuile t16 = new Tuile("LePalaisDesMarees", tresors[3]);
+        tresors[3].addTuiles(t16);
         Tuile t17 = new Tuile("LePontDesAbimes");
         Tuile t18 = new Tuile("LeRocherFantome");
         Tuile t19 = new Tuile("LesDunesDeLIllusion");
         Tuile t20 = new Tuile("LesFalaisesDeLOubli");
         Tuile t21 = new Tuile("LeTempleDeLaLune", tresors[0]);
+        tresors[0].addTuiles(t21);
         Tuile t22 = new Tuile("LeTempleDuSoleil", tresors[0]);
+        tresors[0].addTuiles(t22);
         Tuile t23 = new Tuile("LeValDuCrepuscule");
         Tuile t24 = new Tuile("Observatoire");
 
@@ -425,72 +434,96 @@ public class IleInterdite extends Observable<Message> {
                     i = i - 1;
                 } else {
                     a.getCartes()[i] = cartesJoueurPioche.get(j);
-                    cartesJoueurPioche.remove(cartesJoueurPioche.get(j));   
+                    cartesJoueurPioche.remove(cartesJoueurPioche.get(j));
                 }
                 j--;
                 i++;
             }
         }
     }
-    
-    public void piocherCarteInondation(){
-        
-        for (int i = 0; i< this.niveauEau;i++) {
+
+    public void piocherCarteInondation() {
+
+        for (int i = 0; i < this.niveauEau; i++) {
             if (cartesInondationPioche.size() > 0) {
-                cartesInondationPioche.get(cartesInondationPioche.size() -1).getTuile().inondé();
-                cartesInondationDefausse.add(cartesInondationPioche.get(cartesInondationPioche.size()-1));
-            }
-            else {
+                cartesInondationPioche.get(cartesInondationPioche.size() - 1).getTuile().inondé();
+                cartesInondationDefausse.add(cartesInondationPioche.get(cartesInondationPioche.size() - 1));
+            } else {
                 viderDefausseCartesInondation();
-                cartesInondationPioche.get(cartesInondationPioche.size() -1).getTuile().inondé();
-                cartesInondationDefausse.add(cartesInondationPioche.get(cartesInondationPioche.size()-1));
+                cartesInondationPioche.get(cartesInondationPioche.size() - 1).getTuile().inondé();
+                cartesInondationDefausse.add(cartesInondationPioche.get(cartesInondationPioche.size() - 1));
             }
         }
         cartesInondationDefausse.clear();
     }
-    
+
     public void viderDefausseCartesInondation() {
         Collections.shuffle(cartesInondationDefausse);
-        for (CInondation c : cartesInondationDefausse){
+        for (CInondation c : cartesInondationDefausse) {
             cartesInondationPioche.add(c);
             cartesInondationDefausse.remove(c);
         }
-    }    
-    
+    }
+
     public void piocherCarteJoueur(Aventurier a) {
-        for (int i =0 ; i< 2 ; i++) {
+        for (int i = 0; i < 2; i++) {
             if (cartesJoueurPioche.size() <= 0) {
                 viderDefausseCartesJoueur();
             }
-            if (cartesJoueurPioche.get(cartesJoueurPioche.size()-1).getTypeCarte() != TypeCarte.CMONTEEEAUX) {
-                a.addCarteJoueur(cartesJoueurPioche.get(cartesJoueurPioche.size()-1));
-                    if (a.getCartes()[5] != null ){
-                      Message  m = new Message() ;
-                       m.type = TypeAction.DEFAUSSER;
-                       m.aventurier = a;
-                       notifierObservateurs(m);
-                 }
-            }
-            else {
-                etapeEau = etapeEau +1;
+            if (cartesJoueurPioche.get(cartesJoueurPioche.size() - 1).getTypeCarte() != TypeCarte.CMONTEEEAUX) {
+                a.addCarteJoueur(cartesJoueurPioche.get(cartesJoueurPioche.size() - 1));
+                if (a.getCartes()[5] != null) {
+                    Message m = new Message();
+                    m.type = TypeAction.DEFAUSSER;
+                    m.aventurier = a;
+                    notifierObservateurs(m);
+                }
+            } else {
+                etapeEau = etapeEau + 1;
                 setNiveauEau(etapeEau);
                 viderDefausseCartesInondation();
                 piocherCarteInondation();
             }
-            cartesJoueurDefausse.add(cartesJoueurPioche.get(cartesJoueurPioche.size()-1));
-            cartesJoueurPioche.remove(cartesJoueurPioche.size()-1);
-                    
-           
+            cartesJoueurDefausse.add(cartesJoueurPioche.get(cartesJoueurPioche.size() - 1));
+            cartesJoueurPioche.remove(cartesJoueurPioche.size() - 1);
+
         }
     }
-    
+
     public boolean PartieFinie() {
-        boolean etat = false;
-        if (tresors[0] == null && tresors[1] == null && tresors[2] == null && tresors[3] == null){
-            if ()
+        return fini;
+    }
+
+    public void Inonde(Tuile t) {
+        t.inondé();
+        if (g.getTuile("Heliport").equals(t)) {
+            if (t.getEtat().equals(TypeEtat.COULE)) {
+                fini = true;
+            }
+        }
+        if (t.getTresor() != null) {
+            if (!tresorsRecup.contains(t.getTresor())) {
+                if (t.getEtat().equals(TypeEtat.COULE)) {
+                    int i =0;
+                    for (Tuile tu : t.getTresor().getTuiles()){
+                        if (tu.getEtat().equals(TypeEtat.COULE)){
+                            i++;
+                        }
+                    }
+                    fini = (i == 2);
+                }
+            }
+        }
+        if (!t.getAventuriers().isEmpty()) {
+            if (t.getEtat().equals(TypeEtat.COULE)){
+                for (Aventurier a : t.getAventuriers()){
+                    if (g.tuilesDispoDeplacer(t, a).isEmpty()){
+                        fini = true;
+                    }
+                }
+            }
         }
     }
-    
 
     //getters et setters
     public Grille getGrille() {
@@ -501,35 +534,32 @@ public class IleInterdite extends Observable<Message> {
         etapeEau = niv;
         if (etapeEau <= 2) {
             niveauEau = 2;
-        }
-        else if (etapeEau > 2 && etapeEau <= 5) {
+        } else if (etapeEau > 2 && etapeEau <= 5) {
             niveauEau = 3;
-        }
-        else if (etapeEau > 5 && etapeEau <=7) {
+        } else if (etapeEau > 5 && etapeEau <= 7) {
             niveauEau = 4;
-        }
-        else if (etapeEau>7 && etapeEau <= 9) {
+        } else if (etapeEau > 7 && etapeEau <= 9) {
             niveauEau = 5;
-        }
-        else {
+        } else {
             niveauEau = 6;
+            fini = true;
         }
-                
+
     }
 
     public int getNombreJoueurs() {
         return nbJoueurs;
     }
-    
+
     public void setNombreJoueurs(int nb) {
         nbJoueurs = nb;
     }
-    
+
     public ArrayList<Aventurier> getAventuriers() {
         return aventuriers;
     }
-    
-    public Tresor getTresor(int i ){
+
+    public Tresor getTresor(int i) {
         return tresors[i];
     }
 }

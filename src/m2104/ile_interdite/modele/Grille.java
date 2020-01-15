@@ -249,6 +249,17 @@ public class Grille {
     public IleInterdite getIleInterdite() {
         return ileInterdite;
     }
+    
+    public Tuile getTuile(String nomTuile){
+        Tuile tu = new Tuile();
+        this.initialiseArrayTuiles();
+        for (Tuile t : this.getArrayTuiles()){
+            if (nomTuile == t.getNomTuile()){
+                tu = t;
+            }
+        }
+        return tu;
+    }
 
     public void positionTuile() {
 
