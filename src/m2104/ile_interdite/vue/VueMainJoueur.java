@@ -32,8 +32,8 @@ public class VueMainJoueur {
         
         /* paramètres de la fenetre : */
         window = new JFrame();
-        window.setContentPane(new PanelFond(urlImgs, 952, 130));
-        window.setSize(952, 130);
+        window.setContentPane(new PanelFond(urlImgs, 952, 110));
+        window.setSize(952, 110);
         window.setLocation(0,780);
         window.setAlwaysOnTop(true);
         
@@ -51,7 +51,7 @@ public class VueMainJoueur {
         
         // panel du centre : 
         panelCentre = new JPanel(new GridLayout(1, 6));
-        panelCentre.setPreferredSize(new Dimension(952, 130)) ; 
+        panelCentre.setPreferredSize(new Dimension(952, 110)) ; 
         panelCentre.setOpaque(false);
         
         mainPanel.add(panelCentre, BorderLayout.CENTER);
