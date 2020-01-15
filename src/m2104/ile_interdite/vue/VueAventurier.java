@@ -15,6 +15,7 @@ import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.MatteBorder;
+import m2104.ile_interdite.modele.Aventurier;
 import m2104.ile_interdite.util.Parameters;
 import m2104.ile_interdite.util.Utils;
 import m2104.ile_interdite.util.Message;
@@ -22,7 +23,7 @@ import m2104.ile_interdite.util.Message;
 
 public class VueAventurier {
     private final IHM ihm;
-    protected final Integer idAventurier ;
+    protected final Aventurier idAventurier ;
     protected final String power ;
     protected final String nomAventurier ;
     protected final String nomJoueur ;
@@ -41,7 +42,7 @@ public class VueAventurier {
     private Boolean titreCliquable ;
     private boolean cartesActivees;
 
-    public VueAventurier(IHM ihm, Integer id, String nomJoueur, String nomAventurier, String power, Integer num, Integer nbAventuriers, Color couleurActive, Color couleurInactive){
+    public VueAventurier(IHM ihm, Aventurier id, String nomJoueur, String nomAventurier, String power, Integer num, Integer nbAventuriers, Color couleurActive, Color couleurInactive){
         this.ihm = ihm;
         this.idAventurier = id ;
         this.nomJoueur = nomJoueur ;
@@ -300,7 +301,7 @@ public class VueAventurier {
     }
 
     // ====================================================== Getters et Setters
-    public Integer getIdAventurier() {
+    public Aventurier getAventurier() {
         return this.idAventurier ;
     }
     

@@ -25,9 +25,10 @@ public class Message implements Serializable {
     public int nombreJoueurs;
     public TypeAction type;
     public Aventurier aventurier;
+    
 
     public Message() {
-        idAventurier = null;
+        aventurier = null;
         idCarte = null;
         tresor = null;
         idTuile = null;
@@ -36,9 +37,9 @@ public class Message implements Serializable {
         
     }
     
-    private Message(TypeAction type, Integer idAventurier, Integer idCarte, Utils.Tresor tresor, Integer idTuile, Integer nbJoueurs) {
+    private Message(TypeAction type, Aventurier aventurier, Integer idCarte, Utils.Tresor tresor, Integer idTuile, Integer nbJoueurs) {
         this.type = type;
-        this.idAventurier = idAventurier;
+        this.aventurier = aventurier;
         this.idCarte = idCarte;
         this.tresor = tresor;
         this.idTuile = idTuile;
@@ -64,8 +65,8 @@ public class Message implements Serializable {
      * @param idAventurier
      * @return un nouveau {@link #Message} pour la commande {@link m2104.ile_interdite.util.Utils.Commandes#BOUGER}
      */
-    public static Message bouger(int idAventurier) {
-        return new Message(TypeAction.BOUGER, idAventurier, null, null, null, null);
+    public static Message bouger(Aventurier aventurier) {
+        return new Message(TypeAction.BOUGER, aventurier, null, null, null, null);
     }
 
     /**
@@ -73,8 +74,8 @@ public class Message implements Serializable {
      * @param idAventurier
      * @return un nouveau {@link #Message} pour la commande {@link m2104.ile_interdite.util.Utils.Commandes#ASSECHER}
      */
-    public static Message assecher(int idAventurier) {
-        return new Message(TypeAction.ASSECHER, idAventurier, null, null, null, null);
+    public static Message assecher(Aventurier aventurier) {
+        return new Message(TypeAction.ASSECHER, aventurier, null, null, null, null);
     }
 
     /**
@@ -82,17 +83,17 @@ public class Message implements Serializable {
      * @param idAventurier
      * @return un nouveau {@link #Message} pour la commande {@link m2104.ile_interdite.util.Utils.Commandes#DONNER}
      */
-    public static Message donner(int idAventurier) {
-        return new Message(TypeAction.DONNER, idAventurier, null, null, null, null);
+    public static Message donner(Aventurier aventurier) {
+        return new Message(TypeAction.DONNER, aventurier, null, null, null, null);
     }
 
     /**
      *
-     * @param idAventurier
+     * @param aventurier
      * @return un nouveau {@link #Message} pour la commande {@link m2104.ile_interdite.util.Utils.Commandes#RECUPERER_TRESOR}
      */
-    public static Message recupererTresor(int idAventurier) {
-        return new Message(TypeAction.RECUPERER_TRESOR, idAventurier, null, null, null, null);
+    public static Message recupererTresor(Aventurier aventurier) {
+        return new Message(TypeAction.RECUPERER_TRESOR, aventurier, null, null, null, null);
     }
 
     /**
@@ -100,8 +101,8 @@ public class Message implements Serializable {
      * @param idAventurier
      * @return un nouveau {@link #Message} pour la commande {@link m2104.ile_interdite.util.Utils.Commandes#TERMINER}
      */
-    public static Message terminer(int idAventurier) {
-        return new Message(TypeAction.TERMINER, idAventurier, null, null, null, null);
+    public static Message terminer(Aventurier aventurier) {
+        return new Message(TypeAction.TERMINER, aventurier, null, null, null, null);
     }
 
     /**
@@ -109,8 +110,8 @@ public class Message implements Serializable {
      * @param idAventurier
      * @return un nouveau {@link #Message} pour la commande {@link m2104.ile_interdite.util.Utils.Commandes#RECEVOIR}
      */
-    public static Message recevoir(int idAventurier) {
-        return new Message(TypeAction.RECEVOIR, idAventurier, null, null, null, null);
+    public static Message recevoir(Aventurier aventurier) {
+        return new Message(TypeAction.RECEVOIR, aventurier, null, null, null, null);
     }
 
     /**
@@ -134,8 +135,8 @@ public class Message implements Serializable {
      * @param idAventurier
      * @return un nouveau {@link #Message} pour la commande {@link m2104.ile_interdite.util.Utils.Commandes#DEPLACER}
      */
-    public static Message deplacer(int idAventurier) {
-        return new Message(TypeAction.DEPLACER, idAventurier, null, null, null, null);
+    public static Message deplacer(Aventurier aventurier) {
+        return new Message(TypeAction.DEPLACER, aventurier, null, null, null, null);
     }
 
     /**
