@@ -34,7 +34,7 @@ public class Controleur implements Observateur<Message> {
                     ihm.creeVueNiveau(msg.nivEau);
                     ihm.creeVueBoutons();
                     ihm.creeVueTresor(ileInterdite);
-                    ihm.creeVueMainJoueur();
+                    ihm.creeVueMainJoueur(ileInterdite.getGrille());
                     break;
 
                 case BOUGER:
