@@ -20,19 +20,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import m2104.ile_interdite.util.Message;
-
 import javax.swing.ImageIcon;
-import m2104.ile_interdite.controleur.Controleur;
-
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import patterns.observateur.Observateur;
-import patterns.observateur.Observable;
-import javax.swing.BorderFactory;
-import javax.swing.SwingConstants;
 import m2104.ile_interdite.util.TypeAction;
 
 /**

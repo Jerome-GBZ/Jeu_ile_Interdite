@@ -6,11 +6,6 @@
 package m2104.ile_interdite.vue;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import m2104.ile_interdite.modele.*;
 import m2104.ile_interdite.util.*;
@@ -83,28 +78,6 @@ public class VuePlateauJeu extends JPanel {
             }
         }
     }
-
-    /*
-    public int calculeCoordonneeTuile(Aventurier a, Grille g) {
-        int x, y, c = 0;
-
-        Tuile tuile;
-        tuile = a.getTuile();
-
-        x = g.getCoordonnee(tuile)[0];
-        System.out.println("x =  " + x);
-        y = g.getCoordonnee(tuile)[1];
-        System.out.println("y =  " + y);
-        System.out.println("Sur la tuile : " + a.getTuile().getNomTuile());
-        System.out.println("on doit placer l'aventurier = " + a.getRole().name());
-
-        // calcule numéro de la case pour 1 aventurier
-        c = (y + 1) + (x * 6);
-        System.out.println("le numero de la case est = " + c + "\n");
-
-        return c;
-    }
-     */
     
     public JPanel dessinerPion(Aventurier a) {
         JPanel centrePionsPanel;
@@ -131,41 +104,4 @@ public class VuePlateauJeu extends JPanel {
     public void afficher() {
         this.fenetre.setVisible(true);
     }
-    
-    /*
-    public JLabel pion(ArrayList<Aventurier> aventuriers, Grille g) {
-        int x = 0;
-        int y = 0;
-        JLabel pionLabel = new JLabel("ERREUR");
-
-        for (Aventurier a : aventuriers) {
-
-            TypePion pion = a.getPion();
-            Tuile tuile = a.getTuile();
-
-            String imgURL = "Images/pions/" + a.getPion() + ".png";
-
-            Image imgPion;
-            imgPion = Toolkit.getDefaultToolkit().getImage(imgURL).getScaledInstance(50, 80, 50);
-            pionLabel = new JLabel(new ImageIcon(imgPion));
-            pionLabel.setPreferredSize(new Dimension(50, 50));
-            pionLabel.setOpaque(false);
-
-            x = g.getCoordonnee(tuile)[0];
-            System.out.println("x =  " + x);
-            y = g.getCoordonnee(tuile)[1];
-            System.out.println("y =  " + y);
-
-            for (int i=0; i<6; i++) {
-                for (int j=0; j<6; j++) {
-                    if (i==x && j==y) {
-                        
-                        
-                    }
-                }
-            }
-        }
-        return pionLabel;
-    } 
-     */
 }

@@ -18,12 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import javax.swing.border.LineBorder;
 import m2104.ile_interdite.modele.Aventurier;
-import m2104.ile_interdite.modele.IleInterdite;
-import m2104.ile_interdite.util.TypePion;
-import m2104.ile_interdite.util.TypeRole;
-import patterns.observateur.Observateur;
 
 /**
  *

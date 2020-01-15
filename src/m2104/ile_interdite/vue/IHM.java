@@ -1,6 +1,5 @@
 package m2104.ile_interdite.vue;
 
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 import m2104.ile_interdite.modele.*;

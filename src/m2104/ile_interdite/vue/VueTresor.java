@@ -6,19 +6,10 @@
 package m2104.ile_interdite.vue;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import m2104.ile_interdite.modele.*;
-import m2104.ile_interdite.util.Parameters;
-import m2104.ile_interdite.util.TypeRole;
 import java.util.ArrayList;
 import javax.swing.JPanel;
-import m2104.ile_interdite.util.Message;
-import m2104.ile_interdite.util.TypeAction;
 
 /**
  *
