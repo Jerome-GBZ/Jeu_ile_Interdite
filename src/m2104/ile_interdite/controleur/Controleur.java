@@ -30,8 +30,8 @@ public class Controleur implements Observateur<Message> {
             case DEMARRER:
                 ileInterdite = new IleInterdite(this, msg.nivEau, msg.nomJoueurs);
                 ihm.creePlateau(ileInterdite.getGrille());
-               // ihm.creeHeader(ileInterdite.getAventuriers());
-               // ihm.creeVueTresor(ileInterdite);
+                ihm.creeHeader(ileInterdite.getAventuriers());
+                ihm.creeVueTresor(ileInterdite);
                 
                 break;
                  

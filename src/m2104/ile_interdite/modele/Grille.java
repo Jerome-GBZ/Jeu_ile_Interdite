@@ -15,7 +15,7 @@ import m2104.ile_interdite.util.*;
 public class Grille {
 
     private Tuile[][] tuiles;
-    private ArrayList<String> nomsTuiles = new ArrayList<>();
+    private ArrayList<Tuile> arrayTuiles = new ArrayList<>();
     private IleInterdite ileInterdite;
 
     public Grille(IleInterdite i, ArrayList<Tuile> tuiles) {
@@ -72,7 +72,7 @@ public class Grille {
 
         ileInterdite = i;
 
-        getNomTuiles();
+        initialiseArrayTuiles();
     }
 
     public ArrayList<Tuile> tuileAutour(Tuile t) {
@@ -228,22 +228,22 @@ public class Grille {
         this.tuiles = tuiles;
     }
 
-    public void getNomTuiles() {
-        ArrayList<String> nomTuiles = new ArrayList<>();
+    public void initialiseArrayTuiles() {
+        ArrayList<Tuile> tuiles = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 6; j++) {
-                if (tuiles[i][j] == null) {
-                    nomTuiles.add(" ");
+                if (this.tuiles[i][j] == null) {
+                    tuiles.add(new Tuile(""));
                 } else {
-                    nomTuiles.add(tuiles[i][j].getNomTuile());
+                    tuiles.add(this.tuiles[i][j]);
                 }
             }
         }
-        this.nomsTuiles = nomTuiles;
+        this.arrayTuiles = tuiles;
     }
 
-    public ArrayList<String> getListnomsTuiles() {
-        return nomsTuiles;
+    public ArrayList<Tuile> getArrayTuiles() {
+        return arrayTuiles;
     }
 
     public IleInterdite getIleInterdite() {

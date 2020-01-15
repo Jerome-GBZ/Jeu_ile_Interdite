@@ -23,18 +23,15 @@ public class VuePlateauJeu extends JPanel {
 
     JPanel mainPanel;
     JPanel centrePanel;
-    JPanel centrePionsPanel;
+
     private ArrayList<Aventurier> aventuriers;
-    private ArrayList<Tuile> ArrTuiles = new ArrayList<>();
-    private ArrayList<String> nomTuiles = new ArrayList<>();
+    private ArrayList<Tuile> arrayTuiles = new ArrayList<>();
 
     public VuePlateauJeu(Grille g) {
-
-        this.nomTuiles = g.getListnomsTuiles();
+        this.arrayTuiles = g.getArrayTuiles();
         this.aventuriers = g.getIleInterdite().getAventuriers();
         initialiserFenetreJeu();
         intitialiserPlateauJeu(g);
-        
     }
 
     public void initialiserFenetreJeu() {
@@ -42,18 +39,16 @@ public class VuePlateauJeu extends JPanel {
         fenetre.setContentPane(new PanelFond(urlImgs, 800, 700));
         fenetre.setSize(800, 700);
         fenetre.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-        // fenetre.setUndecorated(Parameters.UNDECORATED);
-        // fenetre.setResizable(Parameters.RESIZABLE);
+        fenetre.setUndecorated(Parameters.UNDECORATED);
+        fenetre.setResizable(Parameters.RESIZABLE);
 
         mainPanel = new JPanel(new BorderLayout());
         mainPanel.setOpaque(false);
-        
+
         centrePanel = new JPanel(new GridLayout(6, 6));
         centrePanel.setPreferredSize(new Dimension(750, 650));
         centrePanel.setOpaque(false);
-        
-        centrePionsPanel = new JPanel(new BorderLayout());
-        
+
         mainPanel.add(centrePanel, BorderLayout.CENTER);
         fenetre.add(mainPanel);
     }
@@ -62,7 +57,7 @@ public class VuePlateauJeu extends JPanel {
         JButton btn = new JButton();
         Image imgTuile;
         String nomTuile;
-        
+
         for (int i = 0; i < 36; i++) {
 
             if ((i < 2) || (i > 3 && i < 7) || (i == 11) || (i == 24) || (i > 28 && i < 32) || (i > 33)) {
@@ -70,81 +65,72 @@ public class VuePlateauJeu extends JPanel {
                 centrePanel.add(label);
             } else {
                 // redimentionne la tuile
-                nomTuile = nomTuiles.get(i);
-                
+                nomTuile = arrayTuiles.get(i).getNomTuile();
+
                 imgTuile = Toolkit.getDefaultToolkit().getImage("Images/tuiles/" + nomTuile + ".png").getScaledInstance(120, 100, 120);
                 btn = new JButton(new ImageIcon(imgTuile));
+
+                if (!arrayTuiles.get(i).getAventuriers().isEmpty()) {
+                    JPanel centrePionP = dessinerPion(arrayTuiles.get(i).getAventuriers().get(0));
+                    btn.add(centrePionP);
+                }
+
                 btn.setPreferredSize(new Dimension(85, 85));
                 btn.setOpaque(false);
                 btn.setContentAreaFilled(false);
-
                 centrePanel.add(btn);
-                
-                dessinerPion(g,i);
             }
         }
-        btn.add(centrePionsPanel);
     }
 
-    public int[] calculeCoordonneeTuile(Grille g) {
-        int x, y = 0;
-        int i = 1;
-        int[] c = {};
+    /*
+    public int calculeCoordonneeTuile(Aventurier a, Grille g) {
+        int x, y, c = 0;
 
         Tuile tuile;
+        tuile = a.getTuile();
 
-        for (Aventurier a : aventuriers) {
-            tuile = a.getTuile();
+        x = g.getCoordonnee(tuile)[0];
+        System.out.println("x =  " + x);
+        y = g.getCoordonnee(tuile)[1];
+        System.out.println("y =  " + y);
+        System.out.println("Sur la tuile : " + a.getTuile().getNomTuile());
+        System.out.println("on doit placer l'aventurier = " + a.getRole().name());
 
-            x = g.getCoordonnee(tuile)[0];
-            System.out.println("x =  " + x);
-            y = g.getCoordonnee(tuile)[1];
-            System.out.println("y =  " + y);
+        // calcule numéro de la case pour 1 aventurier
+        c = (y + 1) + (x * 6);
+        System.out.println("le numero de la case est = " + c + "\n");
 
-            // calcule numéro de la case 
-            c[i] = (x + 1) + (y * 6);
-            i++;
-        }
         return c;
     }
-
-    public TypePion tuileDispo(int numTuile, int[] c) {
-
-        for (int i = 0; i < c.length; i++) {
-            if (numTuile == c[i]) {
-                return aventuriers.get(i).getPion();
-            }
-        }
-        return TypePion.Null;
-    }
-
-    public void dessinerPion(Grille g, int numTuile) {
-
+     */
+    
+    public JPanel dessinerPion(Aventurier a) {
+        JPanel centrePionsPanel;
+        centrePionsPanel = new JPanel(new BorderLayout());
+        centrePionsPanel.setOpaque(false);
+        
         JLabel pionLabel = new JLabel();
         Image imgPion;
 
-        int[] c = calculeCoordonneeTuile(g);
-        TypePion typeP = tuileDispo(numTuile, c);
+        TypePion typeP = a.getPion();
 
-        if (typeP != TypePion.Null) {
-            for (int i = 0; i <= numTuile; i++) {
-                // on va boucler
-                if (numTuile == i) {
-                    String imgURL = "Images/pions/" + this.aventuriers.get(i).getPion().name() + ".png";
-                    imgPion = Toolkit.getDefaultToolkit().getImage(imgURL).getScaledInstance(50, 80, 50);
-                    pionLabel = new JLabel(new ImageIcon(imgPion));
-                    pionLabel.setPreferredSize(new Dimension(50, 50));
-                    pionLabel.setOpaque(false);
-                    
-                    centrePionsPanel.add(pionLabel);
-                }
-            }
-        }
+        // on va boucler
+        String imgURL = "Images/pions/" + a.getPion().name() + ".png";
+        imgPion = Toolkit.getDefaultToolkit().getImage(imgURL).getScaledInstance(50, 80, 50);
+        pionLabel = new JLabel(new ImageIcon(imgPion));
+        pionLabel.setPreferredSize(new Dimension(50, 50));
+        pionLabel.setOpaque(false);
+
+        
+        centrePionsPanel.add(pionLabel);
+        return centrePionsPanel;
     }
 
     public void afficher() {
         this.fenetre.setVisible(true);
     }
+    
     /*
     public JLabel pion(ArrayList<Aventurier> aventuriers, Grille g) {
         int x = 0;
