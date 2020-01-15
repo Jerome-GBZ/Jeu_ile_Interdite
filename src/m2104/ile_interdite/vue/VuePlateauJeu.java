@@ -23,7 +23,7 @@ public class VuePlateauJeu extends JPanel {
 
     private ArrayList<Aventurier> aventuriers;
     private ArrayList<Tuile> arrayTuiles = new ArrayList<>();
-    
+
     private IHM ihm;
 
     public VuePlateauJeu(Grille g, IHM ihm) {
@@ -49,7 +49,7 @@ public class VuePlateauJeu extends JPanel {
         centrePanel = new JPanel(new GridLayout(6, 6));
         centrePanel.setPreferredSize(new Dimension(750, 650));
         centrePanel.setOpaque(false);
-        
+
         mainPanel.add(centrePanel, BorderLayout.CENTER);
         fenetre.add(mainPanel);
     }
@@ -69,8 +69,7 @@ public class VuePlateauJeu extends JPanel {
             } else if (i == 30) {
                 JPanel pionCourant = dessinerPion(g.getIleInterdite().getJoueurCourant());
                 centrePanel.add(pionCourant);
-            }
-            else {
+            } else {
                 // redimentionne la tuile
                 nomTuile = arrayTuiles.get(i).getNomTuile();
 
@@ -81,8 +80,6 @@ public class VuePlateauJeu extends JPanel {
                     JPanel centrePionP = dessinerPion(arrayTuiles.get(i).getAventuriers().get(0));
                     btn.add(centrePionP);
                 }
-                
-                
 
                 btn.setPreferredSize(new Dimension(85, 85));
                 btn.setOpaque(false);
@@ -94,7 +91,7 @@ public class VuePlateauJeu extends JPanel {
         centrePanel.revalidate();
         centrePanel.updateUI();
     }
-    
+
     public void actualiserPlateauJeu(ArrayList<Tuile> tDispos, Grille g) {
         centrePanel.removeAll();
         centrePanel.validate();
@@ -112,57 +109,65 @@ public class VuePlateauJeu extends JPanel {
                     JPanel pionCourant = dessinerPion(aventuriers.get(aventuriers.indexOf(g.getIleInterdite().getJoueurCourant()) +1));
                     centrePanel.add(pionCourant);
                 } else {*/
-                    JPanel pionCourant = dessinerPion(g.getIleInterdite().getJoueurCourant());
-                    centrePanel.add(pionCourant);
+                JPanel pionCourant = dessinerPion(g.getIleInterdite().getJoueurCourant());
+                centrePanel.add(pionCourant);
                 //}
-                
-            }
-            
-            else {
+
+            } else {
                 // redimentionne la tuile
                 nomTuile = arrayTuiles.get(i).getNomTuile();
 
-                imgTuile = Toolkit.getDefaultToolkit().getImage("Images/tuiles/" + nomTuile + ".png").getScaledInstance(120, 100, 120);
-                btn = new JButton(new ImageIcon(imgTuile));
-                
-                if (tDispos.contains(arrayTuiles.get(i))) {
-                    Tuile t = arrayTuiles.get(i);
-                    btn.addActionListener(new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent arg0) {
-                            Message m = new Message();
-                            m.type = TypeAction.BOUGERPION;
-                            m.tuile = t;
-                            ihm.notifierObservateurs(m);
-                        }
-                    });
-                    
+                if (arrayTuiles.get(i).getEtat() == TypeEtat.COULE) {
+                    btn = new JButton();
+                    centrePanel.add(btn);
                 } else {
-                    btn.setEnabled(false);
-                }
+                    if (arrayTuiles.get(i).getEtat() == TypeEtat.INNONDE) {
+                        imgTuile = Toolkit.getDefaultToolkit().getImage("Images/tuiles/" + nomTuile + "_Inonde.png").getScaledInstance(120, 100, 120);
+                        btn = new JButton(new ImageIcon(imgTuile));
+                    } else {
+                        imgTuile = Toolkit.getDefaultToolkit().getImage("Images/tuiles/" + nomTuile + ".png").getScaledInstance(120, 100, 120);
+                        btn = new JButton(new ImageIcon(imgTuile));
+                    }
 
-                if (!arrayTuiles.get(i).getAventuriers().isEmpty()) {
-                    JPanel centrePionP = dessinerPion(arrayTuiles.get(i).getAventuriers().get(0));
-                    btn.add(centrePionP);
-                    System.out.println(arrayTuiles.get(i).getAventuriers().get(0).getPion());
-                }
+                    if (tDispos.contains(arrayTuiles.get(i))) {
+                        Tuile t = arrayTuiles.get(i);
+                        btn.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent arg0) {
+                                Message m = new Message();
+                                m.type = TypeAction.BOUGERPION;
+                                m.tuile = t;
+                                ihm.notifierObservateurs(m);
+                            }
+                        });
 
-                btn.setPreferredSize(new Dimension(85, 85));
-                btn.setOpaque(false);
-                btn.setContentAreaFilled(false);
-                btn.setBorderPainted(false);
-                centrePanel.add(btn);
+                    } else {
+                        btn.setEnabled(false);
+                    }
+
+                    if (!arrayTuiles.get(i).getAventuriers().isEmpty()) {
+                        JPanel centrePionP = dessinerPion(arrayTuiles.get(i).getAventuriers().get(0));
+                        btn.add(centrePionP);
+                        System.out.println(arrayTuiles.get(i).getAventuriers().get(0).getPion());
+                    }
+
+                    btn.setPreferredSize(new Dimension(85, 85));
+                    btn.setOpaque(false);
+                    btn.setContentAreaFilled(false);
+                    btn.setBorderPainted(false);
+                    centrePanel.add(btn);
+                }
             }
         }
         centrePanel.revalidate();
         centrePanel.updateUI();
     }
-    
+
     public JPanel dessinerPion(Aventurier a) {
         JPanel centrePionsPanel;
         centrePionsPanel = new JPanel(new BorderLayout());
         centrePionsPanel.setOpaque(false);
-        
+
         JLabel pionLabel = new JLabel();
         Image imgPion;
 
@@ -175,13 +180,12 @@ public class VuePlateauJeu extends JPanel {
         pionLabel.setPreferredSize(new Dimension(50, 50));
         pionLabel.setOpaque(false);
 
-        
         centrePionsPanel.add(pionLabel);
         return centrePionsPanel;
     }
-    
+
     public void afficheTuilesDispos(ArrayList<Tuile> tDispos) {
-        
+
     }
 
     public void afficher() {
