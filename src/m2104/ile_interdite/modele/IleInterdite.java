@@ -81,7 +81,7 @@ public class IleInterdite extends Observable<Message> {
         distribuerCartesJoueur();
 
         //pioche des cartes inondations
-        piocherCarteInondation();
+        //piocherCarteInondation();
     }
 
     public String[] inscrireJoueurs(String[] noms) {
