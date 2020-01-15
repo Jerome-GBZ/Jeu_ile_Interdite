@@ -60,7 +60,7 @@ public class IHM extends Observable<Message> {
     }
     
     public void creePlateau(Grille g){
-        this.vuePlateauJeu = new VuePlateauJeu(g);
+        this.vuePlateauJeu = new VuePlateauJeu(g, this);
         vuePlateauJeu.afficher();
 
     }
@@ -93,6 +93,10 @@ public class IHM extends Observable<Message> {
     
     public void afficheTuilesDispos(ArrayList<Tuile> tDispos, Grille g) {
         vuePlateauJeu.actualiserPlateauJeu(tDispos, g);
+    }
+    
+    public void actualiserPlateau(Grille g) {
+        vuePlateauJeu.intitialiserPlateauJeu(g);
     }
     
 }

@@ -18,6 +18,7 @@ public enum TypeAction {
     DONNER,
     RECUPERER_TRESOR,
     BOUGER,
+    BOUGERPION,
     TERMINER,
     TERMINER_TOUR,
     
