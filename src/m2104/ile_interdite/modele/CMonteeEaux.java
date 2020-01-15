@@ -13,9 +13,10 @@ public class CMonteeEaux extends CJoueur {
     
     private String description = "1. Montez le marqueur d'un cran.\n 2. Mélangez la pile de défausse des cartes Innondations et placez-la sur la pile Innondation.\n"
             + "3. Défaussez cette carte avec les cartes Trésor." ;
+    private String nomCMonteeEaux;
     
-    public CMonteeEaux( Aventurier a ){
-        super(a,TypeCarte.CMONTEEEAUX);
+    public CMonteeEaux( Aventurier a, String nomCMonteeEaux ){
+        super(a,TypeCarte.CMONTEEEAUX, nomCMonteeEaux);
         }
 
     /**

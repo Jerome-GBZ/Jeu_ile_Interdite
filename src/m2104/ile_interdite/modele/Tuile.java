@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package m2104.ile_interdite.modele;
+
 import m2104.ile_interdite.util.*;
 import java.util.ArrayList;
 
@@ -12,52 +13,49 @@ import java.util.ArrayList;
  * @author capelth
  */
 public class Tuile {
-    
+
     private TypeEtat etat;
     private String nomTuile;
     private CInondation cinondation;
     private Tresor tresor;
     private ArrayList<Aventurier> aventuriers = new ArrayList<>();
     private int position;
-    
+
     public Tuile() {
     }
-    
-    public Tuile(String nomTuile, Tresor t, ArrayList<Aventurier> listav){
+
+    public Tuile(String nomTuile, Tresor t, ArrayList<Aventurier> listav) {
         setEtat(TypeEtat.SEC);
         setNomTuile(nomTuile);
         setTresor(t);
         setAventuriers(listav);
     }
-    
-    public Tuile(String nomTuile){
+
+    public Tuile(String nomTuile) {
         setEtat(TypeEtat.SEC);
         setNomTuile(nomTuile);
         setTresor(null);
         aventuriers.clear();
     }
-    
+
     public Tuile(String nomTuile, Tresor tr) {
         setNomTuile(nomTuile);
         setTresor(tr);
     }
 
-        
-    public void inondé(){
-        if(this.getEtat() == TypeEtat.SEC){
+    public void inonde() {
+        if (this.getEtat() == TypeEtat.SEC) {
             this.setEtat(TypeEtat.INNONDE);
-        }else if(this.getEtat() == TypeEtat.INNONDE){
+        } else if (this.getEtat() == TypeEtat.INNONDE) {
             this.setEtat(TypeEtat.COULE);
-            for (Aventurier a : aventuriers) {
-                a.seDeplacer();
-            }
+            
         }
     }
-    
-    public void assecher(){
+
+    public void assecher() {
         this.setEtat(TypeEtat.SEC);
     }
-    
+
     /**
      * @return the etat
      */
@@ -127,15 +125,15 @@ public class Tuile {
     public void setAventuriers(ArrayList<Aventurier> aventuriers) {
         this.aventuriers = aventuriers;
     }
-    
+
     public void addAventurier(Aventurier a) {
         aventuriers.add(a);
     }
-    
+
     public int getPosition() {
         return position;
     }
-    
+
     public void setPosition(int pos) {
         this.position = pos;
     }

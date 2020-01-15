@@ -13,9 +13,10 @@ public class CHelicoptere extends CJoueur {
     
     private String description;
     private String utilisation;
+    private String nomcHelico;
     
-    public CHelicoptere(Aventurier a ){
-        super(a,TypeCarte.CHELICOPTERE);
+    public CHelicoptere(Aventurier a , String nomcHelico){
+        super(a,TypeCarte.CHELICOPTERE, nomcHelico);
         this.description = "Déplacez un pion ou un groupe de pions d'une tuile vers n'importe quelle autre tuile.\n"
                 + "ou\n"
                 + "Faites décoller votre équipe depuis l'héliport pour la victoire !";

@@ -30,7 +30,7 @@ public class IleInterdite extends Observable<Message> {
     private boolean fini = false;
     private boolean gagne = false;
     private Aventurier joueurCourant;
-    private int nbactions ;
+    private int nbactions;
 
     public IleInterdite(Observateur<Message> observateur, int niv, String[] noms) {
         this.addObservateur(observateur);
@@ -76,12 +76,12 @@ public class IleInterdite extends Observable<Message> {
         inscrireJoueurs(noms);
 
         nbJoueurs = noms.length;
-        
+
         //distribution carte joueurs
-      //  distribuerCartesJoueur();
-        
+        distribuerCartesJoueur();
+
         //pioche des cartes inondations
-      //  piocherCarteInondation();
+        piocherCarteInondation();
     }
 
     public String[] inscrireJoueurs(String[] noms) {
@@ -163,7 +163,7 @@ public class IleInterdite extends Observable<Message> {
         setNbActions(-1);
         this.nbJoueurs = noms.length;
         return noms;
-        
+
     }
 
     public void tuilesDispos(TypeAction type, Aventurier a, ArrayList<Tuile> tuiles) {
@@ -173,7 +173,7 @@ public class IleInterdite extends Observable<Message> {
         m.aventurier = a;
         notifierObservateurs(m);
     }
-    
+
     public void aventuriersDispos(TypeAction type, Aventurier a, ArrayList<Aventurier> aventuriers) {
         Message m = new Message();
         m.type = type;
@@ -210,19 +210,19 @@ public class IleInterdite extends Observable<Message> {
 
     public CTresor[] creationCartesTresorPierre() {
         CTresor[] c = new CTresor[5];
-        CTresor c1 = new CTresor("La Pierre Sacrée", null);
+        CTresor c1 = new CTresor(null, "Pierre");
         c[0] = c1;
         cartesJoueurPioche.add(c1);
-        CTresor c2 = new CTresor("La Pierre Sacrée", null);
+        CTresor c2 = new CTresor(null, "Pierre");
         c[1] = c2;
         cartesJoueurPioche.add(c2);
-        CTresor c3 = new CTresor("La Pierre Sacrée", null);
+        CTresor c3 = new CTresor(null, "Pierre");
         c[2] = c3;
         cartesJoueurPioche.add(c3);
-        CTresor c4 = new CTresor("La Pierre Sacrée", null);
+        CTresor c4 = new CTresor(null, "Pierre");
         c[3] = c4;
         cartesJoueurPioche.add(c4);
-        CTresor c5 = new CTresor("La Pierre Sacrée", null);
+        CTresor c5 = new CTresor(null, "Pierre");
         c[4] = c5;
         cartesJoueurPioche.add(c5);
         return c;
@@ -230,19 +230,19 @@ public class IleInterdite extends Observable<Message> {
 
     public CTresor[] creationCartesTresorStatue() {
         CTresor[] c = new CTresor[5];
-        CTresor c1 = new CTresor("La Statue du Zéphyr", null);
+        CTresor c1 = new CTresor(null, "Zephyr");
         c[0] = c1;
         cartesJoueurPioche.add(c1);
-        CTresor c2 = new CTresor("La Statue du Zéphyr", null);
+        CTresor c2 = new CTresor(null, "Zephyr");
         c[1] = c2;
         cartesJoueurPioche.add(c2);
-        CTresor c3 = new CTresor("La Statue du Zéphyr", null);
+        CTresor c3 = new CTresor(null, "Zephyr");
         c[2] = c3;
         cartesJoueurPioche.add(c3);
-        CTresor c4 = new CTresor("La Statue du Zéphyr", null);
+        CTresor c4 = new CTresor(null, "Zephyr");
         c[3] = c4;
         cartesJoueurPioche.add(c4);
-        CTresor c5 = new CTresor("La Statue du Zéphyr", null);
+        CTresor c5 = new CTresor(null, "Zephyr");
         c[4] = c5;
         cartesJoueurPioche.add(c5);
         return c;
@@ -250,19 +250,19 @@ public class IleInterdite extends Observable<Message> {
 
     public CTresor[] creationCartesTresorCalice() {
         CTresor[] c = new CTresor[5];
-        CTresor c1 = new CTresor("Le Calice De l'Onde", null);
+        CTresor c1 = new CTresor(null, "Calice");
         c[0] = c1;
         cartesJoueurPioche.add(c1);
-        CTresor c2 = new CTresor("Le Calice De l'Onde", null);
+        CTresor c2 = new CTresor(null, "Calice");
         c[1] = c2;
         cartesJoueurPioche.add(c2);
-        CTresor c3 = new CTresor("Le Calice De l'Onde", null);
+        CTresor c3 = new CTresor(null, "Calice");
         c[2] = c3;
         cartesJoueurPioche.add(c3);
-        CTresor c4 = new CTresor("Le Calice De l'Onde", null);
+        CTresor c4 = new CTresor(null, "Calice");
         c[3] = c4;
         cartesJoueurPioche.add(c4);
-        CTresor c5 = new CTresor("Le Calice De l'Onde", null);
+        CTresor c5 = new CTresor(null, "Calice");
         c[4] = c5;
         cartesJoueurPioche.add(c5);
         return c;
@@ -270,19 +270,19 @@ public class IleInterdite extends Observable<Message> {
 
     public CTresor[] creationCartesTresorCristal() {
         CTresor[] c = new CTresor[5];
-        CTresor c1 = new CTresor("Le Cristal Ardent", null);
+        CTresor c1 = new CTresor(null, "Cristal");
         c[0] = c1;
         cartesJoueurPioche.add(c1);
-        CTresor c2 = new CTresor("Le Cristal Ardent", null);
+        CTresor c2 = new CTresor(null, "Cristal");
         c[1] = c2;
         cartesJoueurPioche.add(c2);
-        CTresor c3 = new CTresor("Le Cristal Ardent", null);
+        CTresor c3 = new CTresor(null, "Cristal");
         c[2] = c3;
         cartesJoueurPioche.add(c3);
-        CTresor c4 = new CTresor("Le Cristal Ardent", null);
+        CTresor c4 = new CTresor(null, "Cristal");
         c[3] = c4;
         cartesJoueurPioche.add(c4);
-        CTresor c5 = new CTresor("Le Cristal Ardent", null);
+        CTresor c5 = new CTresor(null, "Cristal");
         c[4] = c5;
         cartesJoueurPioche.add(c5);
         return c;
@@ -413,27 +413,27 @@ public class IleInterdite extends Observable<Message> {
     }
 
     public void creationsCartesMontee() {
-        CMonteeEaux c1 = new CMonteeEaux(null);
+        CMonteeEaux c1 = new CMonteeEaux(null,"MonteeDesEaux");
         cartesJoueurPioche.add(c1);
-        CMonteeEaux c2 = new CMonteeEaux(null);
+        CMonteeEaux c2 = new CMonteeEaux(null,"MonteeDesEaux");
         cartesJoueurPioche.add(c2);
-        CMonteeEaux c3 = new CMonteeEaux(null);
+        CMonteeEaux c3 = new CMonteeEaux(null,"MonteeDesEaux");
         cartesJoueurPioche.add(c3);
     }
 
     public void creationCartesHelico() {
-        CHelicoptere c1 = new CHelicoptere(null);
+        CHelicoptere c1 = new CHelicoptere(null,"Helicoptere");
         cartesJoueurPioche.add(c1);
-        CHelicoptere c2 = new CHelicoptere(null);
+        CHelicoptere c2 = new CHelicoptere(null,"Helicoptere");
         cartesJoueurPioche.add(c2);
-        CHelicoptere c3 = new CHelicoptere(null);
+        CHelicoptere c3 = new CHelicoptere(null,"Helicoptere");
         cartesJoueurPioche.add(c3);
     }
 
     public void creationCartesSable() {
-        CSable c1 = new CSable(null);
+        CSable c1 = new CSable(null,"SacsDeSable");
         cartesJoueurPioche.add(c1);
-        CSable c2 = new CSable(null);
+        CSable c2 = new CSable(null,"SacsDeSable");
         cartesJoueurPioche.add(c2);
     }
 
@@ -470,23 +470,22 @@ public class IleInterdite extends Observable<Message> {
 
         for (int i = 0; i < this.niveauEau; i++) {
             if (cartesInondationPioche.size() > 0) {
-                cartesInondationPioche.get(cartesInondationPioche.size() - 1).getTuile().inondé();
+                inonde(cartesInondationPioche.get(cartesInondationPioche.size() - 1).getTuile());
                 cartesInondationDefausse.add(cartesInondationPioche.get(cartesInondationPioche.size() - 1));
             } else {
                 viderDefausseCartesInondation();
-                cartesInondationPioche.get(cartesInondationPioche.size() - 1).getTuile().inondé();
+                inonde(cartesInondationPioche.get(cartesInondationPioche.size() - 1).getTuile());
                 cartesInondationDefausse.add(cartesInondationPioche.get(cartesInondationPioche.size() - 1));
             }
         }
-        cartesInondationDefausse.clear();
     }
 
     public void viderDefausseCartesInondation() {
         Collections.shuffle(cartesInondationDefausse);
         for (CInondation c : cartesInondationDefausse) {
             cartesInondationPioche.add(c);
-            cartesInondationDefausse.remove(c);
         }
+        cartesInondationDefausse.clear();
     }
 
     public void piocherCarteJoueur(Aventurier a) {
@@ -518,8 +517,8 @@ public class IleInterdite extends Observable<Message> {
         return fini;
     }
 
-    public void Inonde(Tuile t) {
-        t.inondé();
+    public void inonde(Tuile t) {
+        t.inonde();
         if (g.getTuile("Heliport").equals(t)) {
             if (t.getEtat().equals(TypeEtat.COULE)) {
                 fini = true;
@@ -528,9 +527,9 @@ public class IleInterdite extends Observable<Message> {
         if (t.getTresor() != null) {
             if (!tresorsRecup.contains(t.getTresor())) {
                 if (t.getEtat().equals(TypeEtat.COULE)) {
-                    int i =0;
-                    for (Tuile tu : t.getTresor().getTuiles()){
-                        if (tu.getEtat().equals(TypeEtat.COULE)){
+                    int i = 0;
+                    for (Tuile tu : t.getTresor().getTuiles()) {
+                        if (tu.getEtat().equals(TypeEtat.COULE)) {
                             i++;
                         }
                     }
@@ -539,22 +538,28 @@ public class IleInterdite extends Observable<Message> {
             }
         }
         if (!t.getAventuriers().isEmpty()) {
-            if (t.getEtat().equals(TypeEtat.COULE)){
-                for (Aventurier a : t.getAventuriers()){
-                    if (g.tuilesDispoDeplacer(t, a).isEmpty()){
+            if (t.getEtat().equals(TypeEtat.COULE)) {
+
+                for (Aventurier a : t.getAventuriers()) {
+                    if (g.tuilesDispoDeplacer(t, a).isEmpty()) {
                         fini = true;
                     }
                 }
+                if (!fini) {
+                    for (Aventurier av : aventuriers) {
+                        av.seDeplacer();
+                    }
+                }
+
+            }
+            if (this.PartieFinie()) {
+                Message m = new Message();
+                m.type = TypeAction.TERMINER;
+                m.gagne = this.getGagne();
             }
         }
-    if (this.PartieFinie()){
-            Message m = new Message();
-            m.type = TypeAction.TERMINER;
-            m.gagne = this.getGagne();
-        }
     }
-
-   /* public void Jouer() {
+        /* public void Jouer() {
         
         Message m = new Message();
         
@@ -567,42 +572,38 @@ public class IleInterdite extends Observable<Message> {
          notifierObservateurs(m);
     }*/
     
-    public void seDeplacer(){
+    public void seDeplacer() {
         if (nbactions < 2) {
             nbactions++;
-        }
-        else {
-            if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size()-1){
+        } else {
+            if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size() - 1) {
                 joueurCourant = this.aventuriers.get(0);
-            }
-            else {
+            } else {
                 joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
             }
             setNbActions(0);
-            
+
             joueurCourant.setPouvoir(false);
         }
         joueurCourant.seDeplacer();
     }
-    
-    public void seDeplacer(Tuile t){
+
+    public void seDeplacer(Tuile t) {
         joueurCourant.seDeplacer(t);
-        if (this.PartieFinie()){
+        if (this.PartieFinie()) {
             Message m = new Message();
             m.type = TypeAction.TERMINER;
             m.gagne = this.getGagne();
         }
     }
-    
-    public void assecher(){
+
+    public void assecher() {
         if (nbactions < 2) {
             nbactions++;
-        }
-        else {
-            if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size()-1){
+        } else {
+            if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size() - 1) {
                 joueurCourant = this.aventuriers.get(0);
-            }
-            else {
+            } else {
                 joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
             }
             setNbActions(0);
@@ -610,20 +611,18 @@ public class IleInterdite extends Observable<Message> {
         }
         joueurCourant.assecher();
     }
-    
-    public void assecher(Tuile t){
+
+    public void assecher(Tuile t) {
         joueurCourant.assecher(t);
     }
-    
-    public void donnerCarte(){
+
+    public void donnerCarte() {
         if (nbactions < 2) {
             nbactions++;
-        }
-        else {
-            if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size()-1){
+        } else {
+            if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size() - 1) {
                 joueurCourant = this.aventuriers.get(0);
-            }
-            else {
+            } else {
                 joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
             }
             setNbActions(0);
@@ -631,25 +630,24 @@ public class IleInterdite extends Observable<Message> {
         }
         joueurCourant.donnerCarte();
     }
-    
+
     public void donnerCarte(Aventurier a, CJoueur c) {
-        joueurCourant.donnerCarte(a,c);
+        joueurCourant.donnerCarte(a, c);
     }
-    
-    public void terminerTour(){
-        if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size()-1){
-                joueurCourant = this.aventuriers.get(0);
-            }
-            else {
-                joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
-            }
-            setNbActions(0);
-            joueurCourant.setPouvoir(false);
-            Message m = new Message();
-            m.type = TypeAction.TERMINER_TOUR;
-            notifierObservateurs(m);
+
+    public void terminerTour() {
+        if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size() - 1) {
+            joueurCourant = this.aventuriers.get(0);
+        } else {
+            joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
+        }
+        setNbActions(0);
+        joueurCourant.setPouvoir(false);
+        Message m = new Message();
+        m.type = TypeAction.TERMINER_TOUR;
+        notifierObservateurs(m);
     }
-    
+
     //getters et setters
     public Grille getGrille() {
         return g;
@@ -687,30 +685,28 @@ public class IleInterdite extends Observable<Message> {
     public Tresor getTresor(int i) {
         return tresors[i];
     }
-    
-    public boolean getGagne(){
+
+    public boolean getGagne() {
         return gagne;
     }
-    
-    public void setGagne(boolean b){
+
+    public void setGagne(boolean b) {
         gagne = b;
     }
-    
-    public ArrayList<Tresor> getTresorsRecup(){
+
+    public ArrayList<Tresor> getTresorsRecup() {
         return tresorsRecup;
     }
-    
-    public int getNbActions(){
+
+    public int getNbActions() {
         return nbactions;
     }
-    
-    public void setNbActions(int n){
+
+    public void setNbActions(int n) {
         nbactions = n;
     }
-    
-    public Aventurier getJoueurCourant(){
+
+    public Aventurier getJoueurCourant() {
         return joueurCourant;
     }
 }
-
-   
