@@ -78,7 +78,7 @@ public class IleInterdite extends Observable<Message> {
         nbJoueurs = noms.length;
         
         //distribution carte joueurs
-      //  distribuerCartesJoueur();
+        distribuerCartesJoueur();
         
         //pioche des cartes inondations
       //  piocherCarteInondation();
@@ -210,19 +210,19 @@ public class IleInterdite extends Observable<Message> {
 
     public CTresor[] creationCartesTresorPierre() {
         CTresor[] c = new CTresor[5];
-        CTresor c1 = new CTresor("La Pierre Sacrée", null);
+        CTresor c1 = new CTresor(null, "Pierre");
         c[0] = c1;
         cartesJoueurPioche.add(c1);
-        CTresor c2 = new CTresor("La Pierre Sacrée", null);
+        CTresor c2 = new CTresor(null, "Pierre");
         c[1] = c2;
         cartesJoueurPioche.add(c2);
-        CTresor c3 = new CTresor("La Pierre Sacrée", null);
+        CTresor c3 = new CTresor(null, "Pierre");
         c[2] = c3;
         cartesJoueurPioche.add(c3);
-        CTresor c4 = new CTresor("La Pierre Sacrée", null);
+        CTresor c4 = new CTresor(null, "Pierre");
         c[3] = c4;
         cartesJoueurPioche.add(c4);
-        CTresor c5 = new CTresor("La Pierre Sacrée", null);
+        CTresor c5 = new CTresor(null, "Pierre");
         c[4] = c5;
         cartesJoueurPioche.add(c5);
         return c;
@@ -230,19 +230,19 @@ public class IleInterdite extends Observable<Message> {
 
     public CTresor[] creationCartesTresorStatue() {
         CTresor[] c = new CTresor[5];
-        CTresor c1 = new CTresor("La Statue du Zéphyr", null);
+        CTresor c1 = new CTresor(null, "Zephyr");
         c[0] = c1;
         cartesJoueurPioche.add(c1);
-        CTresor c2 = new CTresor("La Statue du Zéphyr", null);
+        CTresor c2 = new CTresor(null, "Zephyr");
         c[1] = c2;
         cartesJoueurPioche.add(c2);
-        CTresor c3 = new CTresor("La Statue du Zéphyr", null);
+        CTresor c3 = new CTresor(null, "Zephyr");
         c[2] = c3;
         cartesJoueurPioche.add(c3);
-        CTresor c4 = new CTresor("La Statue du Zéphyr", null);
+        CTresor c4 = new CTresor(null, "Zephyr");
         c[3] = c4;
         cartesJoueurPioche.add(c4);
-        CTresor c5 = new CTresor("La Statue du Zéphyr", null);
+        CTresor c5 = new CTresor(null, "Zephyr");
         c[4] = c5;
         cartesJoueurPioche.add(c5);
         return c;
@@ -250,19 +250,19 @@ public class IleInterdite extends Observable<Message> {
 
     public CTresor[] creationCartesTresorCalice() {
         CTresor[] c = new CTresor[5];
-        CTresor c1 = new CTresor("Le Calice De l'Onde", null);
+        CTresor c1 = new CTresor(null, "Calice");
         c[0] = c1;
         cartesJoueurPioche.add(c1);
-        CTresor c2 = new CTresor("Le Calice De l'Onde", null);
+        CTresor c2 = new CTresor(null, "Calice");
         c[1] = c2;
         cartesJoueurPioche.add(c2);
-        CTresor c3 = new CTresor("Le Calice De l'Onde", null);
+        CTresor c3 = new CTresor(null, "Calice");
         c[2] = c3;
         cartesJoueurPioche.add(c3);
-        CTresor c4 = new CTresor("Le Calice De l'Onde", null);
+        CTresor c4 = new CTresor(null, "Calice");
         c[3] = c4;
         cartesJoueurPioche.add(c4);
-        CTresor c5 = new CTresor("Le Calice De l'Onde", null);
+        CTresor c5 = new CTresor(null, "Calice");
         c[4] = c5;
         cartesJoueurPioche.add(c5);
         return c;
@@ -270,19 +270,19 @@ public class IleInterdite extends Observable<Message> {
 
     public CTresor[] creationCartesTresorCristal() {
         CTresor[] c = new CTresor[5];
-        CTresor c1 = new CTresor("Le Cristal Ardent", null);
+        CTresor c1 = new CTresor(null, "Cristal");
         c[0] = c1;
         cartesJoueurPioche.add(c1);
-        CTresor c2 = new CTresor("Le Cristal Ardent", null);
+        CTresor c2 = new CTresor(null, "Cristal");
         c[1] = c2;
         cartesJoueurPioche.add(c2);
-        CTresor c3 = new CTresor("Le Cristal Ardent", null);
+        CTresor c3 = new CTresor(null, "Cristal");
         c[2] = c3;
         cartesJoueurPioche.add(c3);
-        CTresor c4 = new CTresor("Le Cristal Ardent", null);
+        CTresor c4 = new CTresor(null, "Cristal");
         c[3] = c4;
         cartesJoueurPioche.add(c4);
-        CTresor c5 = new CTresor("Le Cristal Ardent", null);
+        CTresor c5 = new CTresor(null, "Cristal");
         c[4] = c5;
         cartesJoueurPioche.add(c5);
         return c;
@@ -413,27 +413,27 @@ public class IleInterdite extends Observable<Message> {
     }
 
     public void creationsCartesMontee() {
-        CMonteeEaux c1 = new CMonteeEaux(null);
+        CMonteeEaux c1 = new CMonteeEaux(null,"MonteeDesEaux");
         cartesJoueurPioche.add(c1);
-        CMonteeEaux c2 = new CMonteeEaux(null);
+        CMonteeEaux c2 = new CMonteeEaux(null,"MonteeDesEaux");
         cartesJoueurPioche.add(c2);
-        CMonteeEaux c3 = new CMonteeEaux(null);
+        CMonteeEaux c3 = new CMonteeEaux(null,"MonteeDesEaux");
         cartesJoueurPioche.add(c3);
     }
 
     public void creationCartesHelico() {
-        CHelicoptere c1 = new CHelicoptere(null);
+        CHelicoptere c1 = new CHelicoptere(null,"Helicoptere");
         cartesJoueurPioche.add(c1);
-        CHelicoptere c2 = new CHelicoptere(null);
+        CHelicoptere c2 = new CHelicoptere(null,"Helicoptere");
         cartesJoueurPioche.add(c2);
-        CHelicoptere c3 = new CHelicoptere(null);
+        CHelicoptere c3 = new CHelicoptere(null,"Helicoptere");
         cartesJoueurPioche.add(c3);
     }
 
     public void creationCartesSable() {
-        CSable c1 = new CSable(null);
+        CSable c1 = new CSable(null,"SacsDeSable");
         cartesJoueurPioche.add(c1);
-        CSable c2 = new CSable(null);
+        CSable c2 = new CSable(null,"SacsDeSable");
         cartesJoueurPioche.add(c2);
     }
 
