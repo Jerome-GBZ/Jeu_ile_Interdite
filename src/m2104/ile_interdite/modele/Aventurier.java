@@ -81,6 +81,11 @@ public class Aventurier {
     }
     
     public void seDeplacer(Tuile t){
+        if (this.getRole().equals(TypeRole.Pilote)){
+            if (!ii.getGrille().tuileAutour(this.getTuile()).contains(t)){
+                this.pouvoirUtilise = true;
+            }
+        }
         this.tuile.getAventuriers().remove(this);
         this.setTuile(t);
         t.addAventurier(this);
@@ -160,6 +165,10 @@ public class Aventurier {
     
     public boolean getPouvoirUtilise(){
         return pouvoirUtilise;
+    }
+    
+    public void setPouvoir(boolean b){
+        this.pouvoirUtilise= b;
     }
     
     public String getNom(){

@@ -33,6 +33,7 @@ public class VueTresor extends JPanel {
         // parametrage de la fenêtre : 
         window.setContentPane(new PanelFond(urlTresor));
         window.setSize(152, 159);
+        window.setLocation(800, 620);
         window.setUndecorated(true);
         window.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         
