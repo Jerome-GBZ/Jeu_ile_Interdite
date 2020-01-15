@@ -28,6 +28,7 @@ public class IleInterdite extends Observable<Message> {
     private ArrayList<Aventurier> aventuriers = new ArrayList<>();
     private int nbJoueurs;
     private boolean fini = false;
+    private boolean gagne = false;
 
     public IleInterdite(Observateur<Message> observateur, int niv, String[] noms) {
         this.addObservateur(observateur);
@@ -150,7 +151,9 @@ public class IleInterdite extends Observable<Message> {
             }
 
         }
+        this.nbJoueurs = noms.length;
         return noms;
+        
     }
 
     public void tuilesDispos(TypeAction type, Aventurier a, ArrayList<Tuile> tuiles) {
@@ -525,6 +528,15 @@ public class IleInterdite extends Observable<Message> {
         }
     }
 
+    public void Jouer(int nb_action) {
+        
+        
+        
+        Message m = new Message();
+        
+        notifierObservateurs(m);
+    }
+    
     //getters et setters
     public Grille getGrille() {
         return g;
@@ -562,4 +574,18 @@ public class IleInterdite extends Observable<Message> {
     public Tresor getTresor(int i) {
         return tresors[i];
     }
+    
+    public boolean getGagne(){
+        return gagne;
+    }
+    
+    public void setGagne(boolean b){
+        gagne = b;
+    }
+    
+    public ArrayList<Tresor> getTresorsRecup(){
+        return tresorsRecup;
+    }
 }
+
+   

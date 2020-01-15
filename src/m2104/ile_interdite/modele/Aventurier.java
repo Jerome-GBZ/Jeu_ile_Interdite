@@ -80,12 +80,33 @@ public class Aventurier {
         ii.tuilesDispos(TypeAction.CHOISIR_TUILE,this, tDispos);
     }
     
+    public void seDeplacer(Tuile t){
+        this.tuile.getAventuriers().remove(this);
+        this.setTuile(t);
+        t.addAventurier(this);
+        if (t.getAventuriers().size() == ii.getNombreJoueurs() && ii.getTresorsRecup().size() == 4){
+            for (Aventurier a : t.getAventuriers()){
+                for (CJoueur c : a.getCartes()){
+                    if (c.getTypeCarte().equals(TypeCarte.CHELICOPTERE)){
+                        ii.setGagne(true);
+                        ii.PartieFinie();
+                    }
+                }
+            }
+        }
+        
+    }
+    
     
     public void assecher() {
         ArrayList<Tuile> tDispos = new ArrayList<>();
         tDispos = ii.getGrille().tuilesDisposAssecher(getTuile(), this);
         
         ii.tuilesDispos(TypeAction.CHOISIR_TUILE,this, tDispos); 
+    }
+    
+    public void assecher(Tuile t) {
+        t.assecher();
     }
     
     
