@@ -579,6 +579,8 @@ public class IleInterdite extends Observable<Message> {
                 joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
             }
             setNbActions(0);
+            
+            joueurCourant.setPouvoir(false);
         }
         joueurCourant.seDeplacer();
     }
@@ -604,6 +606,7 @@ public class IleInterdite extends Observable<Message> {
                 joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
             }
             setNbActions(0);
+            joueurCourant.setPouvoir(false);
         }
         joueurCourant.assecher();
     }
@@ -624,6 +627,7 @@ public class IleInterdite extends Observable<Message> {
                 joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
             }
             setNbActions(0);
+            joueurCourant.setPouvoir(false);
         }
         joueurCourant.donnerCarte();
     }
@@ -640,6 +644,7 @@ public class IleInterdite extends Observable<Message> {
                 joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
             }
             setNbActions(0);
+            joueurCourant.setPouvoir(false);
             Message m = new Message();
             m.type = TypeAction.TERMINER_TOUR;
             notifierObservateurs(m);
