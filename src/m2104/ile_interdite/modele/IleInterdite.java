@@ -76,6 +76,12 @@ public class IleInterdite extends Observable<Message> {
         inscrireJoueurs(noms);
 
         nbJoueurs = noms.length;
+        
+        //distribution carte joueurs
+        distribuerCartesJoueur();
+        
+        //pioche des cartes inondations
+        piocherCarteInondation();
     }
 
     public String[] inscrireJoueurs(String[] noms) {
@@ -451,6 +457,7 @@ public class IleInterdite extends Observable<Message> {
                     i = i - 1;
                 } else {
                     a.getCartes()[i] = cartesJoueurPioche.get(j);
+                    cartesJoueurPioche.get(j).setA(a);
                     cartesJoueurPioche.remove(cartesJoueurPioche.get(j));
                 }
                 j--;
@@ -540,6 +547,11 @@ public class IleInterdite extends Observable<Message> {
                 }
             }
         }
+    if (this.PartieFinie()){
+            Message m = new Message();
+            m.type = TypeAction.TERMINER;
+            m.gagne = this.getGagne();
+        }
     }
 
    /* public void Jouer() {
@@ -573,6 +585,11 @@ public class IleInterdite extends Observable<Message> {
     
     public void seDeplacer(Tuile t){
         joueurCourant.seDeplacer(t);
+        if (this.PartieFinie()){
+            Message m = new Message();
+            m.type = TypeAction.TERMINER;
+            m.gagne = this.getGagne();
+        }
     }
     
     public void assecher(){
@@ -611,8 +628,21 @@ public class IleInterdite extends Observable<Message> {
         joueurCourant.donnerCarte();
     }
     
-    public void terminerTour(){
+    public void donnerCarte(Aventurier a, CJoueur c) {
+        joueurCourant.donnerCarte(a,c);
+    }
     
+    public void terminerTour(){
+        if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size()-1){
+                joueurCourant = this.aventuriers.get(0);
+            }
+            else {
+                joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
+            }
+            setNbActions(0);
+            Message m = new Message();
+            m.type = TypeAction.TERMINER_TOUR;
+            notifierObservateurs(m);
     }
     
     //getters et setters

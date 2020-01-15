@@ -19,6 +19,8 @@ public enum TypeAction {
     RECUPERER_TRESOR,
     BOUGER,
     TERMINER,
+    TERMINER_TOUR,
+    
     // pas encore traiter
     RECEVOIR,
     CHOISIR_CARTE,
