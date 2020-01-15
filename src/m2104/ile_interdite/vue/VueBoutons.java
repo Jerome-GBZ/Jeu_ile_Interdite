@@ -47,6 +47,7 @@ public class VueBoutons {
         fenetre = new JFrame();
         fenetre.setContentPane(new PanelFond(urlImgs, 152, 159));
         fenetre.setSize(152, 159);
+        fenetre.setLocation(800, 0);
         fenetre.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         fenetre.setUndecorated(Parameters.UNDECORATED);
         fenetre.setResizable(Parameters.RESIZABLE);
