@@ -25,7 +25,6 @@ public class VueMainJoueur {
 
     public VueMainJoueur(Grille g) {
         initialiserFenetreMain(g);
-
     }
 
     public void initialiserFenetreMain(Grille g) {
@@ -41,7 +40,7 @@ public class VueMainJoueur {
         window.setResizable(Parameters.RESIZABLE);
 
         /* Partie IHM : */
-        /* panel principal : */
+ /* panel principal : */
         mainPanel = new JPanel(new BorderLayout());
         mainPanel.setOpaque(false);
 
@@ -54,7 +53,7 @@ public class VueMainJoueur {
         window.add(mainPanel);
 
         /* boucle du GridLayout du centre: */
-        /* récupération des cartes du joueur courant : */
+ /* récupération des cartes du joueur courant : */
         Aventurier a = g.getIleInterdite().getJoueurCourant();
         dessinerMain(a);
 
@@ -62,41 +61,20 @@ public class VueMainJoueur {
 
     public void dessinerMain(Aventurier a) {
         JLabel cartePanel = new JLabel();
-        Image imgPion;
+        Image cartesJImg;
         CJoueur[] carteJoueurs = a.getCartes();
 
         for (int i = 0; i < carteJoueurs.length; i++) {
-            String imgURL = "Images/cartes/" + carteJoueurs[i].toString() + ".png";
-            imgPion = Toolkit.getDefaultToolkit().getImage(imgURL).getScaledInstance(50, 80, 50);
-            cartePanel = new JLabel(new ImageIcon(imgPion));
-            cartePanel.setPreferredSize(new Dimension(50, 50));
-            cartePanel.setOpaque(false);
+            if (carteJoueurs[i] != null) {
+                String imgURL = "Images/cartes/" + carteJoueurs[i].toString() + ".png";
+                cartesJImg = Toolkit.getDefaultToolkit().getImage(imgURL).getScaledInstance(50, 80, 50);
+                cartePanel = new JLabel(new ImageIcon(cartesJImg));
+                cartePanel.setPreferredSize(new Dimension(50, 50));
+                cartePanel.setOpaque(true);
 
-            panelCentre.add(cartePanel);
+                panelCentre.add(cartePanel);
+            }
         }
-
-
-        /*
-        JPanel centrePionsPanel;
-        centrePionsPanel = new JPanel(new BorderLayout());
-        centrePionsPanel.setOpaque(false);
-        
-        JLabel pionLabel = new JLabel();
-        Image imgPion;
-
-        TypePion typeP = a.getPion();
-
-        // on va boucler
-        String imgURL = "Images/pions/" + a.getPion().name() + ".png";
-        imgPion = Toolkit.getDefaultToolkit().getImage(imgURL).getScaledInstance(50, 80, 50);
-        pionLabel = new JLabel(new ImageIcon(imgPion));
-        pionLabel.setPreferredSize(new Dimension(50, 50));
-        pionLabel.setOpaque(false);
-
-        
-        centrePionsPanel.add(pionLabel);
-        return centrePionsPanel;
-         */
     }
 
     public void afficher() {
