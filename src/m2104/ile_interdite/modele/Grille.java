@@ -130,7 +130,7 @@ public class Grille {
                     }
                 }
             }
-            tuilesDispo.remove(a.getTuile());
+            //tuilesDispo.remove(a.getTuile());
         }
         if (a.getRole() == TypeRole.Plongeur) {
             for (Tuile tu : tuilesDispo) {
