@@ -83,6 +83,10 @@ public class Controleur implements Observateur<Message> {
                 case RECUPERER_TRESOR:
                     ileInterdite.recupTresorDemo();
                     ihm.recupTresor(ileInterdite.getJoueurCourant());
+                    break;
+                    
+                case DEFAUSSER:
+                    break;
                     
                 case FIN_PARTIE:
                     System.out.println("finPartie Controleur");

@@ -86,13 +86,14 @@ public class VueBoutons {
         btnPrendre.setBorderPainted(false);
         centrePanel.add(btnPrendre);
 
-        this.btnDeplacer = creerBouton(5, "Bouger", Utils.Commandes.DEPLACER);
-        btnDeplacer.setBorderPainted(false);
-        centrePanel.add(btnDeplacer);
-
         this.btnTerminer = creerBouton(6, "Terminer", Utils.Commandes.TERMINER);
         btnTerminer.setBorderPainted(false);
         centrePanel.add(btnTerminer);
+        
+        this.btnDeplacer = creerBouton(5, "Défausse", Utils.Commandes.DEPLACER);
+        btnDeplacer.setBorderPainted(false);
+        centrePanel.add(btnDeplacer);
+        
     }
 
     private JButton creerBouton(Integer numBouton, String libelle, Utils.Commandes commande) {
@@ -131,7 +132,6 @@ public class VueBoutons {
                         break;
                     case DONNER:
                         ihm.donnerCarte();
-                        System.out.println("Click bouton DONNER");
                         break;
                     case RECUPERER_TRESOR:
                         Message m4 = new Message();
@@ -139,9 +139,7 @@ public class VueBoutons {
                         ihm.notifierObservateurs(m4);
                         break;
                     case DEPLACER:
-                        Message m5 = new Message();
-                        m5.type = TypeAction.DEPLACER;
-                        ihm.notifierObservateurs(m5);
+                        ihm.defausserCarte();
                         break;
                     case TERMINER:
                         Message m6 = new Message();
