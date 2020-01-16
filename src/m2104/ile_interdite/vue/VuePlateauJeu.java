@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class VuePlateauJeu extends JPanel {
 
-    private String urlImgs = "Images/final_Jeu_n.png";
+    private String urlImgs = "Images/final_Jeu.png";
     private JFrame fenetre;
 
     private JPanel mainPanel;
