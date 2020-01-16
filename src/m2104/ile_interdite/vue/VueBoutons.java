@@ -17,7 +17,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
 import m2104.ile_interdite.util.Parameters;
 import m2104.ile_interdite.util.*;

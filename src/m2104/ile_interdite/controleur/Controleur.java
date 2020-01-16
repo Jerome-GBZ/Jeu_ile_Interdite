@@ -71,7 +71,7 @@ public class Controleur implements Observateur<Message> {
                 case ACTUALISER:
                     ihm.actualiserPlateau(ileInterdite.getGrille());
                     ihm.afficheCarteMain(ileInterdite.getJoueurCourant());
-                    ihm.actualiserNiveau(ileInterdite.getNiveauEau());
+                    ihm.actualiserNiveau(ileInterdite.get);
                     break;
                     
                 case TERMINER:
