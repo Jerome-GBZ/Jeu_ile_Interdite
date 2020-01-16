@@ -15,7 +15,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
 import m2104.ile_interdite.util.Parameters;
 import m2104.ile_interdite.util.*;
@@ -95,8 +97,11 @@ public class VueBoutons {
     }
     
     private JButton creerBouton(Integer numBouton, String libelle, Utils.Commandes commande) {
-        
-        JButton bouton = new JButton(libelle);
+         
+        JLabel action = new JLabel(libelle);
+        action.setForeground(Color.BLACK);
+        JButton bouton = new JButton();
+        bouton.add(action);
         bouton.setOpaque(false);
         bouton.setEnabled(false);
         bouton.setBorder(new MatteBorder( 0, 0, (numBouton <= 3 ? 1 : 0), (numBouton%3!=0 ? 1 : 0), Color.BLACK));
