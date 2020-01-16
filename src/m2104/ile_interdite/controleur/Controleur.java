@@ -86,6 +86,7 @@ public class Controleur implements Observateur<Message> {
                     break;
                     
                 case DEFAUSSER:
+                    ileInterdite.defausserCJoueur(msg.carte);
                     break;
                     
                 case FIN_PARTIE:
