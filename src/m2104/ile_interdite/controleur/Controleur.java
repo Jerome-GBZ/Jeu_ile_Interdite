@@ -81,11 +81,8 @@ public class Controleur implements Observateur<Message> {
                     break;
 
                 case RECUPERER_TRESOR:
-                    ihm.recupTresor(msg.aventurier);
-                    
-                case CHOISIR_CARTE:
-                    
-                    break;
+                    ileInterdite.recupererTresorDemo(ileInterdite.getJoueurCourant());
+                    ihm.recupTresor(ileInterdite.getJoueurCourant());
                     
                 case FIN_PARTIE:
                     System.out.println("finPartie Controleur");
