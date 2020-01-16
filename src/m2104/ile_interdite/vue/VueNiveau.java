@@ -30,15 +30,15 @@ public class VueNiveau {
 
     public VueNiveau(Integer niveauInitial) {
         
-        Dimension d = new Dimension(151, 480);
+        Dimension d = new Dimension(154, 461);
         window = new JFrame();
         window.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         window.setUndecorated(Parameters.UNDECORATED);
         window.setResizable(Parameters.RESIZABLE);
         window.setSize(d);
-        window.setContentPane(new PanelFond("Images/VueNiveau.png"));
+        window.setContentPane(new PanelFond("Images/VueNiveau_n.png",152, 461));
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        int dimX = 800 + dim.width / 3 - window.getSize().width -1;
+        int dimX = 800 + dim.width / 3 - window.getSize().width +2;
         // int dimY = 159 + dim.height / 3 - window.getSize().height / 2;
         int dimY = 159;
         window.setLocation(dimX, dimY);
