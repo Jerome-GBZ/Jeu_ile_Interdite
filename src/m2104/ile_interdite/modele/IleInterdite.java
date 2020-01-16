@@ -778,7 +778,9 @@ public class IleInterdite extends Observable<Message> {
     }
     
     public void recupTresorDemo() {
+        tresorsRecup.add(joueurCourant.getTuile().getTresor());
         removeTresor(joueurCourant.getTuile().getTresor());
+        
         if (nbactions < 2) {
             nbactions++;
         } else {
