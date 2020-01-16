@@ -3,7 +3,7 @@ package m2104.ile_interdite.vue;
 import java.util.ArrayList;
 import java.util.HashMap;
 import m2104.ile_interdite.modele.*;
-import m2104.ile_interdite.util.Message;
+import m2104.ile_interdite.util.*;
 import patterns.observateur.Observable;
 import patterns.observateur.Observateur;
 
@@ -102,4 +102,15 @@ public class IHM extends Observable<Message> {
     public void afficheCarteMain(Aventurier a){
         vueMainJoueur.actualiserMain(a);
     }
+    
+    public void donnerCarte(CJoueur carte) {
+        
+        Message m = new Message();
+        m.type = TypeAction.DONNER;
+        m.carte = carte;
+    }
+    /*
+    public Aventurier choisirCarte() {
+        return vueHeader.choisirAventurier();
+    }*/
 }

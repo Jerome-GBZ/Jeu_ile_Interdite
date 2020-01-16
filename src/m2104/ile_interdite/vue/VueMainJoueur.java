@@ -6,6 +6,8 @@
 package m2104.ile_interdite.vue;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 import m2104.ile_interdite.modele.*;
 import m2104.ile_interdite.util.*;
@@ -15,14 +17,14 @@ import java.util.ArrayList;
  *
  * @author dupuyrem
  */
-public class VueMainJoueur {
+public class VueMainJoueur /*extends JPanel*/ {
 
     private String urlImgs = "Images/texture_footer.png";
     private JFrame window;
 
     private JPanel mainPanel;
     private JPanel panelCentre;
-    JLabel cartePanel;
+    private JButton cartePanel;
 
     private IHM ihm;
 
@@ -54,6 +56,7 @@ public class VueMainJoueur {
         panelCentre.setOpaque(false);
 
         mainPanel.add(panelCentre, BorderLayout.CENTER);
+        //this.add(mainPanel);
         window.add(mainPanel);
 
         /* boucle du GridLayout du centre: */
@@ -65,7 +68,7 @@ public class VueMainJoueur {
 
     public void dessinerMain(Aventurier a) {
         String carte = "Pierre";
-        cartePanel = new JLabel();
+        cartePanel = new JButton();
         Image cartesJImg;
         CJoueur[] carteJoueurs = a.getCartes();
 
@@ -87,9 +90,19 @@ public class VueMainJoueur {
                 }
                 String imgURL = "Images/cartes/" + carte + ".png";
                 cartesJImg = Toolkit.getDefaultToolkit().getImage(imgURL).getScaledInstance(50, 80, 50);
-                cartePanel = new JLabel(new ImageIcon(cartesJImg));
+                cartePanel = new JButton(new ImageIcon(cartesJImg));
                 cartePanel.setPreferredSize(new Dimension(50, 50));
                 cartePanel.setOpaque(false);
+                cartePanel.setContentAreaFilled(true);
+                cartePanel.setBorderPainted(false);
+                
+                CJoueur carteJoueur = carteJoueurs[i];
+                cartePanel.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent arg0) {
+                        ihm.donnerCarte(carteJoueur);
+                    }
+                });
                 
                 panelCentre.add(cartePanel);
                 
