@@ -35,7 +35,9 @@ public class VueTresor extends JPanel {
         window.setSize(152, 159);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         int dimX = 800 + dim.width / 3 - window.getSize().width;
-        window.setLocation(dimX, 620);
+        // int dimY = 620 + dim.height / 3 - window.getSize().height / 2;
+        int dimY = 620;
+        window.setLocation(dimX, dimY);
         window.setUndecorated(true);
         window.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         

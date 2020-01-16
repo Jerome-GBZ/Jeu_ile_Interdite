@@ -40,7 +40,9 @@ public class VuePlateauJeu extends JPanel {
         fenetre.setSize(800, 700);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         int dimX = 0 + dim.width / 3 - 152;
-        fenetre.setLocation(dimX, 124);
+        // int dimY = 0 + dim.height / 3 - fenetre.getSize().height / 2 - 161;
+        int dimY = 124;
+        fenetre.setLocation(dimX, dimY);
         fenetre.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         fenetre.setUndecorated(Parameters.UNDECORATED);
         fenetre.setResizable(Parameters.RESIZABLE);
