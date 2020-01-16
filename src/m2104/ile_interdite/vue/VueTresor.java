@@ -102,4 +102,8 @@ public class VueTresor extends JPanel {
         window.dispose();
     }
     
+    public void lockFenetre(){
+        window.setEnabled(false);
+    }
+    
 }

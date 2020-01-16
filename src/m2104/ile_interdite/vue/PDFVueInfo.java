@@ -9,60 +9,49 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
+import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.border.MatteBorder;
-import m2104.ile_interdite.util.Message;
 import m2104.ile_interdite.util.Parameters;
-import m2104.ile_interdite.util.TypeAction;
-import m2104.ile_interdite.util.Utils;
 
 /**
  *
  * @author pommatar
  */
-public class VueFermeture {
-        
+public class PDFVueInfo {
     //private final IHM ihm;
+
     private String urlImgs = "Images/texture.png";
     private JFrame fenetre;
     private JButton fermer;
-    private IHM ihm;
+    //private IHM ihm;
 
-    
-    public VueFermeture(IHM ihm) {
+    public PDFVueInfo(){//IHM ihm) {
         initialiserFenetreBouton();
-        this.ihm = ihm;
+        //this.ihm = ihm;
     }
-    
+
     public void initialiserFenetreBouton() {
         fenetre = new JFrame();
         fenetre.setContentPane(new PanelFond(urlImgs, 30, 30));
         fenetre.setSize(30, 30);
-        
-        
+
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        int dimX = 800+ dim.width / 3 - fenetre.getSize().width +30;
-        
-        
-        fenetre.setLocation(dimX, 0);
-        
+        int dimX = 800 + dim.width / 3 - fenetre.getSize().width + 30;
+
+        fenetre.setLocation(dimX, 30);
+
         fenetre.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         fenetre.setUndecorated(Parameters.UNDECORATED);
         fenetre.setResizable(Parameters.RESIZABLE);
-      
-        
-        
-        JLabel text = new JLabel("X");
-        text.setForeground(Color.RED);
+
+        JLabel text = new JLabel("?");
+        text.setForeground(Color.BLUE);
         JButton fermer = new JButton();
         fermer.add(text);
         fermer.setOpaque(false);
@@ -71,26 +60,43 @@ public class VueFermeture {
         fermer.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
-                fenetre.dispose();
-                ihm.FermertousVue();
-                System.exit(0); 
+                try {
+
+                    //Runtime.getRuntime().exec("Images/regle.pdf");
+                    java.awt.Desktop.getDesktop().open(new File("Images/regle.pdf"));
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
 
-            @Override public void mousePressed(MouseEvent arg0) {}
+            @Override
+            public void mousePressed(MouseEvent arg0) {
+            }
 
-            @Override public void mouseReleased(MouseEvent arg0) {}
+            @Override
+            public void mouseReleased(MouseEvent arg0) {
+            }
 
-            @Override public void mouseEntered(MouseEvent arg0) {}
+            @Override
+            public void mouseEntered(MouseEvent arg0) {
 
-            @Override public void mouseExited(MouseEvent arg0) {}
+            }
+
+            @Override
+            public void mouseExited(MouseEvent arg0) {
+            }
         });
         fermer.setBorderPainted(false);
         fenetre.add(fermer, BorderLayout.CENTER);
         fenetre.setVisible(true);
     }
-
+    
     public void fermer() {
         fenetre.dispose();
+    }
+
+    public static void main(String[] args) {
+        new PDFVueInfo();
     }
     
     public void lockFenetre(){

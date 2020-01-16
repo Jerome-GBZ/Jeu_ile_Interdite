@@ -7,10 +7,13 @@ package m2104.ile_interdite.vue;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,19 +27,24 @@ import m2104.ile_interdite.util.Parameters;
  * @author gambiezj
  */
 public class VueFinPartie {
-    
+
     private JFrame fenetre;
     private JPanel mainPanel;
     private JPanel hautPanel;
-    
-    public VueFinPartie(boolean gagne) {
-        initialiserFenetreFin(gagne);
+    private JPanel milieu;
+    private JPanel basPanel;
+    private JLabel img;
+    private Image imgTuile;
+    private IHM ihm;
+
+    public VueFinPartie(IHM ihm, boolean gagne) {
+        initialiserFenetreFin(ihm, gagne);
     }
 
-    public void initialiserFenetreFin(boolean isGagne) {
+    public void initialiserFenetreFin(IHM ihm, boolean isGagne) {
         fenetre = new JFrame();
         fenetre.setSize(300, 150);
-        
+
         // Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         // int dimX = 0 + dim.width / 3 - 152;
         // int dimY = 0 + dim.height / 3 - fenetre.getSize().height / 2 - 161;
@@ -45,51 +53,61 @@ public class VueFinPartie {
         fenetre.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         fenetre.setUndecorated(Parameters.UNDECORATED);
         fenetre.setResizable(Parameters.RESIZABLE);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        fenetre.setLocation(dim.width / 2 - fenetre.getSize().width / 2, dim.height / 2 - fenetre.getSize().height / 2);
+        fenetre.setAlwaysOnTop(true);
 
-        mainPanel = new JPanel(new BorderLayout());
-        hautPanel = new JPanel(new GridLayout(1,2));
+        mainPanel = new JPanel(new GridLayout(3, 1));
+        hautPanel = new JPanel(new GridLayout(1, 2));
+        milieu = new JPanel();
+        basPanel = new JPanel(new GridLayout(1, 3));
 
         mainPanel.setOpaque(false);
 
         JLabel gagne = new JLabel();
         if (isGagne) {
-            gagne.setText("Vous avez gagné");
+            gagne.setText("Vous avez gagné !");
+            imgTuile = Toolkit.getDefaultToolkit().getImage("Images/tresor.png").getScaledInstance(50, 50, 50);
+            img = new JLabel(new ImageIcon(imgTuile));
         } else {
-            gagne.setText("Vous avez perdu");
+            gagne.setText("Vous avez perdu !");
+            imgTuile = Toolkit.getDefaultToolkit().getImage("Images/noyade.jpg").getScaledInstance(50, 50, 50);
+            img = new JLabel(new ImageIcon(imgTuile));
         }
-        
+
         JLabel rejoue = new JLabel("Voulez-vous rejouer ?");
-        
+
         JButton oui = new JButton("Oui");
         JButton non = new JButton("Non");
-        
+
         oui.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
+                ihm.FermertousVue();
+                fenetre.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+                fenetre.dispose();
                 new Controleur();
             }
         });
-        
+
         non.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 System.exit(0);
             }
         });
-        
-        mainPanel.add(new JLabel(""));
-        mainPanel.add(gagne);
-        mainPanel.add(new JLabel(""));
-        mainPanel.add(new JLabel(""));
-        mainPanel.add(rejoue);      
-        mainPanel.add(new JLabel(""));
-        
-        mainPanel.add(hautPanel);
-        
-        hautPanel.add(oui);
-        hautPanel.add(new JLabel(""));
-        hautPanel.add(non);
-                
+
+        hautPanel.add(gagne);
+        hautPanel.add(img);
+        milieu.add(rejoue);
+        basPanel.add(oui);
+        basPanel.add(new JLabel(""));
+        basPanel.add(non);
+
+        mainPanel.add(hautPanel, BorderLayout.NORTH);
+        mainPanel.add(milieu, BorderLayout.CENTER);
+        mainPanel.add(basPanel, BorderLayout.SOUTH);
+
         fenetre.add(mainPanel);
         fenetre.setVisible(true);
     }
