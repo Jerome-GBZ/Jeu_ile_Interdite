@@ -81,7 +81,7 @@ public class IHM extends Observable<Message> {
     public void creeVueTresor(IleInterdite ile) {
         vuetresor = new VueTresor(ile);
     }
-
+    
     public void recupTresor(Aventurier a) {
         vuetresor.recuptresor(a.getTuile().getTresor().getNomTresor());
     }
