@@ -41,7 +41,10 @@ public class VueMainJoueur /*extends JPanel*/ {
         window = new JFrame();
         window.setContentPane(new PanelFond(urlImgs, 952, 80));
         window.setSize(952, 80);
-        window.setLocation(0, 780);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        int dimX = 0 + dim.width / 3 - 152;
+        window.setLocation(dimX, 780);
+        
         window.setAlwaysOnTop(true);
 
         window.setUndecorated(Parameters.UNDECORATED);

@@ -42,6 +42,13 @@ public class VueHeader {
         panelprinc.setOpaque(false);
         panelprinc.setSize(800, 124);
 
+        window.setSize(800, 124);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        int dimX = 0 + dim.width / 3 - 152;
+        System.out.println("dim = " + dim);
+        System.out.println("dimX = " + dimX);
+        window.setLocation(dimX, 0);
+
         window.setContentPane(new PanelFond("Images/VueHeader.png"));
 
         if (listA.size() == 2) {
@@ -97,7 +104,6 @@ public class VueHeader {
 
             panelButton3.add(nom3, BorderLayout.SOUTH);
 
-            
             //ActionListeners
             b2.addActionListener(new ActionListener() {
                 @Override
@@ -105,12 +111,12 @@ public class VueHeader {
                     aventurierChoisi = listA.get(0);
                 }
             });
-            
+
             b3.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
                     aventurierChoisi = listA.get(1);
-                    System.out.println("Choix AVENTURIER : " +listA.get(1).getRole());
+                    System.out.println("Choix AVENTURIER : " + listA.get(1).getRole());
                 }
             });
 
@@ -188,7 +194,6 @@ public class VueHeader {
 
             panelButton3.add(nom3, BorderLayout.SOUTH);
 
-            
             //ActionListeners
             b1.addActionListener(new ActionListener() {
                 @Override
@@ -196,21 +201,21 @@ public class VueHeader {
                     aventurierChoisi = listA.get(0);
                 }
             });
-            
+
             b2.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
                     aventurierChoisi = listA.get(1);
                 }
             });
-            
+
             b3.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
                     aventurierChoisi = listA.get(2);
                 }
             });
-            
+
             panelprinc.add(b1);
             panelprinc.add(b2);
             panelprinc.add(new JLabel(" "));
@@ -296,8 +301,7 @@ public class VueHeader {
             nom4.setSize(200, 200);
 
             panelButton4.add(nom4, BorderLayout.SOUTH);
-            
-            
+
             //ActionListeners
             b1.addActionListener(new ActionListener() {
                 @Override
@@ -305,21 +309,21 @@ public class VueHeader {
                     aventurierChoisi = listA.get(0);
                 }
             });
-            
+
             b2.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
                     aventurierChoisi = listA.get(1);
                 }
             });
-            
+
             b3.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
                     aventurierChoisi = listA.get(2);
                 }
             });
-            
+
             b3.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
@@ -338,9 +342,6 @@ public class VueHeader {
 
         }
 
-        window.setSize(800, 124);
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        window.setLocation(0, 0);
         window.setUndecorated(true);
         window.setVisible(true);
     }
