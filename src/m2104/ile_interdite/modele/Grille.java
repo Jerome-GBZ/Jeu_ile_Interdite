@@ -142,12 +142,14 @@ public class Grille {
             }
 
         }*/
-       ArrayList<Tuile> copyTuilesdispo = tuilesDispo;
-        for (Tuile tu : copyTuilesdispo) {
+       ArrayList<Tuile> TuileAsupr = new ArrayList<>();
+        for (Tuile tu : tuilesDispo) {
             if (tu.getEtat().equals(TypeEtat.COULE)) {
-                tuilesDispo.remove(tu);
+                TuileAsupr.add(tu);
             }
         }
+        
+        tuilesDispo.removeAll(TuileAsupr);
 
         return tuilesDispo;
     }
