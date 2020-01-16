@@ -60,7 +60,8 @@ public class Controleur implements Observateur<Message> {
                     break;
 
                 case DONNER:
-                    ileInterdite.donnerCarte();
+                    ileInterdite.donnerCarte(msg.aventurier, msg.carte);
+                    ihm.afficheCarteMain(msg.aventurier);
                     break;
                 case ACTUALISER:
                     ihm.actualiserPlateau(ileInterdite.getGrille());
@@ -96,5 +97,9 @@ public class Controleur implements Observateur<Message> {
     //getters et setters
     public IHM getIhm() {
         return ihm;
+    }
+    
+    public IleInterdite getIleInterdite() {
+        return ileInterdite;
     }
 }
