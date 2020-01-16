@@ -149,6 +149,8 @@ public class IHM extends Observable<Message> {
 //     System.exit(0); 
     }
     
+  
+    
     public void finPartie(boolean gagne) {
         System.out.println("finPartie IHM");
         FermertousVue();
