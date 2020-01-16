@@ -95,7 +95,7 @@ public class Aventurier {
                 for (CJoueur c : a.getCartes()){
                     if (c.getTypeCarte().equals(TypeCarte.CHELICOPTERE)){
                         ii.setGagne(true);
-                        ii.PartieFinie();
+                        ii.setFini();
                     }
                 }
                
