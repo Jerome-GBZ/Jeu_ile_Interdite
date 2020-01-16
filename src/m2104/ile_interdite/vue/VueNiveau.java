@@ -198,7 +198,9 @@ public class VueNiveau {
                 return "" ;
         }
     }
-
+    public void fermer(){
+        window.dispose();
+    }
    /*
     public static void main(String[] args) {
         VueNiveau vueNiveau = new VueNiveau(1);

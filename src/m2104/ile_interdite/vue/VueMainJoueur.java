@@ -140,4 +140,8 @@ public class VueMainJoueur /*extends JPanel*/ {
         this.window.setVisible(true);
     }
 
+    
+    public void fermer(){
+        window.dispose();
+    }
 }

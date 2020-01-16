@@ -98,4 +98,8 @@ public class VueTresor extends JPanel {
         }
     }
     
+    public void fermer(){
+        window.dispose();
+    }
+    
 }

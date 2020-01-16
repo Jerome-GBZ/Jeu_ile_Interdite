@@ -349,7 +349,11 @@ public class VueHeader {
     public Aventurier getAventurierChoisi() {
         return aventurierChoisi;
     }
-
+    
+    public void fermer(){
+        window.dispose();
+    }
+    
     /*public static void main(String[] args) {
         
     }*/
