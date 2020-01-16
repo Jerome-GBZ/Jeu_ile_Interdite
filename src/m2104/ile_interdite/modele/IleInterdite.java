@@ -601,7 +601,7 @@ public class IleInterdite extends Observable<Message> {
             }
             setNbActions(0);
             joueurCourant.setPouvoir(false);
-            
+            piocherCarteInondation();
         }
             Message m1 = new Message();
             m1.type = TypeAction.ACTUALISER;
@@ -673,7 +673,7 @@ public class IleInterdite extends Observable<Message> {
             joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
         }
         }
-        
+        piocherCarteInondation();
         setNbActions(0);
         joueurCourant.setPouvoir(false);
         Message m = new Message();
