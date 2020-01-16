@@ -89,6 +89,10 @@ public class VueFermeture {
         fenetre.setVisible(true);
     }
 
+    public void fermer() {
+        fenetre.dispose();
+    }
+    
     /*public static void main(String[] args) {
         new VueFermeture();
     }*/
