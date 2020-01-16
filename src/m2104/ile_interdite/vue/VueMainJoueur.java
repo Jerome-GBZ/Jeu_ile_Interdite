@@ -22,9 +22,12 @@ public class VueMainJoueur {
 
     private JPanel mainPanel;
     private JPanel panelCentre;
+    
+    private IHM ihm;
 
-    public VueMainJoueur(Grille g) {
+    public VueMainJoueur(Grille g, IHM ihm) {
         initialiserFenetreMain(g);
+        this.ihm = ihm;
     }
 
     public void initialiserFenetreMain(Grille g) {
@@ -88,10 +91,9 @@ public class VueMainJoueur {
                 cartePanel.setOpaque(false);
 
                 panelCentre.add(cartePanel);
-                // essayer denvoyer pour envoyer un message pour actualiser la vue 
-                // Message m = new Message();
-                // m.type = TypeAction.CHOISIR_CARTE;
-                // ihm.notifierObservateurs(m);
+                Message m = new Message();
+                m.type = TypeAction.CHOISIR_CARTE;
+                ihm.notifierObservateurs(m);
             }
         }
     }

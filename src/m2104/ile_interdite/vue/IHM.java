@@ -87,7 +87,7 @@ public class IHM extends Observable<Message> {
     }
     
     public void creeVueMainJoueur(Grille g){
-        vueMainJoueur = new VueMainJoueur(g);
+        vueMainJoueur = new VueMainJoueur(g, this);
         vueMainJoueur.afficher();
     }
     
