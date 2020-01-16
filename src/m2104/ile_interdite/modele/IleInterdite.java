@@ -802,6 +802,9 @@ public class IleInterdite extends Observable<Message> {
         c.getA().removeCarteJoueur(c);
         c.setA(null);
         cartesJoueurDefausse.add(c);
+        Message m1 = new Message();
+        m1.type = TypeAction.ACTUALISER;
+        notifierObservateurs(m1);
     }
 
 }
