@@ -8,6 +8,7 @@ package m2104.ile_interdite.vue;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -88,6 +89,10 @@ public class PDFVueInfo {
         fermer.setBorderPainted(false);
         fenetre.add(fermer, BorderLayout.CENTER);
         fenetre.setVisible(true);
+    }
+    
+    public void fermer() {
+        fenetre.dispose();
     }
 
     public static void main(String[] args) {
