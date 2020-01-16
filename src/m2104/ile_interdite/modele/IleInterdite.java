@@ -797,5 +797,11 @@ public class IleInterdite extends Observable<Message> {
         m1.type = TypeAction.ACTUALISER;
         notifierObservateurs(m1);
     }
+    
+    public void defausserCJoueur(CJoueur c) {
+        c.getA().removeCarteJoueur(c);
+        c.setA(null);
+        cartesJoueurDefausse.add(c);
+    }
 
 }
