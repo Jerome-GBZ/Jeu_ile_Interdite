@@ -562,11 +562,13 @@ public class IleInterdite extends Observable<Message> {
                 }
 
             }
-            if (this.PartieFinie()) {
+            
+            
+        }
+        if (this.PartieFinie()) {
                 Message m = new Message();
                 m.type = TypeAction.TERMINER;
                 m.gagne = this.getGagne();
-            }
         }
     }
         /* public void Jouer() {
@@ -621,6 +623,7 @@ public class IleInterdite extends Observable<Message> {
 
     public void assecher(Tuile t) {
         joueurCourant.assecher(t);
+        
         if (nbactions < 2) {
             nbactions++;
         } else {
