@@ -39,8 +39,8 @@ public class VueMainJoueur /*extends JPanel*/ {
 
         /* paramètres de la fenetre : */
         window = new JFrame();
-        window.setContentPane(new PanelFond(urlImgs, 952, 80));
-        window.setSize(952, 80);
+        window.setContentPane(new PanelFond(urlImgs, 952, 90));
+        window.setSize(952, 90);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         int dimX = 0 + dim.width / 3 - 152;
         // int dimY = 780 + dim.height / 3 - window.getSize().height / 2;
