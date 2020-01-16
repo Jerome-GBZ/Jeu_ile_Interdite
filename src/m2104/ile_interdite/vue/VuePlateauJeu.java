@@ -119,7 +119,6 @@ public class VuePlateauJeu extends JPanel {
 
                 if (arrayTuiles.get(i).getEtat() == TypeEtat.COULE) {
                     btn = new JButton();
-                    centrePanel.add(btn);
                 } else {
                     if (arrayTuiles.get(i).getEtat() == TypeEtat.INNONDE) {
                         imgTuile = Toolkit.getDefaultToolkit().getImage("Images/tuiles/" + nomTuile + "_Inonde.png").getScaledInstance(120, 100, 120);
@@ -129,34 +128,33 @@ public class VuePlateauJeu extends JPanel {
                         btn = new JButton(new ImageIcon(imgTuile));
                     }
 
-                    if (tDispos.contains(arrayTuiles.get(i))) {
-                        Tuile t = arrayTuiles.get(i);
-                        btn.addActionListener(new ActionListener() {
-                            @Override
-                            public void actionPerformed(ActionEvent arg0) {
-                                Message m = new Message();
-                                m.type = TypeAction.BOUGERPION;
-                                m.tuile = t;
-                                ihm.notifierObservateurs(m);
-                            }
-                        });
-
-                    } else {
-                        btn.setEnabled(false);
-                    }
-
-                    if (!arrayTuiles.get(i).getAventuriers().isEmpty()) {
-                        JPanel centrePionP = dessinerPion(arrayTuiles.get(i).getAventuriers().get(0));
-                        btn.add(centrePionP);
-                        System.out.println(arrayTuiles.get(i).getAventuriers().get(0).getPion());
-                    }
-
-                    btn.setPreferredSize(new Dimension(85, 85));
-                    btn.setOpaque(false);
-                    btn.setContentAreaFilled(false);
-                    btn.setBorderPainted(false);
-                    centrePanel.add(btn);
                 }
+                if (tDispos.contains(arrayTuiles.get(i))) {
+                    Tuile t = arrayTuiles.get(i);
+                    btn.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent arg0) {
+                            Message m = new Message();
+                            m.type = TypeAction.BOUGERPION;
+                            m.tuile = t;
+                            ihm.notifierObservateurs(m);
+                        }
+                    });
+
+                } else {
+                    btn.setEnabled(false);
+                }
+
+                if (!arrayTuiles.get(i).getAventuriers().isEmpty()) {
+                    JPanel centrePionP = dessinerPion(arrayTuiles.get(i).getAventuriers().get(0));
+                    btn.add(centrePionP);
+                    System.out.println(arrayTuiles.get(i).getAventuriers().get(0).getPion());
+                }
+                btn.setPreferredSize(new Dimension(85, 85));
+                btn.setOpaque(false);
+                btn.setContentAreaFilled(false);
+                btn.setBorderPainted(false);
+                centrePanel.add(btn);
             }
         }
         centrePanel.revalidate();
