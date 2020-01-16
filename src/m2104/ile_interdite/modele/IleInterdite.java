@@ -618,12 +618,7 @@ public class IleInterdite extends Observable<Message> {
         m1.type = TypeAction.ACTUALISER;
         notifierObservateurs(m1);
 
-        if (this.PartieFinie()) {
-            Message m = new Message();
-            m.type = TypeAction.FIN_PARTIE;
-            m.gagne = this.getGagne();
-            notifierObservateurs(m);
-        }
+        
     }
 
     public void assecher() {

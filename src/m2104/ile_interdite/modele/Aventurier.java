@@ -98,7 +98,14 @@ public class Aventurier {
                         ii.PartieFinie();
                     }
                 }
+               
             }
+        }
+            if (ii.PartieFinie()) {
+                Message m = new Message();
+                m.type = TypeAction.FIN_PARTIE;
+                m.gagne = ii.getGagne();
+                ii.notifierObservateurs(m);
         }
         
     }
