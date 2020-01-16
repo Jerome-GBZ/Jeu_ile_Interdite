@@ -200,8 +200,9 @@ public class Grille {
                 }
             }
         }
-        for (Tuile tu : tuilesDispo) {
-            if (tu.getEtat() != TypeEtat.INNONDE) {
+        ArrayList<Tuile> copyTuilesdispo = tuilesDispo;
+        for (Tuile tu : copyTuilesdispo) {
+            if (!tu.getEtat().equals(TypeEtat.INNONDE)) {
                 tuilesDispo.remove(tu);
             }
         }
