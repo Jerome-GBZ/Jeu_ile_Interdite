@@ -45,7 +45,7 @@ public class VueFermeture {
     
     public void initialiserFenetreBouton() {
         fenetre = new JFrame();
-        fenetre.setContentPane(new PanelFond(urlImgs, 32, 32));
+        fenetre.setContentPane(new PanelFond(urlImgs, 30, 30));
         fenetre.setSize(30, 30);
         
         
@@ -62,10 +62,9 @@ public class VueFermeture {
         
         
         JLabel text = new JLabel("X");
-        text.setForeground(Color.WHITE);
+        text.setForeground(Color.RED);
         JButton fermer = new JButton();
         fermer.add(text);
-        fermer.setForeground(Color.RED);
         fermer.setOpaque(false);
         fermer.setEnabled(false);
 
