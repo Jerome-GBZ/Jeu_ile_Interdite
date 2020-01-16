@@ -38,7 +38,9 @@ public class VuePlateauJeu extends JPanel {
         fenetre = new JFrame();
         fenetre.setContentPane(new PanelFond(urlImgs, 800, 700));
         fenetre.setSize(800, 700);
-        fenetre.setLocation(0, 124);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        int dimX = 0 + dim.width / 3 - 152;
+        fenetre.setLocation(dimX, 124);
         fenetre.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         fenetre.setUndecorated(Parameters.UNDECORATED);
         fenetre.setResizable(Parameters.RESIZABLE);

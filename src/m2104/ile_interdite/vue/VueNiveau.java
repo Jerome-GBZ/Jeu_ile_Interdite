@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.util.HashMap;
 import java.util.Scanner;
 import javax.swing.BorderFactory;
@@ -36,7 +37,9 @@ public class VueNiveau {
         window.setResizable(Parameters.RESIZABLE);
         window.setSize(d);
         window.setContentPane(new PanelFond("Images/VueNiveau.png"));
-        window.setLocation(800,159);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        int dimX = 800 + dim.width / 3 - window.getSize().width;
+        window.setLocation(dimX, 159);
         
         
         JPanel panelpincipal = new JPanel(new BorderLayout());

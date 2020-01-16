@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JButton;
@@ -47,7 +48,9 @@ public class VueBoutons {
         fenetre = new JFrame();
         fenetre.setContentPane(new PanelFond(urlImgs, 152, 159));
         fenetre.setSize(152, 159);
-        fenetre.setLocation(800, 0);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        int dimX = 800+ dim.width / 3 - fenetre.getSize().width;
+        fenetre.setLocation(dimX, 0);
         fenetre.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         fenetre.setUndecorated(Parameters.UNDECORATED);
         fenetre.setResizable(Parameters.RESIZABLE);
