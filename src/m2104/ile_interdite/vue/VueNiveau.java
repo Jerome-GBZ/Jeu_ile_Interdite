@@ -39,7 +39,9 @@ public class VueNiveau {
         window.setContentPane(new PanelFond("Images/VueNiveau.png"));
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         int dimX = 800 + dim.width / 3 - window.getSize().width;
-        window.setLocation(dimX, 159);
+        // int dimY = 159 + dim.height / 3 - window.getSize().height / 2;
+        int dimY = 159;
+        window.setLocation(dimX, dimY);
         
         
         JPanel panelpincipal = new JPanel(new BorderLayout());
@@ -187,9 +189,9 @@ public class VueNiveau {
             case 2 :
                 return " normal" ;
             case 3 :
-                return " Ã©lite" ;
+                return " élite" ;
             case 4 :
-                return " lÃ©gendaire" ;
+                return " légendaire" ;
             case 10 :
                 return " mortel" ;
             default :

@@ -50,7 +50,9 @@ public class VueBoutons {
         fenetre.setSize(152, 159);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         int dimX = 800+ dim.width / 3 - fenetre.getSize().width;
-        fenetre.setLocation(dimX, 0);
+        // int dimY = 0 + dim.height / 3 - fenetre.getSize().height / 2 - 161;
+        int dimY = 0;
+        fenetre.setLocation(dimX, dimY);
         fenetre.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         fenetre.setUndecorated(Parameters.UNDECORATED);
         fenetre.setResizable(Parameters.RESIZABLE);

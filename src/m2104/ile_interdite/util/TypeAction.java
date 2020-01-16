@@ -23,7 +23,8 @@ public enum TypeAction {
     TERMINER,
     TERMINER_TOUR,
     CHOISIR_TUILE,
-    
+    CHOISIR_TUILE_ASSECHER,
+    ASSECHER_TUILE,
     // pas encore traiter
     RECEVOIR,
     CHOISIR_CARTE,

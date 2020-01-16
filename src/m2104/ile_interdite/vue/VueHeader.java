@@ -45,9 +45,9 @@ public class VueHeader {
         window.setSize(800, 124);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         int dimX = 0 + dim.width / 3 - 152;
-        System.out.println("dim = " + dim);
-        System.out.println("dimX = " + dimX);
-        window.setLocation(dimX, 0);
+        // int dimY = 0 + dim.height / 3 - 159;
+        int dimY = 0;
+        window.setLocation(dimX, dimY);
 
         window.setContentPane(new PanelFond("Images/VueHeader.png"));
 

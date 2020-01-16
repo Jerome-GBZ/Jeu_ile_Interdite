@@ -103,6 +103,10 @@ public class IHM extends Observable<Message> {
         vuePlateauJeu.actualiserPlateauJeu(tDispos, g);
     }
     
+    public void afficheTuilesDisposAssecher(ArrayList<Tuile> tDispos, Grille g) {
+        vuePlateauJeu.actualiserPlateauJeuAssecher(tDispos, g);
+    }
+    
     public void actualiserPlateau(Grille g) {
         vuePlateauJeu.intitialiserPlateauJeu(g);
     }

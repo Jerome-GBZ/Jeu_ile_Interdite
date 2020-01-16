@@ -638,7 +638,13 @@ public class IleInterdite extends Observable<Message> {
     }
 
     public void donnerCarte() {
-        if (nbactions < 2) {
+       
+        joueurCourant.donnerCarte();
+    }
+
+    public void donnerCarte(Aventurier a, CJoueur c) {
+        joueurCourant.donnerCarte(a, c);
+         if (nbactions < 2) {
             nbactions++;
         } else {
             if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size() - 1) {
@@ -649,11 +655,10 @@ public class IleInterdite extends Observable<Message> {
             setNbActions(0);
             joueurCourant.setPouvoir(false);
         }
-        joueurCourant.donnerCarte();
-    }
-
-    public void donnerCarte(Aventurier a, CJoueur c) {
-        joueurCourant.donnerCarte(a, c);
+          Message m1 = new Message();
+        m1.type = TypeAction.ACTUALISER;
+        notifierObservateurs(m1);
+         
     }
 
     public void terminerTour() {

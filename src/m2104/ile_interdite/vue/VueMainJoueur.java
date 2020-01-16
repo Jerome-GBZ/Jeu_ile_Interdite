@@ -43,7 +43,9 @@ public class VueMainJoueur /*extends JPanel*/ {
         window.setSize(952, 80);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         int dimX = 0 + dim.width / 3 - 152;
-        window.setLocation(dimX, 780);
+        // int dimY = 780 + dim.height / 3 - window.getSize().height / 2;
+        int dimY = 780;
+        window.setLocation(dimX, dimY);
         
         window.setAlwaysOnTop(true);
 
@@ -98,8 +100,8 @@ public class VueMainJoueur /*extends JPanel*/ {
                 cartePanel = new JButton(new ImageIcon(cartesJImg));
                 cartePanel.setPreferredSize(new Dimension(50, 50));
                 cartePanel.setOpaque(false);
-                cartePanel.setContentAreaFilled(true);
-                cartePanel.setBorderPainted(false);
+                cartePanel.setContentAreaFilled(false);
+                cartePanel.setBorderPainted(true);
                 
                 CJoueur carteJoueur = carteJoueurs[i];
                 
