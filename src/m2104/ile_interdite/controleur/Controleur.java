@@ -50,6 +50,7 @@ public class Controleur implements Observateur<Message> {
                     
                 case BOUGERPION:
                     ileInterdite.seDeplacer(msg.tuile);
+                    
                     ihm.actualiserPlateau(ileInterdite.getGrille());
                     ihm.afficheCarteMain(ileInterdite.getJoueurCourant());
                     break;
@@ -64,6 +65,7 @@ public class Controleur implements Observateur<Message> {
 
                 case TERMINER:
                     ileInterdite.terminerTour();
+                    ihm.actualiserPlateau(ileInterdite.getGrille());
                     break;
 
                 case RECUPERER_TRESOR:
