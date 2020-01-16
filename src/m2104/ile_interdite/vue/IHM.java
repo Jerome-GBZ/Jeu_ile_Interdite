@@ -2,6 +2,7 @@ package m2104.ile_interdite.vue;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import m2104.ile_interdite.controleur.Controleur;
 import m2104.ile_interdite.modele.*;
 import m2104.ile_interdite.util.*;
 import patterns.observateur.Observable;
@@ -21,12 +22,14 @@ public class IHM extends Observable<Message> {
     private VueBoutons vueBoutons;
     private VueNiveau vueNiveau;
     private VueMainJoueur vueMainJoueur;
+    private Observateur controleur;
 
     public IHM(Observateur<Message> observateur) {
         this.addObservateur(observateur);
         this.vueAventuriers = new HashMap<>();
         this.vueInscription = new VueInscriptionJoueurs(this);
         this.afficheVueInscription();
+        this.controleur = observateur;
     }
 
     /*public void creerVuesAventuriers(String[] nomAventuriers) {
@@ -103,14 +106,25 @@ public class IHM extends Observable<Message> {
         vueMainJoueur.actualiserMain(a);
     }
     
-    public void donnerCarte(CJoueur carte) {
+    public void donnerCarte() {
+        CJoueur carte = choisirCarte();
+        Aventurier a = choisirAventurier();
+        
+        System.out.println("Carte : "+ carte.getNomCarte());
+        System.out.println("Aventurier : "+a.getRole());
         
         Message m = new Message();
         m.type = TypeAction.DONNER;
         m.carte = carte;
+        m.aventurier = a;
+        notifierObservateurs(m);
     }
-    /*
-    public Aventurier choisirCarte() {
-        return vueHeader.choisirAventurier();
-    }*/
+    
+    public CJoueur choisirCarte() {
+        return vueMainJoueur.getCarteChoisie();
+    }
+    
+    public Aventurier choisirAventurier() {
+        return vueHeader.getAventurierChoisi();
+    }
 }

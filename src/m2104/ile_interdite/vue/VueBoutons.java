@@ -119,9 +119,8 @@ public class VueBoutons {
                         ihm.notifierObservateurs(m2);
                         break;
                     case DONNER:
-                        Message m3 = new Message();
-                        m3.type = TypeAction.DONNER;
-                        ihm.notifierObservateurs(m3);
+                        ihm.donnerCarte();
+                        System.out.println("Click bouton DONNER");
                         break;
                     case RECUPERER_TRESOR:
                         Message m4 = new Message();

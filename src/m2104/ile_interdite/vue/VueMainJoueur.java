@@ -19,7 +19,7 @@ import java.util.ArrayList;
  */
 public class VueMainJoueur /*extends JPanel*/ {
 
-    private String urlImgs = "Images/texture_footer.png";
+    private final String urlImgs = "Images/texture_footer.png";
     private JFrame window;
 
     private JPanel mainPanel;
@@ -27,6 +27,8 @@ public class VueMainJoueur /*extends JPanel*/ {
     private JButton cartePanel;
 
     private IHM ihm;
+    
+    private CJoueur carteChoisie;
 
     public VueMainJoueur(Grille g, IHM ihm) {
         initialiserFenetreMain(g);
@@ -97,10 +99,13 @@ public class VueMainJoueur /*extends JPanel*/ {
                 cartePanel.setBorderPainted(false);
                 
                 CJoueur carteJoueur = carteJoueurs[i];
+                
                 cartePanel.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent arg0) {
-                        ihm.donnerCarte(carteJoueur);
+                        //dessinerMain(a);
+                        System.out.println("Choix Carte");
+                        carteChoisie = carteJoueur;
                     }
                 });
                 
@@ -120,6 +125,10 @@ public class VueMainJoueur /*extends JPanel*/ {
         panelCentre.revalidate();
         panelCentre.updateUI();
 
+    }
+    
+    public CJoueur getCarteChoisie() {
+        return carteChoisie;
     }
 
     public void afficher() {
