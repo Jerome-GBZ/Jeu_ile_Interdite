@@ -91,7 +91,9 @@ public class VueMainJoueur {
                 cartePanel.setPreferredSize(new Dimension(50, 50));
                 cartePanel.setOpaque(false);
                 
-                        panelCentre.add(cartePanel);
+                panelCentre.add(cartePanel);
+                
+                
             }
         }
     }
