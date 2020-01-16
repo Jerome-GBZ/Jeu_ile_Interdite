@@ -22,9 +22,13 @@ public class VueMainJoueur {
 
     private JPanel mainPanel;
     private JPanel panelCentre;
+    JLabel cartePanel;
 
-    public VueMainJoueur(Grille g) {
+    private IHM ihm;
+
+    public VueMainJoueur(Grille g, IHM ihm) {
         initialiserFenetreMain(g);
+        this.ihm = ihm;
     }
 
     public void initialiserFenetreMain(Grille g) {
@@ -61,7 +65,7 @@ public class VueMainJoueur {
 
     public void dessinerMain(Aventurier a) {
         String carte = "Pierre";
-        JLabel cartePanel = new JLabel();
+        cartePanel = new JLabel();
         Image cartesJImg;
         CJoueur[] carteJoueurs = a.getCartes();
 
@@ -86,12 +90,10 @@ public class VueMainJoueur {
                 cartePanel = new JLabel(new ImageIcon(cartesJImg));
                 cartePanel.setPreferredSize(new Dimension(50, 50));
                 cartePanel.setOpaque(false);
-
+                
                 panelCentre.add(cartePanel);
-                // essayer denvoyer pour envoyer un message pour actualiser la vue 
-                // Message m = new Message();
-                // m.type = TypeAction.CHOISIR_CARTE;
-                // ihm.notifierObservateurs(m);
+                
+                
             }
         }
     }
@@ -100,6 +102,8 @@ public class VueMainJoueur {
         panelCentre.removeAll();
         panelCentre.validate();
         dessinerMain(a);
+        
+
         panelCentre.revalidate();
         panelCentre.updateUI();
 

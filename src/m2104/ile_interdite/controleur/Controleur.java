@@ -41,6 +41,8 @@ public class Controleur implements Observateur<Message> {
                     ileInterdite.setNbActions(ileInterdite.getNbActions()+1);
                     ileInterdite.seDeplacer();
                     System.out.println("Bouge");
+                    // ihm.actualiserPlateau(ileInterdite.getGrille());
+                    // ihm.afficheCarteMain(ileInterdite.getJoueurCourant());
                     break;
                     
                 case CHOISIR_TUILE:
@@ -49,7 +51,9 @@ public class Controleur implements Observateur<Message> {
                     
                 case BOUGERPION:
                     ileInterdite.seDeplacer(msg.tuile);
-                    ihm.actualiserPlateau(ileInterdite.getGrille());
+                    
+                  //  ihm.actualiserPlateau(ileInterdite.getGrille());
+                   // ihm.afficheCarteMain(ileInterdite.getJoueurCourant());
                     break;
 
                 case ASSECHER:
@@ -59,9 +63,13 @@ public class Controleur implements Observateur<Message> {
                 case DONNER:
                     ileInterdite.donnerCarte();
                     break;
-
+                case ACTUALISER:
+                    ihm.actualiserPlateau(ileInterdite.getGrille());
+                    ihm.afficheCarteMain(ileInterdite.getJoueurCourant());
+                    break;
                 case TERMINER:
                     ileInterdite.terminerTour();
+                    ihm.actualiserPlateau(ileInterdite.getGrille());
                     break;
 
                 case RECUPERER_TRESOR:
@@ -69,6 +77,7 @@ public class Controleur implements Observateur<Message> {
                     
                 case CHOISIR_CARTE:
                     
+                    break;
 
                 default:
                     if (Parameters.LOGS) {
