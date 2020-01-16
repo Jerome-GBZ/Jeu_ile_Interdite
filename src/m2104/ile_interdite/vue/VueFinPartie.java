@@ -70,7 +70,7 @@ public class VueFinPartie {
         non.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                
+                System.exit(0);
             }
         });
         
