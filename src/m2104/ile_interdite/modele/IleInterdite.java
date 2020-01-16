@@ -567,7 +567,7 @@ public class IleInterdite extends Observable<Message> {
         }
         if (this.PartieFinie()) {
                 Message m = new Message();
-                m.type = TypeAction.TERMINER;
+                m.type = TypeAction.FIN_PARTIE;
                 m.gagne = this.getGagne();
         }
     }
@@ -611,7 +611,7 @@ public class IleInterdite extends Observable<Message> {
        
         if (this.PartieFinie()) {
             Message m = new Message();
-            m.type = TypeAction.TERMINER;
+            m.type = TypeAction.FIN_PARTIE;
             m.gagne = this.getGagne();
             notifierObservateurs(m);
         }
@@ -687,9 +687,9 @@ public class IleInterdite extends Observable<Message> {
         piocherCarteInondation();
         setNbActions(0);
         joueurCourant.setPouvoir(false);
-        Message m = new Message();
+        /*Message m = new Message();
         m.type = TypeAction.TERMINER_TOUR;
-        notifierObservateurs(m);
+        notifierObservateurs(m);*/
     }
 
     //getters et setters
