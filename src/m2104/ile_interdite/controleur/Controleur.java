@@ -38,7 +38,6 @@ public class Controleur implements Observateur<Message> {
                     break;
 
                 case BOUGER:
-                    ileInterdite.setNbActions(ileInterdite.getNbActions()+1);
                     ileInterdite.seDeplacer();
                     System.out.println("Bouge");
                     // ihm.actualiserPlateau(ileInterdite.getGrille());
@@ -71,6 +70,7 @@ public class Controleur implements Observateur<Message> {
                 case TERMINER:
                     ileInterdite.terminerTour();
                     ihm.actualiserPlateau(ileInterdite.getGrille());
+                    ihm.afficheCarteMain(ileInterdite.getJoueurCourant());
                     break;
 
                 case RECUPERER_TRESOR:
@@ -87,6 +87,7 @@ public class Controleur implements Observateur<Message> {
 
             }
         } catch (Exception e) {
+            System.out.println(msg.type);
             System.out.println(e);
         } finally {
         }

@@ -142,11 +142,14 @@ public class Grille {
             }
 
         }*/
+       ArrayList<Tuile> TuileAsupr = new ArrayList<>();
         for (Tuile tu : tuilesDispo) {
-            if (tu.getEtat() == TypeEtat.COULE) {
-                tuilesDispo.remove(tu);
+            if (tu.getEtat().equals(TypeEtat.COULE)) {
+                TuileAsupr.add(tu);
             }
         }
+        
+        tuilesDispo.removeAll(TuileAsupr);
 
         return tuilesDispo;
     }
@@ -199,8 +202,9 @@ public class Grille {
                 }
             }
         }
-        for (Tuile tu : tuilesDispo) {
-            if (tu.getEtat() != TypeEtat.INNONDE) {
+        ArrayList<Tuile> copyTuilesdispo = tuilesDispo;
+        for (Tuile tu : copyTuilesdispo) {
+            if (!tu.getEtat().equals(TypeEtat.INNONDE)) {
                 tuilesDispo.remove(tu);
             }
         }
