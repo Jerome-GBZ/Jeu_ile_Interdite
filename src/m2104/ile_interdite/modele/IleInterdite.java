@@ -778,10 +778,7 @@ public class IleInterdite extends Observable<Message> {
     }
     
     public void recupTresorDemo() {
-        Message  m = new Message();
-        m.type = TypeAction.RECUPERER_TRESOR;
-        m.aventurier = joueurCourant;
-        notifierObservateurs(m);
+        removeTresor(joueurCourant.getTuile().getTresor());
         if (nbactions < 2) {
             nbactions++;
         } else {
