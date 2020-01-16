@@ -85,14 +85,14 @@ public class VueBoutons {
         this.btnPrendre = creerBouton(4, "Prendre", Utils.Commandes.RECUPERER_TRESOR);
         btnPrendre.setBorderPainted(false);
         centrePanel.add(btnPrendre);
-
-        this.btnTerminer = creerBouton(6, "Terminer", Utils.Commandes.TERMINER);
-        btnTerminer.setBorderPainted(false);
-        centrePanel.add(btnTerminer);
         
         this.btnDeplacer = creerBouton(5, "Défausse", Utils.Commandes.DEPLACER);
         btnDeplacer.setBorderPainted(false);
         centrePanel.add(btnDeplacer);
+
+        this.btnTerminer = creerBouton(6, "Terminer", Utils.Commandes.TERMINER);
+        btnTerminer.setBorderPainted(false);
+        centrePanel.add(btnTerminer);
         
     }
 
