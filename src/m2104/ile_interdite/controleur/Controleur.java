@@ -85,6 +85,7 @@ public class Controleur implements Observateur<Message> {
 
             }
         } catch (Exception e) {
+            System.out.println(msg.type);
             System.out.println(e);
         } finally {
         }
