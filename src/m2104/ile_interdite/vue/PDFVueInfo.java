@@ -98,4 +98,8 @@ public class PDFVueInfo {
     public static void main(String[] args) {
         new PDFVueInfo();
     }
+    
+    public void lockFenetre(){
+        fenetre.setEnabled(false);
+    }    
 }

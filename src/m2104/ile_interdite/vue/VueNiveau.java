@@ -203,18 +203,9 @@ public class VueNiveau {
     public void fermer(){
         window.dispose();
     }
-   /*
-    public static void main(String[] args) {
-        VueNiveau vueNiveau = new VueNiveau(1);
 
-        Scanner scanner = new Scanner(System.in);
-        
-        while(true){
-        System.out.println("Donne le niveau");
-        int i = scanner.nextInt();
-        vueNiveau.setNiveau(i);
+    public void lockFenetre(){
+        window.setEnabled(false);
+    }    
 
-        }
-    }
-*/
 }

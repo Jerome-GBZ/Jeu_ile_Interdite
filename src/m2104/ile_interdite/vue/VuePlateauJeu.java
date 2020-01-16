@@ -281,4 +281,8 @@ public class VuePlateauJeu extends JPanel {
         fenetre.dispose();
     }
     
+    public void lockFenetre(){
+        fenetre.setEnabled(false);
+    }
+    
 }

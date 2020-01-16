@@ -144,4 +144,8 @@ public class VueMainJoueur /*extends JPanel*/ {
     public void fermer(){
         window.dispose();
     }
+    
+    public void lockFenetre(){
+        window.setEnabled(false);
+    }
 }

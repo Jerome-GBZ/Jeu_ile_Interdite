@@ -93,9 +93,7 @@ public class VueFermeture {
         fenetre.dispose();
     }
     
-    /*public static void main(String[] args) {
-        new VueFermeture();
-    }*/
-    
-    
+    public void lockFenetre(){
+        fenetre.setEnabled(false);
+    }    
 }

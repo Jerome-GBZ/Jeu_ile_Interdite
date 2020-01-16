@@ -185,5 +185,9 @@ public class VueBoutons {
     public void fermer() {
         fenetre.dispose();
     }
+    
+    public void lockFenetre(){
+        fenetre.setEnabled(false);
+    }
 
 }

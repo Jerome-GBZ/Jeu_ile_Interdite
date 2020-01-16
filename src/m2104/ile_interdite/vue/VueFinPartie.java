@@ -35,12 +35,13 @@ public class VueFinPartie {
     private JPanel basPanel;
     private JLabel img;
     private Image imgTuile;
+    private IHM ihm;
 
-    public VueFinPartie(boolean gagne) {
-        initialiserFenetreFin(gagne);
+    public VueFinPartie(IHM ihm, boolean gagne) {
+        initialiserFenetreFin(ihm, gagne);
     }
 
-    public void initialiserFenetreFin(boolean isGagne) {
+    public void initialiserFenetreFin(IHM ihm, boolean isGagne) {
         fenetre = new JFrame();
         fenetre.setSize(300, 150);
 
@@ -52,6 +53,9 @@ public class VueFinPartie {
         fenetre.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         fenetre.setUndecorated(Parameters.UNDECORATED);
         fenetre.setResizable(Parameters.RESIZABLE);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        fenetre.setLocation(dim.width / 2 - fenetre.getSize().width / 2, dim.height / 2 - fenetre.getSize().height / 2);
+        fenetre.setAlwaysOnTop(true);
 
         mainPanel = new JPanel(new GridLayout(3, 1));
         hautPanel = new JPanel(new GridLayout(1, 2));
@@ -79,6 +83,9 @@ public class VueFinPartie {
         oui.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
+                ihm.FermertousVue();
+                fenetre.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+                fenetre.dispose();
                 new Controleur();
             }
         });

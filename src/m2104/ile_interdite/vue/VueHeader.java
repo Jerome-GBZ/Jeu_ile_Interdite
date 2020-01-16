@@ -354,6 +354,10 @@ public class VueHeader {
         window.dispose();
     }
     
+    public void lockFenetre(){
+        window.setEnabled(false);
+    }
+    
     /*public static void main(String[] args) {
         
     }*/

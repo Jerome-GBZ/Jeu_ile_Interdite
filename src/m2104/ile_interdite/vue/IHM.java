@@ -56,112 +56,121 @@ public class IHM extends Observable<Message> {
             );
         }
     }*/
-    
-    public void afficheVueInscription(){
+    public void afficheVueInscription() {
         this.vueInscription.afficher();
     }
-    
-    public void btnJouer(Message m){
+
+    public void btnJouer(Message m) {
         notifierObservateurs(m);
     }
-    
-    public void creeVueFermeture(){
+
+    public void creeVueFermeture() {
         this.vueFermeture = new VueFermeture(this);
     }
-    
-    public void creePlateau(Grille g){
+
+    public void creePlateau(Grille g) {
         this.vuePlateauJeu = new VuePlateauJeu(g, this);
         vuePlateauJeu.afficher();
 
     }
-    
-    public void creeHeader(ArrayList<Aventurier> listA){
+
+    public void creeHeader(ArrayList<Aventurier> listA) {
         vueHeader = new VueHeader(listA);
     }
-    
-    public void creeVueTresor(IleInterdite ile){
+
+    public void creeVueTresor(IleInterdite ile) {
         vuetresor = new VueTresor(ile);
     }
-    
-    public void recupTresor(Aventurier a){
+
+    public void recupTresor(Aventurier a) {
         vuetresor.recuptresor(a.getTuile().getTresor().getNomTresor());
     }
-    
+
     public void creeVueBoutons() {
         vueBoutons = new VueBoutons(this);
         vueBoutons.afficher();
     }
-    
-    public void creeVueNiveau(int i){
+
+    public void creeVueNiveau(int i) {
         vueNiveau = new VueNiveau(i);
     }
-    
-    public void creeVueMainJoueur(Grille g){
+
+    public void creeVueMainJoueur(Grille g) {
         vueMainJoueur = new VueMainJoueur(g, this);
         vueMainJoueur.afficher();
     }
-    
-    public void creeVueInfos(){
+
+    public void creeVueInfos() {
         vueinfo = new PDFVueInfo();
     }
-    
+
     public void afficheTuilesDispos(ArrayList<Tuile> tDispos, Grille g) {
         vuePlateauJeu.actualiserPlateauJeu(tDispos, g);
     }
-    
+
     public void afficheTuilesDisposAssecher(ArrayList<Tuile> tDispos, Grille g) {
         vuePlateauJeu.actualiserPlateauJeuAssecher(tDispos, g);
     }
-    
+
     public void actualiserPlateau(Grille g) {
         vuePlateauJeu.intitialiserPlateauJeu(g);
     }
-    
-    public void afficheCarteMain(Aventurier a){
+
+    public void afficheCarteMain(Aventurier a) {
         vueMainJoueur.actualiserMain(a);
     }
-    
+
     public void donnerCarte() {
         CJoueur carte = choisirCarte();
         Aventurier a = choisirAventurier();
-        
-        System.out.println("Carte : "+ carte.getNomCarte());
-        System.out.println("Aventurier : "+a.getRole());
-        
+
+        System.out.println("Carte : " + carte.getNomCarte());
+        System.out.println("Aventurier : " + a.getRole());
+
         Message m = new Message();
         m.type = TypeAction.DONNER;
         m.carte = carte;
         m.aventurier = a;
         notifierObservateurs(m);
     }
-    
+
     public CJoueur choisirCarte() {
         return vueMainJoueur.getCarteChoisie();
     }
-    
+
     public Aventurier choisirAventurier() {
         return vueHeader.getAventurierChoisi();
     }
-    
-    public void FermertousVue(){
-        
-    vuePlateauJeu.fermer();
-    vuetresor.fermer();
-    vueHeader.fermer();
-    vueBoutons.fermer();
-    vueNiveau.fermer();
-    vueMainJoueur.fermer();
-    vueFermeture.fermer();
-    vueinfo.fermer();
-//     System.exit(0); 
+
+    public void FermertousVue() {
+
+        vuePlateauJeu.fermer();
+        vuetresor.fermer();
+        vueHeader.fermer();
+        vueBoutons.fermer();
+        vueNiveau.fermer();
+        vueMainJoueur.fermer();
+        vueFermeture.fermer();
+        vueinfo.fermer();
     }
-    
-  
-    
+
     public void finPartie(boolean gagne) {
         System.out.println("finPartie IHM");
-        vueFinPartie = new VueFinPartie(gagne);
-        FermertousVue();
+        vueFinPartie = new VueFinPartie(this, gagne);
+        lockVue();
+        
     }
-    
+
+    public void lockVue() {
+        vuePlateauJeu.lockFenetre();
+        vuetresor.lockFenetre();
+        
+        vueHeader.lockFenetre();
+        vueBoutons.lockFenetre();
+        vueNiveau.lockFenetre();
+        vueMainJoueur.lockFenetre();
+        vueFermeture.lockFenetre();
+        vueinfo.lockFenetre();
+    }
+
 }
