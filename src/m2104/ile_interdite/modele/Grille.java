@@ -142,8 +142,9 @@ public class Grille {
             }
 
         }*/
-        for (Tuile tu : tuilesDispo) {
-            if (tu.getEtat() == TypeEtat.COULE) {
+       ArrayList<Tuile> copyTuilesdispo = tuilesDispo;
+        for (Tuile tu : copyTuilesdispo) {
+            if (tu.getEtat().equals(TypeEtat.COULE)) {
                 tuilesDispo.remove(tu);
             }
         }
