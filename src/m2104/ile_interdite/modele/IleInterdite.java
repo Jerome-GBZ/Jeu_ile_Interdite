@@ -772,6 +772,10 @@ public class IleInterdite extends Observable<Message> {
         return joueurCourant;
     }
     
+    public void setFini(){
+        fini = true;
+    }
+    
     public void recupTresorDemo() {
         tresorsRecup.add(joueurCourant.getTuile().getTresor());
         removeTresor(joueurCourant.getTuile().getTresor());
