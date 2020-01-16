@@ -533,6 +533,7 @@ public class IleInterdite extends Observable<Message> {
         t.inonde();
         if (t.getEtat().equals(TypeEtat.COULE)){
         cartesInondationDefausse.remove(t.getCinondation());
+        cartesInondationPioche.remove(t.getCinondation());
         }
         if (g.getTuile("Heliport").equals(t)) {
             if (t.getEtat().equals(TypeEtat.COULE)) {
