@@ -656,7 +656,8 @@ public class IleInterdite extends Observable<Message> {
             joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
         }
         }
-        setNbActions(0);
+        
+        setNbActions(-1);
         joueurCourant.setPouvoir(false);
         Message m = new Message();
         m.type = TypeAction.TERMINER_TOUR;
