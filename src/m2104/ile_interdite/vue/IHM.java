@@ -145,6 +145,16 @@ public class IHM extends Observable<Message> {
     public Aventurier choisirAventurier() {
         return vueHeader.getAventurierChoisi();
     }
+    
+    public void defausserCarte() {
+        CJoueur carte = choisirCarte();
+        
+        Message m = new Message();
+        m.type = TypeAction.DEFAUSSER;
+        m.carte = carte;
+        
+        notifierObservateurs(m);
+    }
 
     public void FermertousVue() {
 
