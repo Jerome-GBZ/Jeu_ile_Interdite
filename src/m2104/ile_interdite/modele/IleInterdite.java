@@ -1,11 +1,9 @@
 package m2104.ile_interdite.modele;
 
-import java.util.Arrays;
 import m2104.ile_interdite.util.Message;
 import patterns.observateur.Observable;
 import patterns.observateur.Observateur;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import m2104.ile_interdite.util.*;
 
@@ -413,27 +411,27 @@ public class IleInterdite extends Observable<Message> {
     }
 
     public void creationsCartesMontee() {
-        CMonteeEaux c1 = new CMonteeEaux(null,"MonteeDesEaux");
+       CMonteeEaux c1 = new CMonteeEaux(null, "MonteeDesEaux");
         cartesJoueurPioche.add(c1);
-        CMonteeEaux c2 = new CMonteeEaux(null,"MonteeDesEaux");
+        CMonteeEaux c2 = new CMonteeEaux(null, "MonteeDesEaux");
         cartesJoueurPioche.add(c2);
-        CMonteeEaux c3 = new CMonteeEaux(null,"MonteeDesEaux");
+        CMonteeEaux c3 = new CMonteeEaux(null, "MonteeDesEaux");
         cartesJoueurPioche.add(c3);
     }
 
     public void creationCartesHelico() {
-        CHelicoptere c1 = new CHelicoptere(null,"Helicoptere");
+        CHelicoptere c1 = new CHelicoptere(null, "Helicoptere");
         cartesJoueurPioche.add(c1);
-        CHelicoptere c2 = new CHelicoptere(null,"Helicoptere");
+        CHelicoptere c2 = new CHelicoptere(null, "Helicoptere");
         cartesJoueurPioche.add(c2);
-        CHelicoptere c3 = new CHelicoptere(null,"Helicoptere");
+        CHelicoptere c3 = new CHelicoptere(null, "Helicoptere");
         cartesJoueurPioche.add(c3);
     }
 
     public void creationCartesSable() {
-        CSable c1 = new CSable(null,"SacsDeSable");
+        CSable c1 = new CSable(null, "SacsDeSable");
         cartesJoueurPioche.add(c1);
-        CSable c2 = new CSable(null,"SacsDeSable");
+        CSable c2 = new CSable(null, "SacsDeSable");
         cartesJoueurPioche.add(c2);
     }
 
@@ -449,7 +447,7 @@ public class IleInterdite extends Observable<Message> {
     }
 
     public void distribuerCartesJoueur() {
-        int j = 27;
+        int j = cartesJoueurPioche.size() - 1;
         for (Aventurier a : aventuriers) {
             int i = 0;
             while (i < 4) {
@@ -465,9 +463,9 @@ public class IleInterdite extends Observable<Message> {
             }
         }
     }
-    
-    public void initialiserInondation(){
-        for (int i = 0; i < 6;i++){
+
+    public void initialiserInondation() {
+        for (int i = 0; i < 6; i++) {
             inonde(cartesInondationPioche.get(cartesInondationPioche.size() - 1).getTuile());
             cartesInondationDefausse.add(cartesInondationPioche.get(cartesInondationPioche.size() - 1));
             cartesInondationPioche.remove((cartesInondationPioche.size() - 1));
@@ -478,14 +476,19 @@ public class IleInterdite extends Observable<Message> {
 
         for (int i = 0; i < this.niveauEau; i++) {
             if (cartesInondationPioche.size() > 0) {
-                inonde(cartesInondationPioche.get(cartesInondationPioche.size() - 1).getTuile());
+                if (!cartesInondationPioche.get(cartesInondationPioche.size() - 1).getTuile().getEtat().equals(TypeEtat.COULE)) {
+                    inonde(cartesInondationPioche.get(cartesInondationPioche.size() - 1).getTuile());
+                }
                 cartesInondationDefausse.add(cartesInondationPioche.get(cartesInondationPioche.size() - 1));
                 cartesInondationPioche.remove((cartesInondationPioche.size() - 1));
             } else {
                 viderDefausseCartesInondation();
-                inonde(cartesInondationPioche.get(cartesInondationPioche.size() - 1).getTuile());
+                if (!cartesInondationPioche.get(cartesInondationPioche.size() - 1).getTuile().getEtat().equals(TypeEtat.COULE)) {
+                    inonde(cartesInondationPioche.get(cartesInondationPioche.size() - 1).getTuile());
+                }
                 cartesInondationDefausse.add(cartesInondationPioche.get(cartesInondationPioche.size() - 1));
                 cartesInondationPioche.remove((cartesInondationPioche.size() - 1));
+
             }
         }
     }
@@ -515,7 +518,6 @@ public class IleInterdite extends Observable<Message> {
                 etapeEau = etapeEau + 1;
                 setNiveauEau(etapeEau);
                 viderDefausseCartesInondation();
-                piocherCarteInondation();
             }
             cartesJoueurDefausse.add(cartesJoueurPioche.get(cartesJoueurPioche.size() - 1));
             cartesJoueurPioche.remove(cartesJoueurPioche.size() - 1);
@@ -529,6 +531,9 @@ public class IleInterdite extends Observable<Message> {
 
     public void inonde(Tuile t) {
         t.inonde();
+        if (t.getEtat().equals(TypeEtat.COULE)){
+        cartesInondationDefausse.remove(t.getCinondation());
+        }
         if (g.getTuile("Heliport").equals(t)) {
             if (t.getEtat().equals(TypeEtat.COULE)) {
                 fini = true;
@@ -562,16 +567,17 @@ public class IleInterdite extends Observable<Message> {
                 }
 
             }
-            
-            
+
         }
         if (this.PartieFinie()) {
                 Message m = new Message();
-                m.type = TypeAction.TERMINER;
+                m.type = TypeAction.FIN_PARTIE;
                 m.gagne = this.getGagne();
+                notifierObservateurs(m);
         }
     }
-        /* public void Jouer() {
+
+    /* public void Jouer() {
         
         Message m = new Message();
         
@@ -583,9 +589,9 @@ public class IleInterdite extends Observable<Message> {
         }
          notifierObservateurs(m);
     }*/
-    
+
     public void seDeplacer() {
-        
+
         joueurCourant.seDeplacer();
     }
 
@@ -593,9 +599,9 @@ public class IleInterdite extends Observable<Message> {
         joueurCourant.seDeplacer(t);
         if (nbactions < 2) {
             nbactions++;
-            
-            
+
         } else {
+            piocherCarteJoueur(joueurCourant);
             if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size() - 1) {
                 joueurCourant = this.aventuriers.get(0);
             } else {
@@ -603,15 +609,17 @@ public class IleInterdite extends Observable<Message> {
             }
             setNbActions(0);
             joueurCourant.setPouvoir(false);
+
             piocherCarteInondation();
         }
-            Message m1 = new Message();
-            m1.type = TypeAction.ACTUALISER;
-            notifierObservateurs(m1);
-       
+
+        Message m1 = new Message();
+        m1.type = TypeAction.ACTUALISER;
+        notifierObservateurs(m1);
+
         if (this.PartieFinie()) {
             Message m = new Message();
-            m.type = TypeAction.TERMINER;
+            m.type = TypeAction.FIN_PARTIE;
             m.gagne = this.getGagne();
             notifierObservateurs(m);
         }
@@ -623,10 +631,11 @@ public class IleInterdite extends Observable<Message> {
 
     public void assecher(Tuile t) {
         joueurCourant.assecher(t);
-        
+
         if (nbactions < 2) {
             nbactions++;
         } else {
+          piocherCarteJoueur(joueurCourant);
             if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size() - 1) {
                 joueurCourant = this.aventuriers.get(0);
             } else {
@@ -641,13 +650,13 @@ public class IleInterdite extends Observable<Message> {
     }
 
     public void donnerCarte() {
-       
+
         joueurCourant.donnerCarte();
     }
 
     public void donnerCarte(Aventurier a, CJoueur c) {
         joueurCourant.donnerCarte(a, c);
-         if (nbactions < 2) {
+        if (nbactions < 2) {
             nbactions++;
         } else {
             if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size() - 1) {
@@ -658,38 +667,38 @@ public class IleInterdite extends Observable<Message> {
             setNbActions(0);
             joueurCourant.setPouvoir(false);
         }
-          Message m1 = new Message();
+        Message m1 = new Message();
         m1.type = TypeAction.ACTUALISER;
         notifierObservateurs(m1);
-         
+
     }
 
     public void terminerTour() {
+        piocherCarteJoueur(joueurCourant);
         if (nbactions < 2) {
-        if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size() - 1) {
-            joueurCourant = this.aventuriers.get(0);
-        } else {
-            joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
-        }
-        }
-        else {
             if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size() - 1) {
-            joueurCourant = this.aventuriers.get(0);
+                joueurCourant = this.aventuriers.get(0);
+            } else {
+                joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
+            }
         } else {
-            joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
-        }
             if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size() - 1) {
-            joueurCourant = this.aventuriers.get(0);
-        } else {
-            joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
-        }
+                joueurCourant = this.aventuriers.get(0);
+            } else {
+                joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
+            }
+            if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size() - 1) {
+                joueurCourant = this.aventuriers.get(0);
+            } else {
+                joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
+            }
         }
         piocherCarteInondation();
         setNbActions(0);
         joueurCourant.setPouvoir(false);
-        Message m = new Message();
+        /*Message m = new Message();
         m.type = TypeAction.TERMINER_TOUR;
-        notifierObservateurs(m);
+        notifierObservateurs(m);*/
     }
 
     //getters et setters
@@ -711,7 +720,12 @@ public class IleInterdite extends Observable<Message> {
             niveauEau = 6;
             fini = true;
         }
-
+        if (this.PartieFinie()) {
+                Message m = new Message();
+                m.type = TypeAction.FIN_PARTIE;
+                m.gagne = this.getGagne();
+                notifierObservateurs(m);
+        }
     }
 
     public int getNombreJoueurs() {

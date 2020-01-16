@@ -73,30 +73,26 @@ public class VueFermeture {
             public void mouseClicked(MouseEvent arg0) {
                 fenetre.dispose();
                 ihm.FermertousVue();
+                System.exit(0); 
             }
 
-            @Override
-            public void mousePressed(MouseEvent arg0) {
-            }
+            @Override public void mousePressed(MouseEvent arg0) {}
 
-            @Override
-            public void mouseReleased(MouseEvent arg0) {
-            }
+            @Override public void mouseReleased(MouseEvent arg0) {}
 
-            @Override
-            public void mouseEntered(MouseEvent arg0) {
-                
-            }
+            @Override public void mouseEntered(MouseEvent arg0) {}
 
-            @Override
-            public void mouseExited(MouseEvent arg0) {
-            }
+            @Override public void mouseExited(MouseEvent arg0) {}
         });
         fermer.setBorderPainted(false);
         fenetre.add(fermer, BorderLayout.CENTER);
         fenetre.setVisible(true);
     }
 
+    public void fermer() {
+        fenetre.dispose();
+    }
+    
     /*public static void main(String[] args) {
         new VueFermeture();
     }*/

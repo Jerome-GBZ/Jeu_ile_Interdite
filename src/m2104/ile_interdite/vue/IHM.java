@@ -24,6 +24,7 @@ public class IHM extends Observable<Message> {
     private VueMainJoueur vueMainJoueur;
     private Observateur controleur;
     private VueFermeture vueFermeture;
+    private VueFinPartie vueFinPartie;
 
     public IHM(Observateur<Message> observateur) {
         this.addObservateur(observateur);
@@ -139,13 +140,20 @@ public class IHM extends Observable<Message> {
     
     public void FermertousVue(){
         
-        vuePlateauJeu.fermer();
+    vuePlateauJeu.fermer();
     vuetresor.fermer();
     vueHeader.fermer();
     vueBoutons.fermer();
     vueNiveau.fermer();
     vueMainJoueur.fermer();
-    System.exit(0);
+    vueFermeture.fermer();
+//     System.exit(0); 
+    }
+    
+    public void finPartie(boolean gagne) {
+        System.out.println("finPartie IHM");
+        vueFinPartie = new VueFinPartie(gagne);
+        FermertousVue();
     }
     
 }
