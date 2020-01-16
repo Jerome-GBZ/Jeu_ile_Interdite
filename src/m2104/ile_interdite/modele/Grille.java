@@ -132,15 +132,10 @@ public class Grille {
             }
            tuilesDispo.remove(a.getTuile());
         }
-       /* if (a.getRole() == TypeRole.Plongeur) {
-            for (Tuile tu : tuilesDispo) {
-                if (tu.getEtat() != TypeEtat.SEC) {
-                    for (Tuile tui : this.tuileAutour(tu)) {
-                        tuilesDispo.add(tui);
-                    }
-                }
-            }
-
+     /*  if (a.getRole() == TypeRole.Plongeur) {
+            ArrayList<Tuile> tuilePlongeur = new ArrayList<>();
+            
+            
         }*/
        ArrayList<Tuile> TuileAsupr = new ArrayList<>();
         for (Tuile tu : tuilesDispo) {
