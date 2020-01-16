@@ -108,7 +108,7 @@ public class Aventurier {
         ArrayList<Tuile> tDispos = new ArrayList<>();
         tDispos = ii.getGrille().tuilesDisposAssecher(getTuile(), this);
         
-        ii.tuilesDispos(TypeAction.CHOISIR_TUILE,this, tDispos); 
+        ii.tuilesDispos(TypeAction.CHOISIR_TUILE_ASSECHER,this, tDispos); 
     }
     
     public void assecher(Tuile t) {
