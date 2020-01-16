@@ -616,6 +616,11 @@ public class IleInterdite extends Observable<Message> {
     }
 
     public void assecher() {
+        joueurCourant.assecher();
+    }
+
+    public void assecher(Tuile t) {
+        joueurCourant.assecher(t);
         if (nbactions < 2) {
             nbactions++;
         } else {
@@ -627,11 +632,9 @@ public class IleInterdite extends Observable<Message> {
             setNbActions(0);
             joueurCourant.setPouvoir(false);
         }
-        joueurCourant.assecher();
-    }
-
-    public void assecher(Tuile t) {
-        joueurCourant.assecher(t);
+        Message m1 = new Message();
+        m1.type = TypeAction.ACTUALISER;
+        notifierObservateurs(m1);
     }
 
     public void donnerCarte() {
