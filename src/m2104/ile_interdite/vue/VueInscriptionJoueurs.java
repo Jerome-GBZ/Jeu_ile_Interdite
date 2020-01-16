@@ -50,7 +50,8 @@ public class VueInscriptionJoueurs {
         fenetre.setSize(500, 500);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         fenetre.setLocation(dim.width / 2 - fenetre.getSize().width / 2, dim.height / 2 - fenetre.getSize().height / 2);
-
+        
+        
         // Initialisation differente partie fenetre
         JPanel mainPanel = new JPanel(new BorderLayout());
         JPanel topPanel = new JPanel(new BorderLayout());

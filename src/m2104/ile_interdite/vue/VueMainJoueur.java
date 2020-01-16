@@ -96,7 +96,7 @@ public class VueMainJoueur /*extends JPanel*/ {
                         carte = "Pierre";
                 }
                 String imgURL = "Images/cartes/" + carte + ".png";
-                cartesJImg = Toolkit.getDefaultToolkit().getImage(imgURL).getScaledInstance(50, 80, 50);
+                cartesJImg = Toolkit.getDefaultToolkit().getImage(imgURL).getScaledInstance(50, 75, 50);
                 cartePanel = new JButton(new ImageIcon(cartesJImg));
                 cartePanel.setPreferredSize(new Dimension(50, 50));
                 cartePanel.setOpaque(false);
@@ -114,7 +114,7 @@ public class VueMainJoueur /*extends JPanel*/ {
                     }
                 });
                 
-                panelCentre.add(cartePanel);
+                panelCentre.add(cartePanel, BorderLayout.NORTH);
                 
                 
             }
