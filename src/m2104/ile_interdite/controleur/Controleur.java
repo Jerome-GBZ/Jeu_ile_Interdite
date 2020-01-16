@@ -38,7 +38,6 @@ public class Controleur implements Observateur<Message> {
                     break;
 
                 case BOUGER:
-                    ileInterdite.setNbActions(ileInterdite.getNbActions()+1);
                     ileInterdite.seDeplacer();
                     System.out.println("Bouge");
                     // ihm.actualiserPlateau(ileInterdite.getGrille());
