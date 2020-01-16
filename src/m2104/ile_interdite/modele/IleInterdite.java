@@ -616,25 +616,11 @@ public class IleInterdite extends Observable<Message> {
     }
 
     public void assecher() {
-        if (nbactions < 2) {
-            nbactions++;
-        } else {
-            if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size() - 1) {
-                joueurCourant = this.aventuriers.get(0);
-            } else {
-                joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
-            }
-            setNbActions(0);
-            joueurCourant.setPouvoir(false);
-        }
         joueurCourant.assecher();
     }
 
     public void assecher(Tuile t) {
         joueurCourant.assecher(t);
-    }
-
-    public void donnerCarte() {
         if (nbactions < 2) {
             nbactions++;
         } else {
@@ -646,11 +632,33 @@ public class IleInterdite extends Observable<Message> {
             setNbActions(0);
             joueurCourant.setPouvoir(false);
         }
+        Message m1 = new Message();
+        m1.type = TypeAction.ACTUALISER;
+        notifierObservateurs(m1);
+    }
+
+    public void donnerCarte() {
+       
         joueurCourant.donnerCarte();
     }
 
     public void donnerCarte(Aventurier a, CJoueur c) {
         joueurCourant.donnerCarte(a, c);
+         if (nbactions < 2) {
+            nbactions++;
+        } else {
+            if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size() - 1) {
+                joueurCourant = this.aventuriers.get(0);
+            } else {
+                joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
+            }
+            setNbActions(0);
+            joueurCourant.setPouvoir(false);
+        }
+          Message m1 = new Message();
+        m1.type = TypeAction.ACTUALISER;
+        notifierObservateurs(m1);
+         
     }
 
     public void terminerTour() {

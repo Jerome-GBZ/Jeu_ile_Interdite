@@ -178,6 +178,75 @@ public class VuePlateauJeu extends JPanel {
         centrePanel.revalidate();
         centrePanel.updateUI();
     }
+    
+      public void actualiserPlateauJeuAssecher(ArrayList<Tuile> tDispos, Grille g) {
+        centrePanel.removeAll();
+        centrePanel.validate();
+        JButton btn = new JButton();
+        Image imgTuile;
+        String nomTuile;
+
+        for (int i = 0; i < 36; i++) {
+            
+            Aventurier joueurCourant = g.getIleInterdite().getJoueurCourant();
+            JPanel pionCourant;
+            
+            
+            if ((i < 2) || (i > 3 && i < 7) || (i == 11) || (i == 24) || (i == 29) || (i == 31) || (i > 33)) {
+                JLabel label = new JLabel("", SwingConstants.CENTER);
+                centrePanel.add(label);
+            } else if (i == 30) {
+                pionCourant = dessinerPion(g.getIleInterdite().getJoueurCourant());
+                centrePanel.add(pionCourant);
+                
+
+            } else {
+                // redimentionne la tuile
+                nomTuile = arrayTuiles.get(i).getNomTuile();
+
+                if (arrayTuiles.get(i).getEtat() == TypeEtat.COULE) {
+                    btn = new JButton();
+                } else {
+                    if (arrayTuiles.get(i).getEtat() == TypeEtat.INNONDE) {
+                        imgTuile = Toolkit.getDefaultToolkit().getImage("Images/tuiles/" + nomTuile + "_Inonde.png").getScaledInstance(120, 100, 120);
+                        btn = new JButton(new ImageIcon(imgTuile));
+                    } else {
+                        imgTuile = Toolkit.getDefaultToolkit().getImage("Images/tuiles/" + nomTuile + ".png").getScaledInstance(120, 100, 120);
+                        btn = new JButton(new ImageIcon(imgTuile));
+                    }
+
+                }
+                if (tDispos.contains(arrayTuiles.get(i))) {
+                    Tuile t = arrayTuiles.get(i);
+                    btn.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent arg0) {
+                            Message m = new Message();
+                            m.type = TypeAction.ASSECHER_TUILE;
+                            m.tuile = t;
+                            ihm.notifierObservateurs(m);
+                        }
+                    });
+
+                } else {
+                    btn.setEnabled(false);
+                }
+
+                if (!arrayTuiles.get(i).getAventuriers().isEmpty()) {
+                    JPanel centrePionP = dessinerPion(arrayTuiles.get(i).getAventuriers().get(0));
+                    btn.add(centrePionP);
+                    System.out.println(arrayTuiles.get(i).getAventuriers().get(0).getPion());
+                }
+                btn.setPreferredSize(new Dimension(85, 85));
+                btn.setOpaque(false);
+                btn.setContentAreaFilled(false);
+                btn.setBorderPainted(false);
+                centrePanel.add(btn);
+            }
+        }
+        centrePanel.revalidate();
+        centrePanel.updateUI();
+    }
 
     public JPanel dessinerPion(Aventurier a) {
         JPanel centrePionsPanel;

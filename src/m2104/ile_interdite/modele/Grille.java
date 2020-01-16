@@ -180,6 +180,7 @@ public class Grille {
 
     public ArrayList<Tuile> tuilesDisposAssecher(Tuile t, Aventurier a) {
         ArrayList<Tuile> tuilesDispo = tuileAutour(t);
+        tuilesDispo.add(a.getTuile());
         int[] c = new int[2];
         c = this.getCoordonnee(t);
         int i = c[0];
@@ -202,12 +203,15 @@ public class Grille {
                 }
             }
         }
-        ArrayList<Tuile> copyTuilesdispo = tuilesDispo;
-        for (Tuile tu : copyTuilesdispo) {
+        ArrayList<Tuile> TuileAsupr = new ArrayList<>();
+        for (Tuile tu : tuilesDispo) {
             if (!tu.getEtat().equals(TypeEtat.INNONDE)) {
-                tuilesDispo.remove(tu);
+                TuileAsupr.add(tu);
             }
         }
+        
+        tuilesDispo.removeAll(TuileAsupr);
+
         return tuilesDispo;
     }
 
