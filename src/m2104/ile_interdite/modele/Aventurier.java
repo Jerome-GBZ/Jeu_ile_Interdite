@@ -31,6 +31,7 @@ public class Aventurier {
             if (cartesJoueur[i] == null) {
                 cartesJoueur[i] = cJoueur;
                 res =  true;
+                break;
             }
         }
         return res;
