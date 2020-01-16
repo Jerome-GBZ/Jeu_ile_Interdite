@@ -302,6 +302,7 @@ public class IleInterdite extends Observable<Message> {
     public void creationTuiles() {
         //création tuiles avec ou sans trésor
         Tuile t1 = new Tuile("LaCarverneDuBrasier", tresors[2]); //
+        t1.setEtat(TypeEtat.COULE);
         tresors[2].addTuiles(t1);
         Tuile t2 = new Tuile("Heliport");  //
         Tuile t3 = new Tuile("LaCarverneDesOmbres", tresors[2]); //
@@ -581,6 +582,8 @@ public class IleInterdite extends Observable<Message> {
         joueurCourant.seDeplacer(t);
         if (nbactions < 2) {
             nbactions++;
+            
+            
         } else {
             if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size() - 1) {
                 joueurCourant = this.aventuriers.get(0);
@@ -588,7 +591,6 @@ public class IleInterdite extends Observable<Message> {
                 joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
             }
             setNbActions(0);
-
             joueurCourant.setPouvoir(false);
             
         }
@@ -731,4 +733,5 @@ public class IleInterdite extends Observable<Message> {
     public Aventurier getJoueurCourant() {
         return joueurCourant;
     }
+
 }

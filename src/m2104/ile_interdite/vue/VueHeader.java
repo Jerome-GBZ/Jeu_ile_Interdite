@@ -286,6 +286,11 @@ public class VueHeader {
         window.setVisible(true);
     }
     
+    
+    public void choisirAventurier() {
+        
+    }
+    
     /*public static void main(String[] args) {
         
     }*/

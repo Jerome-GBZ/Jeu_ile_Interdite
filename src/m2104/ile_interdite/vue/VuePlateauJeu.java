@@ -73,8 +73,22 @@ public class VuePlateauJeu extends JPanel {
                 // redimentionne la tuile
                 nomTuile = arrayTuiles.get(i).getNomTuile();
 
-                imgTuile = Toolkit.getDefaultToolkit().getImage("Images/tuiles/" + nomTuile + ".png").getScaledInstance(120, 100, 120);
-                btn = new JButton(new ImageIcon(imgTuile));
+                
+                if (arrayTuiles.get(i).getEtat() == TypeEtat.COULE) {
+                    btn = new JButton();
+                } else {
+                    if (arrayTuiles.get(i).getEtat() == TypeEtat.INNONDE) {
+                        imgTuile = Toolkit.getDefaultToolkit().getImage("Images/tuiles/" + nomTuile + "_Inonde.png").getScaledInstance(120, 100, 120);
+                        btn = new JButton(new ImageIcon(imgTuile));
+                    } else {
+                        imgTuile = Toolkit.getDefaultToolkit().getImage("Images/tuiles/" + nomTuile + ".png").getScaledInstance(120, 100, 120);
+                        btn = new JButton(new ImageIcon(imgTuile));
+                    }
+
+                }
+                
+                /*imgTuile = Toolkit.getDefaultToolkit().getImage("Images/tuiles/" + nomTuile + ".png").getScaledInstance(120, 100, 120);
+                btn = new JButton(new ImageIcon(imgTuile));*/
 
                 if (!arrayTuiles.get(i).getAventuriers().isEmpty()) {
                     JPanel centrePionP = dessinerPion(arrayTuiles.get(i).getAventuriers().get(0));
@@ -100,18 +114,19 @@ public class VuePlateauJeu extends JPanel {
         String nomTuile;
 
         for (int i = 0; i < 36; i++) {
-
+            
+            Aventurier joueurCourant = g.getIleInterdite().getJoueurCourant();
+            JPanel pionCourant;
+            
+            
             if ((i < 2) || (i > 3 && i < 7) || (i == 11) || (i == 24) || (i == 29) || (i == 31) || (i > 33)) {
                 JLabel label = new JLabel("", SwingConstants.CENTER);
                 centrePanel.add(label);
             } else if (i == 30) {
-                /*if (g.getIleInterdite().getNbActions() == 2) {
-                    JPanel pionCourant = dessinerPion(aventuriers.get(aventuriers.indexOf(g.getIleInterdite().getJoueurCourant()) +1));
-                    centrePanel.add(pionCourant);
-                } else {*/
-                JPanel pionCourant = dessinerPion(g.getIleInterdite().getJoueurCourant());
+                
+                pionCourant = dessinerPion(g.getIleInterdite().getJoueurCourant());
                 centrePanel.add(pionCourant);
-                //}
+                
 
             } else {
                 // redimentionne la tuile
