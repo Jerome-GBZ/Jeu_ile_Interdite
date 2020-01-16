@@ -776,5 +776,27 @@ public class IleInterdite extends Observable<Message> {
     public Aventurier getJoueurCourant() {
         return joueurCourant;
     }
+    
+    public void recupTresorDemo() {
+        Message  m = new Message();
+        m.type = TypeAction.RECUPERER_TRESOR;
+        m.aventurier = joueurCourant;
+        notifierObservateurs(m);
+        if (nbactions < 2) {
+            nbactions++;
+        } else {
+          piocherCarteJoueur(joueurCourant);
+            if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size() - 1) {
+                joueurCourant = this.aventuriers.get(0);
+            } else {
+                joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
+            }
+            setNbActions(0);
+            joueurCourant.setPouvoir(false);
+        }
+         Message m1 = new Message();
+        m1.type = TypeAction.ACTUALISER;
+        notifierObservateurs(m1);
+    }
 
 }
