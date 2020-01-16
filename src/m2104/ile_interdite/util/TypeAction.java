@@ -15,6 +15,7 @@ public enum TypeAction {
     // Action
     DEPLACER,
     ASSECHER,
+    ACTUALISER,
     DONNER,
     RECUPERER_TRESOR,
     BOUGER,

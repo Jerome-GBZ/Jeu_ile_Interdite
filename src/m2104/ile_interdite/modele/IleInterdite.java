@@ -160,7 +160,7 @@ public class IleInterdite extends Observable<Message> {
 
         }
         joueurCourant = aventuriers.get(0);
-        setNbActions(-1);
+        setNbActions(0);
         this.nbJoueurs = noms.length;
         return noms;
 
@@ -573,8 +573,16 @@ public class IleInterdite extends Observable<Message> {
     }*/
     
     public void seDeplacer() {
+        
+        joueurCourant.seDeplacer();
+    }
+
+    public void seDeplacer(Tuile t) {
+        joueurCourant.seDeplacer(t);
         if (nbactions < 2) {
             nbactions++;
+            
+            
         } else {
             if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size() - 1) {
                 joueurCourant = this.aventuriers.get(0);
@@ -582,18 +590,18 @@ public class IleInterdite extends Observable<Message> {
                 joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
             }
             setNbActions(0);
-
             joueurCourant.setPouvoir(false);
+            
         }
-        joueurCourant.seDeplacer();
-    }
-
-    public void seDeplacer(Tuile t) {
-        joueurCourant.seDeplacer(t);
+            Message m1 = new Message();
+            m1.type = TypeAction.ACTUALISER;
+            notifierObservateurs(m1);
+       
         if (this.PartieFinie()) {
             Message m = new Message();
             m.type = TypeAction.TERMINER;
             m.gagne = this.getGagne();
+            notifierObservateurs(m);
         }
     }
 
@@ -636,11 +644,26 @@ public class IleInterdite extends Observable<Message> {
     }
 
     public void terminerTour() {
+        if (nbactions < 2) {
         if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size() - 1) {
             joueurCourant = this.aventuriers.get(0);
         } else {
             joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
         }
+        }
+        else {
+            if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size() - 1) {
+            joueurCourant = this.aventuriers.get(0);
+        } else {
+            joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
+        }
+            if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size() - 1) {
+            joueurCourant = this.aventuriers.get(0);
+        } else {
+            joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
+        }
+        }
+        
         setNbActions(0);
         joueurCourant.setPouvoir(false);
         Message m = new Message();
@@ -709,4 +732,5 @@ public class IleInterdite extends Observable<Message> {
     public Aventurier getJoueurCourant() {
         return joueurCourant;
     }
+
 }

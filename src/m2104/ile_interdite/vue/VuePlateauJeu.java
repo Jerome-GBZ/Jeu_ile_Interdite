@@ -100,18 +100,19 @@ public class VuePlateauJeu extends JPanel {
         String nomTuile;
 
         for (int i = 0; i < 36; i++) {
-
+            
+            Aventurier joueurCourant = g.getIleInterdite().getJoueurCourant();
+            JPanel pionCourant;
+            
+            
             if ((i < 2) || (i > 3 && i < 7) || (i == 11) || (i == 24) || (i == 29) || (i == 31) || (i > 33)) {
                 JLabel label = new JLabel("", SwingConstants.CENTER);
                 centrePanel.add(label);
             } else if (i == 30) {
-                /*if (g.getIleInterdite().getNbActions() == 2) {
-                    JPanel pionCourant = dessinerPion(aventuriers.get(aventuriers.indexOf(g.getIleInterdite().getJoueurCourant()) +1));
-                    centrePanel.add(pionCourant);
-                } else {*/
-                JPanel pionCourant = dessinerPion(g.getIleInterdite().getJoueurCourant());
+                
+                pionCourant = dessinerPion(g.getIleInterdite().getJoueurCourant());
                 centrePanel.add(pionCourant);
-                //}
+                
 
             } else {
                 // redimentionne la tuile
