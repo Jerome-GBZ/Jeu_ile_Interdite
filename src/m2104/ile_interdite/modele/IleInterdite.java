@@ -584,6 +584,7 @@ public class IleInterdite extends Observable<Message> {
             setNbActions(0);
 
             joueurCourant.setPouvoir(false);
+            
         }
         joueurCourant.seDeplacer();
     }
@@ -636,10 +637,24 @@ public class IleInterdite extends Observable<Message> {
     }
 
     public void terminerTour() {
+        if (nbactions < 2) {
         if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size() - 1) {
             joueurCourant = this.aventuriers.get(0);
         } else {
             joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
+        }
+        }
+        else {
+            if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size() - 1) {
+            joueurCourant = this.aventuriers.get(0);
+        } else {
+            joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
+        }
+            if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size() - 1) {
+            joueurCourant = this.aventuriers.get(0);
+        } else {
+            joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
+        }
         }
         setNbActions(0);
         joueurCourant.setPouvoir(false);
