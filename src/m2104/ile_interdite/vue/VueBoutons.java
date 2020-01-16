@@ -170,4 +170,8 @@ public class VueBoutons {
         this.fenetre.setVisible(true);
     }
 
+    public void fermer(){
+        fenetre.dispose();
+    }
+    
 }

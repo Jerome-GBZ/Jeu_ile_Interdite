@@ -205,4 +205,9 @@ public class VuePlateauJeu extends JPanel {
     public void afficher() {
         this.fenetre.setVisible(true);
     }
+    
+    public void fermer(){
+        fenetre.dispose();
+    }
+    
 }

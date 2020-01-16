@@ -23,6 +23,7 @@ public class IHM extends Observable<Message> {
     private VueNiveau vueNiveau;
     private VueMainJoueur vueMainJoueur;
     private Observateur controleur;
+    private VueFermeture vueFermeture;
 
     public IHM(Observateur<Message> observateur) {
         this.addObservateur(observateur);
@@ -60,6 +61,10 @@ public class IHM extends Observable<Message> {
     
     public void btnJouer(Message m){
         notifierObservateurs(m);
+    }
+    
+    public void creeVueFermeture(){
+        this.vueFermeture = new VueFermeture(this);
     }
     
     public void creePlateau(Grille g){
@@ -127,4 +132,16 @@ public class IHM extends Observable<Message> {
     public Aventurier choisirAventurier() {
         return vueHeader.getAventurierChoisi();
     }
+    
+    public void FermertousVue(){
+        
+        vuePlateauJeu.fermer();
+    vuetresor.fermer();
+    vueHeader.fermer();
+    vueBoutons.fermer();
+    vueNiveau.fermer();
+    vueMainJoueur.fermer();
+    System.exit(0);
+    }
+    
 }
