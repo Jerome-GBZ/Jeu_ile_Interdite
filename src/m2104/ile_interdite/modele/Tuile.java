@@ -45,9 +45,9 @@ public class Tuile {
     }
 
     public void inonde() {
-        if (this.getEtat() == TypeEtat.SEC) {
+        if (this.getEtat().equals(TypeEtat.SEC)) {
             this.setEtat(TypeEtat.INNONDE);
-        } else if (this.getEtat() == TypeEtat.INNONDE) {
+        } else if (this.getEtat().equals(TypeEtat.INNONDE)) {
             this.setEtat(TypeEtat.COULE);
             
         }
