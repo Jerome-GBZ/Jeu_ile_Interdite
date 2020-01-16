@@ -187,9 +187,9 @@ public class VueNiveau {
             case 2 :
                 return " normal" ;
             case 3 :
-                return " Ã©lite" ;
+                return " élite" ;
             case 4 :
-                return " lÃ©gendaire" ;
+                return " légendaire" ;
             case 10 :
                 return " mortel" ;
             default :
