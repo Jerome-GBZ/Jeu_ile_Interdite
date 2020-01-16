@@ -25,6 +25,7 @@ public class IHM extends Observable<Message> {
     private Observateur controleur;
     private VueFermeture vueFermeture;
     private VueFinPartie vueFinPartie;
+    private PDFVueInfo vueinfo;
 
     public IHM(Observateur<Message> observateur) {
         this.addObservateur(observateur);
@@ -100,6 +101,10 @@ public class IHM extends Observable<Message> {
         vueMainJoueur.afficher();
     }
     
+    public void creeVueInfos(){
+        vueinfo = new PDFVueInfo();
+    }
+    
     public void afficheTuilesDispos(ArrayList<Tuile> tDispos, Grille g) {
         vuePlateauJeu.actualiserPlateauJeu(tDispos, g);
     }
@@ -147,8 +152,11 @@ public class IHM extends Observable<Message> {
     vueNiveau.fermer();
     vueMainJoueur.fermer();
     vueFermeture.fermer();
+    vueinfo.fermer();
 //     System.exit(0); 
     }
+    
+  
     
     public void finPartie(boolean gagne) {
         System.out.println("finPartie IHM");

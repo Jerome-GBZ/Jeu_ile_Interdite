@@ -727,6 +727,10 @@ public class IleInterdite extends Observable<Message> {
                 notifierObservateurs(m);
         }
     }
+    
+    public int getNiveauEau() {
+        return this.niveauEau;
+    }
 
     public int getNombreJoueurs() {
         return nbJoueurs;

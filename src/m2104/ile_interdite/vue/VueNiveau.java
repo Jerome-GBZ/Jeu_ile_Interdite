@@ -156,6 +156,8 @@ public class VueNiveau {
         panelsGauches.get(this.niveau).setBackground(this.niveau == 10 ? Color.RED : Color.YELLOW);
         this.mainPanel.repaint();
     }
+    
+    
 
     public Integer getNiveau() {
         return this.niveau ;
