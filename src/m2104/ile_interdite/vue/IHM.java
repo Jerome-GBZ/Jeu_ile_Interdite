@@ -146,6 +146,7 @@ public class IHM extends Observable<Message> {
     vueBoutons.fermer();
     vueNiveau.fermer();
     vueMainJoueur.fermer();
+    vueFermeture.fermer();
 //     System.exit(0); 
     }
     
@@ -153,8 +154,8 @@ public class IHM extends Observable<Message> {
     
     public void finPartie(boolean gagne) {
         System.out.println("finPartie IHM");
+        vueFinPartie = new VueFinPartie(gagne);
         FermertousVue();
-        vueFinPartie.initialiserFenetreFin(gagne);
     }
     
 }

@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import m2104.ile_interdite.controleur.Controleur;
 import m2104.ile_interdite.util.Main;
 import m2104.ile_interdite.util.Parameters;
 
@@ -26,7 +27,7 @@ public class VueFinPartie {
     
     private JFrame fenetre;
     private JPanel mainPanel;
-    private JPanel centrePanel;
+    private JPanel hautPanel;
     
     public VueFinPartie(boolean gagne) {
         initialiserFenetreFin(gagne);
@@ -45,7 +46,9 @@ public class VueFinPartie {
         fenetre.setUndecorated(Parameters.UNDECORATED);
         fenetre.setResizable(Parameters.RESIZABLE);
 
-        mainPanel = new JPanel(new GridLayout(4, 3));
+        mainPanel = new JPanel(new BorderLayout());
+        hautPanel = new JPanel(new GridLayout(1,2));
+
         mainPanel.setOpaque(false);
 
         JLabel gagne = new JLabel();
@@ -63,7 +66,7 @@ public class VueFinPartie {
         oui.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                new Main();
+                new Controleur();
             }
         });
         
@@ -78,12 +81,16 @@ public class VueFinPartie {
         mainPanel.add(gagne);
         mainPanel.add(new JLabel(""));
         mainPanel.add(new JLabel(""));
-        mainPanel.add(rejoue);
+        mainPanel.add(rejoue);      
         mainPanel.add(new JLabel(""));
-        mainPanel.add(oui);
-        mainPanel.add(new JLabel(""));
-        mainPanel.add(non);
+        
+        mainPanel.add(hautPanel);
+        
+        hautPanel.add(oui);
+        hautPanel.add(new JLabel(""));
+        hautPanel.add(non);
                 
         fenetre.add(mainPanel);
+        fenetre.setVisible(true);
     }
 }
