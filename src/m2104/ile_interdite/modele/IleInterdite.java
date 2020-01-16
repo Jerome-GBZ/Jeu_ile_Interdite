@@ -575,6 +575,8 @@ public class IleInterdite extends Observable<Message> {
     public void seDeplacer() {
         if (nbactions < 2) {
             nbactions++;
+            
+            
         } else {
             if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size() - 1) {
                 joueurCourant = this.aventuriers.get(0);
@@ -582,9 +584,9 @@ public class IleInterdite extends Observable<Message> {
                 joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
             }
             setNbActions(0);
-
             joueurCourant.setPouvoir(false);
         }
+        
         joueurCourant.seDeplacer();
     }
 
@@ -709,4 +711,5 @@ public class IleInterdite extends Observable<Message> {
     public Aventurier getJoueurCourant() {
         return joueurCourant;
     }
+
 }
