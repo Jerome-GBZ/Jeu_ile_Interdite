@@ -115,6 +115,10 @@ public class IHM extends Observable<Message> {
     public void actualiserPlateau(Grille g) {
         vuePlateauJeu.intitialiserPlateauJeu(g);
     }
+    
+    public void actualiserNiveau(int i){
+        vueNiveau.setNiveau(i);
+    }
 
     public void afficheCarteMain(Aventurier a) {
         vueMainJoueur.actualiserMain(a);

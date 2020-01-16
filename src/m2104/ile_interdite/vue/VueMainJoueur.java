@@ -125,8 +125,6 @@ public class VueMainJoueur /*extends JPanel*/ {
         panelCentre.removeAll();
         panelCentre.validate();
         dessinerMain(a);
-        
-
         panelCentre.revalidate();
         panelCentre.updateUI();
 
