@@ -81,7 +81,7 @@ public class IleInterdite extends Observable<Message> {
         distribuerCartesJoueur();
 
         //pioche des cartes inondations
-        //piocherCarteInondation();
+       // piocherCarteInondation();
     }
 
     public String[] inscrireJoueurs(String[] noms) {
@@ -302,9 +302,9 @@ public class IleInterdite extends Observable<Message> {
     public void creationTuiles() {
         //création tuiles avec ou sans trésor
         Tuile t1 = new Tuile("LaCarverneDuBrasier", tresors[2]); //
-        t1.setEtat(TypeEtat.COULE);
+        
         tresors[2].addTuiles(t1);
-        Tuile t2 = new Tuile("Heliport"); //
+        Tuile t2 = new Tuile("Heliport");  //
         Tuile t3 = new Tuile("LaCarverneDesOmbres", tresors[2]); //
         tresors[2].addTuiles(t3);
         Tuile t4 = new Tuile("LaForetPourpre"); // 

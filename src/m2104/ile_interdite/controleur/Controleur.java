@@ -69,6 +69,7 @@ public class Controleur implements Observateur<Message> {
                 case TERMINER:
                     ileInterdite.terminerTour();
                     ihm.actualiserPlateau(ileInterdite.getGrille());
+                    ihm.afficheCarteMain(ileInterdite.getJoueurCourant());
                     break;
 
                 case RECUPERER_TRESOR:
