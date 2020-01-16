@@ -29,6 +29,7 @@ public class Message implements Serializable {
     public ArrayList<Aventurier> aventuriers;
     public CJoueur[] cjoueurs;
     public boolean gagne;
+    public CJoueur carte;
     
 
     public Message() {
