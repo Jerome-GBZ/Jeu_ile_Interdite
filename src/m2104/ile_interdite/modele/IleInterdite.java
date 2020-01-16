@@ -537,7 +537,6 @@ public class IleInterdite extends Observable<Message> {
         if (g.getTuile("Heliport").equals(t)) {
             if (t.getEtat().equals(TypeEtat.COULE)) {
                 fini = true;
-                System.out.println("heliport perdu");
             }
         }
         if (t.getTresor() != null) {
@@ -574,6 +573,7 @@ public class IleInterdite extends Observable<Message> {
                 Message m = new Message();
                 m.type = TypeAction.FIN_PARTIE;
                 m.gagne = this.getGagne();
+                notifierObservateurs(m);
         }
     }
 
@@ -720,7 +720,12 @@ public class IleInterdite extends Observable<Message> {
             niveauEau = 6;
             fini = true;
         }
-
+        if (this.PartieFinie()) {
+                Message m = new Message();
+                m.type = TypeAction.FIN_PARTIE;
+                m.gagne = this.getGagne();
+                notifierObservateurs(m);
+        }
     }
 
     public int getNombreJoueurs() {
