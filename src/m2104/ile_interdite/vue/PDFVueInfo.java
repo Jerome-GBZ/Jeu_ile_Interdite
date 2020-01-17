@@ -49,6 +49,7 @@ public class PDFVueInfo {
         fenetre.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         fenetre.setUndecorated(Parameters.UNDECORATED);
         fenetre.setResizable(Parameters.RESIZABLE);
+        fenetre.setTitle("Info régles");
 
         JLabel text = new JLabel("?");
         text.setForeground(Color.BLUE);

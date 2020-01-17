@@ -46,6 +46,7 @@ public class VueInscriptionJoueurs {
         
         // Creation Fenetre
         fenetre = new JFrame();
+        fenetre.setTitle("Inscription");
         fenetre.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         fenetre.setSize(500, 500);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();

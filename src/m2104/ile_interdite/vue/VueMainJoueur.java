@@ -41,6 +41,7 @@ public class VueMainJoueur /*extends JPanel*/ {
         window = new JFrame();
         window.setContentPane(new PanelFond(urlImgs, 952, 90));
         window.setSize(952, 90);
+        window.setTitle("Mais Joueur");
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         int dimX = 0 + dim.width / 3 - 152;
         int dimY = 780;

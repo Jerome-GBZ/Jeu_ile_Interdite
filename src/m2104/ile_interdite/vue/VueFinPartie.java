@@ -52,6 +52,7 @@ public class VueFinPartie {
         // fenetre.setLocation(dimX, dimY);
         fenetre.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         // fenetre.setUndecorated(Parameters.UNDECORATED);
+        fenetre.setTitle("Fin");
         fenetre.setResizable(Parameters.RESIZABLE);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         fenetre.setLocation(dim.width / 2 - fenetre.getSize().width / 2, dim.height / 2 - fenetre.getSize().height / 2);

@@ -34,6 +34,7 @@ public class VueNiveau {
         window.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         window.setUndecorated(Parameters.UNDECORATED);
         window.setResizable(Parameters.RESIZABLE);
+        window.setTitle("Niveau");
         window.setSize(d);
         window.setContentPane(new PanelFond("Images/VueNiveau_n.png", 152, 461));
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();

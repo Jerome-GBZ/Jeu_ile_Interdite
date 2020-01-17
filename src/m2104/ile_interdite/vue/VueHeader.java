@@ -41,7 +41,7 @@ public class VueHeader {
         JPanel panelprinc = new JPanel(new GridLayout(1, 6));
         panelprinc.setOpaque(false);
         panelprinc.setSize(800, 124);
-
+        window.setTitle("Header");
         window.setSize(800, 124);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         int dimX = 0 + dim.width / 3 - 152;
