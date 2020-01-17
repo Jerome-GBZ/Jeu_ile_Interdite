@@ -33,6 +33,7 @@ public class VueTresor extends JPanel {
         // parametrage de la fenêtre : 
         window.setContentPane(new PanelFond(urlTresor));
         window.setSize(152, 159);
+        window.setTitle("Trésor");
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         int dimX = 800 + dim.width / 3 - window.getSize().width;
         // int dimY = 620 + dim.height / 3 - window.getSize().height / 2;

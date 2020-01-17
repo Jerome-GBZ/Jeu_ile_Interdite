@@ -49,6 +49,7 @@ public class VueBoutons {
         fenetre = new JFrame();
         fenetre.setContentPane(new PanelFond(urlImgs, 152, 159));
         fenetre.setSize(152, 159);
+        fenetre.setTitle("Boutons");
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         int dimX = 800 + dim.width / 3 - fenetre.getSize().width;
         // int dimY = 0 + dim.height / 3 - fenetre.getSize().height / 2 - 161;

@@ -47,7 +47,7 @@ public class VueFermeture {
         fenetre = new JFrame();
         fenetre.setContentPane(new PanelFond(urlImgs, 30, 30));
         fenetre.setSize(30, 30);
-        
+        fenetre.setTitle("Fermeture");
         
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         int dimX = 800+ dim.width / 3 - fenetre.getSize().width +30;
