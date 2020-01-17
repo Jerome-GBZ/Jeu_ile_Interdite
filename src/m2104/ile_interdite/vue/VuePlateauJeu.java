@@ -41,8 +41,8 @@ public class VuePlateauJeu extends JPanel {
 
     public void initialiserFenetreJeu() {
         fenetre = new JFrame();
-        fenetre.setContentPane(new PanelFond(urlImgs, 800, 700));
-        fenetre.setSize(800, 700);
+        fenetre.setContentPane(new PanelFond(urlImgs, 800, 656));
+        fenetre.setSize(800, 656);
         fenetre.setTitle("Plateau Jeu");
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         int dimX = 0 + dim.width / 3 - 152;

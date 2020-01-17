@@ -45,8 +45,6 @@ public class VueMainJoueur /*extends JPanel*/ {
         int dimX = 0 + dim.width / 3 - 152;
         int dimY = 780;
         window.setLocation(dimX, dimY);
-        
-        window.setAlwaysOnTop(true);
 
         window.setUndecorated(Parameters.UNDECORATED);
         window.setResizable(Parameters.RESIZABLE);
