@@ -43,6 +43,7 @@ public class VuePlateauJeu extends JPanel {
         fenetre = new JFrame();
         fenetre.setContentPane(new PanelFond(urlImgs, 800, 700));
         fenetre.setSize(800, 700);
+        fenetre.setTitle("Plateau Jeu");
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         int dimX = 0 + dim.width / 3 - 152;
         // int dimY = 0 + dim.height / 3 - fenetre.getSize().height / 2 - 161;
@@ -72,7 +73,7 @@ public class VuePlateauJeu extends JPanel {
 
         for (int i = 0; i < 36; i++) {
 
-            if ((i < 2) || (i > 3 && i < 7) || (i == 11) /*|| (i == 24)*/ || (i == 29) || (i == 31) || (i > 33)) {
+            if ((i < 2) || (i > 3 && i < 7) || (i == 11) || (i == 29) || (i == 31) || (i > 33)) {
                 JLabel label = new JLabel("", SwingConstants.CENTER);
                 centrePanel.add(label);
             } else if (i == 30) {
@@ -80,10 +81,13 @@ public class VuePlateauJeu extends JPanel {
                 
                 centrePanel.add(pionCourant);
             } else if (i == 24){
+                JPanel panelNbActions = new JPanel(new BorderLayout());
                 nbAction = new JLabel("Nombre d'Actions : " + nbActionsR);
                 Font font = new Font("Arial", Font.BOLD, 10);
                 nbAction.setFont(font);
-                centrePanel.add(nbAction);
+                panelNbActions.add(nbAction, BorderLayout.SOUTH);
+                panelNbActions.setOpaque(false);
+                centrePanel.add(panelNbActions);
             } else {
                 // redimentionne la tuile
                 nomTuile = arrayTuiles.get(i).getNomTuile();
@@ -130,7 +134,7 @@ public class VuePlateauJeu extends JPanel {
             JPanel pionCourant;
             
             
-            if ((i < 2) || (i > 3 && i < 7) || (i == 11) /*|| (i == 24)*/ || (i == 29) || (i == 31) || (i > 33)) {
+            if ((i < 2) || (i > 3 && i < 7) || (i == 11) || (i == 29) || (i == 31) || (i > 33)) {
                 JLabel label = new JLabel("", SwingConstants.CENTER);
                 centrePanel.add(label);
             } else if (i == 30) {
@@ -138,10 +142,13 @@ public class VuePlateauJeu extends JPanel {
                 centrePanel.add(pionCourant);
             
             } else if (i == 24){
+                JPanel panelNbActions = new JPanel(new BorderLayout());
                 nbAction = new JLabel("Nombre d'Actions : " + nbActionsR);
                 Font font = new Font("Arial", Font.BOLD, 10);
                 nbAction.setFont(font);
-                centrePanel.add(nbAction);
+                panelNbActions.add(nbAction, BorderLayout.SOUTH);
+                panelNbActions.setOpaque(false);
+                centrePanel.add(panelNbActions);
             } else {
                 // redimentionne la tuile
                 nomTuile = arrayTuiles.get(i).getNomTuile();
@@ -203,17 +210,20 @@ public class VuePlateauJeu extends JPanel {
             JPanel pionCourant;
             
             
-            if ((i < 2) || (i > 3 && i < 7) || (i == 11) /* || (i == 24)*/ || (i == 29) || (i == 31) || (i > 33)) {
+            if ((i < 2) || (i > 3 && i < 7) || (i == 11) || (i == 29) || (i == 31) || (i > 33)) {
                 JLabel label = new JLabel("", SwingConstants.CENTER);
                 centrePanel.add(label);
             } else if (i == 30) {
                 pionCourant = dessinerPion(g.getIleInterdite().getJoueurCourant());
                 centrePanel.add(pionCourant);
             } else if (i == 24){
+                JPanel panelNbActions = new JPanel(new BorderLayout());
                 nbAction = new JLabel("Nombre d'Actions : " + nbActionsR);
                 Font font = new Font("Arial", Font.BOLD, 10);
                 nbAction.setFont(font);
-                centrePanel.add(nbAction);   
+                panelNbActions.add(nbAction, BorderLayout.SOUTH);
+                panelNbActions.setOpaque(false);
+                centrePanel.add(panelNbActions); 
             } else {
                 // redimentionne la tuile
                 nomTuile = arrayTuiles.get(i).getNomTuile();
