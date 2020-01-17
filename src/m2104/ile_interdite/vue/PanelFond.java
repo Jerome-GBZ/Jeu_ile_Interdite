@@ -43,6 +43,7 @@ public class PanelFond extends JPanel {
         image = Toolkit.getDefaultToolkit().getImage(urlImage).getScaledInstance(w, h, w);
     }
 
+    @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 

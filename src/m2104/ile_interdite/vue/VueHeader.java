@@ -5,12 +5,7 @@
  */
 package m2104.ile_interdite.vue;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -29,10 +24,7 @@ import m2104.ile_interdite.modele.Aventurier;
 public class VueHeader {
 
     private JFrame window;
-    private JButton b1;
-    private JButton b2;
-    private JButton b3;
-    private JButton b4;
+    private JButton b1, b2, b3, b4;
     private Aventurier aventurierChoisi;
 
     public VueHeader(ArrayList<Aventurier> listA) {
@@ -357,8 +349,4 @@ public class VueHeader {
     public void lockFenetre(){
         window.setEnabled(false);
     }
-    
-    /*public static void main(String[] args) {
-        
-    }*/
 }

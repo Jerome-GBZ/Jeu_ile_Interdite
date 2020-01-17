@@ -2,7 +2,6 @@ package m2104.ile_interdite.util;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import javax.swing.JTextField;
 import m2104.ile_interdite.modele.*;
 
 /**

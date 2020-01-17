@@ -1,8 +1,6 @@
 package m2104.ile_interdite.vue;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import m2104.ile_interdite.controleur.Controleur;
 import m2104.ile_interdite.modele.*;
 import m2104.ile_interdite.util.*;
 import patterns.observateur.Observable;
@@ -33,27 +31,6 @@ public class IHM extends Observable<Message> {
         this.controleur = observateur;
     }
 
-    /*public void creerVuesAventuriers(String[] nomAventuriers) {
-        // - le pouvoir est disponible dans le modèle
-        String[] nomsJoueurs = this.vueInscription.getNomJoueurs();
-        assert nomsJoueurs.length == nomAventuriers.length;
-        for (int id = 0; id < nomAventuriers.length; ++id) {
-            this.vueAventuriers.put(
-                    id,
-                    new VueAventurier(
-                            this,
-                            id,
-                            nomsJoueurs[id],
-                            nomAventuriers[id],
-                            "YYY",  // TODO: à remplacer par le bon pouvoir
-                            id,
-                            nomAventuriers.length,
-                            Color.orange,
-                            Color.orange
-                    )
-            );
-        }
-    }*/
     public void afficheVueInscription() {
         this.vueInscription.afficher();
     }
@@ -176,7 +153,6 @@ public class IHM extends Observable<Message> {
     public void lockVue() {
         vuePlateauJeu.lockFenetre();
         vuetresor.lockFenetre();
-        
         vueHeader.lockFenetre();
         vueBoutons.lockFenetre();
         vueNiveau.lockFenetre();

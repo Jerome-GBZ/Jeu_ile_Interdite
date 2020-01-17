@@ -8,7 +8,6 @@ package m2104.ile_interdite.vue;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -31,9 +30,8 @@ public class PDFVueInfo {
     private JButton fermer;
     //private IHM ihm;
 
-    public PDFVueInfo(){//IHM ihm) {
+    public PDFVueInfo(){
         initialiserFenetreBouton();
-        //this.ihm = ihm;
     }
 
     public void initialiserFenetreBouton() {
@@ -70,22 +68,13 @@ public class PDFVueInfo {
                 }
             }
 
-            @Override
-            public void mousePressed(MouseEvent arg0) {
-            }
+            @Override public void mousePressed(MouseEvent arg0) {}
 
-            @Override
-            public void mouseReleased(MouseEvent arg0) {
-            }
+            @Override public void mouseReleased(MouseEvent arg0) {}
 
-            @Override
-            public void mouseEntered(MouseEvent arg0) {
+            @Override public void mouseEntered(MouseEvent arg0) {}
 
-            }
-
-            @Override
-            public void mouseExited(MouseEvent arg0) {
-            }
+            @Override public void mouseExited(MouseEvent arg0) {}
         });
         fermer.setBorderPainted(false);
         fenetre.add(fermer, BorderLayout.CENTER);
@@ -94,10 +83,6 @@ public class PDFVueInfo {
     
     public void fermer() {
         fenetre.dispose();
-    }
-
-    public static void main(String[] args) {
-        new PDFVueInfo();
     }
     
     public void lockFenetre(){

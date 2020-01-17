@@ -4,7 +4,6 @@ import m2104.ile_interdite.modele.IleInterdite;
 import m2104.ile_interdite.util.Message;
 import m2104.ile_interdite.util.Parameters;
 import m2104.ile_interdite.vue.IHM;
-import m2104.ile_interdite.vue.VueHeader;
 import patterns.observateur.Observateur;
 
 /**
@@ -64,7 +63,6 @@ public class Controleur implements Observateur<Message> {
 
                 case DONNER:
                     ileInterdite.donnerCarte(msg.aventurier, msg.carte);
-                    //ihm.afficheCarteMain(msg.aventurier);
                     break;
 
                 case ACTUALISER:
@@ -76,8 +74,6 @@ public class Controleur implements Observateur<Message> {
 
                 case TERMINER:
                     ileInterdite.terminerTour();
-                    //ihm.actualiserPlateau(ileInterdite.getGrille(), 3 - ileInterdite.getNbActions());
-                    //ihm.afficheCarteMain(ileInterdite.getJoueurCourant());
                     break;
 
                 case RECUPERER_TRESOR:

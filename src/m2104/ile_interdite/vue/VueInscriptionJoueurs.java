@@ -35,7 +35,7 @@ public class VueInscriptionJoueurs {
     private String[] nomJoueurs;
     int nbJoueurs = 2; // 2 joueurs par default
 
-    private javax.swing.JLabel niveauEau;
+    private final javax.swing.JLabel niveauEau;
     private JComboBox<String> choixNivEau;
     String nivEau = "Novice";
 
@@ -168,16 +168,6 @@ public class VueInscriptionJoueurs {
                 ihm.btnJouer(m);
 
                 fermer();
-
-                // test des variables envoyées
-                System.out.println("Il y a " + nbJoueurs + " joueurs");
-                for (int i = 0; i < nbJoueurs; i++) { // verifie le tableau de Jtextfield
-                    System.out.println("    - " + saisieNomJoueurs[i].getText());
-                }
-                System.out.println("Niveau Eau est de " + nivEau + " soit niv n°" + niv + "\n"); 
-                for (int i = 0; i < nbJoueurs; i++) { // verifie le tableau de String
-                    System.out.println("    "+ i + "- " + (nomJoueurs[i] = saisieNomJoueurs[i].getText()));
-                }
             }
         });
         

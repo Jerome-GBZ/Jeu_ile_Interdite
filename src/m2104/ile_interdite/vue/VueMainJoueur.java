@@ -11,7 +11,6 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import m2104.ile_interdite.modele.*;
 import m2104.ile_interdite.util.*;
-import java.util.ArrayList;
 
 /**
  *

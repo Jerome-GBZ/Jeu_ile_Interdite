@@ -132,22 +132,7 @@ public class Grille {
             }
            tuilesDispo.remove(a.getTuile());
         }
-     /*  if (a.getRole() == TypeRole.Plongeur) {
-            ArrayList<Tuile> tuilePlongeur = new ArrayList<>();
-            for (Tuile tu : tuilesDispo){
-                tuilePlongeur.add(tu);
-            }
-            int u = 0;
-          while (u < tuilePlongeur.size()) {
-              if (!tuilePlongeur.get(u).getEtat().equals(TypeEtat.SEC)){
-                  for (Tuile tui : tuileAutour(tuilePlongeur.get(u))){
-                      tuilePlongeur.add(tui);
-                  }
-              }
-              u++;
-          }  
-            
-        }*/
+
        ArrayList<Tuile> TuileAsupr = new ArrayList<>();
         for (Tuile tu : tuilesDispo) {
             if (tu.getEtat().equals(TypeEtat.COULE)) {
@@ -179,8 +164,6 @@ public class Grille {
             i++;
             j = 0;
         }
-       //  c[0] = i;
-       // c[1] = j;
         return c;
     }
 

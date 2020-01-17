@@ -299,19 +299,19 @@ public class IleInterdite extends Observable<Message> {
 
     public void creationTuiles() {
         //création tuiles avec ou sans trésor
-        Tuile t1 = new Tuile("LaCarverneDuBrasier", tresors[2]); //
+        Tuile t1 = new Tuile("LaCarverneDuBrasier", tresors[2]);
         tresors[2].addTuiles(t1);
-        Tuile t2 = new Tuile("Heliport");   //
-        Tuile t3 = new Tuile("LaCarverneDesOmbres", tresors[2]); //
+        Tuile t2 = new Tuile("Heliport");   
+        Tuile t3 = new Tuile("LaCarverneDesOmbres", tresors[2]); 
         tresors[2].addTuiles(t3);
-        Tuile t4 = new Tuile("LaForetPourpre"); // 
-        Tuile t5 = new Tuile("LaPortedArgent"); //
-        Tuile t6 = new Tuile("LaPorteDeBronze"); // 
-        Tuile t7 = new Tuile("LaPorteDeCuivre"); //
-        Tuile t8 = new Tuile("LaPorteDeFer"); //
-        Tuile t9 = new Tuile("LaPortedOr"); //
-        Tuile t10 = new Tuile("LaTourDuGuet"); // 
-        Tuile t11 = new Tuile("LeJardinDesHurlements", tresors[1]); //
+        Tuile t4 = new Tuile("LaForetPourpre"); 
+        Tuile t5 = new Tuile("LaPortedArgent"); 
+        Tuile t6 = new Tuile("LaPorteDeBronze"); 
+        Tuile t7 = new Tuile("LaPorteDeCuivre"); 
+        Tuile t8 = new Tuile("LaPorteDeFer"); 
+        Tuile t9 = new Tuile("LaPortedOr"); 
+        Tuile t10 = new Tuile("LaTourDuGuet");
+        Tuile t11 = new Tuile("LeJardinDesHurlements", tresors[1]); 
         tresors[1].addTuiles(t11);
         Tuile t12 = new Tuile("LeJardinDesMurmures", tresors[1]);
         tresors[1].addTuiles(t12);
@@ -488,7 +488,6 @@ public class IleInterdite extends Observable<Message> {
                 }
                 cartesInondationDefausse.add(cartesInondationPioche.get(cartesInondationPioche.size() - 1));
                 cartesInondationPioche.remove((cartesInondationPioche.size() - 1));
-
             }
         }
     }
@@ -508,12 +507,6 @@ public class IleInterdite extends Observable<Message> {
             }
             if (cartesJoueurPioche.get(cartesJoueurPioche.size() - 1).getTypeCarte() != TypeCarte.CMONTEEEAUX) {
                 a.addCarteJoueur(cartesJoueurPioche.get(cartesJoueurPioche.size() - 1));
-             /*   if (a.getCartes()[5] != null) {
-                    Message m = new Message();
-                    m.type = TypeAction.DEFAUSSER;
-                    m.aventurier = a;
-                    notifierObservateurs(m);
-                }*/
             } else {
                 etapeEau = etapeEau + 1;
                 setNiveauEau(etapeEau);
@@ -577,19 +570,6 @@ public class IleInterdite extends Observable<Message> {
                 notifierObservateurs(m);
         }
     }
-
-    /* public void Jouer() {
-        
-        Message m = new Message();
-        
-        if (nbactions<3){ 
-        m.aventurier = joueurCourant;
-        }
-        else {
-            
-        }
-         notifierObservateurs(m);
-    }*/
 
     public void seDeplacer() {
 
@@ -677,9 +657,6 @@ public class IleInterdite extends Observable<Message> {
             } else {
                 joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
             }
-       
-           
-      
         piocherCarteInondation();
         setNbActions(0);
         joueurCourant.setPouvoir(false);
@@ -796,5 +773,4 @@ public class IleInterdite extends Observable<Message> {
         m1.type = TypeAction.ACTUALISER;
         notifierObservateurs(m1);
     }
-
 }

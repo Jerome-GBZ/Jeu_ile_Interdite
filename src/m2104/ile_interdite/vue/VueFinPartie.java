@@ -7,7 +7,6 @@ package m2104.ile_interdite.vue;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -19,7 +18,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import m2104.ile_interdite.controleur.Controleur;
-import m2104.ile_interdite.util.Main;
 import m2104.ile_interdite.util.Parameters;
 
 /**

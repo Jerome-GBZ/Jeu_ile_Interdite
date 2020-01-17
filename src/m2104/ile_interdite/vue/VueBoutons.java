@@ -5,12 +5,7 @@
  */
 package m2104.ile_interdite.vue;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JButton;
@@ -150,16 +145,9 @@ public class VueBoutons {
                 }
             }
 
-            @Override
-            public void mousePressed(MouseEvent e) {
-            }
+            @Override public void mousePressed(MouseEvent e) {}
 
-            /*@Override public void mouseReleased(MouseEvent e) {}
-            @Override public void mouseEntered(MouseEvent e) {}
-            @Override public void mouseExited(MouseEvent e) {} */
-            @Override
-            public void mouseReleased(MouseEvent e) {
-            }
+            @Override public void mouseReleased(MouseEvent e) {}
 
             @Override
             public void mouseEntered(MouseEvent e) {
