@@ -508,12 +508,12 @@ public class IleInterdite extends Observable<Message> {
             }
             if (cartesJoueurPioche.get(cartesJoueurPioche.size() - 1).getTypeCarte() != TypeCarte.CMONTEEEAUX) {
                 a.addCarteJoueur(cartesJoueurPioche.get(cartesJoueurPioche.size() - 1));
-                if (a.getCartes()[5] != null) {
+             /*   if (a.getCartes()[5] != null) {
                     Message m = new Message();
                     m.type = TypeAction.DEFAUSSER;
                     m.aventurier = a;
                     notifierObservateurs(m);
-                }
+                }*/
             } else {
                 etapeEau = etapeEau + 1;
                 setNiveauEau(etapeEau);
@@ -792,7 +792,7 @@ public class IleInterdite extends Observable<Message> {
             setNbActions(0);
             joueurCourant.setPouvoir(false);
         }
-         Message m1 = new Message();
+        Message m1 = new Message();
         m1.type = TypeAction.ACTUALISER;
         notifierObservateurs(m1);
     }
