@@ -671,24 +671,15 @@ public class IleInterdite extends Observable<Message> {
 
     public void terminerTour() {
         piocherCarteJoueur(joueurCourant);
-        if (nbactions < 2) {
+       
             if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size() - 1) {
                 joueurCourant = this.aventuriers.get(0);
             } else {
                 joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
             }
-        } else {
-            if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size() - 1) {
-                joueurCourant = this.aventuriers.get(0);
-            } else {
-                joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
-            }
-            if (this.aventuriers.indexOf(joueurCourant) == this.aventuriers.size() - 1) {
-                joueurCourant = this.aventuriers.get(0);
-            } else {
-                joueurCourant = this.aventuriers.get(1 + this.aventuriers.indexOf(joueurCourant));
-            }
-        }
+       
+           
+      
         piocherCarteInondation();
         setNbActions(0);
         joueurCourant.setPouvoir(false);
