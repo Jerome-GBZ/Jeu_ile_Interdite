@@ -24,7 +24,7 @@ public class VueNiveau {
     private JFrame windowprincipale;
     private final HashMap<Integer, JPanel> panelsGauches;
     private final Integer cellWidth = 54; 
-    private final Integer cellHeight = 275 / 10;
+    private final Integer cellHeight = 275 / 7;
     private final JPanel mainPanel;
 
     public VueNiveau(Integer niveauInitial) {
@@ -36,7 +36,7 @@ public class VueNiveau {
         window.setResizable(Parameters.RESIZABLE);
         window.setTitle("Niveau");
         window.setSize(d);
-        window.setContentPane(new PanelFond("Images/VueNiveau_n.png", 152, 461));
+        window.setContentPane(new PanelFond("Images/VueNiveau.png", 152, 461));
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         int dimX = 800 + dim.width / 3 - window.getSize().width + 2;
         int dimY = 159;
