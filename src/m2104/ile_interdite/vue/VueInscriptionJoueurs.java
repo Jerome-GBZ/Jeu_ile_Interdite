@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import m2104.ile_interdite.util.Message;
 import javax.swing.ImageIcon;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.Toolkit;
 import m2104.ile_interdite.util.TypeAction;
 
@@ -63,16 +64,9 @@ public class VueInscriptionJoueurs {
         String imgURL = "Images/logojeu.png";
         JLabel logoLabel = new JLabel(new ImageIcon(imgURL));
         topPanel.add(logoLabel, BorderLayout.NORTH);
-
-        // titre
-        /*
-        titre = new JLabel();
-        titre.setText("Bienvenue sur l'île interdite !");
-        topPanel.add(titre, BorderLayout.CENTER);
-         */
         
         // Inscription joueur
-        JPanel CentrePanel = new JPanel(new GridLayout(9, 2));
+        JPanel CentrePanel = new JPanel(new GridLayout(10, 2));
         mainPanel.add(CentrePanel, BorderLayout.CENTER);
 
         CentrePanel.add(new JPanel()); // Une case vide
@@ -127,9 +121,8 @@ public class VueInscriptionJoueurs {
                 nivEau = (String) choixNivEau.getSelectedItem();
             }
         });
-
         CentrePanel.add(new JPanel()); // Une case vide
-        CentrePanel.add(new JPanel());
+        CentrePanel.add(new JPanel()); // Une case vide
 
         // Bouton jouer 
         JPanel footerPanel = new JPanel(new GridBagLayout());
@@ -171,6 +164,11 @@ public class VueInscriptionJoueurs {
             }
         });
         
+        Image imgTuile = Toolkit.getDefaultToolkit().getImage("Images/regle.png").getScaledInstance(20, 20, 20);
+        JLabel img = new JLabel(new ImageIcon(imgTuile,"Vous permez d'ouvir le manuel d'action"));
+        CentrePanel.add(img,BorderLayout.EAST);
+        CentrePanel.add(new JLabel("Le manuel d'action"),BorderLayout.WEST);
+
         footerPanel.add(btnJouer);
     }
 

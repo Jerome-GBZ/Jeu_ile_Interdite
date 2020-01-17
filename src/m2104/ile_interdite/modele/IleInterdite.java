@@ -334,7 +334,7 @@ public class IleInterdite extends Observable<Message> {
 
         //ajout des tuiles à l'array list et création cartes inondation
         tuiles.add(t1);
-        tuiles.add(t2);
+        tuiles.add(t2);file:///users/info/etu-s2/gambiezj/Documents/Projet_Java/Projet_ile_Interdite_G3/Images
         tuiles.add(t3);
         tuiles.add(t4);
         tuiles.add(t5);
@@ -601,7 +601,7 @@ public class IleInterdite extends Observable<Message> {
         
     }
 
-    public void assecher() {
+    public void assecher() {file:///users/info/etu-s2/gambiezj/Documents/Projet_Java/Projet_ile_Interdite_G3/Images
         joueurCourant.assecher();
     }
 
