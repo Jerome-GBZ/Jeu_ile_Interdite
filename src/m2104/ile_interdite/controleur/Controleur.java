@@ -41,19 +41,19 @@ public class Controleur implements Observateur<Message> {
                 case BOUGER:
                     ileInterdite.seDeplacer();
                     break;
-                    
+
                 case CHOISIR_TUILE:
                     ihm.afficheTuilesDispos(msg.tuiles, ileInterdite.getGrille(), 3 - ileInterdite.getNbActions());
                     break;
-                
+
                 case CHOISIR_TUILE_ASSECHER:
                     ihm.afficheTuilesDisposAssecher(msg.tuiles, ileInterdite.getGrille(), 3 - ileInterdite.getNbActions());
                     break;
-                    
+
                 case ASSECHER_TUILE:
                     ileInterdite.assecher(msg.tuile);
                     break;
-                    
+
                 case BOUGERPION:
                     ileInterdite.seDeplacer(msg.tuile);
                     break;
@@ -66,14 +66,14 @@ public class Controleur implements Observateur<Message> {
                     ileInterdite.donnerCarte(msg.aventurier, msg.carte);
                     ihm.afficheCarteMain(msg.aventurier);
                     break;
-                    
+
                 case ACTUALISER:
                     ihm.actualiserPlateau(ileInterdite.getGrille(), ileInterdite.getNbActions());
                     ihm.afficheCarteMain(ileInterdite.getJoueurCourant());
                     ihm.actualiserNiveau(ileInterdite.getEtapeEau());
                     
                     break;
-                    
+
                 case TERMINER:
                     ileInterdite.terminerTour();
                     ihm.actualiserPlateau(ileInterdite.getGrille(), 3 - ileInterdite.getNbActions());
@@ -82,13 +82,21 @@ public class Controleur implements Observateur<Message> {
 
                 case RECUPERER_TRESOR:
                     ileInterdite.recupTresorDemo();
-                    ihm.recupTresor(ileInterdite.getJoueurCourant());
+                    if (ileInterdite.getNbActions() == 0) {
+                        if (ileInterdite.getAventuriers().indexOf(ileInterdite.getJoueurCourant()) == 0 ) {
+                            ihm.recupTresor(ileInterdite.getAventuriers().get(ileInterdite.getAventuriers().size()-1));
+                        } else {
+                           ihm.recupTresor(ileInterdite.getAventuriers().get(ileInterdite.getAventuriers().indexOf(ileInterdite.getJoueurCourant())-1)) ;
+                        }
+                    } else {
+                        ihm.recupTresor(ileInterdite.getJoueurCourant());
+                    }
                     break;
-                    
+
                 case DEFAUSSER:
                     ileInterdite.defausserCJoueur(msg.carte);
                     break;
-                    
+
                 case FIN_PARTIE:
                     ihm.finPartie(msg.gagne);
                     break;
@@ -112,7 +120,7 @@ public class Controleur implements Observateur<Message> {
     public IHM getIhm() {
         return ihm;
     }
-    
+
     public IleInterdite getIleInterdite() {
         return ileInterdite;
     }
