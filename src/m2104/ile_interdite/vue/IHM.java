@@ -68,8 +68,8 @@ public class IHM extends Observable<Message> {
         this.vueFermeture = new VueFermeture(this);
     }
 
-    public void creePlateau(Grille g) {
-        this.vuePlateauJeu = new VuePlateauJeu(g, this);
+    public void creePlateau(Grille g, int nbActions) {
+        this.vuePlateauJeu = new VuePlateauJeu(g, this, nbActions);
         vuePlateauJeu.afficher();
 
     }
@@ -104,16 +104,16 @@ public class IHM extends Observable<Message> {
         vueinfo = new PDFVueInfo();
     }
 
-    public void afficheTuilesDispos(ArrayList<Tuile> tDispos, Grille g) {
-        vuePlateauJeu.actualiserPlateauJeu(tDispos, g);
+    public void afficheTuilesDispos(ArrayList<Tuile> tDispos, Grille g, int nbActionsR) {
+        vuePlateauJeu.actualiserPlateauJeu(tDispos, g, nbActionsR);
     }
 
-    public void afficheTuilesDisposAssecher(ArrayList<Tuile> tDispos, Grille g) {
-        vuePlateauJeu.actualiserPlateauJeuAssecher(tDispos, g);
+    public void afficheTuilesDisposAssecher(ArrayList<Tuile> tDispos, Grille g, int nbActionsR) {
+        vuePlateauJeu.actualiserPlateauJeuAssecher(tDispos, g, nbActionsR);
     }
 
-    public void actualiserPlateau(Grille g) {
-        vuePlateauJeu.intitialiserPlateauJeu(g);
+    public void actualiserPlateau(Grille g, int nbActionsR) {
+        vuePlateauJeu.intitialiserPlateauJeu(g, nbActionsR);
     }
     
     public void actualiserNiveau(int i){
@@ -186,5 +186,4 @@ public class IHM extends Observable<Message> {
         vueFermeture.lockFenetre();
         vueinfo.lockFenetre();
     }
-
 }

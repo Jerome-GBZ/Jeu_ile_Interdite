@@ -43,7 +43,6 @@ public class VueMainJoueur /*extends JPanel*/ {
         window.setSize(952, 90);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         int dimX = 0 + dim.width / 3 - 152;
-        // int dimY = 780 + dim.height / 3 - window.getSize().height / 2;
         int dimY = 780;
         window.setLocation(dimX, dimY);
         
@@ -108,8 +107,6 @@ public class VueMainJoueur /*extends JPanel*/ {
                 cartePanel.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent arg0) {
-                        //dessinerMain(a);
-                        System.out.println("Choix Carte");
                         carteChoisie = carteJoueur;
                     }
                 });

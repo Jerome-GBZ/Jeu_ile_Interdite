@@ -23,13 +23,12 @@ public class Controleur implements Observateur<Message> {
     @Override
     public void traiterMessage(Message msg) {
         if (Parameters.LOGS) {
-            System.out.println("Controleur.traiterMessage" + msg);
         }
         try {
             switch (msg.type) {
                 case DEMARRER:
                     ileInterdite = new IleInterdite(this, msg.nivEau, msg.nomJoueurs);
-                    ihm.creePlateau(ileInterdite.getGrille());
+                    ihm.creePlateau(ileInterdite.getGrille(), 3 - ileInterdite.getNbActions());
                     ihm.creeHeader(ileInterdite.getAventuriers());
                     ihm.creeVueNiveau(msg.nivEau);
                     ihm.creeVueBoutons();
@@ -44,11 +43,11 @@ public class Controleur implements Observateur<Message> {
                     break;
                     
                 case CHOISIR_TUILE:
-                    ihm.afficheTuilesDispos(msg.tuiles, ileInterdite.getGrille());
+                    ihm.afficheTuilesDispos(msg.tuiles, ileInterdite.getGrille(), 3 - ileInterdite.getNbActions());
                     break;
                 
                 case CHOISIR_TUILE_ASSECHER:
-                    ihm.afficheTuilesDisposAssecher(msg.tuiles, ileInterdite.getGrille());
+                    ihm.afficheTuilesDisposAssecher(msg.tuiles, ileInterdite.getGrille(), 3 - ileInterdite.getNbActions());
                     break;
                     
                 case ASSECHER_TUILE:
@@ -69,14 +68,15 @@ public class Controleur implements Observateur<Message> {
                     break;
                     
                 case ACTUALISER:
-                    ihm.actualiserPlateau(ileInterdite.getGrille());
+                    ihm.actualiserPlateau(ileInterdite.getGrille(), ileInterdite.getNbActions());
                     ihm.afficheCarteMain(ileInterdite.getJoueurCourant());
                     ihm.actualiserNiveau(ileInterdite.getEtapeEau());
+                    
                     break;
                     
                 case TERMINER:
                     ileInterdite.terminerTour();
-                    ihm.actualiserPlateau(ileInterdite.getGrille());
+                    ihm.actualiserPlateau(ileInterdite.getGrille(), 3 - ileInterdite.getNbActions());
                     ihm.afficheCarteMain(ileInterdite.getJoueurCourant());
                     break;
 
@@ -90,13 +90,13 @@ public class Controleur implements Observateur<Message> {
                     break;
                     
                 case FIN_PARTIE:
-                    System.out.println("finPartie Controleur");
                     ihm.finPartie(msg.gagne);
                     break;
+                    
+                    
 
                 default:
                     if (Parameters.LOGS) {
-                        System.err.println("Action interdite : " + msg.getCommande().toString());
                     }
 
             }

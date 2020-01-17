@@ -23,8 +23,8 @@ public class VueNiveau {
     private final JFrame window;
     private JFrame windowprincipale;
     private final HashMap<Integer, JPanel> panelsGauches;
-    private final Integer cellWidth = 54; //50
-    private final Integer cellHeight = 275 / 10;//(Parameters.HAUTEUR_AUTRES_VUES - 25 - (Parameters.UNDECORATED ? 0 : Parameters.DECORATION_HEIGHT)) / 10 ;
+    private final Integer cellWidth = 54; 
+    private final Integer cellHeight = 275 / 10;
     private final JPanel mainPanel;
 
     public VueNiveau(Integer niveauInitial) {
@@ -38,10 +38,9 @@ public class VueNiveau {
         window.setContentPane(new PanelFond("Images/VueNiveau_n.png", 152, 461));
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         int dimX = 800 + dim.width / 3 - window.getSize().width + 2;
-        // int dimY = 159 + dim.height / 3 - window.getSize().height / 2;
         int dimY = 159;
         window.setLocation(dimX, dimY);
-//
+
         JPanel panelpincipal = new JPanel(new BorderLayout());
         panelpincipal.setOpaque(false);
         panelpincipal.setBackground(Color.red);
@@ -57,7 +56,7 @@ public class VueNiveau {
 
         JLabel labelTitre = new JLabel("Niveau", JLabel.CENTER);
         this.mainPanel.add(labelTitre, BorderLayout.NORTH);
-        // labelTitre.setFont(labelTitre.getFont().deriveFont(Font.BOLD));
+        labelTitre.setFont(labelTitre.getFont().deriveFont(Font.BOLD));
         labelTitre.setFont(new Font("Copperplate Gothic Bold", Font.BOLD, 14));
 
         JPanel panelNiveaux = new JPanel(new GridBagLayout());
@@ -136,7 +135,6 @@ public class VueNiveau {
     }
 
     public void setNiveau(Integer niveau) {
-        System.out.println("VueNiveau_nopic.setNiveau(" + niveau + ")");
         panelsGauches.get(this.niveau).setBackground(getBgColor(this.niveau - 1));
         this.niveau = niveau;
         panelsGauches.get(this.niveau).setBackground(this.niveau == 10 ? Color.RED : Color.YELLOW);

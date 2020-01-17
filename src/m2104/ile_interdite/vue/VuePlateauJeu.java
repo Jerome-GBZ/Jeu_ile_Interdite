@@ -25,13 +25,18 @@ public class VuePlateauJeu extends JPanel {
     private ArrayList<Tuile> arrayTuiles = new ArrayList<>();
 
     private IHM ihm;
+    Grille grille;
+    
+    private JLabel nbAction;
 
-    public VuePlateauJeu(Grille g, IHM ihm) {
+    public VuePlateauJeu(Grille g, IHM ihm, int nbActions) {
+        
         this.arrayTuiles = g.getArrayTuiles();
         this.aventuriers = g.getIleInterdite().getAventuriers();
         initialiserFenetreJeu();
-        intitialiserPlateauJeu(g);
+        intitialiserPlateauJeu(g, nbActions);
         this.ihm = ihm;
+        grille = g;
     }
 
     public void initialiserFenetreJeu() {
@@ -58,7 +63,7 @@ public class VuePlateauJeu extends JPanel {
         fenetre.add(mainPanel);
     }
 
-    public void intitialiserPlateauJeu(Grille g) {
+    public void intitialiserPlateauJeu(Grille g, int nbActionsR) {
         centrePanel.removeAll();
         centrePanel.validate();
         JButton btn = new JButton();
@@ -67,12 +72,16 @@ public class VuePlateauJeu extends JPanel {
 
         for (int i = 0; i < 36; i++) {
 
-            if ((i < 2) || (i > 3 && i < 7) || (i == 11) || (i == 24) || (i == 29) || (i == 31) || (i > 33)) {
+            if ((i < 2) || (i > 3 && i < 7) || (i == 11) /*|| (i == 24)*/ || (i == 29) || (i == 31) || (i > 33)) {
                 JLabel label = new JLabel("", SwingConstants.CENTER);
                 centrePanel.add(label);
             } else if (i == 30) {
                 JPanel pionCourant = dessinerPion(g.getIleInterdite().getJoueurCourant());
+                
                 centrePanel.add(pionCourant);
+            } else if (i == 24){
+                nbAction = new JLabel("Nb Action : " + nbActionsR);
+                centrePanel.add(nbAction);
             } else {
                 // redimentionne la tuile
                 nomTuile = arrayTuiles.get(i).getNomTuile();
@@ -88,11 +97,7 @@ public class VuePlateauJeu extends JPanel {
                         imgTuile = Toolkit.getDefaultToolkit().getImage("Images/tuiles/" + nomTuile + ".png").getScaledInstance(120, 100, 120);
                         btn = new JButton(new ImageIcon(imgTuile));
                     }
-
                 }
-                
-                /*imgTuile = Toolkit.getDefaultToolkit().getImage("Images/tuiles/" + nomTuile + ".png").getScaledInstance(120, 100, 120);
-                btn = new JButton(new ImageIcon(imgTuile));*/
 
                 if (!arrayTuiles.get(i).getAventuriers().isEmpty()) {
                     JPanel centrePionP = dessinerPion(arrayTuiles.get(i).getAventuriers().get(0));
@@ -110,7 +115,7 @@ public class VuePlateauJeu extends JPanel {
         centrePanel.updateUI();
     }
 
-    public void actualiserPlateauJeu(ArrayList<Tuile> tDispos, Grille g) {
+    public void actualiserPlateauJeu(ArrayList<Tuile> tDispos, Grille g, int nbActionsR) {
         centrePanel.removeAll();
         centrePanel.validate();
         JButton btn = new JButton();
@@ -123,14 +128,16 @@ public class VuePlateauJeu extends JPanel {
             JPanel pionCourant;
             
             
-            if ((i < 2) || (i > 3 && i < 7) || (i == 11) || (i == 24) || (i == 29) || (i == 31) || (i > 33)) {
+            if ((i < 2) || (i > 3 && i < 7) || (i == 11) /*|| (i == 24)*/ || (i == 29) || (i == 31) || (i > 33)) {
                 JLabel label = new JLabel("", SwingConstants.CENTER);
                 centrePanel.add(label);
             } else if (i == 30) {
                 pionCourant = dessinerPion(g.getIleInterdite().getJoueurCourant());
                 centrePanel.add(pionCourant);
-                
-
+            
+            } else if (i == 24){
+                nbAction = new JLabel("Nb Action : " + nbActionsR);
+                centrePanel.add(nbAction);
             } else {
                 // redimentionne la tuile
                 nomTuile = arrayTuiles.get(i).getNomTuile();
@@ -179,7 +186,7 @@ public class VuePlateauJeu extends JPanel {
         centrePanel.updateUI();
     }
     
-      public void actualiserPlateauJeuAssecher(ArrayList<Tuile> tDispos, Grille g) {
+      public void actualiserPlateauJeuAssecher(ArrayList<Tuile> tDispos, Grille g, int nbActionsR) {
         centrePanel.removeAll();
         centrePanel.validate();
         JButton btn = new JButton();
@@ -192,14 +199,15 @@ public class VuePlateauJeu extends JPanel {
             JPanel pionCourant;
             
             
-            if ((i < 2) || (i > 3 && i < 7) || (i == 11) || (i == 24) || (i == 29) || (i == 31) || (i > 33)) {
+            if ((i < 2) || (i > 3 && i < 7) || (i == 11) /* || (i == 24)*/ || (i == 29) || (i == 31) || (i > 33)) {
                 JLabel label = new JLabel("", SwingConstants.CENTER);
                 centrePanel.add(label);
             } else if (i == 30) {
                 pionCourant = dessinerPion(g.getIleInterdite().getJoueurCourant());
                 centrePanel.add(pionCourant);
-                
-
+            } else if (i == 24){
+                nbAction = new JLabel("Nb Action : " + nbActionsR);
+                centrePanel.add(nbAction);   
             } else {
                 // redimentionne la tuile
                 nomTuile = arrayTuiles.get(i).getNomTuile();
