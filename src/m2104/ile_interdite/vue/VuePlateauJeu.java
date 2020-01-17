@@ -80,7 +80,9 @@ public class VuePlateauJeu extends JPanel {
                 
                 centrePanel.add(pionCourant);
             } else if (i == 24){
-                nbAction = new JLabel("Nb Action : " + nbActionsR);
+                nbAction = new JLabel("Nombre d'Actions : " + nbActionsR);
+                Font font = new Font("Arial", Font.BOLD, 10);
+                nbAction.setFont(font);
                 centrePanel.add(nbAction);
             } else {
                 // redimentionne la tuile
@@ -136,7 +138,9 @@ public class VuePlateauJeu extends JPanel {
                 centrePanel.add(pionCourant);
             
             } else if (i == 24){
-                nbAction = new JLabel("Nb Action : " + nbActionsR);
+                nbAction = new JLabel("Nombre d'Actions : " + nbActionsR);
+                Font font = new Font("Arial", Font.BOLD, 10);
+                nbAction.setFont(font);
                 centrePanel.add(nbAction);
             } else {
                 // redimentionne la tuile
@@ -206,7 +210,9 @@ public class VuePlateauJeu extends JPanel {
                 pionCourant = dessinerPion(g.getIleInterdite().getJoueurCourant());
                 centrePanel.add(pionCourant);
             } else if (i == 24){
-                nbAction = new JLabel("Nb Action : " + nbActionsR);
+                nbAction = new JLabel("Nombre d'Actions : " + nbActionsR);
+                Font font = new Font("Arial", Font.BOLD, 10);
+                nbAction.setFont(font);
                 centrePanel.add(nbAction);   
             } else {
                 // redimentionne la tuile

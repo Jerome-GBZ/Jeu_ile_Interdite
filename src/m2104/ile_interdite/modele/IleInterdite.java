@@ -683,9 +683,9 @@ public class IleInterdite extends Observable<Message> {
         piocherCarteInondation();
         setNbActions(0);
         joueurCourant.setPouvoir(false);
-        /*Message m = new Message();
-        m.type = TypeAction.TERMINER_TOUR;
-        notifierObservateurs(m);*/
+        Message m = new Message();
+        m.type = TypeAction.ACTUALISER;
+        notifierObservateurs(m);
     }
 
     //getters et setters

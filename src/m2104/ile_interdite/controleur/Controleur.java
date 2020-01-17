@@ -64,11 +64,11 @@ public class Controleur implements Observateur<Message> {
 
                 case DONNER:
                     ileInterdite.donnerCarte(msg.aventurier, msg.carte);
-                    ihm.afficheCarteMain(msg.aventurier);
+                    //ihm.afficheCarteMain(msg.aventurier);
                     break;
 
                 case ACTUALISER:
-                    ihm.actualiserPlateau(ileInterdite.getGrille(), ileInterdite.getNbActions());
+                    ihm.actualiserPlateau(ileInterdite.getGrille(), 3 - ileInterdite.getNbActions());
                     ihm.afficheCarteMain(ileInterdite.getJoueurCourant());
                     ihm.actualiserNiveau(ileInterdite.getEtapeEau());
                     
@@ -76,8 +76,8 @@ public class Controleur implements Observateur<Message> {
 
                 case TERMINER:
                     ileInterdite.terminerTour();
-                    ihm.actualiserPlateau(ileInterdite.getGrille(), 3 - ileInterdite.getNbActions());
-                    ihm.afficheCarteMain(ileInterdite.getJoueurCourant());
+                    //ihm.actualiserPlateau(ileInterdite.getGrille(), 3 - ileInterdite.getNbActions());
+                    //ihm.afficheCarteMain(ileInterdite.getJoueurCourant());
                     break;
 
                 case RECUPERER_TRESOR:
