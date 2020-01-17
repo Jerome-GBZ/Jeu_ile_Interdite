@@ -11,18 +11,14 @@ import m2104.ile_interdite.modele.*;
 public class Message implements Serializable {
 
     public static long serialVersionUID = 1L;
-    public Integer idAventurier;
-    public Integer idCarte;
+    public Integer idAventurier, idCarte, idTuile, nbJoueurs;
     public Utils.Tresor tresor;
-    public Integer idTuile;
-    public Integer nbJoueurs;
     public Tuile tuile;
     public ArrayList<Tuile> tuiles;
     public int[] coords = new int[2];
+    public int nivEau, nombreJoueurs;
     public TypePion pion;
     public String[] nomJoueurs;
-    public int nivEau;
-    public int nombreJoueurs;
     public TypeAction type;
     public Aventurier aventurier;
     public ArrayList<Aventurier> aventuriers;

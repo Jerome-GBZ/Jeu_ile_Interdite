@@ -108,7 +108,6 @@ public class VueHeader {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
                     aventurierChoisi = listA.get(1);
-                    System.out.println("Choix AVENTURIER : " + listA.get(1).getRole());
                 }
             });
 

@@ -184,7 +184,6 @@ public class VuePlateauJeu extends JPanel {
                 if (!arrayTuiles.get(i).getAventuriers().isEmpty()) {
                     JPanel centrePionP = dessinerPion(arrayTuiles.get(i).getAventuriers().get(0));
                     btn.add(centrePionP);
-                    System.out.println(arrayTuiles.get(i).getAventuriers().get(0).getPion());
                 }
                 btn.setPreferredSize(new Dimension(85, 85));
                 btn.setOpaque(false);
@@ -259,7 +258,6 @@ public class VuePlateauJeu extends JPanel {
                 if (!arrayTuiles.get(i).getAventuriers().isEmpty()) {
                     JPanel centrePionP = dessinerPion(arrayTuiles.get(i).getAventuriers().get(0));
                     btn.add(centrePionP);
-                    System.out.println(arrayTuiles.get(i).getAventuriers().get(0).getPion());
                 }
                 btn.setPreferredSize(new Dimension(85, 85));
                 btn.setOpaque(false);
